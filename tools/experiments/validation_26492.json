@@ -1,0 +1,714 @@
+{
+  "summary": {
+    "cases": 100,
+    "baseline_mean": 32770.0,
+    "score_mean": 26492.83,
+    "min_score": 26138,
+    "max_score": 26777,
+    "errors": 0,
+    "improved_cases": 100,
+    "max_operations_per_order": 64
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "baseline": 32716,
+      "score": 26465,
+      "errors": 0,
+      "max_moves": 49
+    },
+    {
+      "seed": 1,
+      "baseline": 33010,
+      "score": 26717,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 2,
+      "baseline": 32602,
+      "score": 26234,
+      "errors": 0,
+      "max_moves": 37
+    },
+    {
+      "seed": 3,
+      "baseline": 32890,
+      "score": 26704,
+      "errors": 0,
+      "max_moves": 56
+    },
+    {
+      "seed": 4,
+      "baseline": 32846,
+      "score": 26565,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 5,
+      "baseline": 32796,
+      "score": 26599,
+      "errors": 0,
+      "max_moves": 52
+    },
+    {
+      "seed": 6,
+      "baseline": 32668,
+      "score": 26431,
+      "errors": 0,
+      "max_moves": 37
+    },
+    {
+      "seed": 7,
+      "baseline": 32852,
+      "score": 26652,
+      "errors": 0,
+      "max_moves": 40
+    },
+    {
+      "seed": 8,
+      "baseline": 32994,
+      "score": 26470,
+      "errors": 0,
+      "max_moves": 50
+    },
+    {
+      "seed": 9,
+      "baseline": 32856,
+      "score": 26439,
+      "errors": 0,
+      "max_moves": 44
+    },
+    {
+      "seed": 10,
+      "baseline": 32622,
+      "score": 26417,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 11,
+      "baseline": 32850,
+      "score": 26613,
+      "errors": 0,
+      "max_moves": 52
+    },
+    {
+      "seed": 12,
+      "baseline": 32646,
+      "score": 26601,
+      "errors": 0,
+      "max_moves": 52
+    },
+    {
+      "seed": 13,
+      "baseline": 32862,
+      "score": 26615,
+      "errors": 0,
+      "max_moves": 56
+    },
+    {
+      "seed": 14,
+      "baseline": 32412,
+      "score": 26138,
+      "errors": 0,
+      "max_moves": 52
+    },
+    {
+      "seed": 15,
+      "baseline": 32794,
+      "score": 26509,
+      "errors": 0,
+      "max_moves": 63
+    },
+    {
+      "seed": 16,
+      "baseline": 32472,
+      "score": 26350,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 17,
+      "baseline": 32786,
+      "score": 26542,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 18,
+      "baseline": 32758,
+      "score": 26535,
+      "errors": 0,
+      "max_moves": 46
+    },
+    {
+      "seed": 19,
+      "baseline": 32686,
+      "score": 26308,
+      "errors": 0,
+      "max_moves": 44
+    },
+    {
+      "seed": 20,
+      "baseline": 32830,
+      "score": 26496,
+      "errors": 0,
+      "max_moves": 48
+    },
+    {
+      "seed": 21,
+      "baseline": 32596,
+      "score": 26415,
+      "errors": 0,
+      "max_moves": 46
+    },
+    {
+      "seed": 22,
+      "baseline": 32682,
+      "score": 26362,
+      "errors": 0,
+      "max_moves": 39
+    },
+    {
+      "seed": 23,
+      "baseline": 32768,
+      "score": 26293,
+      "errors": 0,
+      "max_moves": 40
+    },
+    {
+      "seed": 24,
+      "baseline": 32590,
+      "score": 26350,
+      "errors": 0,
+      "max_moves": 49
+    },
+    {
+      "seed": 25,
+      "baseline": 32720,
+      "score": 26285,
+      "errors": 0,
+      "max_moves": 44
+    },
+    {
+      "seed": 26,
+      "baseline": 32628,
+      "score": 26647,
+      "errors": 0,
+      "max_moves": 43
+    },
+    {
+      "seed": 27,
+      "baseline": 32796,
+      "score": 26777,
+      "errors": 0,
+      "max_moves": 41
+    },
+    {
+      "seed": 28,
+      "baseline": 32796,
+      "score": 26617,
+      "errors": 0,
+      "max_moves": 57
+    },
+    {
+      "seed": 29,
+      "baseline": 32608,
+      "score": 26242,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 30,
+      "baseline": 33030,
+      "score": 26614,
+      "errors": 0,
+      "max_moves": 53
+    },
+    {
+      "seed": 31,
+      "baseline": 32704,
+      "score": 26380,
+      "errors": 0,
+      "max_moves": 48
+    },
+    {
+      "seed": 32,
+      "baseline": 32752,
+      "score": 26465,
+      "errors": 0,
+      "max_moves": 48
+    },
+    {
+      "seed": 33,
+      "baseline": 32674,
+      "score": 26486,
+      "errors": 0,
+      "max_moves": 55
+    },
+    {
+      "seed": 34,
+      "baseline": 32906,
+      "score": 26525,
+      "errors": 0,
+      "max_moves": 52
+    },
+    {
+      "seed": 35,
+      "baseline": 33008,
+      "score": 26579,
+      "errors": 0,
+      "max_moves": 52
+    },
+    {
+      "seed": 36,
+      "baseline": 32724,
+      "score": 26399,
+      "errors": 0,
+      "max_moves": 40
+    },
+    {
+      "seed": 37,
+      "baseline": 32766,
+      "score": 26400,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 38,
+      "baseline": 32814,
+      "score": 26755,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 39,
+      "baseline": 33044,
+      "score": 26739,
+      "errors": 0,
+      "max_moves": 41
+    },
+    {
+      "seed": 40,
+      "baseline": 32878,
+      "score": 26531,
+      "errors": 0,
+      "max_moves": 49
+    },
+    {
+      "seed": 41,
+      "baseline": 32926,
+      "score": 26591,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 42,
+      "baseline": 32712,
+      "score": 26348,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 43,
+      "baseline": 32634,
+      "score": 26270,
+      "errors": 0,
+      "max_moves": 46
+    },
+    {
+      "seed": 44,
+      "baseline": 32694,
+      "score": 26303,
+      "errors": 0,
+      "max_moves": 41
+    },
+    {
+      "seed": 45,
+      "baseline": 32706,
+      "score": 26496,
+      "errors": 0,
+      "max_moves": 55
+    },
+    {
+      "seed": 46,
+      "baseline": 33058,
+      "score": 26583,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 47,
+      "baseline": 32718,
+      "score": 26651,
+      "errors": 0,
+      "max_moves": 43
+    },
+    {
+      "seed": 48,
+      "baseline": 32758,
+      "score": 26534,
+      "errors": 0,
+      "max_moves": 40
+    },
+    {
+      "seed": 49,
+      "baseline": 33168,
+      "score": 26730,
+      "errors": 0,
+      "max_moves": 41
+    },
+    {
+      "seed": 50,
+      "baseline": 33120,
+      "score": 26776,
+      "errors": 0,
+      "max_moves": 53
+    },
+    {
+      "seed": 51,
+      "baseline": 32786,
+      "score": 26579,
+      "errors": 0,
+      "max_moves": 45
+    },
+    {
+      "seed": 52,
+      "baseline": 32746,
+      "score": 26521,
+      "errors": 0,
+      "max_moves": 49
+    },
+    {
+      "seed": 53,
+      "baseline": 32946,
+      "score": 26590,
+      "errors": 0,
+      "max_moves": 52
+    },
+    {
+      "seed": 54,
+      "baseline": 32666,
+      "score": 26453,
+      "errors": 0,
+      "max_moves": 41
+    },
+    {
+      "seed": 55,
+      "baseline": 32754,
+      "score": 26369,
+      "errors": 0,
+      "max_moves": 64
+    },
+    {
+      "seed": 56,
+      "baseline": 32928,
+      "score": 26525,
+      "errors": 0,
+      "max_moves": 44
+    },
+    {
+      "seed": 57,
+      "baseline": 32726,
+      "score": 26404,
+      "errors": 0,
+      "max_moves": 50
+    },
+    {
+      "seed": 58,
+      "baseline": 33072,
+      "score": 26737,
+      "errors": 0,
+      "max_moves": 43
+    },
+    {
+      "seed": 59,
+      "baseline": 32808,
+      "score": 26480,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 60,
+      "baseline": 32864,
+      "score": 26498,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 61,
+      "baseline": 32602,
+      "score": 26436,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 62,
+      "baseline": 32680,
+      "score": 26597,
+      "errors": 0,
+      "max_moves": 44
+    },
+    {
+      "seed": 63,
+      "baseline": 32864,
+      "score": 26536,
+      "errors": 0,
+      "max_moves": 36
+    },
+    {
+      "seed": 64,
+      "baseline": 32818,
+      "score": 26528,
+      "errors": 0,
+      "max_moves": 39
+    },
+    {
+      "seed": 65,
+      "baseline": 32766,
+      "score": 26449,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 66,
+      "baseline": 32726,
+      "score": 26632,
+      "errors": 0,
+      "max_moves": 56
+    },
+    {
+      "seed": 67,
+      "baseline": 32786,
+      "score": 26440,
+      "errors": 0,
+      "max_moves": 52
+    },
+    {
+      "seed": 68,
+      "baseline": 32594,
+      "score": 26475,
+      "errors": 0,
+      "max_moves": 40
+    },
+    {
+      "seed": 69,
+      "baseline": 32736,
+      "score": 26638,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 70,
+      "baseline": 32802,
+      "score": 26649,
+      "errors": 0,
+      "max_moves": 55
+    },
+    {
+      "seed": 71,
+      "baseline": 32590,
+      "score": 26450,
+      "errors": 0,
+      "max_moves": 60
+    },
+    {
+      "seed": 72,
+      "baseline": 32806,
+      "score": 26522,
+      "errors": 0,
+      "max_moves": 51
+    },
+    {
+      "seed": 73,
+      "baseline": 32922,
+      "score": 26538,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 74,
+      "baseline": 32870,
+      "score": 26687,
+      "errors": 0,
+      "max_moves": 39
+    },
+    {
+      "seed": 75,
+      "baseline": 32830,
+      "score": 26595,
+      "errors": 0,
+      "max_moves": 53
+    },
+    {
+      "seed": 76,
+      "baseline": 32676,
+      "score": 26409,
+      "errors": 0,
+      "max_moves": 54
+    },
+    {
+      "seed": 77,
+      "baseline": 32966,
+      "score": 26608,
+      "errors": 0,
+      "max_moves": 54
+    },
+    {
+      "seed": 78,
+      "baseline": 32858,
+      "score": 26603,
+      "errors": 0,
+      "max_moves": 42
+    },
+    {
+      "seed": 79,
+      "baseline": 32718,
+      "score": 26460,
+      "errors": 0,
+      "max_moves": 53
+    },
+    {
+      "seed": 80,
+      "baseline": 32498,
+      "score": 26143,
+      "errors": 0,
+      "max_moves": 40
+    },
+    {
+      "seed": 81,
+      "baseline": 32892,
+      "score": 26511,
+      "errors": 0,
+      "max_moves": 45
+    },
+    {
+      "seed": 82,
+      "baseline": 32614,
+      "score": 26324,
+      "errors": 0,
+      "max_moves": 55
+    },
+    {
+      "seed": 83,
+      "baseline": 32794,
+      "score": 26653,
+      "errors": 0,
+      "max_moves": 44
+    },
+    {
+      "seed": 84,
+      "baseline": 32494,
+      "score": 26376,
+      "errors": 0,
+      "max_moves": 55
+    },
+    {
+      "seed": 85,
+      "baseline": 32890,
+      "score": 26653,
+      "errors": 0,
+      "max_moves": 50
+    },
+    {
+      "seed": 86,
+      "baseline": 32770,
+      "score": 26508,
+      "errors": 0,
+      "max_moves": 46
+    },
+    {
+      "seed": 87,
+      "baseline": 32570,
+      "score": 26333,
+      "errors": 0,
+      "max_moves": 48
+    },
+    {
+      "seed": 88,
+      "baseline": 32858,
+      "score": 26506,
+      "errors": 0,
+      "max_moves": 49
+    },
+    {
+      "seed": 89,
+      "baseline": 32622,
+      "score": 26428,
+      "errors": 0,
+      "max_moves": 41
+    },
+    {
+      "seed": 90,
+      "baseline": 32736,
+      "score": 26404,
+      "errors": 0,
+      "max_moves": 53
+    },
+    {
+      "seed": 91,
+      "baseline": 32700,
+      "score": 26378,
+      "errors": 0,
+      "max_moves": 44
+    },
+    {
+      "seed": 92,
+      "baseline": 32568,
+      "score": 26525,
+      "errors": 0,
+      "max_moves": 43
+    },
+    {
+      "seed": 93,
+      "baseline": 32608,
+      "score": 26495,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 94,
+      "baseline": 32540,
+      "score": 26225,
+      "errors": 0,
+      "max_moves": 45
+    },
+    {
+      "seed": 95,
+      "baseline": 32690,
+      "score": 26389,
+      "errors": 0,
+      "max_moves": 60
+    },
+    {
+      "seed": 96,
+      "baseline": 32972,
+      "score": 26409,
+      "errors": 0,
+      "max_moves": 56
+    },
+    {
+      "seed": 97,
+      "baseline": 32798,
+      "score": 26380,
+      "errors": 0,
+      "max_moves": 40
+    },
+    {
+      "seed": 98,
+      "baseline": 32672,
+      "score": 26359,
+      "errors": 0,
+      "max_moves": 47
+    },
+    {
+      "seed": 99,
+      "baseline": 32882,
+      "score": 26333,
+      "errors": 0,
+      "max_moves": 56
+    }
+  ]
+}

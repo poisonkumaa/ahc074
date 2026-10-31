@@ -1,0 +1,41 @@
+ mutable vector<double> uniform_bias;
+ vector<uint8_t> make_policy(const vector<int>&frequency) const {
+  vector<vector<pair<uint16_t,uint8_t>>> reverse(states);
+  for(int s=0;s<states;s++)for(int e=0;e<choices;e++){
+   const auto&v=edges[s][e];if(visible[s]>>v.paper&1)reverse[v.next].emplace_back(s,e);
+  }
+  bool uniform=*min_element(frequency.begin(),frequency.end())==*max_element(frequency.begin(),frequency.end());
+  vector<double> quality(states,0),cost(states),nextquality(states),shortquality(states);
+  int sum=accumulate(frequency.begin(),frequency.end(),0);
+  for(int t=0;t<values;t++)if(frequency[t])for(int s=0;s<states;s++)shortquality[s]+=double(frequency[t])/sum*distance[t][s];
+  quality=shortquality;
+  if(!uniform_bias.empty()){
+   quality=uniform_bias;
+   for(int t=0;t<values;t++)for(int s=0;s<states;s++)quality[s]+=(double(frequency[t])/sum-1./values)*distance[t][s];
+  }
+  vector<uint8_t> policy(values*states,255);
+  const int ITER = uniform?MDP_UNIFORM:MDP_GROUP;
+  using Item=pair<double,int>;
+  for(int it=0;it<ITER;it++){
+   fill(nextquality.begin(),nextquality.end(),0);
+   for(int t=0;t<values;t++){
+    if(!frequency[t])continue;
+    priority_queue<Item,vector<Item>,greater<Item>>pq;
+    fill(cost.begin(),cost.end(),1e100);
+    for(int s=0;s<states;s++){
+     policy[t*states+s]=255;
+     if(display[s]==t){cost[s]=quality[s];pq.emplace(cost[s],s);}
+    }
+    while(!pq.empty()){
+     auto[c,s]=pq.top();pq.pop();if(c>cost[s]+1e-9)continue;
+     for(auto[u,e]:reverse[s])if(cost[u]>c+1+1e-9){cost[u]=c+1;policy[t*states+u]=e;pq.emplace(cost[u],u);}
+    }
+    double prob=double(frequency[t])/sum;
+    for(int s=0;s<states;s++)nextquality[s]+=prob*cost[s];
+   }
+   double bias=nextquality[0];for(double &x:nextquality)x-=bias;
+   quality.swap(nextquality);
+  }
+  if(uniform)uniform_bias=quality;
+  return policy;
+ }

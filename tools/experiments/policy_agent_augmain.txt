@@ -1,0 +1,56 @@
+struct AssignGroup{
+ int bits,base,state=0,flip=0;array<int,10>col{};array<uint16_t,256>code{};float score=0;
+};
+int main(){
+ ios::sync_with_stdio(false);cin.tie(nullptr);
+ int N,K,P,R;if(!(cin>>N>>K>>P>>R)||N!=64||K!=192||P!=256)return 0;
+ vector<U64>data(P);string row;for(auto&a:data){if(!(cin>>row)||row.size()!=64)return 0;for(int j=0;j<64;j++)if(row[j]=='1')a|=U64(1)<<j;}
+ AugGraph gr(MODEL_BITS,MODEL_LIMIT,true);cerr<<"GraphCPU="<<double(clock())/CLOCKS_PER_SEC<<" S="<<gr.S<<endl;
+ int big=64/MODEL_BITS,rest=64%MODEL_BITS;
+ Graph small(rest==4?vector<string>{"1110","...1","0000","1.00","..1.","0100"}:vector<string>{"0","1"});small.build_transition();
+ vector<AssignGroup>groups(big+1);int paper=0,first=0;int belongs[64],local[64];
+ for(int z=0;z<=big;z++){
+  auto&q=groups[z];q.bits=z<big?MODEL_BITS:rest;q.base=paper;paper+=z<big?gr.K:small.K;
+  for(int j=0;j<q.bits;j++){q.col[j]=first+j;belongs[first+j]=z;local[first+j]=j;}
+  for(int a=0;a<256;a++){int t=0;for(int j=0;j<q.bits;j++)t|=((data[a]>>q.col[j])&1)<<j;q.code[a]=t;}
+  first+=q.bits;
+ }
+ auto estimate=[&](const AssignGroup&q){
+  if(q.bits!=MODEL_BITS){int f[16]{};for(int c:q.code)f[c]++;double cost=0;for(int a=0;a<small.values;a++)for(int b=0;b<small.values;b++)cost+=double(f[a])*f[b]*small.transition[a*small.values+b];return float(cost/(256.*256));}
+  float sum[PAD]{};for(int a=0;a<256;a++){const float*f=FEATURE[q.code[a]];for(int r=0;r<PAD;r++)sum[r]+=f[r];}
+  float cost=-COST_MEAN+sum[RANK];for(int r=0;r<RANK;r++)cost+=SIGNS[r]*sum[r]*sum[r];return cost;
+ };
+ float now=0;for(auto&q:groups){q.score=estimate(q);now+=q.score;}auto bestgroups=groups;float best=now;
+ Random rnd{data[0]^data[73]^0x61bb156e123ULL};clock_t ast=clock();double budget=max(.03,min(.65,1.30-double(clock())/CLOCKS_PER_SEC));
+ const int STEPS=200000;
+ auto attempt=[&](int x,int y,bool inv,double temp){
+  int g=belongs[x],h=inv?g:belongs[y],b=local[x],c=local[y];auto ng=groups[g],nh=groups[h];
+  if(inv){ng.flip^=1<<b;for(auto&t:ng.code)t^=1<<b;}
+  else if(g==h){if(b==c)return;swap(ng.col[b],ng.col[c]);int d=((ng.flip>>b)^(ng.flip>>c))&1;ng.flip^=(d<<b)|(d<<c);for(auto&t:ng.code){int d=((t>>b)^(t>>c))&1;t^=(d<<b)|(d<<c);}}
+  else{swap(ng.col[b],nh.col[c]);int d=((ng.flip>>b)^(nh.flip>>c))&1;ng.flip^=d<<b;nh.flip^=d<<c;for(int a=0;a<256;a++){int d=((ng.code[a]>>b)^(nh.code[a]>>c))&1;ng.code[a]^=d<<b;nh.code[a]^=d<<c;}}
+  ng.score=estimate(ng);float delta=ng.score-groups[g].score;if(g!=h){nh.score=estimate(nh);delta+=nh.score-groups[h].score;}
+  if(delta<0||(temp>0&&rnd.real()<exp(-delta/temp))){groups[g]=ng;if(g!=h)groups[h]=nh;now+=delta;if(now<best){best=now;bestgroups=groups;}}
+ };
+ int iterations=0;double temp=.03;
+ for(int it=0;it<STEPS;it++){
+  if((it&127)==0){double elapsed=double(clock()-ast)/CLOCKS_PER_SEC;if(elapsed>budget)break;double progress=max(elapsed/budget,double(it)/STEPS);temp=.03*pow(.008,progress);}
+  int x=rnd.pick(64),y=rnd.pick(64);bool inv=rnd.pick(5)==0;attempt(x,y,inv,temp);iterations=it;
+ }
+ groups=bestgroups;now=best;
+ for(int x=0;x<64;x++){attempt(x,x,true,0);for(int y=x+1;y<64;y++)attempt(x,y,false,0);}
+ groups=bestgroups;
+ vector<unique_ptr<AugPolicy>>pol;for(int z=0;z<big;z++){vector<int>f(gr.V);for(int t:groups[z].code)f[t]++;pol.emplace_back(make_unique<AugPolicy>(gr,move(f)));}
+ vector<int>sf(small.values);for(int t:groups[big].code)sf[t]++;auto sp=small.make_policy(sf);
+ int remap[12];for(int i=0;i<gr.K;i++)remap[gr.perm[0][i]]=i;
+ vector<string>design(192,string(64,'.'));
+ for(int z=0;z<=big;z++){auto&q=groups[z];const auto&patterns=z<big?gr.pattern:small.pattern;for(int k=0;k<(int)patterns.size();k++)for(int j=0;j<q.bits;j++){char c=patterns[k][j];if(c!='.')design[q.base+(z<big?remap[k]:k)][q.col[j]]='0'+((c-'0')^((q.flip>>j)&1));}}
+ cerr<<"SA="<<iterations<<" Model="<<best<<" PrepCPU="<<double(clock())/CLOCKS_PER_SEC<<endl;
+ for(auto&s:design)cout<<s<<'\n';cout.flush();
+ for(int r=0;r<R;r++){
+  int a;if(!(cin>>a)||a<0||a>=P)return 0;bool fast=double(clock())/CLOCKS_PER_SEC>1.65;vector<pair<int,int>>ops;
+  for(int z=0;z<big;z++){auto&q=groups[z];int t=q.code[a];pol[z]->fast=fast;while(gr.display[q.state]!=t){auto e=pol[z]->step(t,q.state);ops.emplace_back(q.base+remap[e.paper],q.base+e.pos);q.state=e.next;}}
+  auto&q=groups[big];int t=q.code[a];while(small.display[q.state]!=t){int ei=sp[t*small.states+q.state];const auto&e=small.edges[q.state][ei];ops.emplace_back(q.base+e.paper,q.base+e.position);q.state=e.next;}
+  if(ops.size()>384)return 0;cout<<ops.size()<<'\n';for(auto[k,d]:ops)cout<<k<<' '<<d<<'\n';cout.flush();
+ }
+ cerr<<"FinishCPU="<<double(clock())/CLOCKS_PER_SEC<<endl;
+}

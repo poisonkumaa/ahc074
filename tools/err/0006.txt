@@ -2,8 +2,11 @@
     Blocking waiting for file lock on package cache
     Blocking waiting for file lock on package cache
     Blocking waiting for file lock on package cache
-    Blocking waiting for file lock on shared package cache
     Blocking waiting for file lock on build directory
-    Finished `release` profile [optimized] target(s) in 29.69s
+    Finished `release` profile [optimized] target(s) in 1.78s
      Running `target/release/tester ../a.out`
-Score = 32668
+intrinsic 22.8125 -> 9.97266 papers=191 levels=192
+intrinsic 23.3516 -> 10 papers=191 levels=192
+Candidates=2 Finalists=0 Estimate=14.8711 PrepCPU=0.904412
+FinishCPU=1.1798
+Score = 15063
