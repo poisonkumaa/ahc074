@@ -1,0 +1,197 @@
+[
+  {
+    "args": [
+      0,
+      32,
+      2,
+      0.05
+    ],
+    "cases": [
+      {
+        "seed": 0,
+        "score": 13880,
+        "cpu": 2.20856,
+        "lookahead": 0,
+        "candidates": 0,
+        "changed": 0,
+        "extra": 0
+      },
+      {
+        "seed": 1,
+        "score": 13972,
+        "cpu": 2.2371,
+        "lookahead": 0,
+        "candidates": 0,
+        "changed": 0,
+        "extra": 0
+      },
+      {
+        "seed": 2,
+        "score": 13752,
+        "cpu": 2.26616,
+        "lookahead": 0,
+        "candidates": 0,
+        "changed": 0,
+        "extra": 0
+      }
+    ],
+    "mean": 13868.0,
+    "max_cpu": 2.26616
+  },
+  {
+    "args": [
+      1,
+      32,
+      2,
+      0.05
+    ],
+    "cases": [
+      {
+        "seed": 0,
+        "score": 13865,
+        "cpu": 2.97883,
+        "lookahead": 128,
+        "candidates": 256,
+        "changed": 29,
+        "extra": 0
+      },
+      {
+        "seed": 1,
+        "score": 13952,
+        "cpu": 2.98356,
+        "lookahead": 122,
+        "candidates": 244,
+        "changed": 30,
+        "extra": 0
+      },
+      {
+        "seed": 2,
+        "score": 13739,
+        "cpu": 3.06657,
+        "lookahead": 141,
+        "candidates": 282,
+        "changed": 38,
+        "extra": 0
+      }
+    ],
+    "mean": 13852.0,
+    "max_cpu": 3.06657
+  },
+  {
+    "args": [
+      1,
+      255,
+      1,
+      0.05
+    ],
+    "cases": [
+      {
+        "seed": 0,
+        "score": 13896,
+        "cpu": 3.98268,
+        "lookahead": 126,
+        "candidates": 252,
+        "changed": 19,
+        "extra": 0
+      },
+      {
+        "seed": 1,
+        "score": 13964,
+        "cpu": 3.98747,
+        "lookahead": 123,
+        "candidates": 246,
+        "changed": 14,
+        "extra": 0
+      },
+      {
+        "seed": 2,
+        "score": 13765,
+        "cpu": 4.26973,
+        "lookahead": 147,
+        "candidates": 295,
+        "changed": 25,
+        "extra": 0
+      }
+    ],
+    "mean": 13875.0,
+    "max_cpu": 4.26973
+  },
+  {
+    "args": [
+      2,
+      16,
+      2,
+      0.05
+    ],
+    "cases": [
+      {
+        "seed": 0,
+        "score": 13834,
+        "cpu": 2.14907,
+        "lookahead": 212,
+        "candidates": 435,
+        "changed": 45,
+        "extra": 9
+      },
+      {
+        "seed": 1,
+        "score": 13978,
+        "cpu": 2.18769,
+        "lookahead": 205,
+        "candidates": 424,
+        "changed": 50,
+        "extra": 12
+      },
+      {
+        "seed": 2,
+        "score": 13708,
+        "cpu": 2.2344,
+        "lookahead": 231,
+        "candidates": 477,
+        "changed": 62,
+        "extra": 11
+      }
+    ],
+    "mean": 13840.0,
+    "max_cpu": 2.2344
+  },
+  {
+    "args": [
+      2,
+      64,
+      2,
+      0.1
+    ],
+    "cases": [
+      {
+        "seed": 0,
+        "score": 13888,
+        "cpu": 4.44756,
+        "lookahead": 215,
+        "candidates": 438,
+        "changed": 22,
+        "extra": 7
+      },
+      {
+        "seed": 1,
+        "score": 13974,
+        "cpu": 4.37989,
+        "lookahead": 205,
+        "candidates": 422,
+        "changed": 21,
+        "extra": 2
+      },
+      {
+        "seed": 2,
+        "score": 13748,
+        "cpu": 4.72484,
+        "lookahead": 234,
+        "candidates": 479,
+        "changed": 31,
+        "extra": 11
+      }
+    ],
+    "mean": 13870.0,
+    "max_cpu": 4.72484
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 13460.333333333334,
+    "errors": 0,
+    "max_cpu": 0.820022,
+    "max_prep": 0.646595,
+    "min_cpu": 0.660364,
+    "average_cpu": 0.7664386666666667,
+    "initial_complete": 3,
+    "refit_present": 3,
+    "repetitions": {
+      "0": 0
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13405,
+      "errors": 0,
+      "cpu": 0.820022,
+      "prep": 0.646233,
+      "repetitions": null,
+      "snapshot": 0.175899,
+      "forward": 0.028604,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 29,
+      "log": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.047179\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.175899 forward=0.028604 finite=93.6035 CPU=0.389797\nPrepCPU=0.646233\nControlIntrinsic=10.8711\nPathFallbacks=789 FinishCPU=0.820022\nScore = 13405\n"
+    },
+    {
+      "seed": 1,
+      "score": 13752,
+      "errors": 0,
+      "cpu": 0.81893,
+      "prep": 0.646595,
+      "repetitions": null,
+      "snapshot": 0.176298,
+      "forward": 0.028711,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 53,
+      "log": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.047547\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.176298 forward=0.028711 finite=94.6426 CPU=0.389169\nPrepCPU=0.646595\nControlIntrinsic=10.7188\nPathFallbacks=753 FinishCPU=0.81893\nScore = 13752\n"
+    },
+    {
+      "seed": 2,
+      "score": 13224,
+      "errors": 0,
+      "cpu": 0.660364,
+      "prep": 0.511738,
+      "repetitions": null,
+      "snapshot": 0.121312,
+      "forward": 0.02266,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 32,
+      "log": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.039264\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.121312 forward=0.02266 finite=95.9019 CPU=0.324449\nPrepCPU=0.511738\nControlIntrinsic=10.8555\nPathFallbacks=759 FinishCPU=0.660364\nScore = 13224\n"
+    }
+  ]
+}

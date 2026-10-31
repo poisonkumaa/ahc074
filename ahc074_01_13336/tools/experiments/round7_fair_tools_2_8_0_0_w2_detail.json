@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 14257.0,
+    "errors": 0,
+    "max_cpu": 0.704489,
+    "max_prep": 0.619421,
+    "min_cpu": 0.557438,
+    "average_cpu": 0.649152,
+    "initial_complete": 3,
+    "refit_present": 3,
+    "repetitions": {
+      "0": 0
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 14478,
+      "errors": 0,
+      "cpu": 0.685529,
+      "prep": 0.602378,
+      "repetitions": null,
+      "snapshot": 0.14935,
+      "forward": 0.025432,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 33,
+      "log": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.036627\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nFairWeight alpha=2 mean=13.2507 min=8 max=122\nexact_refit accepted=117 gain=447.222 snapshot=0.14935 forward=0.025432 finite=93.6035 CPU=0.387568\nPrepCPU=0.602378\nPathFallbacks=0 FinishCPU=0.685529\nScore = 14478\n"
+    },
+    {
+      "seed": 1,
+      "score": 14274,
+      "errors": 0,
+      "cpu": 0.704489,
+      "prep": 0.619421,
+      "repetitions": null,
+      "snapshot": 0.152608,
+      "forward": 0.026515,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 33,
+      "log": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.036683\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nFairWeight alpha=2 mean=13.4541 min=8 max=127\nexact_refit accepted=117 gain=443.231 snapshot=0.152608 forward=0.026515 finite=94.6426 CPU=0.401922\nPrepCPU=0.619421\nPathFallbacks=0 FinishCPU=0.704489\nScore = 14274\n"
+    },
+    {
+      "seed": 2,
+      "score": 14019,
+      "errors": 0,
+      "cpu": 0.557438,
+      "prep": 0.499246,
+      "repetitions": null,
+      "snapshot": 0.138417,
+      "forward": 0.022723,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 29,
+      "log": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.041498\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nFairWeight alpha=2 mean=13.3777 min=8 max=128\nexact_refit accepted=116 gain=456.043 snapshot=0.138417 forward=0.022723 finite=95.9019 CPU=0.294571\nPrepCPU=0.499246\nPathFallbacks=0 FinishCPU=0.557438\nScore = 14019\n"
+    }
+  ]
+}

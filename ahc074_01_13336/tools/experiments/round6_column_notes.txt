@@ -1,0 +1,37 @@
+Round 6 column / initialization experiments
+
+Baseline fixed cut53 initial 4-pass intrinsic refit + exact R8:
+  official seeds0..4 mean13265.6, allE0.
+
+round6_columns.cpp/h (builder round6_columns_build.py):
+  After learning the initial127 long-paper prototypes and before intrinsic
+  refit, optimize the actual minimum record count of the 65 universal papers
+  plus127 prototype papers. This replaces a generic short-window collision
+  statistic with the actual current dictionary objective.
+  Swap positions32..63; transform columns, flips, all public words and each
+  prototype's prefix consistently. Fixed universal patterns preserve all
+  target reachability. 500 SA trials, half adjacent/half arbitrary swaps.
+  Weight1 for all products: 5seed mean13265.6; no better column order found
+  on any case, all five final outputs/scores remain the baseline.
+  Weight3 for products not memorized by one of the127 prototype papers:
+  mean13434.8, E0. Seed0 initial weighted objective35.668->35.5352,
+  intrinsic after refit9.5273, actual13433 vsbaseline13343.
+
+round6_flip.cpp/h (builder round6_flip_build.py):
+  Coordinate-descent per-column inversion against the same exact initial
+  record-count objective. Changing a column globally preserves every
+  target/prototype xor, so all prototype suffix-match starts are cached.
+  Only the universal backbone initialization changes; final physical colors
+  are mapped with the updated flip array. At most3 passes over64 variables.
+  Weight1: mean13532.8, E0. Weight3 for nonmemorized: mean13473.6, E0.
+  Seed0 both weights choose3 flips, initial intrinsic12.8945->12.8047,
+  refit result9.58984->9.41016, but actual13343->13561.
+
+Conclusion: these specific joint representative/column objectives improve
+intrinsic decomposition while worsening access competition. No tested
+column or flip candidate improves the fixed-R8 baseline. No main.cpp,
+a.out, pahcer output or shared source was modified.
+
+All comparisons use -DAHC_LEARNING_BUDGET=100 -DAHC_REFINEMENT_BUDGET=100 to
+avoid timer cutoffs; this is research-only configuration. All processes
+have finished.

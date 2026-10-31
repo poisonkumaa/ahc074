@@ -1,0 +1,15 @@
+from pathlib import Path
+d=Path(__file__).resolve().parent
+h=(d/'structure2_agent_refit.h').read_text()
+h=h.replace('int passes,int importance)', 'int passes,int importance,int alpha=1)')
+h=h.replace('INF=1000','INF=100000')
+h=h.replace('auto update=[&](int k){','int cost[65]{};for(int l=1;l<=64;l++)cost[l]=4+alpha*std::max(0,int(level[l].size())-1);\n auto update=[&](int k){')
+h=h.replace('f[l]=std::min(f[l],f[j]+1)','f[l]=std::min(f[l],f[j]+cost[l])')
+h=h.replace('b[j]=std::min(b[j],b[l]+1)','b[j]=std::min(b[j],b[l]+cost[l])')
+h=h.replace('f[upper]=std::min(f[upper],f[j]+1)','f[upper]=std::min(f[upper],f[j]+cost[upper])')
+h=h.replace('route=bestprefix+1+B[v][l]','route=bestprefix+cost[l]+B[v][l]')
+h=h.replace('importance*(N+1-route)','importance*(N*100-route)')
+(d/'refit_cost.h').write_text(h)
+s=(d/'structure2_agent_backbone.cpp').read_text().replace('"structure2_agent_refit.h"','"refit_cost.h"')
+s=s.replace('argc>8?atoi(argv[8]):8);','argc>8?atoi(argv[8]):2,argc>10?atoi(argv[10]):1);')
+(d/'refit_cost_submit.cpp').write_text(s)

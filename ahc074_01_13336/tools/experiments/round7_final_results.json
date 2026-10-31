@@ -1,0 +1,2002 @@
+[
+  {
+    "seed": 0,
+    "sha256": "f87396f9d585fc2ca494016819c688f67c8c9db09e1f9dade509e672dd07a895",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13343,
+        "prep": 0.567618,
+        "cpu": 0.650216,
+        "diagnostics": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.041644\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.140264 forward=0.025672 finite=93.6035 CPU=0.354239\nPrepCPU=0.567618\nPathFallbacks=0 FinishCPU=0.650216\nScore = 13343\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13343,
+        "prep": 0.536647,
+        "cpu": 0.613858,
+        "diagnostics": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.042407\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.114506 forward=0.025486 finite=93.6035 CPU=0.349942\nPrepCPU=0.536647\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27995\nPathFallbacks=0 FinishCPU=0.613858\nScore = 13343\n"
+      }
+    ]
+  },
+  {
+    "seed": 1,
+    "sha256": "96878b5ca0af88b47e21e5d3b3b4d1646f9b2f2715fa7cb2bf63da9c608d8c86",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13444,
+        "prep": 0.568167,
+        "cpu": 0.650791,
+        "diagnostics": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.04137\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.140633 forward=0.026345 finite=94.6426 CPU=0.354224\nPrepCPU=0.568167\nPathFallbacks=0 FinishCPU=0.650791\nScore = 13444\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13444,
+        "prep": 0.584399,
+        "cpu": 0.660976,
+        "diagnostics": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.041581\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.122593 forward=0.036296 finite=94.6426 CPU=0.389505\nPrepCPU=0.584399\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28309\nPathFallbacks=0 FinishCPU=0.660976\nScore = 13444\n"
+      }
+    ]
+  },
+  {
+    "seed": 2,
+    "sha256": "519b4e0aa9facfe68863e8f36c5c30c8525193f7fa9fc2588f09cf6ff3771ccf",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13043,
+        "prep": 0.578312,
+        "cpu": 0.660645,
+        "diagnostics": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.043363\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.144279 forward=0.026199 finite=95.9019 CPU=0.359881\nPrepCPU=0.578312\nPathFallbacks=0 FinishCPU=0.660645\nScore = 13043\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13043,
+        "prep": 0.548289,
+        "cpu": 0.619837,
+        "diagnostics": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.045046\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.117058 forward=0.026165 finite=95.9019 CPU=0.356819\nPrepCPU=0.548289\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28043\nPathFallbacks=0 FinishCPU=0.619837\nScore = 13043\n"
+      }
+    ]
+  },
+  {
+    "seed": 3,
+    "sha256": "47b8c5a9b1ca1dfdbd7380a2b638664e100238d02b788452db21be475db1a9a9",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13263,
+        "prep": 0.579686,
+        "cpu": 0.663045,
+        "diagnostics": "backbone 32.2227 -> 13.1055 papers=192 CPU=0.040679\nrefit 13.1055 -> 9.80078 accepted=256 rejected=0\nexact_refit accepted=114 gain=1.15625 snapshot=0.148675 forward=0.025769 finite=95.7388 CPU=0.358593\nPrepCPU=0.579686\nPathFallbacks=0 FinishCPU=0.663045\nScore = 13263\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13263,
+        "prep": 0.541527,
+        "cpu": 0.613732,
+        "diagnostics": "backbone 32.2227 -> 13.1055 papers=192 CPU=0.04218\nrefit 13.1055 -> 9.80078 accepted=256 rejected=0\nexact_refit accepted=114 gain=1.15625 snapshot=0.116293 forward=0.025798 finite=95.7388 CPU=0.353761\nPrepCPU=0.541527\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27942\nPathFallbacks=0 FinishCPU=0.613732\nScore = 13263\n"
+      }
+    ]
+  },
+  {
+    "seed": 4,
+    "sha256": "1e35516873108fd3c5d6f4c4d60abc9249465800b7841d55ce93f3d37665f697",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13235,
+        "prep": 0.710187,
+        "cpu": 0.806391,
+        "diagnostics": "backbone 32.1641 -> 13.0391 papers=192 CPU=0.044009\nrefit 13.0391 -> 9.6875 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.07031 snapshot=0.137408 forward=0.027904 finite=96.5073 CPU=0.481479\nPrepCPU=0.710187\nPathFallbacks=0 FinishCPU=0.806391\nScore = 13235\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13235,
+        "prep": 0.656529,
+        "cpu": 0.74787,
+        "diagnostics": "backbone 32.1641 -> 13.0391 papers=192 CPU=0.05747\nrefit 13.0391 -> 9.6875 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.07031 snapshot=0.147559 forward=0.031531 finite=96.5073 CPU=0.4123\nPrepCPU=0.656529\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27805\nPathFallbacks=0 FinishCPU=0.74787\nScore = 13235\n"
+      }
+    ]
+  },
+  {
+    "seed": 5,
+    "sha256": "ff9f96b554e8684f2b224b7dec8a41f0eb0ae4e80906a5efec9d94cda4297c62",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13265,
+        "prep": 0.720876,
+        "cpu": 0.821568,
+        "diagnostics": "backbone 32.7109 -> 13.1953 papers=192 CPU=0.048122\nrefit 13.1953 -> 9.86328 accepted=256 rejected=0\nexact_refit accepted=117 gain=1.21387 snapshot=0.137644 forward=0.030682 finite=97.4517 CPU=0.502779\nPrepCPU=0.720876\nPathFallbacks=0 FinishCPU=0.821568\nScore = 13265\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13265,
+        "prep": 0.654375,
+        "cpu": 0.749076,
+        "diagnostics": "backbone 32.7109 -> 13.1953 papers=192 CPU=0.057138\nrefit 13.1953 -> 9.86328 accepted=256 rejected=0\nexact_refit accepted=117 gain=1.21387 snapshot=0.144493 forward=0.02883 finite=97.4517 CPU=0.415761\nPrepCPU=0.654375\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27804\nPathFallbacks=0 FinishCPU=0.749076\nScore = 13265\n"
+      }
+    ]
+  },
+  {
+    "seed": 6,
+    "sha256": "183b88745f98d98c8ad62b675a3681633af4b931e0b6f29997ea5dafd0628e0f",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13368,
+        "prep": 0.735225,
+        "cpu": 0.816717,
+        "diagnostics": "backbone 32.7344 -> 13.0742 papers=192 CPU=0.059492\nrefit 13.0742 -> 9.92578 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.10596 snapshot=0.170244 forward=0.027884 finite=96.667 CPU=0.466672\nPrepCPU=0.735225\nPathFallbacks=0 FinishCPU=0.816717\nScore = 13368\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13368,
+        "prep": 0.540202,
+        "cpu": 0.616855,
+        "diagnostics": "backbone 32.7344 -> 13.0742 papers=192 CPU=0.045836\nrefit 13.0742 -> 9.92578 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.10596 snapshot=0.119816 forward=0.026611 finite=96.667 CPU=0.34459\nPrepCPU=0.540202\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27570\nPathFallbacks=0 FinishCPU=0.616855\nScore = 13368\n"
+      }
+    ]
+  },
+  {
+    "seed": 7,
+    "sha256": "0874cced99d3d5a3d534156c3e3b86fc4a3bbe3c1888a48c23ad7b9389812d1f",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13250,
+        "prep": 0.796037,
+        "cpu": 0.87775,
+        "diagnostics": "backbone 32.4844 -> 13.0586 papers=192 CPU=0.055618\nrefit 13.0586 -> 9.64844 accepted=256 rejected=0\nexact_refit accepted=89 gain=0.830078 snapshot=0.204079 forward=0.04111 finite=95.1895 CPU=0.498507\nPrepCPU=0.796037\nPathFallbacks=0 FinishCPU=0.87775\nScore = 13250\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13250,
+        "prep": 0.605008,
+        "cpu": 0.681153,
+        "diagnostics": "backbone 32.4844 -> 13.0586 papers=192 CPU=0.044564\nrefit 13.0586 -> 9.64844 accepted=256 rejected=0\nexact_refit accepted=89 gain=0.830078 snapshot=0.169588 forward=0.025684 finite=95.1895 CPU=0.356279\nPrepCPU=0.605008\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27762\nPathFallbacks=0 FinishCPU=0.681153\nScore = 13250\n"
+      }
+    ]
+  },
+  {
+    "seed": 8,
+    "sha256": "b73334f394dad9d79b3211e71c95c7f924b61236eae4668338f589605ca41891",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13312,
+        "prep": 0.617814,
+        "cpu": 0.697229,
+        "diagnostics": "backbone 32.332 -> 12.9609 papers=192 CPU=0.044316\nrefit 12.9609 -> 9.59375 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.09814 snapshot=0.168889 forward=0.035378 finite=95.5669 CPU=0.37374\nPrepCPU=0.617814\nPathFallbacks=0 FinishCPU=0.697229\nScore = 13312\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13312,
+        "prep": 0.55581,
+        "cpu": 0.624881,
+        "diagnostics": "backbone 32.332 -> 12.9609 papers=192 CPU=0.042869\nrefit 12.9609 -> 9.59375 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.09814 snapshot=0.123627 forward=0.025747 finite=95.5669 CPU=0.359153\nPrepCPU=0.55581\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27919\nPathFallbacks=0 FinishCPU=0.624881\nScore = 13312\n"
+      }
+    ]
+  },
+  {
+    "seed": 9,
+    "sha256": "97554a1079ad9e674d7bef38c8fdddbde54a681d28045e6fd0447cfca60a2b3b",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13132,
+        "prep": 0.596174,
+        "cpu": 0.671459,
+        "diagnostics": "backbone 32.1641 -> 12.9922 papers=192 CPU=0.053981\nrefit 12.9922 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=100 gain=1.11719 snapshot=0.150839 forward=0.026228 finite=95.0679 CPU=0.354743\nPrepCPU=0.596174\nPathFallbacks=0 FinishCPU=0.671459\nScore = 13132\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13132,
+        "prep": 0.540059,
+        "cpu": 0.607635,
+        "diagnostics": "backbone 32.1641 -> 12.9922 papers=192 CPU=0.042128\nrefit 12.9922 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=100 gain=1.11719 snapshot=0.115452 forward=0.024942 finite=95.0679 CPU=0.352865\nPrepCPU=0.540059\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27359\nPathFallbacks=0 FinishCPU=0.607635\nScore = 13132\n"
+      }
+    ]
+  },
+  {
+    "seed": 10,
+    "sha256": "347d2c3ac712adb4a689022692d0f0a99390fe6e7cb489dce944a8ce2dabc816",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13273,
+        "prep": 0.55281,
+        "cpu": 0.628073,
+        "diagnostics": "backbone 32.7148 -> 13.0508 papers=192 CPU=0.043667\nrefit 13.0508 -> 9.80078 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.21094 snapshot=0.145505 forward=0.025541 finite=95.4336 CPU=0.333724\nPrepCPU=0.55281\nPathFallbacks=0 FinishCPU=0.628073\nScore = 13273\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13273,
+        "prep": 0.545475,
+        "cpu": 0.616638,
+        "diagnostics": "backbone 32.7148 -> 13.0508 papers=192 CPU=0.044111\nrefit 13.0508 -> 9.80078 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.21094 snapshot=0.128258 forward=0.023992 finite=95.4336 CPU=0.342494\nPrepCPU=0.545475\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27956\nPathFallbacks=0 FinishCPU=0.616638\nScore = 13273\n"
+      }
+    ]
+  },
+  {
+    "seed": 11,
+    "sha256": "7d5ba438ed47198b7b920d2e8fca309050f13e42b77148a2475f587a3df34493",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13425,
+        "prep": 0.664522,
+        "cpu": 0.739992,
+        "diagnostics": "backbone 32.7266 -> 13.125 papers=192 CPU=0.041763\nrefit 13.125 -> 9.82031 accepted=256 rejected=0\nexact_refit accepted=103 gain=0.97168 snapshot=0.158454 forward=0.037651 finite=94.6777 CPU=0.431426\nPrepCPU=0.664522\nPathFallbacks=0 FinishCPU=0.739992\nScore = 13425\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13425,
+        "prep": 0.55334,
+        "cpu": 0.621793,
+        "diagnostics": "backbone 32.7266 -> 13.125 papers=192 CPU=0.036629\nrefit 13.125 -> 9.82031 accepted=256 rejected=0\nexact_refit accepted=103 gain=0.97168 snapshot=0.113037 forward=0.026584 finite=94.6777 CPU=0.376307\nPrepCPU=0.55334\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27602\nPathFallbacks=0 FinishCPU=0.621793\nScore = 13425\n"
+      }
+    ]
+  },
+  {
+    "seed": 12,
+    "sha256": "edaaf5c749fcd52c99d040f6acfe1914f616653e626f4dd22b99fdf4ec4157cb",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13626,
+        "prep": 0.591515,
+        "cpu": 0.670198,
+        "diagnostics": "backbone 32.7969 -> 13.0898 papers=192 CPU=0.04951\nrefit 13.0898 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.11377 snapshot=0.138875 forward=0.027596 finite=97.2529 CPU=0.36395\nPrepCPU=0.591515\nPathFallbacks=0 FinishCPU=0.670198\nScore = 13626\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13626,
+        "prep": 0.567433,
+        "cpu": 0.631952,
+        "diagnostics": "backbone 32.7969 -> 13.0898 papers=192 CPU=0.039917\nrefit 13.0898 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.11377 snapshot=0.104483 forward=0.023848 finite=97.2529 CPU=0.396326\nPrepCPU=0.567433\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27508\nPathFallbacks=0 FinishCPU=0.631952\nScore = 13626\n"
+      }
+    ]
+  },
+  {
+    "seed": 13,
+    "sha256": "2b5e16fd6820392909a7f11ed02adfcae532c521203e95dd0afd3df427f2902f",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13306,
+        "prep": 0.556309,
+        "cpu": 0.622734,
+        "diagnostics": "backbone 32.5273 -> 13.1367 papers=192 CPU=0.041915\nrefit 13.1367 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.01904 snapshot=0.137979 forward=0.028133 finite=95.1719 CPU=0.347662\nPrepCPU=0.556309\nPathFallbacks=0 FinishCPU=0.622734\nScore = 13306\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13306,
+        "prep": 0.565689,
+        "cpu": 0.62621,
+        "diagnostics": "backbone 32.5273 -> 13.1367 papers=192 CPU=0.03879\nrefit 13.1367 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.01904 snapshot=0.14468 forward=0.031056 finite=95.1719 CPU=0.352943\nPrepCPU=0.565689\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27944\nPathFallbacks=0 FinishCPU=0.62621\nScore = 13306\n"
+      }
+    ]
+  },
+  {
+    "seed": 14,
+    "sha256": "7c64ce6dd9ebbae4283bff481dfb9375626b93e1fa430821d6f96b62dba5a3a9",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13072,
+        "prep": 0.542641,
+        "cpu": 0.612097,
+        "diagnostics": "backbone 31.918 -> 12.9883 papers=192 CPU=0.038592\nrefit 12.9883 -> 9.60938 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.2085 snapshot=0.126228 forward=0.024006 finite=94.9282 CPU=0.350775\nPrepCPU=0.542641\nPathFallbacks=0 FinishCPU=0.612097\nScore = 13072\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13072,
+        "prep": 0.547821,
+        "cpu": 0.607866,
+        "diagnostics": "backbone 31.918 -> 12.9883 papers=192 CPU=0.043298\nrefit 12.9883 -> 9.60938 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.2085 snapshot=0.103421 forward=0.02409 finite=94.9282 CPU=0.371381\nPrepCPU=0.547821\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27262\nPathFallbacks=0 FinishCPU=0.607866\nScore = 13072\n"
+      }
+    ]
+  },
+  {
+    "seed": 15,
+    "sha256": "4b86cf22886057a0d7c63552e216aa8da08c9a4022d8d4c1af3a77117865522e",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13302,
+        "prep": 0.540654,
+        "cpu": 0.608443,
+        "diagnostics": "backbone 32.4297 -> 12.9258 papers=192 CPU=0.037682\nrefit 12.9258 -> 9.66797 accepted=256 rejected=0\nexact_refit accepted=101 gain=1.09961 snapshot=0.151167 forward=0.024646 finite=94.9302 CPU=0.32507\nPrepCPU=0.540654\nPathFallbacks=0 FinishCPU=0.608443\nScore = 13302\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13302,
+        "prep": 0.534583,
+        "cpu": 0.595316,
+        "diagnostics": "backbone 32.4297 -> 12.9258 papers=192 CPU=0.037655\nrefit 12.9258 -> 9.66797 accepted=256 rejected=0\nexact_refit accepted=101 gain=1.09961 snapshot=0.101363 forward=0.023396 finite=94.9302 CPU=0.368527\nPrepCPU=0.534583\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28268\nPathFallbacks=0 FinishCPU=0.595316\nScore = 13302\n"
+      }
+    ]
+  },
+  {
+    "seed": 16,
+    "sha256": "18a04e601946d4cce05af211d3c7b0fca508bc48f5ae5a10d339ba9ae4218a0d",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13616,
+        "prep": 0.513689,
+        "cpu": 0.582796,
+        "diagnostics": "backbone 32.3438 -> 12.875 papers=192 CPU=0.040971\nrefit 12.875 -> 9.55078 accepted=256 rejected=0\nexact_refit accepted=100 gain=1.04541 snapshot=0.124666 forward=0.023449 finite=93.9243 CPU=0.319775\nPrepCPU=0.513689\nPathFallbacks=0 FinishCPU=0.582796\nScore = 13616\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13616,
+        "prep": 0.494127,
+        "cpu": 0.555854,
+        "diagnostics": "backbone 32.3438 -> 12.875 papers=192 CPU=0.039432\nrefit 12.875 -> 9.55078 accepted=256 rejected=0\nexact_refit accepted=100 gain=1.04541 snapshot=0.106043 forward=0.024084 finite=93.9243 CPU=0.321066\nPrepCPU=0.494127\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28397\nPathFallbacks=0 FinishCPU=0.555854\nScore = 13616\n"
+      }
+    ]
+  },
+  {
+    "seed": 17,
+    "sha256": "af02f8ca4ed9c8fc4b15bbdfb2cc806e8661fe726a6f007254550c9da5cb7e14",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13368,
+        "prep": 0.49975,
+        "cpu": 0.571166,
+        "diagnostics": "backbone 32.0625 -> 12.9609 papers=192 CPU=0.036839\nrefit 12.9609 -> 9.61328 accepted=256 rejected=0\nexact_refit accepted=102 gain=1.05273 snapshot=0.121041 forward=0.023839 finite=94.793 CPU=0.314365\nPrepCPU=0.49975\nPathFallbacks=0 FinishCPU=0.571166\nScore = 13368\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13368,
+        "prep": 0.483633,
+        "cpu": 0.546067,
+        "diagnostics": "backbone 32.0625 -> 12.9609 papers=192 CPU=0.03788\nrefit 12.9609 -> 9.61328 accepted=256 rejected=0\nexact_refit accepted=102 gain=1.05273 snapshot=0.10213 forward=0.022715 finite=94.793 CPU=0.316156\nPrepCPU=0.483633\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28160\nPathFallbacks=0 FinishCPU=0.546067\nScore = 13368\n"
+      }
+    ]
+  },
+  {
+    "seed": 18,
+    "sha256": "5d372921f6f35ebc2d4696c5cdb5a3d2f877a8609246dc0d71e8e11d97070fea",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13346,
+        "prep": 0.520107,
+        "cpu": 0.592015,
+        "diagnostics": "backbone 33.043 -> 13.2773 papers=192 CPU=0.039353\nrefit 13.2773 -> 9.76953 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.07031 snapshot=0.127398 forward=0.023614 finite=94.2827 CPU=0.323496\nPrepCPU=0.520107\nPathFallbacks=0 FinishCPU=0.592015\nScore = 13346\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13346,
+        "prep": 0.55797,
+        "cpu": 0.617707,
+        "diagnostics": "backbone 33.043 -> 13.2773 papers=192 CPU=0.03927\nrefit 13.2773 -> 9.76953 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.07031 snapshot=0.104953 forward=0.023575 finite=94.2827 CPU=0.386684\nPrepCPU=0.55797\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27815\nPathFallbacks=0 FinishCPU=0.617707\nScore = 13346\n"
+      }
+    ]
+  },
+  {
+    "seed": 19,
+    "sha256": "705994a3eea8e40b8b23f0df3f28a40353e91aa2b7eb7cdad9d49b91afe44e2d",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13182,
+        "prep": 0.508635,
+        "cpu": 0.577987,
+        "diagnostics": "backbone 32.2695 -> 12.9023 papers=192 CPU=0.037945\nrefit 12.9023 -> 9.55078 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.04883 snapshot=0.116844 forward=0.023158 finite=93.4976 CPU=0.325891\nPrepCPU=0.508635\nPathFallbacks=0 FinishCPU=0.577987\nScore = 13182\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13182,
+        "prep": 0.548588,
+        "cpu": 0.610276,
+        "diagnostics": "backbone 32.2695 -> 12.9023 papers=192 CPU=0.037727\nrefit 12.9023 -> 9.55078 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.04883 snapshot=0.125498 forward=0.031113 finite=93.4976 CPU=0.359585\nPrepCPU=0.548588\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28243\nPathFallbacks=0 FinishCPU=0.610276\nScore = 13182\n"
+      }
+    ]
+  },
+  {
+    "seed": 20,
+    "sha256": "60670c41ec9e7d8a37af5f68d3cec0f38269af3ced9b96d86c523d1448c6e3f2",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13073,
+        "prep": 0.521261,
+        "cpu": 0.589778,
+        "diagnostics": "backbone 32.8086 -> 13.2812 papers=192 CPU=0.038462\nrefit 13.2812 -> 9.78906 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.05566 snapshot=0.129895 forward=0.023677 finite=96.6709 CPU=0.324757\nPrepCPU=0.521261\nPathFallbacks=0 FinishCPU=0.589778\nScore = 13073\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13073,
+        "prep": 0.510763,
+        "cpu": 0.572501,
+        "diagnostics": "backbone 32.8086 -> 13.2812 papers=192 CPU=0.03784\nrefit 13.2812 -> 9.78906 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.05566 snapshot=0.102154 forward=0.025533 finite=96.6709 CPU=0.34423\nPrepCPU=0.510763\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27875\nPathFallbacks=0 FinishCPU=0.572501\nScore = 13073\n"
+      }
+    ]
+  },
+  {
+    "seed": 21,
+    "sha256": "08ccaea6f2a9b79c6fff28b809e36c258ad36c68aaebbcede1020a5623bb335d",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13467,
+        "prep": 0.514252,
+        "cpu": 0.580972,
+        "diagnostics": "backbone 32.4844 -> 12.9961 papers=192 CPU=0.039008\nrefit 12.9961 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=111 gain=1.1499 snapshot=0.121241 forward=0.024695 finite=95.6133 CPU=0.324518\nPrepCPU=0.514252\nPathFallbacks=0 FinishCPU=0.580972\nScore = 13467\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13467,
+        "prep": 0.502932,
+        "cpu": 0.564017,
+        "diagnostics": "backbone 32.4844 -> 12.9961 papers=192 CPU=0.037083\nrefit 12.9961 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=111 gain=1.1499 snapshot=0.110301 forward=0.023438 finite=95.6133 CPU=0.328972\nPrepCPU=0.502932\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28282\nPathFallbacks=0 FinishCPU=0.564017\nScore = 13467\n"
+      }
+    ]
+  },
+  {
+    "seed": 22,
+    "sha256": "f6f71f1908a9568c6e75c84027a9d70c1b6f4944cf1b54d287b6bac01ad4917e",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13283,
+        "prep": 0.524815,
+        "cpu": 0.593279,
+        "diagnostics": "backbone 32.1211 -> 12.8633 papers=192 CPU=0.038155\nrefit 12.8633 -> 9.64844 accepted=256 rejected=0\nexact_refit accepted=102 gain=1.05908 snapshot=0.141023 forward=0.023603 finite=95.7803 CPU=0.318682\nPrepCPU=0.524815\nPathFallbacks=0 FinishCPU=0.593279\nScore = 13283\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13283,
+        "prep": 0.522812,
+        "cpu": 0.583693,
+        "diagnostics": "backbone 32.1211 -> 12.8633 papers=192 CPU=0.038911\nrefit 12.8633 -> 9.64844 accepted=256 rejected=0\nexact_refit accepted=102 gain=1.05908 snapshot=0.10639 forward=0.025382 finite=95.7803 CPU=0.349886\nPrepCPU=0.522812\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27568\nPathFallbacks=0 FinishCPU=0.583693\nScore = 13283\n"
+      }
+    ]
+  },
+  {
+    "seed": 23,
+    "sha256": "083e028263e23a1341c8db4d87f8cc778facf955bf5d693e9f2165154df3b52e",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13304,
+        "prep": 0.510804,
+        "cpu": 0.581186,
+        "diagnostics": "backbone 32.7305 -> 13.1484 papers=192 CPU=0.043037\nrefit 13.1484 -> 9.78125 accepted=256 rejected=0\nexact_refit accepted=97 gain=1.07812 snapshot=0.120058 forward=0.023379 finite=94.6265 CPU=0.314015\nPrepCPU=0.510804\nPathFallbacks=0 FinishCPU=0.581186\nScore = 13304\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13304,
+        "prep": 0.515456,
+        "cpu": 0.578264,
+        "diagnostics": "backbone 32.7305 -> 13.1484 papers=192 CPU=0.037585\nrefit 13.1484 -> 9.78125 accepted=256 rejected=0\nexact_refit accepted=97 gain=1.07812 snapshot=0.115723 forward=0.026372 finite=94.6265 CPU=0.334275\nPrepCPU=0.515456\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27614\nPathFallbacks=0 FinishCPU=0.578264\nScore = 13304\n"
+      }
+    ]
+  },
+  {
+    "seed": 24,
+    "sha256": "c67f7387f2e1f30a05026b347d0af93207176e327374e203fb20be4f8edf8acd",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13316,
+        "prep": 0.512572,
+        "cpu": 0.584283,
+        "diagnostics": "backbone 32.0312 -> 12.9062 papers=192 CPU=0.03964\nrefit 12.9062 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=111 gain=1.11475 snapshot=0.120229 forward=0.02317 finite=95.126 CPU=0.325548\nPrepCPU=0.512572\nPathFallbacks=0 FinishCPU=0.584283\nScore = 13316\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13316,
+        "prep": 0.536234,
+        "cpu": 0.595723,
+        "diagnostics": "backbone 32.0312 -> 12.9062 papers=192 CPU=0.038867\nrefit 12.9062 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=111 gain=1.11475 snapshot=0.099094 forward=0.022915 finite=95.126 CPU=0.368227\nPrepCPU=0.536234\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27814\nPathFallbacks=0 FinishCPU=0.595723\nScore = 13316\n"
+      }
+    ]
+  },
+  {
+    "seed": 25,
+    "sha256": "8f03005b862a6bd96de961e1e92b45cfab6534d5eb09a4adc5276ef078d33303",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13233,
+        "prep": 0.499817,
+        "cpu": 0.57117,
+        "diagnostics": "backbone 32.6367 -> 13.0195 papers=192 CPU=0.037009\nrefit 13.0195 -> 9.75 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.10107 snapshot=0.119378 forward=0.023299 finite=96.8862 CPU=0.316569\nPrepCPU=0.499817\nPathFallbacks=0 FinishCPU=0.57117\nScore = 13233\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13233,
+        "prep": 0.529608,
+        "cpu": 0.592072,
+        "diagnostics": "backbone 32.6367 -> 13.0195 papers=192 CPU=0.03563\nrefit 13.0195 -> 9.75 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.10107 snapshot=0.098993 forward=0.024313 finite=96.8862 CPU=0.369162\nPrepCPU=0.529608\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27704\nPathFallbacks=0 FinishCPU=0.592072\nScore = 13233\n"
+      }
+    ]
+  },
+  {
+    "seed": 26,
+    "sha256": "b65ea0aba880720a349376303b4e578a8cf6860221b00384cef24349fcbdfddd",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13236,
+        "prep": 0.505045,
+        "cpu": 0.576292,
+        "diagnostics": "backbone 32.2461 -> 13.0195 papers=192 CPU=0.038099\nrefit 13.0195 -> 9.67969 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.22754 snapshot=0.123173 forward=0.023443 finite=94.6025 CPU=0.316361\nPrepCPU=0.505045\nPathFallbacks=0 FinishCPU=0.576292\nScore = 13236\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13236,
+        "prep": 0.500088,
+        "cpu": 0.562288,
+        "diagnostics": "backbone 32.2461 -> 13.0195 papers=192 CPU=0.040479\nrefit 13.0195 -> 9.67969 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.22754 snapshot=0.099179 forward=0.028927 finite=94.6025 CPU=0.333098\nPrepCPU=0.500088\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28162\nPathFallbacks=0 FinishCPU=0.562288\nScore = 13236\n"
+      }
+    ]
+  },
+  {
+    "seed": 27,
+    "sha256": "34081d8879ee3326bafe501617cc342a24e366b877c4c41d8615774d4978521e",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13202,
+        "prep": 0.500555,
+        "cpu": 0.574553,
+        "diagnostics": "backbone 32.2734 -> 13.0156 papers=192 CPU=0.03677\nrefit 13.0156 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.27295 snapshot=0.121424 forward=0.022319 finite=96.3647 CPU=0.315146\nPrepCPU=0.500555\nPathFallbacks=0 FinishCPU=0.574553\nScore = 13202\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13202,
+        "prep": 0.498593,
+        "cpu": 0.561702,
+        "diagnostics": "backbone 32.2734 -> 13.0156 papers=192 CPU=0.036014\nrefit 13.0156 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.27295 snapshot=0.118944 forward=0.02203 finite=96.3647 CPU=0.31753\nPrepCPU=0.498593\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27947\nPathFallbacks=0 FinishCPU=0.561702\nScore = 13202\n"
+      }
+    ]
+  },
+  {
+    "seed": 28,
+    "sha256": "9f0681fc4505ed8fb72ae91ee1877f595c05ef9d2a62622993c79acc06f61320",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13422,
+        "prep": 0.508225,
+        "cpu": 0.580982,
+        "diagnostics": "backbone 32.3203 -> 13.1328 papers=192 CPU=0.03846\nrefit 13.1328 -> 9.79297 accepted=256 rejected=0\nexact_refit accepted=101 gain=0.970215 snapshot=0.121568 forward=0.023289 finite=95.4478 CPU=0.31947\nPrepCPU=0.508225\nPathFallbacks=0 FinishCPU=0.580982\nScore = 13422\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13422,
+        "prep": 0.540099,
+        "cpu": 0.612145,
+        "diagnostics": "backbone 32.3203 -> 13.1328 papers=192 CPU=0.040138\nrefit 13.1328 -> 9.79297 accepted=256 rejected=0\nexact_refit accepted=101 gain=0.970215 snapshot=0.14543 forward=0.023425 finite=95.4478 CPU=0.319405\nPrepCPU=0.540099\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27711\nPathFallbacks=0 FinishCPU=0.612145\nScore = 13422\n"
+      }
+    ]
+  },
+  {
+    "seed": 29,
+    "sha256": "25bd079d8f4219240f5383726f21537ff56727be21c4aeba2eeaa984148d0901",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13556,
+        "prep": 0.508682,
+        "cpu": 0.581894,
+        "diagnostics": "backbone 32.6211 -> 13.1328 papers=192 CPU=0.037266\nrefit 13.1328 -> 9.8125 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.11133 snapshot=0.119783 forward=0.022663 finite=96.4434 CPU=0.324668\nPrepCPU=0.508682\nPathFallbacks=0 FinishCPU=0.581894\nScore = 13556\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13556,
+        "prep": 0.532607,
+        "cpu": 0.599681,
+        "diagnostics": "backbone 32.6211 -> 13.1328 papers=192 CPU=0.062913\nrefit 13.1328 -> 9.8125 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.11133 snapshot=0.1098 forward=0.023011 finite=96.4434 CPU=0.321678\nPrepCPU=0.532607\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27948\nPathFallbacks=0 FinishCPU=0.599681\nScore = 13556\n"
+      }
+    ]
+  },
+  {
+    "seed": 30,
+    "sha256": "2ba8946f15771db106db196ec9ecb3a873546116fe4a170eb1cabce34b7cb5c7",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13291,
+        "prep": 0.499642,
+        "cpu": 0.569774,
+        "diagnostics": "backbone 32.0742 -> 12.7344 papers=192 CPU=0.038685\nrefit 12.7344 -> 9.62891 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.06836 snapshot=0.120993 forward=0.023999 finite=94.2915 CPU=0.313173\nPrepCPU=0.499642\nPathFallbacks=0 FinishCPU=0.569774\nScore = 13291\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13291,
+        "prep": 0.485953,
+        "cpu": 0.551118,
+        "diagnostics": "backbone 32.0742 -> 12.7344 papers=192 CPU=0.039116\nrefit 12.7344 -> 9.62891 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.06836 snapshot=0.103973 forward=0.024203 finite=94.2915 CPU=0.316133\nPrepCPU=0.485953\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27633\nPathFallbacks=0 FinishCPU=0.551118\nScore = 13291\n"
+      }
+    ]
+  },
+  {
+    "seed": 31,
+    "sha256": "c166f4c7a43324bc09dca7be2aa08abd5c703e3636a604d4ef6dcb09928cd17f",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13393,
+        "prep": 0.506416,
+        "cpu": 0.579132,
+        "diagnostics": "backbone 32.6523 -> 13.1289 papers=192 CPU=0.036982\nrefit 13.1289 -> 9.77344 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.16504 snapshot=0.121476 forward=0.022592 finite=97.0503 CPU=0.315219\nPrepCPU=0.506416\nPathFallbacks=0 FinishCPU=0.579132\nScore = 13393\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13393,
+        "prep": 0.481623,
+        "cpu": 0.548574,
+        "diagnostics": "backbone 32.6523 -> 13.1289 papers=192 CPU=0.03854\nrefit 13.1289 -> 9.77344 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.16504 snapshot=0.103079 forward=0.022916 finite=97.0503 CPU=0.31359\nPrepCPU=0.481623\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27905\nPathFallbacks=0 FinishCPU=0.548574\nScore = 13393\n"
+      }
+    ]
+  },
+  {
+    "seed": 32,
+    "sha256": "632b9b5ad4ce9d5f55577ec56fd1c25a14ef965602d62ecca30210df93217306",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13514,
+        "prep": 0.497423,
+        "cpu": 0.570261,
+        "diagnostics": "backbone 32.6211 -> 13.2461 papers=192 CPU=0.038601\nrefit 13.2461 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=103 gain=0.984375 snapshot=0.116439 forward=0.023729 finite=94.9072 CPU=0.315577\nPrepCPU=0.497423\nPathFallbacks=0 FinishCPU=0.570261\nScore = 13514\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13514,
+        "prep": 0.522487,
+        "cpu": 0.593609,
+        "diagnostics": "backbone 32.6211 -> 13.2461 papers=192 CPU=0.039662\nrefit 13.2461 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=103 gain=0.984375 snapshot=0.101414 forward=0.023542 finite=94.9072 CPU=0.355667\nPrepCPU=0.522487\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27849\nPathFallbacks=0 FinishCPU=0.593609\nScore = 13514\n"
+      }
+    ]
+  },
+  {
+    "seed": 33,
+    "sha256": "9b61d671c07e72c346fb2f19c3e97cf257eac51133e82f8be5b120a426dc90e7",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13237,
+        "prep": 0.488166,
+        "cpu": 0.562283,
+        "diagnostics": "backbone 32.5039 -> 13.0312 papers=192 CPU=0.036231\nrefit 13.0312 -> 9.73047 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.0332 snapshot=0.117433 forward=0.022486 finite=95.2046 CPU=0.308101\nPrepCPU=0.488166\nPathFallbacks=0 FinishCPU=0.562283\nScore = 13237\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13237,
+        "prep": 0.512049,
+        "cpu": 0.590493,
+        "diagnostics": "backbone 32.5039 -> 13.0312 papers=192 CPU=0.037731\nrefit 13.0312 -> 9.73047 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.0332 snapshot=0.100273 forward=0.022791 finite=95.2046 CPU=0.348612\nPrepCPU=0.512049\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27242\nPathFallbacks=0 FinishCPU=0.590493\nScore = 13237\n"
+      }
+    ]
+  },
+  {
+    "seed": 34,
+    "sha256": "08a19e68717e6032a90bb4c4bd813cb98ef13e4453b838d300e293fcddb65e39",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13592,
+        "prep": 0.613117,
+        "cpu": 0.715442,
+        "diagnostics": "backbone 32.2695 -> 13.0391 papers=192 CPU=0.052406\nrefit 13.0391 -> 9.67578 accepted=256 rejected=0\nexact_refit accepted=100 gain=1.07764 snapshot=0.147341 forward=0.0277 finite=94.3467 CPU=0.376959\nPrepCPU=0.613117\nPathFallbacks=0 FinishCPU=0.715442\nScore = 13592\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13592,
+        "prep": 0.777736,
+        "cpu": 0.873492,
+        "diagnostics": "backbone 32.2695 -> 13.0391 papers=192 CPU=0.049876\nrefit 13.0391 -> 9.67578 accepted=256 rejected=0\nexact_refit accepted=100 gain=1.07764 snapshot=0.115546 forward=0.027162 finite=94.3467 CPU=0.565965\nPrepCPU=0.777736\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28458\nPathFallbacks=0 FinishCPU=0.873492\nScore = 13592\n"
+      }
+    ]
+  },
+  {
+    "seed": 35,
+    "sha256": "642af43dcf9166f74bab364766aadaeab56f8d09c469654572c319df0a14220c",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13783,
+        "prep": 0.618404,
+        "cpu": 0.72195,
+        "diagnostics": "backbone 32.7578 -> 13.1172 papers=192 CPU=0.05385\nrefit 13.1172 -> 9.65625 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.04102 snapshot=0.149655 forward=0.027414 finite=95.8257 CPU=0.376146\nPrepCPU=0.618404\nPathFallbacks=0 FinishCPU=0.72195\nScore = 13783\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13783,
+        "prep": 0.791039,
+        "cpu": 0.877872,
+        "diagnostics": "backbone 32.7578 -> 13.1172 papers=192 CPU=0.046343\nrefit 13.1172 -> 9.65625 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.04102 snapshot=0.115772 forward=0.037201 finite=95.8257 CPU=0.591351\nPrepCPU=0.791039\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28361\nPathFallbacks=0 FinishCPU=0.877872\nScore = 13783\n"
+      }
+    ]
+  },
+  {
+    "seed": 36,
+    "sha256": "53e7e4acf8fdf1b23e35b80bb60fe67fd6e1963a1115c8a088b1d6796007bcf6",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13211,
+        "prep": 0.68747,
+        "cpu": 0.777676,
+        "diagnostics": "backbone 32.375 -> 13.0039 papers=192 CPU=0.048669\nrefit 13.0039 -> 9.83594 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.01562 snapshot=0.164144 forward=0.03714 finite=95.938 CPU=0.438856\nPrepCPU=0.68747\nPathFallbacks=0 FinishCPU=0.777676\nScore = 13211\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13211,
+        "prep": 0.64,
+        "cpu": 0.72194,
+        "diagnostics": "backbone 32.375 -> 13.0039 papers=192 CPU=0.046185\nrefit 13.0039 -> 9.83594 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.01562 snapshot=0.132166 forward=0.0328 finite=95.938 CPU=0.430528\nPrepCPU=0.64\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27648\nPathFallbacks=0 FinishCPU=0.72194\nScore = 13211\n"
+      }
+    ]
+  },
+  {
+    "seed": 37,
+    "sha256": "c17f785637a658b8cf1415cdeb0e16b39c295dd5a9006479a6150e73fb323a2d",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13374,
+        "prep": 0.646669,
+        "cpu": 0.736461,
+        "diagnostics": "backbone 32.4062 -> 13.1523 papers=192 CPU=0.049314\nrefit 13.1523 -> 9.79297 accepted=256 rejected=0\nexact_refit accepted=93 gain=0.981445 snapshot=0.175085 forward=0.035422 finite=94.0098 CPU=0.388471\nPrepCPU=0.646669\nPathFallbacks=0 FinishCPU=0.736461\nScore = 13374\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13374,
+        "prep": 0.622902,
+        "cpu": 0.704201,
+        "diagnostics": "backbone 32.4062 -> 13.1523 papers=192 CPU=0.044365\nrefit 13.1523 -> 9.79297 accepted=256 rejected=0\nexact_refit accepted=93 gain=0.981445 snapshot=0.133312 forward=0.03348 finite=94.0098 CPU=0.41444\nPrepCPU=0.622902\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27877\nPathFallbacks=0 FinishCPU=0.704201\nScore = 13374\n"
+      }
+    ]
+  },
+  {
+    "seed": 38,
+    "sha256": "3fffd0dc69050b3f64fb6ed7956966e8e34e95b31c7cac4611439e2acd14b7d5",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13521,
+        "prep": 0.55433,
+        "cpu": 0.6258,
+        "diagnostics": "backbone 32.6289 -> 13.1797 papers=192 CPU=0.046911\nrefit 13.1797 -> 9.72656 accepted=256 rejected=0\nexact_refit accepted=99 gain=1.05518 snapshot=0.128226 forward=0.024169 finite=94.7158 CPU=0.349616\nPrepCPU=0.55433\nPathFallbacks=0 FinishCPU=0.6258\nScore = 13521\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13521,
+        "prep": 0.492593,
+        "cpu": 0.55774,
+        "diagnostics": "backbone 32.6289 -> 13.1797 papers=192 CPU=0.037578\nrefit 13.1797 -> 9.72656 accepted=256 rejected=0\nexact_refit accepted=99 gain=1.05518 snapshot=0.105062 forward=0.023859 finite=94.7158 CPU=0.32416\nPrepCPU=0.492593\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28083\nPathFallbacks=0 FinishCPU=0.55774\nScore = 13521\n"
+      }
+    ]
+  },
+  {
+    "seed": 39,
+    "sha256": "3d7cd3cdb0fbadc3c13d05062a389989d304c53575c8f4a629d2ecd045a46a56",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13513,
+        "prep": 0.544602,
+        "cpu": 0.617724,
+        "diagnostics": "backbone 32.6445 -> 12.9531 papers=192 CPU=0.044098\nrefit 12.9531 -> 9.53516 accepted=256 rejected=0\nexact_refit accepted=101 gain=1.04932 snapshot=0.126304 forward=0.023088 finite=93.8306 CPU=0.345734\nPrepCPU=0.544602\nPathFallbacks=0 FinishCPU=0.617724\nScore = 13513\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13513,
+        "prep": 0.486884,
+        "cpu": 0.553014,
+        "diagnostics": "backbone 32.6445 -> 12.9531 papers=192 CPU=0.036731\nrefit 12.9531 -> 9.53516 accepted=256 rejected=0\nexact_refit accepted=101 gain=1.04932 snapshot=0.106155 forward=0.02281 finite=93.8306 CPU=0.318936\nPrepCPU=0.486884\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27867\nPathFallbacks=0 FinishCPU=0.553014\nScore = 13513\n"
+      }
+    ]
+  },
+  {
+    "seed": 40,
+    "sha256": "a09306d5167b708d311e5d6979e232f190dc72feab0b10507d816a77686450ca",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13378,
+        "prep": 0.511575,
+        "cpu": 0.586674,
+        "diagnostics": "backbone 32.5508 -> 13.1406 papers=192 CPU=0.038017\nrefit 13.1406 -> 9.78125 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.01465 snapshot=0.121981 forward=0.024821 finite=97.4541 CPU=0.325447\nPrepCPU=0.511575\nPathFallbacks=0 FinishCPU=0.586674\nScore = 13378\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13378,
+        "prep": 0.605483,
+        "cpu": 0.670264,
+        "diagnostics": "backbone 32.5508 -> 13.1406 papers=192 CPU=0.038222\nrefit 13.1406 -> 9.78125 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.01465 snapshot=0.142882 forward=0.0311 finite=97.4541 CPU=0.397565\nPrepCPU=0.605483\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27797\nPathFallbacks=0 FinishCPU=0.670264\nScore = 13378\n"
+      }
+    ]
+  },
+  {
+    "seed": 41,
+    "sha256": "847b71368ea22126a133d9b02668b0496a3f8517fe172e90cfe55b19245d2092",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13314,
+        "prep": 0.505773,
+        "cpu": 0.580172,
+        "diagnostics": "backbone 32.5234 -> 13.0859 papers=192 CPU=0.038097\nrefit 13.0859 -> 9.82422 accepted=256 rejected=0\nexact_refit accepted=101 gain=0.995117 snapshot=0.120618 forward=0.02425 finite=93.4707 CPU=0.320166\nPrepCPU=0.505773\nPathFallbacks=0 FinishCPU=0.580172\nScore = 13314\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13314,
+        "prep": 0.600848,
+        "cpu": 0.665808,
+        "diagnostics": "backbone 32.5234 -> 13.0859 papers=192 CPU=0.037207\nrefit 13.0859 -> 9.82422 accepted=256 rejected=0\nexact_refit accepted=101 gain=0.995117 snapshot=0.141304 forward=0.030723 finite=93.4707 CPU=0.392343\nPrepCPU=0.600848\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27265\nPathFallbacks=0 FinishCPU=0.665808\nScore = 13314\n"
+      }
+    ]
+  },
+  {
+    "seed": 42,
+    "sha256": "ea80696c7b14a79c1b2c1b410e02b099192f3e88b1a78c844af70b412d425064",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13591,
+        "prep": 0.521351,
+        "cpu": 0.594961,
+        "diagnostics": "backbone 32.6445 -> 13.1445 papers=192 CPU=0.037767\nrefit 13.1445 -> 9.83203 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.354 snapshot=0.121506 forward=0.023485 finite=95.9536 CPU=0.335796\nPrepCPU=0.521351\nPathFallbacks=0 FinishCPU=0.594961\nScore = 13591\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13591,
+        "prep": 0.485195,
+        "cpu": 0.551346,
+        "diagnostics": "backbone 32.6445 -> 13.1445 papers=192 CPU=0.037855\nrefit 13.1445 -> 9.83203 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.354 snapshot=0.102118 forward=0.02341 finite=95.9536 CPU=0.319224\nPrepCPU=0.485195\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28322\nPathFallbacks=0 FinishCPU=0.551346\nScore = 13591\n"
+      }
+    ]
+  },
+  {
+    "seed": 43,
+    "sha256": "473d27e1a6c7b3d48311d7b4369bddb6d2b431cb19a757d9d37be201ceae111a",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13064,
+        "prep": 0.52093,
+        "cpu": 0.594276,
+        "diagnostics": "backbone 32.5664 -> 13.1055 papers=192 CPU=0.036715\nrefit 13.1055 -> 9.72266 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.07861 snapshot=0.128932 forward=0.023549 finite=96.0415 CPU=0.328215\nPrepCPU=0.52093\nPathFallbacks=0 FinishCPU=0.594276\nScore = 13064\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13064,
+        "prep": 0.491796,
+        "cpu": 0.558817,
+        "diagnostics": "backbone 32.5664 -> 13.1055 papers=192 CPU=0.037451\nrefit 13.1055 -> 9.72266 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.07861 snapshot=0.103545 forward=0.024204 finite=96.0415 CPU=0.324123\nPrepCPU=0.491796\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27069\nPathFallbacks=0 FinishCPU=0.558817\nScore = 13064\n"
+      }
+    ]
+  },
+  {
+    "seed": 44,
+    "sha256": "5f738cab6236c99352142b54c704a30c3e841196c3fb7f28c01f2a757bfd1303",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 12921,
+        "prep": 0.599171,
+        "cpu": 0.673407,
+        "diagnostics": "backbone 32.9492 -> 13.0938 papers=192 CPU=0.039151\nrefit 13.0938 -> 9.78125 accepted=256 rejected=0\nexact_refit accepted=98 gain=1.0376 snapshot=0.126018 forward=0.025815 finite=94.5903 CPU=0.407566\nPrepCPU=0.599171\nPathFallbacks=0 FinishCPU=0.673407\nScore = 12921\n"
+      },
+      {
+        "variant": "fast",
+        "score": 12921,
+        "prep": 0.502292,
+        "cpu": 0.568122,
+        "diagnostics": "backbone 32.9492 -> 13.0938 papers=192 CPU=0.037418\nrefit 13.0938 -> 9.78125 accepted=256 rejected=0\nexact_refit accepted=98 gain=1.0376 snapshot=0.100579 forward=0.023565 finite=94.5903 CPU=0.338161\nPrepCPU=0.502292\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27663\nPathFallbacks=0 FinishCPU=0.568122\nScore = 12921\n"
+      }
+    ]
+  },
+  {
+    "seed": 45,
+    "sha256": "9d132fe86ff4c0d0fae8c4f0f76ca304ba06956c814924a315235b28ad580117",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13133,
+        "prep": 0.593433,
+        "cpu": 0.667689,
+        "diagnostics": "backbone 32.8203 -> 13.3047 papers=192 CPU=0.038002\nrefit 13.3047 -> 9.89844 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.17969 snapshot=0.127368 forward=0.025374 finite=96.4956 CPU=0.401253\nPrepCPU=0.593433\nPathFallbacks=0 FinishCPU=0.667689\nScore = 13133\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13133,
+        "prep": 0.489502,
+        "cpu": 0.554988,
+        "diagnostics": "backbone 32.8203 -> 13.3047 papers=192 CPU=0.037483\nrefit 13.3047 -> 9.89844 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.17969 snapshot=0.099956 forward=0.023174 finite=96.4956 CPU=0.32661\nPrepCPU=0.489502\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27518\nPathFallbacks=0 FinishCPU=0.554988\nScore = 13133\n"
+      }
+    ]
+  },
+  {
+    "seed": 46,
+    "sha256": "eec990d3d5d8cb75c8c56ad85002d7fde9bfaaf2577e9e1df340b34dafd5cce8",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13680,
+        "prep": 0.565511,
+        "cpu": 0.656956,
+        "diagnostics": "backbone 32.3906 -> 13.168 papers=192 CPU=0.038143\nrefit 13.168 -> 9.89844 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.23193 snapshot=0.120538 forward=0.02434 finite=96.6309 CPU=0.378197\nPrepCPU=0.565511\nPathFallbacks=0 FinishCPU=0.656956\nScore = 13680\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13680,
+        "prep": 0.665368,
+        "cpu": 0.759309,
+        "diagnostics": "backbone 32.3906 -> 13.168 papers=192 CPU=0.055026\nrefit 13.168 -> 9.89844 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.23193 snapshot=0.14745 forward=0.030838 finite=96.6309 CPU=0.423031\nPrepCPU=0.665368\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28207\nPathFallbacks=0 FinishCPU=0.759309\nScore = 13680\n"
+      }
+    ]
+  },
+  {
+    "seed": 47,
+    "sha256": "0760b3f0e2d38e8815b0d66828fecb4cbd4ac060b1244cb5b55fc45e09f6873f",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13446,
+        "prep": 0.565849,
+        "cpu": 0.65802,
+        "diagnostics": "backbone 32.3477 -> 12.9961 papers=192 CPU=0.036833\nrefit 12.9961 -> 9.66016 accepted=256 rejected=0\nexact_refit accepted=98 gain=0.980957 snapshot=0.120904 forward=0.023621 finite=97.0723 CPU=0.379279\nPrepCPU=0.565849\nPathFallbacks=0 FinishCPU=0.65802\nScore = 13446\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13446,
+        "prep": 0.738446,
+        "cpu": 0.84512,
+        "diagnostics": "backbone 32.3477 -> 12.9961 papers=192 CPU=0.056545\nrefit 12.9961 -> 9.66016 accepted=256 rejected=0\nexact_refit accepted=98 gain=0.980957 snapshot=0.144786 forward=0.029303 finite=97.0723 CPU=0.492798\nPrepCPU=0.738446\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28078\nPathFallbacks=0 FinishCPU=0.84512\nScore = 13446\n"
+      }
+    ]
+  },
+  {
+    "seed": 48,
+    "sha256": "149878de742c18b84dc9e5f93ddbba3e99fdd9c0fd3ee6cae602c298274a4037",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13249,
+        "prep": 0.831935,
+        "cpu": 0.937836,
+        "diagnostics": "backbone 32.2227 -> 13.0352 papers=192 CPU=0.056777\nrefit 13.0352 -> 9.59375 accepted=256 rejected=0\nexact_refit accepted=103 gain=0.984863 snapshot=0.166601 forward=0.029987 finite=97.0122 CPU=0.571252\nPrepCPU=0.831935\nPathFallbacks=0 FinishCPU=0.937836\nScore = 13249\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13249,
+        "prep": 0.688377,
+        "cpu": 0.773992,
+        "diagnostics": "backbone 32.2227 -> 13.0352 papers=192 CPU=0.052596\nrefit 13.0352 -> 9.59375 accepted=256 rejected=0\nexact_refit accepted=103 gain=0.984863 snapshot=0.153935 forward=0.030264 finite=97.0122 CPU=0.441335\nPrepCPU=0.688377\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27641\nPathFallbacks=0 FinishCPU=0.773992\nScore = 13249\n"
+      }
+    ]
+  },
+  {
+    "seed": 49,
+    "sha256": "c5744478af06db1f3ffac8cd7f30cf8f599257d85c4957922d573149bdeedbb8",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13221,
+        "prep": 0.809464,
+        "cpu": 0.915204,
+        "diagnostics": "backbone 32.5586 -> 13.0859 papers=192 CPU=0.048524\nrefit 13.0859 -> 9.68359 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.19482 snapshot=0.163534 forward=0.035449 finite=95.0747 CPU=0.556694\nPrepCPU=0.809464\nPathFallbacks=0 FinishCPU=0.915204\nScore = 13221\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13221,
+        "prep": 0.724958,
+        "cpu": 0.825551,
+        "diagnostics": "backbone 32.5586 -> 13.0859 papers=192 CPU=0.048052\nrefit 13.0859 -> 9.68359 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.19482 snapshot=0.138345 forward=0.031573 finite=95.0747 CPU=0.504007\nPrepCPU=0.724958\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28216\nPathFallbacks=0 FinishCPU=0.825551\nScore = 13221\n"
+      }
+    ]
+  },
+  {
+    "seed": 50,
+    "sha256": "b483687ef878d049d1e6eb3ae6534821bfe56be0033a892026b14f9aeb8b866f",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13036,
+        "prep": 0.687368,
+        "cpu": 0.781093,
+        "diagnostics": "backbone 32.0859 -> 12.9766 papers=192 CPU=0.060347\nrefit 12.9766 -> 9.69922 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.14502 snapshot=0.165349 forward=0.03111 finite=95.1357 CPU=0.424753\nPrepCPU=0.687368\nPathFallbacks=0 FinishCPU=0.781093\nScore = 13036\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13036,
+        "prep": 0.762923,
+        "cpu": 0.846249,
+        "diagnostics": "backbone 32.0859 -> 12.9766 papers=192 CPU=0.053529\nrefit 12.9766 -> 9.69922 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.14502 snapshot=0.213117 forward=0.029288 finite=95.1357 CPU=0.460045\nPrepCPU=0.762923\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27924\nPathFallbacks=0 FinishCPU=0.846249\nScore = 13036\n"
+      }
+    ]
+  },
+  {
+    "seed": 51,
+    "sha256": "1c3dcc0b4f8a5aef4fa5e199368f81d7da515df327aff71782700738ac7365ab",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13143,
+        "prep": 0.675128,
+        "cpu": 0.773872,
+        "diagnostics": "backbone 32.8672 -> 13.2812 papers=192 CPU=0.053469\nrefit 13.2812 -> 9.87891 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.12695 snapshot=0.171927 forward=0.031387 finite=95.8794 CPU=0.416491\nPrepCPU=0.675128\nPathFallbacks=0 FinishCPU=0.773872\nScore = 13143\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13143,
+        "prep": 0.619296,
+        "cpu": 0.702102,
+        "diagnostics": "backbone 32.8672 -> 13.2812 papers=192 CPU=0.050737\nrefit 13.2812 -> 9.87891 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.12695 snapshot=0.132589 forward=0.029763 finite=95.8794 CPU=0.400971\nPrepCPU=0.619296\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27284\nPathFallbacks=0 FinishCPU=0.702102\nScore = 13143\n"
+      }
+    ]
+  },
+  {
+    "seed": 52,
+    "sha256": "ad77f329c3374c08159dff57dfbd13fb10336639965d0b90eebe63fe41b396d2",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 12965,
+        "prep": 0.684415,
+        "cpu": 0.780042,
+        "diagnostics": "backbone 32.6719 -> 12.9766 papers=192 CPU=0.047915\nrefit 12.9766 -> 9.69531 accepted=256 rejected=0\nexact_refit accepted=103 gain=0.994141 snapshot=0.158775 forward=0.02959 finite=95.5205 CPU=0.443277\nPrepCPU=0.684415\nPathFallbacks=0 FinishCPU=0.780042\nScore = 12965\n"
+      },
+      {
+        "variant": "fast",
+        "score": 12965,
+        "prep": 0.553953,
+        "cpu": 0.630738,
+        "diagnostics": "backbone 32.6719 -> 12.9766 papers=192 CPU=0.047634\nrefit 12.9766 -> 9.69531 accepted=256 rejected=0\nexact_refit accepted=103 gain=0.994141 snapshot=0.120077 forward=0.025889 finite=95.5205 CPU=0.353468\nPrepCPU=0.553953\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27194\nPathFallbacks=0 FinishCPU=0.630738\nScore = 12965\n"
+      }
+    ]
+  },
+  {
+    "seed": 53,
+    "sha256": "3fe65d5d0cd51c7d022bf4b13f391917d12f531e0be76305485314fee578ba5d",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13341,
+        "prep": 0.637291,
+        "cpu": 0.731422,
+        "diagnostics": "backbone 32.3086 -> 13.0234 papers=192 CPU=0.046336\nrefit 13.0234 -> 9.71484 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.22119 snapshot=0.158344 forward=0.029032 finite=94.3896 CPU=0.397137\nPrepCPU=0.637291\nPathFallbacks=0 FinishCPU=0.731422\nScore = 13341\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13341,
+        "prep": 0.561525,
+        "cpu": 0.637686,
+        "diagnostics": "backbone 32.3086 -> 13.0234 papers=192 CPU=0.050012\nrefit 13.0234 -> 9.71484 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.22119 snapshot=0.128022 forward=0.025428 finite=94.3896 CPU=0.350417\nPrepCPU=0.561525\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28301\nPathFallbacks=0 FinishCPU=0.637686\nScore = 13341\n"
+      }
+    ]
+  },
+  {
+    "seed": 54,
+    "sha256": "0c45455074575342eba28e52028b8291aedd24002acc535d4d8103392a4249d1",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13218,
+        "prep": 0.588192,
+        "cpu": 0.674753,
+        "diagnostics": "backbone 32.1445 -> 13.0742 papers=192 CPU=0.043121\nrefit 13.0742 -> 9.71875 accepted=256 rejected=0\nexact_refit accepted=101 gain=0.988281 snapshot=0.138243 forward=0.026209 finite=95.7632 CPU=0.376827\nPrepCPU=0.588192\nPathFallbacks=0 FinishCPU=0.674753\nScore = 13218\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13218,
+        "prep": 0.623915,
+        "cpu": 0.701834,
+        "diagnostics": "backbone 32.1445 -> 13.0742 papers=192 CPU=0.042586\nrefit 13.0742 -> 9.71875 accepted=256 rejected=0\nexact_refit accepted=101 gain=0.988281 snapshot=0.137195 forward=0.039763 finite=95.7632 CPU=0.414268\nPrepCPU=0.623915\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27512\nPathFallbacks=0 FinishCPU=0.701834\nScore = 13218\n"
+      }
+    ]
+  },
+  {
+    "seed": 55,
+    "sha256": "95c99bff1848f44c32d2aa292bf07f11e52d21730dc58d46843cad519359f8c2",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13165,
+        "prep": 0.592218,
+        "cpu": 0.678465,
+        "diagnostics": "backbone 32.668 -> 12.9961 papers=192 CPU=0.042508\nrefit 12.9961 -> 9.70312 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.10498 snapshot=0.140574 forward=0.026295 finite=94.3306 CPU=0.378234\nPrepCPU=0.592218\nPathFallbacks=0 FinishCPU=0.678465\nScore = 13165\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13165,
+        "prep": 0.583646,
+        "cpu": 0.659201,
+        "diagnostics": "backbone 32.668 -> 12.9961 papers=192 CPU=0.041467\nrefit 12.9961 -> 9.70312 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.10498 snapshot=0.11649 forward=0.025238 finite=94.3306 CPU=0.395839\nPrepCPU=0.583646\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27733\nPathFallbacks=0 FinishCPU=0.659201\nScore = 13165\n"
+      }
+    ]
+  },
+  {
+    "seed": 56,
+    "sha256": "ba8ef436d6799b0aeb5fcac725520e8a8d6d3a9ce2999736ecdd2a5a83cb63b8",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13442,
+        "prep": 0.769441,
+        "cpu": 0.857383,
+        "diagnostics": "backbone 32.9922 -> 13.2109 papers=192 CPU=0.046924\nrefit 13.2109 -> 9.85547 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.10938 snapshot=0.222168 forward=0.043002 finite=94.313 CPU=0.466672\nPrepCPU=0.769441\nPathFallbacks=0 FinishCPU=0.857383\nScore = 13442\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13442,
+        "prep": 0.650598,
+        "cpu": 0.738923,
+        "diagnostics": "backbone 32.9922 -> 13.2109 papers=192 CPU=0.048272\nrefit 13.2109 -> 9.85547 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.10938 snapshot=0.129832 forward=0.027327 finite=94.313 CPU=0.43808\nPrepCPU=0.650598\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27518\nPathFallbacks=0 FinishCPU=0.738923\nScore = 13442\n"
+      }
+    ]
+  },
+  {
+    "seed": 57,
+    "sha256": "a63d0cd3ffcefba091eeb8ec0cb3fb93ae71bf041549ae776c070ac1acf75bea",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13830,
+        "prep": 0.820088,
+        "cpu": 0.910041,
+        "diagnostics": "backbone 32.7109 -> 13.1992 papers=192 CPU=0.046271\nrefit 13.1992 -> 9.72656 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.18555 snapshot=0.248069 forward=0.045226 finite=96.0654 CPU=0.491505\nPrepCPU=0.820088\nPathFallbacks=0 FinishCPU=0.910041\nScore = 13830\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13830,
+        "prep": 0.66939,
+        "cpu": 0.766185,
+        "diagnostics": "backbone 32.7109 -> 13.1992 papers=192 CPU=0.047925\nrefit 13.1992 -> 9.72656 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.18555 snapshot=0.164965 forward=0.02909 finite=96.0654 CPU=0.422298\nPrepCPU=0.66939\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27903\nPathFallbacks=0 FinishCPU=0.766185\nScore = 13830\n"
+      }
+    ]
+  },
+  {
+    "seed": 58,
+    "sha256": "d6685afdef668e9979bcc9a2c9c36c9946e54458c6ebdefde5d40206bcc4f45d",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13216,
+        "prep": 0.938594,
+        "cpu": 1.0513,
+        "diagnostics": "backbone 32.6602 -> 13.0391 papers=192 CPU=0.05194\nrefit 13.0391 -> 9.67969 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.15869 snapshot=0.20751 forward=0.055581 finite=95.4873 CPU=0.638201\nPrepCPU=0.938594\nPathFallbacks=0 FinishCPU=1.0513\nScore = 13216\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13216,
+        "prep": 0.951911,
+        "cpu": 1.0476,
+        "diagnostics": "backbone 32.6602 -> 13.0391 papers=192 CPU=0.075778\nrefit 13.0391 -> 9.67969 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.15869 snapshot=0.197595 forward=0.039458 finite=95.4873 CPU=0.636903\nPrepCPU=0.951911\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28328\nPathFallbacks=0 FinishCPU=1.0476\nScore = 13216\n"
+      }
+    ]
+  },
+  {
+    "seed": 59,
+    "sha256": "5ae2ecff7e94d05747f598c168c75d14ca96bda1bf58b90b85398301dcb0a5bb",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13295,
+        "prep": 0.91575,
+        "cpu": 1.03031,
+        "diagnostics": "backbone 32.7891 -> 13.1172 papers=192 CPU=0.053125\nrefit 13.1172 -> 9.92188 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.10059 snapshot=0.253431 forward=0.049813 finite=97.0386 CPU=0.562613\nPrepCPU=0.91575\nPathFallbacks=0 FinishCPU=1.03031\nScore = 13295\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13295,
+        "prep": 0.954695,
+        "cpu": 1.05446,
+        "diagnostics": "backbone 32.7891 -> 13.1172 papers=192 CPU=0.059344\nrefit 13.1172 -> 9.92188 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.10059 snapshot=0.258004 forward=0.050904 finite=97.0386 CPU=0.594744\nPrepCPU=0.954695\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27768\nPathFallbacks=0 FinishCPU=1.05446\nScore = 13295\n"
+      }
+    ]
+  },
+  {
+    "seed": 60,
+    "sha256": "a003f491b40a97ac4e6b2598c93d7b4ac92144354d3c1190e7ad8f8672bf01cc",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13464,
+        "prep": 0.806787,
+        "cpu": 0.912419,
+        "diagnostics": "backbone 32.5586 -> 13.0938 papers=192 CPU=0.061455\nrefit 13.0938 -> 9.73828 accepted=256 rejected=0\nexact_refit accepted=98 gain=1.02637 snapshot=0.214834 forward=0.033587 finite=96.501 CPU=0.487991\nPrepCPU=0.806787\nPathFallbacks=0 FinishCPU=0.912419\nScore = 13464\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13464,
+        "prep": 0.695894,
+        "cpu": 0.778533,
+        "diagnostics": "backbone 32.5586 -> 13.0938 papers=192 CPU=0.060172\nrefit 13.0938 -> 9.73828 accepted=256 rejected=0\nexact_refit accepted=98 gain=1.02637 snapshot=0.167961 forward=0.034884 finite=96.501 CPU=0.428766\nPrepCPU=0.695894\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28064\nPathFallbacks=0 FinishCPU=0.778533\nScore = 13464\n"
+      }
+    ]
+  },
+  {
+    "seed": 61,
+    "sha256": "58447a4b625a6fdf551a6ebf6dadabbd5041e412a57e9a2a2c0bce716c50bf86",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13226,
+        "prep": 0.839344,
+        "cpu": 0.949349,
+        "diagnostics": "backbone 32.5977 -> 12.8594 papers=192 CPU=0.056266\nrefit 12.8594 -> 9.625 accepted=256 rejected=0\nexact_refit accepted=94 gain=0.895996 snapshot=0.198736 forward=0.033458 finite=94.1006 CPU=0.533389\nPrepCPU=0.839344\nPathFallbacks=0 FinishCPU=0.949349\nScore = 13226\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13226,
+        "prep": 0.657509,
+        "cpu": 0.749145,
+        "diagnostics": "backbone 32.5977 -> 12.8594 papers=192 CPU=0.059673\nrefit 12.8594 -> 9.625 accepted=256 rejected=0\nexact_refit accepted=94 gain=0.895996 snapshot=0.14955 forward=0.027865 finite=94.1006 CPU=0.410607\nPrepCPU=0.657509\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27517\nPathFallbacks=0 FinishCPU=0.749145\nScore = 13226\n"
+      }
+    ]
+  },
+  {
+    "seed": 62,
+    "sha256": "9d930cead7358b7aedb8868a09fa226475e55b377e2fb98c764385cdfd10e7bf",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13563,
+        "prep": 0.698267,
+        "cpu": 0.790034,
+        "diagnostics": "backbone 32.5156 -> 13.0547 papers=192 CPU=0.05185\nrefit 13.0547 -> 9.69531 accepted=256 rejected=0\nexact_refit accepted=100 gain=0.980469 snapshot=0.1844 forward=0.033703 finite=96.6846 CPU=0.421935\nPrepCPU=0.698267\nPathFallbacks=0 FinishCPU=0.790034\nScore = 13563\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13563,
+        "prep": 0.569399,
+        "cpu": 0.645521,
+        "diagnostics": "backbone 32.5156 -> 13.0547 papers=192 CPU=0.046647\nrefit 13.0547 -> 9.69531 accepted=256 rejected=0\nexact_refit accepted=100 gain=0.980469 snapshot=0.114612 forward=0.027537 finite=96.6846 CPU=0.377546\nPrepCPU=0.569399\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27895\nPathFallbacks=0 FinishCPU=0.645521\nScore = 13563\n"
+      }
+    ]
+  },
+  {
+    "seed": 63,
+    "sha256": "91cd91c6ee5d1b868fd81fcce8d22d08806602fd460c52f45c82966773cf5e8f",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13288,
+        "prep": 0.679147,
+        "cpu": 0.765093,
+        "diagnostics": "backbone 32.6836 -> 13.2773 papers=192 CPU=0.054723\nrefit 13.2773 -> 9.91797 accepted=256 rejected=0\nexact_refit accepted=113 gain=1.20508 snapshot=0.180547 forward=0.031914 finite=96.7539 CPU=0.406461\nPrepCPU=0.679147\nPathFallbacks=0 FinishCPU=0.765093\nScore = 13288\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13288,
+        "prep": 0.561047,
+        "cpu": 0.636444,
+        "diagnostics": "backbone 32.6836 -> 13.2773 papers=192 CPU=0.0413\nrefit 13.2773 -> 9.91797 accepted=256 rejected=0\nexact_refit accepted=113 gain=1.20508 snapshot=0.120959 forward=0.027041 finite=96.7539 CPU=0.368489\nPrepCPU=0.561047\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27558\nPathFallbacks=0 FinishCPU=0.636444\nScore = 13288\n"
+      }
+    ]
+  },
+  {
+    "seed": 64,
+    "sha256": "3a3efdcff6531d44ce765171bcff744e1a5388b6392ac0aa012ac9a08730e652",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13164,
+        "prep": 0.612532,
+        "cpu": 0.706119,
+        "diagnostics": "backbone 32.8242 -> 13.0781 papers=192 CPU=0.044601\nrefit 13.0781 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.12354 snapshot=0.139195 forward=0.027944 finite=96.73 CPU=0.393104\nPrepCPU=0.612532\nPathFallbacks=0 FinishCPU=0.706119\nScore = 13164\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13164,
+        "prep": 0.572827,
+        "cpu": 0.646801,
+        "diagnostics": "backbone 32.8242 -> 13.0781 papers=192 CPU=0.044983\nrefit 13.0781 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.12354 snapshot=0.117754 forward=0.026543 finite=96.73 CPU=0.379017\nPrepCPU=0.572827\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28037\nPathFallbacks=0 FinishCPU=0.646801\nScore = 13164\n"
+      }
+    ]
+  },
+  {
+    "seed": 65,
+    "sha256": "b31336a139ec10bacbc91997c05d1d34b4c2ab8ef50ffc4e05bb79077f1631cc",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13446,
+        "prep": 0.626771,
+        "cpu": 0.710951,
+        "diagnostics": "backbone 32.5195 -> 12.9922 papers=192 CPU=0.043419\nrefit 12.9922 -> 9.62109 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.16797 snapshot=0.151756 forward=0.026626 finite=94.9956 CPU=0.400037\nPrepCPU=0.626771\nPathFallbacks=0 FinishCPU=0.710951\nScore = 13446\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13446,
+        "prep": 0.564961,
+        "cpu": 0.642619,
+        "diagnostics": "backbone 32.5195 -> 12.9922 papers=192 CPU=0.042598\nrefit 12.9922 -> 9.62109 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.16797 snapshot=0.116362 forward=0.026113 finite=94.9956 CPU=0.375965\nPrepCPU=0.564961\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28257\nPathFallbacks=0 FinishCPU=0.642619\nScore = 13446\n"
+      }
+    ]
+  },
+  {
+    "seed": 66,
+    "sha256": "fff1485a1c44c08f2204337b57d312033fde30ba48d36489f3a0c477f4ec3cda",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13879,
+        "prep": 0.63844,
+        "cpu": 0.724121,
+        "diagnostics": "backbone 32.4062 -> 12.9219 papers=192 CPU=0.047296\nrefit 12.9219 -> 9.66797 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.16455 snapshot=0.142736 forward=0.039082 finite=94.1333 CPU=0.41511\nPrepCPU=0.63844\nPathFallbacks=0 FinishCPU=0.724121\nScore = 13879\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13879,
+        "prep": 0.560036,
+        "cpu": 0.637471,
+        "diagnostics": "backbone 32.4062 -> 12.9219 papers=192 CPU=0.043184\nrefit 12.9219 -> 9.66797 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.16455 snapshot=0.120392 forward=0.02594 finite=94.1333 CPU=0.365944\nPrepCPU=0.560036\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28492\nPathFallbacks=0 FinishCPU=0.637471\nScore = 13879\n"
+      }
+    ]
+  },
+  {
+    "seed": 67,
+    "sha256": "09812f948b0b7b06629db71c3a2911d77b551e6866a98be9d5c27c3c49da821b",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13623,
+        "prep": 0.55807,
+        "cpu": 0.643662,
+        "diagnostics": "backbone 32.8008 -> 13.1484 papers=192 CPU=0.042591\nrefit 13.1484 -> 9.86328 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.15479 snapshot=0.138039 forward=0.024159 finite=95.6084 CPU=0.345942\nPrepCPU=0.55807\nPathFallbacks=0 FinishCPU=0.643662\nScore = 13623\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13623,
+        "prep": 0.563025,
+        "cpu": 0.638247,
+        "diagnostics": "backbone 32.8008 -> 13.1484 papers=192 CPU=0.044206\nrefit 13.1484 -> 9.86328 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.15479 snapshot=0.119829 forward=0.02658 finite=95.6084 CPU=0.368702\nPrepCPU=0.563025\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27911\nPathFallbacks=0 FinishCPU=0.638247\nScore = 13623\n"
+      }
+    ]
+  },
+  {
+    "seed": 68,
+    "sha256": "aee8250d8230843ab25149c38f6b7847ca7bf23ebf4a58c8de195333278a3e34",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13123,
+        "prep": 0.610032,
+        "cpu": 0.709307,
+        "diagnostics": "backbone 32.9492 -> 13.3125 papers=192 CPU=0.048757\nrefit 13.3125 -> 9.80078 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.0835 snapshot=0.140743 forward=0.026971 finite=95.2251 CPU=0.383997\nPrepCPU=0.610032\nPathFallbacks=0 FinishCPU=0.709307\nScore = 13123\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13123,
+        "prep": 0.582341,
+        "cpu": 0.658763,
+        "diagnostics": "backbone 32.9492 -> 13.3125 papers=192 CPU=0.043626\nrefit 13.3125 -> 9.80078 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.0835 snapshot=0.115931 forward=0.027224 finite=95.2251 CPU=0.387364\nPrepCPU=0.582341\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27721\nPathFallbacks=0 FinishCPU=0.658763\nScore = 13123\n"
+      }
+    ]
+  },
+  {
+    "seed": 69,
+    "sha256": "7a7a30817c0176866806c0f1694d234d00d373ea4b2a33049238d7d217cf7465",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13390,
+        "prep": 0.606007,
+        "cpu": 0.70464,
+        "diagnostics": "backbone 32.3555 -> 13.0391 papers=192 CPU=0.047637\nrefit 13.0391 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.09668 snapshot=0.139569 forward=0.026931 finite=94.1821 CPU=0.382231\nPrepCPU=0.606007\nPathFallbacks=0 FinishCPU=0.70464\nScore = 13390\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13390,
+        "prep": 0.556281,
+        "cpu": 0.631202,
+        "diagnostics": "backbone 32.3555 -> 13.0391 papers=192 CPU=0.042506\nrefit 13.0391 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.09668 snapshot=0.115945 forward=0.026958 finite=94.1821 CPU=0.367685\nPrepCPU=0.556281\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28196\nPathFallbacks=0 FinishCPU=0.631202\nScore = 13390\n"
+      }
+    ]
+  },
+  {
+    "seed": 70,
+    "sha256": "2771e4ebef7ac4f9e6b679c82bef20ab8514ad4fee501d7ab78f519dbbfcacc5",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13375,
+        "prep": 0.574651,
+        "cpu": 0.658072,
+        "diagnostics": "backbone 32.4023 -> 13.0117 papers=192 CPU=0.045994\nrefit 13.0117 -> 9.71875 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.1416 snapshot=0.139563 forward=0.026521 finite=95.6162 CPU=0.358428\nPrepCPU=0.574651\nPathFallbacks=0 FinishCPU=0.658072\nScore = 13375\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13375,
+        "prep": 0.616922,
+        "cpu": 0.690977,
+        "diagnostics": "backbone 32.4023 -> 13.0117 papers=192 CPU=0.043981\nrefit 13.0117 -> 9.71875 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.1416 snapshot=0.139573 forward=0.027058 finite=95.6162 CPU=0.397918\nPrepCPU=0.616922\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28184\nPathFallbacks=0 FinishCPU=0.690977\nScore = 13375\n"
+      }
+    ]
+  },
+  {
+    "seed": 71,
+    "sha256": "cbc9f40a0fbeeaabd20e728b34b02a2eb730f944615ab326f9d1f219ba307719",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13564,
+        "prep": 0.570077,
+        "cpu": 0.654101,
+        "diagnostics": "backbone 32.1016 -> 12.793 papers=192 CPU=0.043079\nrefit 12.793 -> 9.52734 accepted=256 rejected=0\nexact_refit accepted=100 gain=0.938965 snapshot=0.138926 forward=0.0262 finite=94.9043 CPU=0.357016\nPrepCPU=0.570077\nPathFallbacks=0 FinishCPU=0.654101\nScore = 13564\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13564,
+        "prep": 0.629057,
+        "cpu": 0.705973,
+        "diagnostics": "backbone 32.1016 -> 12.793 papers=192 CPU=0.041971\nrefit 12.793 -> 9.52734 accepted=256 rejected=0\nexact_refit accepted=100 gain=0.938965 snapshot=0.112673 forward=0.027029 finite=94.9043 CPU=0.445294\nPrepCPU=0.629057\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28077\nPathFallbacks=0 FinishCPU=0.705973\nScore = 13564\n"
+      }
+    ]
+  },
+  {
+    "seed": 72,
+    "sha256": "174367e2c93e18c9eed99dae219cfd64616cfdbd532ec74bc52fda0e3f858463",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13143,
+        "prep": 0.61205,
+        "cpu": 0.697409,
+        "diagnostics": "backbone 32.1445 -> 13.0703 papers=192 CPU=0.045742\nrefit 13.0703 -> 9.67578 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.12354 snapshot=0.147137 forward=0.026865 finite=95.0615 CPU=0.385961\nPrepCPU=0.61205\nPathFallbacks=0 FinishCPU=0.697409\nScore = 13143\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13143,
+        "prep": 0.543926,
+        "cpu": 0.612889,
+        "diagnostics": "backbone 32.1445 -> 13.0703 papers=192 CPU=0.044681\nrefit 13.0703 -> 9.67578 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.12354 snapshot=0.115827 forward=0.025787 finite=95.0615 CPU=0.353641\nPrepCPU=0.543926\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28143\nPathFallbacks=0 FinishCPU=0.612889\nScore = 13143\n"
+      }
+    ]
+  },
+  {
+    "seed": 73,
+    "sha256": "d889c5d6ea178ef2a5f1618529b68cad9e5fe2eefe5172560c5731baeab67361",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13079,
+        "prep": 0.605509,
+        "cpu": 0.691295,
+        "diagnostics": "backbone 32.4414 -> 13.1641 papers=192 CPU=0.043927\nrefit 13.1641 -> 9.78516 accepted=256 rejected=0\nexact_refit accepted=96 gain=0.938477 snapshot=0.144693 forward=0.026747 finite=92.3516 CPU=0.383726\nPrepCPU=0.605509\nPathFallbacks=0 FinishCPU=0.691295\nScore = 13079\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13079,
+        "prep": 0.602161,
+        "cpu": 0.67566,
+        "diagnostics": "backbone 32.4414 -> 13.1641 papers=192 CPU=0.043063\nrefit 13.1641 -> 9.78516 accepted=256 rejected=0\nexact_refit accepted=96 gain=0.938477 snapshot=0.115201 forward=0.024832 finite=92.3516 CPU=0.413805\nPrepCPU=0.602161\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27530\nPathFallbacks=0 FinishCPU=0.67566\nScore = 13079\n"
+      }
+    ]
+  },
+  {
+    "seed": 74,
+    "sha256": "216231c9d6b5d9e41bc568e2957c6a21822494c32e9b7bd1dfb4e0d08fa54e7f",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13471,
+        "prep": 0.578938,
+        "cpu": 0.663461,
+        "diagnostics": "backbone 32.3438 -> 12.9883 papers=192 CPU=0.044494\nrefit 12.9883 -> 9.6875 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.15381 snapshot=0.138745 forward=0.02786 finite=95.4585 CPU=0.363675\nPrepCPU=0.578938\nPathFallbacks=0 FinishCPU=0.663461\nScore = 13471\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13471,
+        "prep": 0.626502,
+        "cpu": 0.701886,
+        "diagnostics": "backbone 32.3438 -> 12.9883 papers=192 CPU=0.046284\nrefit 12.9883 -> 9.6875 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.15381 snapshot=0.168557 forward=0.027845 finite=95.4585 CPU=0.380115\nPrepCPU=0.626502\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28225\nPathFallbacks=0 FinishCPU=0.701886\nScore = 13471\n"
+      }
+    ]
+  },
+  {
+    "seed": 75,
+    "sha256": "f69b2595b54be64bb94bad7d9f399d03a49a9b44992e2901df9c4faf49d3959d",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13300,
+        "prep": 0.574794,
+        "cpu": 0.658596,
+        "diagnostics": "backbone 32.7969 -> 13.3086 papers=192 CPU=0.041616\nrefit 13.3086 -> 9.92188 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.06543 snapshot=0.139392 forward=0.026094 finite=95.8608 CPU=0.36242\nPrepCPU=0.574794\nPathFallbacks=0 FinishCPU=0.658596\nScore = 13300\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13300,
+        "prep": 0.592114,
+        "cpu": 0.667859,
+        "diagnostics": "backbone 32.7969 -> 13.3086 papers=192 CPU=0.051002\nrefit 13.3086 -> 9.92188 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.06543 snapshot=0.141555 forward=0.026156 finite=95.8608 CPU=0.364245\nPrepCPU=0.592114\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27570\nPathFallbacks=0 FinishCPU=0.667859\nScore = 13300\n"
+      }
+    ]
+  },
+  {
+    "seed": 76,
+    "sha256": "6b0f75d237f0ee506900b4682cb7106c8a53d16ed2129a6fe03b52dcfe546ceb",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13233,
+        "prep": 0.695524,
+        "cpu": 0.793197,
+        "diagnostics": "backbone 32.6562 -> 13.3633 papers=192 CPU=0.044771\nrefit 13.3633 -> 9.86328 accepted=256 rejected=0\nexact_refit accepted=96 gain=1.05811 snapshot=0.154874 forward=0.057182 finite=96.1001 CPU=0.462747\nPrepCPU=0.695524\nPathFallbacks=0 FinishCPU=0.793197\nScore = 13233\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13233,
+        "prep": 0.573657,
+        "cpu": 0.652697,
+        "diagnostics": "backbone 32.6562 -> 13.3633 papers=192 CPU=0.044192\nrefit 13.3633 -> 9.86328 accepted=256 rejected=0\nexact_refit accepted=96 gain=1.05811 snapshot=0.115866 forward=0.027094 finite=96.1001 CPU=0.384316\nPrepCPU=0.573657\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27445\nPathFallbacks=0 FinishCPU=0.652697\nScore = 13233\n"
+      }
+    ]
+  },
+  {
+    "seed": 77,
+    "sha256": "1e43e956f4176c9d602bf1596f9de69660697e643a32bdbcfec2bcee5fec4c92",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13485,
+        "prep": 0.676986,
+        "cpu": 0.776204,
+        "diagnostics": "backbone 32.2852 -> 13.1523 papers=192 CPU=0.045995\nrefit 13.1523 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=90 gain=0.916016 snapshot=0.179302 forward=0.048413 finite=93.4355 CPU=0.419292\nPrepCPU=0.676986\nPathFallbacks=0 FinishCPU=0.776204\nScore = 13485\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13485,
+        "prep": 0.602361,
+        "cpu": 0.679721,
+        "diagnostics": "backbone 32.2852 -> 13.1523 papers=192 CPU=0.041687\nrefit 13.1523 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=90 gain=0.916016 snapshot=0.116832 forward=0.025628 finite=93.4355 CPU=0.413897\nPrepCPU=0.602361\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28145\nPathFallbacks=0 FinishCPU=0.679721\nScore = 13485\n"
+      }
+    ]
+  },
+  {
+    "seed": 78,
+    "sha256": "26a8ac68dbac862b114f73663047cc1a80cb4e1df411b22842c0598c7d09eff6",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13829,
+        "prep": 0.5756,
+        "cpu": 0.656692,
+        "diagnostics": "backbone 33.0938 -> 13.2188 papers=192 CPU=0.044273\nrefit 13.2188 -> 9.80469 accepted=256 rejected=0\nexact_refit accepted=96 gain=1.0376 snapshot=0.13419 forward=0.026665 finite=94.6147 CPU=0.365607\nPrepCPU=0.5756\nPathFallbacks=0 FinishCPU=0.656692\nScore = 13829\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13829,
+        "prep": 0.578372,
+        "cpu": 0.651933,
+        "diagnostics": "backbone 33.0938 -> 13.2188 papers=192 CPU=0.045539\nrefit 13.2188 -> 9.80469 accepted=256 rejected=0\nexact_refit accepted=96 gain=1.0376 snapshot=0.11545 forward=0.026582 finite=94.6147 CPU=0.38151\nPrepCPU=0.578372\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27521\nPathFallbacks=0 FinishCPU=0.651933\nScore = 13829\n"
+      }
+    ]
+  },
+  {
+    "seed": 79,
+    "sha256": "d7565dba4293720420161638e20d96a8507412d5a6599197801e1d0a1a39f798",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13266,
+        "prep": 0.574738,
+        "cpu": 0.658746,
+        "diagnostics": "backbone 32.8594 -> 13.2773 papers=192 CPU=0.041832\nrefit 13.2773 -> 9.82422 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.18457 snapshot=0.135552 forward=0.027929 finite=95.4155 CPU=0.366849\nPrepCPU=0.574738\nPathFallbacks=0 FinishCPU=0.658746\nScore = 13266\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13266,
+        "prep": 0.54299,
+        "cpu": 0.617164,
+        "diagnostics": "backbone 32.8594 -> 13.2773 papers=192 CPU=0.041914\nrefit 13.2773 -> 9.82422 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.18457 snapshot=0.11698 forward=0.026098 finite=95.4155 CPU=0.355432\nPrepCPU=0.54299\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28168\nPathFallbacks=0 FinishCPU=0.617164\nScore = 13266\n"
+      }
+    ]
+  },
+  {
+    "seed": 80,
+    "sha256": "dae3f636d3f526f30c2af363e8dec869047649ac1057f495a57a5099b9b7ec79",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13260,
+        "prep": 0.581471,
+        "cpu": 0.66485,
+        "diagnostics": "backbone 32.3594 -> 13.1016 papers=192 CPU=0.043342\nrefit 13.1016 -> 9.75781 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.13525 snapshot=0.136751 forward=0.026508 finite=96.0405 CPU=0.371244\nPrepCPU=0.581471\nPathFallbacks=0 FinishCPU=0.66485\nScore = 13260\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13260,
+        "prep": 0.531379,
+        "cpu": 0.603894,
+        "diagnostics": "backbone 32.3594 -> 13.1016 papers=192 CPU=0.042211\nrefit 13.1016 -> 9.75781 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.13525 snapshot=0.116006 forward=0.025785 finite=96.0405 CPU=0.344136\nPrepCPU=0.531379\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27727\nPathFallbacks=0 FinishCPU=0.603894\nScore = 13260\n"
+      }
+    ]
+  },
+  {
+    "seed": 81,
+    "sha256": "bf57dc744449095fdfd15ebbb0c2dfa218853742e1b2640f3cc68ffd24667f1c",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13450,
+        "prep": 0.575417,
+        "cpu": 0.658396,
+        "diagnostics": "backbone 32.543 -> 13.0742 papers=192 CPU=0.041887\nrefit 13.0742 -> 9.69922 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.08691 snapshot=0.135984 forward=0.026135 finite=95.3638 CPU=0.367392\nPrepCPU=0.575417\nPathFallbacks=0 FinishCPU=0.658396\nScore = 13450\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13450,
+        "prep": 0.571166,
+        "cpu": 0.646073,
+        "diagnostics": "backbone 32.543 -> 13.0742 papers=192 CPU=0.041371\nrefit 13.0742 -> 9.69922 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.08691 snapshot=0.117147 forward=0.025974 finite=95.3638 CPU=0.38265\nPrepCPU=0.571166\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27837\nPathFallbacks=0 FinishCPU=0.646073\nScore = 13450\n"
+      }
+    ]
+  },
+  {
+    "seed": 82,
+    "sha256": "cdff7fe19aece8c50f55bfcb104fd3f94c68bbec3cd5baaafed1d240e37dd84b",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13255,
+        "prep": 0.577935,
+        "cpu": 0.658823,
+        "diagnostics": "backbone 32.2773 -> 13.082 papers=192 CPU=0.044467\nrefit 13.082 -> 9.77344 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.07129 snapshot=0.137031 forward=0.026127 finite=94.791 CPU=0.364885\nPrepCPU=0.577935\nPathFallbacks=0 FinishCPU=0.658823\nScore = 13255\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13255,
+        "prep": 0.566238,
+        "cpu": 0.639261,
+        "diagnostics": "backbone 32.2773 -> 13.082 papers=192 CPU=0.043789\nrefit 13.082 -> 9.77344 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.07129 snapshot=0.117565 forward=0.02685 finite=94.791 CPU=0.374061\nPrepCPU=0.566238\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27774\nPathFallbacks=0 FinishCPU=0.639261\nScore = 13255\n"
+      }
+    ]
+  },
+  {
+    "seed": 83,
+    "sha256": "d856f481e128ed345128afd664a5f91d1fee3fe0933d89b6eb94e3749eaecaba",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13220,
+        "prep": 0.574569,
+        "cpu": 0.656327,
+        "diagnostics": "backbone 32.1328 -> 13.0039 papers=192 CPU=0.042332\nrefit 13.0039 -> 9.64844 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.03174 snapshot=0.137296 forward=0.028998 finite=95.5884 CPU=0.364557\nPrepCPU=0.574569\nPathFallbacks=0 FinishCPU=0.656327\nScore = 13220\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13220,
+        "prep": 0.557817,
+        "cpu": 0.631328,
+        "diagnostics": "backbone 32.1328 -> 13.0039 papers=192 CPU=0.043045\nrefit 13.0039 -> 9.64844 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.03174 snapshot=0.118881 forward=0.026412 finite=95.5884 CPU=0.366411\nPrepCPU=0.557817\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27948\nPathFallbacks=0 FinishCPU=0.631328\nScore = 13220\n"
+      }
+    ]
+  },
+  {
+    "seed": 84,
+    "sha256": "f0e241c0cd7dca19365ca379394ff6b60715c89b5c555b585320586b395f4521",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13208,
+        "prep": 0.580835,
+        "cpu": 0.667923,
+        "diagnostics": "backbone 32.7578 -> 13.2109 papers=192 CPU=0.043643\nrefit 13.2109 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.0498 snapshot=0.139528 forward=0.026692 finite=97.0234 CPU=0.36671\nPrepCPU=0.580835\nPathFallbacks=0 FinishCPU=0.667923\nScore = 13208\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13208,
+        "prep": 0.543958,
+        "cpu": 0.61743,
+        "diagnostics": "backbone 32.7578 -> 13.2109 papers=192 CPU=0.043478\nrefit 13.2109 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.0498 snapshot=0.114423 forward=0.02607 finite=97.0234 CPU=0.356176\nPrepCPU=0.543958\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27042\nPathFallbacks=0 FinishCPU=0.61743\nScore = 13208\n"
+      }
+    ]
+  },
+  {
+    "seed": 85,
+    "sha256": "80d24a311bb623b09f3973fc4119a11bd9909f33ccb2cb323d44ea6ab5d0fb22",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13226,
+        "prep": 0.570702,
+        "cpu": 0.657992,
+        "diagnostics": "backbone 32.8711 -> 13.1992 papers=192 CPU=0.041833\nrefit 13.1992 -> 9.75391 accepted=256 rejected=0\nexact_refit accepted=120 gain=1.30664 snapshot=0.138191 forward=0.026727 finite=97.2158 CPU=0.359838\nPrepCPU=0.570702\nPathFallbacks=0 FinishCPU=0.657992\nScore = 13226\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13226,
+        "prep": 0.537265,
+        "cpu": 0.611291,
+        "diagnostics": "backbone 32.8711 -> 13.1992 papers=192 CPU=0.042127\nrefit 13.1992 -> 9.75391 accepted=256 rejected=0\nexact_refit accepted=120 gain=1.30664 snapshot=0.114405 forward=0.025853 finite=97.2158 CPU=0.351363\nPrepCPU=0.537265\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28178\nPathFallbacks=0 FinishCPU=0.611291\nScore = 13226\n"
+      }
+    ]
+  },
+  {
+    "seed": 86,
+    "sha256": "a2020c705921caf1677913bf70d81a60c0f3aa15bd8888aed015e18e20f80244",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13415,
+        "prep": 0.63505,
+        "cpu": 0.719022,
+        "diagnostics": "backbone 32.6055 -> 13.1445 papers=192 CPU=0.044058\nrefit 13.1445 -> 9.96875 accepted=256 rejected=0\nexact_refit accepted=111 gain=1.14697 snapshot=0.136258 forward=0.026576 finite=97.1035 CPU=0.424296\nPrepCPU=0.63505\nPathFallbacks=0 FinishCPU=0.719022\nScore = 13415\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13415,
+        "prep": 0.582041,
+        "cpu": 0.654737,
+        "diagnostics": "backbone 32.6055 -> 13.1445 papers=192 CPU=0.043324\nrefit 13.1445 -> 9.96875 accepted=256 rejected=0\nexact_refit accepted=111 gain=1.14697 snapshot=0.113841 forward=0.025784 finite=97.1035 CPU=0.395461\nPrepCPU=0.582041\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27722\nPathFallbacks=0 FinishCPU=0.654737\nScore = 13415\n"
+      }
+    ]
+  },
+  {
+    "seed": 87,
+    "sha256": "db05ca40b487a90359ef006900ae2ba8bba26c5a8a152dbceb8fc4188bf3326f",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13477,
+        "prep": 0.562471,
+        "cpu": 0.642723,
+        "diagnostics": "backbone 32.8945 -> 13.1094 papers=192 CPU=0.041981\nrefit 13.1094 -> 9.87109 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.0542 snapshot=0.135627 forward=0.02628 finite=94.668 CPU=0.34918\nPrepCPU=0.562471\nPathFallbacks=0 FinishCPU=0.642723\nScore = 13477\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13477,
+        "prep": 0.586348,
+        "cpu": 0.658972,
+        "diagnostics": "backbone 32.8945 -> 13.1094 papers=192 CPU=0.044984\nrefit 13.1094 -> 9.87109 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.0542 snapshot=0.115188 forward=0.025896 finite=94.668 CPU=0.394291\nPrepCPU=0.586348\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27904\nPathFallbacks=0 FinishCPU=0.658972\nScore = 13477\n"
+      }
+    ]
+  },
+  {
+    "seed": 88,
+    "sha256": "6880f16bbd87692ff7945621df5a74458515e6085df00b5951f992e94341e5c5",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13560,
+        "prep": 0.583661,
+        "cpu": 0.665161,
+        "diagnostics": "backbone 32.2305 -> 12.9609 papers=192 CPU=0.0434\nrefit 12.9609 -> 9.60156 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.06055 snapshot=0.138467 forward=0.027716 finite=96.8184 CPU=0.370068\nPrepCPU=0.583661\nPathFallbacks=0 FinishCPU=0.665161\nScore = 13560\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13560,
+        "prep": 0.565119,
+        "cpu": 0.638963,
+        "diagnostics": "backbone 32.2305 -> 12.9609 papers=192 CPU=0.043827\nrefit 12.9609 -> 9.60156 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.06055 snapshot=0.124628 forward=0.026997 finite=96.8184 CPU=0.367514\nPrepCPU=0.565119\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28147\nPathFallbacks=0 FinishCPU=0.638963\nScore = 13560\n"
+      }
+    ]
+  },
+  {
+    "seed": 89,
+    "sha256": "737b2161e9ef3b2ee443dd910c87c368a23c3043046d43fe78c34ecc5b2d9d3b",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13121,
+        "prep": 0.551768,
+        "cpu": 0.634152,
+        "diagnostics": "backbone 32.4062 -> 12.9258 papers=192 CPU=0.041411\nrefit 12.9258 -> 9.65625 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.09033 snapshot=0.138897 forward=0.026054 finite=96.2803 CPU=0.340995\nPrepCPU=0.551768\nPathFallbacks=0 FinishCPU=0.634152\nScore = 13121\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13121,
+        "prep": 0.558619,
+        "cpu": 0.633675,
+        "diagnostics": "backbone 32.4062 -> 12.9258 papers=192 CPU=0.041657\nrefit 12.9258 -> 9.65625 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.09033 snapshot=0.125629 forward=0.026236 finite=96.2803 CPU=0.361394\nPrepCPU=0.558619\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27604\nPathFallbacks=0 FinishCPU=0.633675\nScore = 13121\n"
+      }
+    ]
+  },
+  {
+    "seed": 90,
+    "sha256": "71df5c9664c787662d57e0cb44fa01e834921438fb06d5c6991272309f0f7b0b",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13393,
+        "prep": 0.713069,
+        "cpu": 0.79686,
+        "diagnostics": "backbone 32.6641 -> 13.1094 papers=192 CPU=0.044327\nrefit 13.1094 -> 9.72266 accepted=256 rejected=0\nexact_refit accepted=96 gain=1.10156 snapshot=0.138445 forward=0.029441 finite=95.375 CPU=0.500575\nPrepCPU=0.713069\nPathFallbacks=0 FinishCPU=0.79686\nScore = 13393\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13393,
+        "prep": 0.593864,
+        "cpu": 0.676813,
+        "diagnostics": "backbone 32.6641 -> 13.1094 papers=192 CPU=0.041814\nrefit 13.1094 -> 9.72266 accepted=256 rejected=0\nexact_refit accepted=96 gain=1.10156 snapshot=0.154318 forward=0.031973 finite=95.375 CPU=0.367882\nPrepCPU=0.593864\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27774\nPathFallbacks=0 FinishCPU=0.676813\nScore = 13393\n"
+      }
+    ]
+  },
+  {
+    "seed": 91,
+    "sha256": "061304761e345b7021f714c6439a420dd5813ecf965c20068a70c72f09fe0f29",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13686,
+        "prep": 0.682216,
+        "cpu": 0.766251,
+        "diagnostics": "backbone 31.7656 -> 12.9414 papers=192 CPU=0.041943\nrefit 12.9414 -> 9.78125 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.15479 snapshot=0.138183 forward=0.026311 finite=95.2207 CPU=0.46682\nPrepCPU=0.682216\nPathFallbacks=0 FinishCPU=0.766251\nScore = 13686\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13686,
+        "prep": 0.530122,
+        "cpu": 0.604562,
+        "diagnostics": "backbone 31.7656 -> 12.9414 papers=192 CPU=0.043131\nrefit 12.9414 -> 9.78125 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.15479 snapshot=0.11149 forward=0.02439 finite=95.2207 CPU=0.346138\nPrepCPU=0.530122\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28269\nPathFallbacks=0 FinishCPU=0.604562\nScore = 13686\n"
+      }
+    ]
+  },
+  {
+    "seed": 92,
+    "sha256": "0bd4eb521f58524fbfde251c2507d1c78ca499370803061a0ea826bd471fd414",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13269,
+        "prep": 0.596369,
+        "cpu": 0.676526,
+        "diagnostics": "backbone 32.3828 -> 13.0156 papers=192 CPU=0.045842\nrefit 13.0156 -> 9.71094 accepted=256 rejected=0\nexact_refit accepted=90 gain=0.917969 snapshot=0.137143 forward=0.026799 finite=95.8799 CPU=0.381449\nPrepCPU=0.596369\nPathFallbacks=0 FinishCPU=0.676526\nScore = 13269\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13269,
+        "prep": 0.578268,
+        "cpu": 0.643136,
+        "diagnostics": "backbone 32.3828 -> 13.0156 papers=192 CPU=0.043994\nrefit 13.0156 -> 9.71094 accepted=256 rejected=0\nexact_refit accepted=90 gain=0.917969 snapshot=0.137145 forward=0.029206 finite=95.8799 CPU=0.366539\nPrepCPU=0.578268\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27773\nPathFallbacks=0 FinishCPU=0.643136\nScore = 13269\n"
+      }
+    ]
+  },
+  {
+    "seed": 93,
+    "sha256": "ace13fc56172b6674df5ff08fb2fca4a64703010737fe0a590e73b627265740e",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13155,
+        "prep": 0.586957,
+        "cpu": 0.669035,
+        "diagnostics": "backbone 32.8516 -> 13.0703 papers=192 CPU=0.042077\nrefit 13.0703 -> 9.75 accepted=256 rejected=0\nexact_refit accepted=94 gain=0.96582 snapshot=0.141399 forward=0.035132 finite=95.7979 CPU=0.37292\nPrepCPU=0.586957\nPathFallbacks=0 FinishCPU=0.669035\nScore = 13155\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13155,
+        "prep": 0.599614,
+        "cpu": 0.67662,
+        "diagnostics": "backbone 32.8516 -> 13.0703 papers=192 CPU=0.049334\nrefit 13.0703 -> 9.75 accepted=256 rejected=0\nexact_refit accepted=94 gain=0.96582 snapshot=0.12795 forward=0.026004 finite=95.7979 CPU=0.382165\nPrepCPU=0.599614\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27712\nPathFallbacks=0 FinishCPU=0.67662\nScore = 13155\n"
+      }
+    ]
+  },
+  {
+    "seed": 94,
+    "sha256": "f4806f7c3ebaab2c747fc353d51e4627d217f081c000f1416eb536c44a8df15e",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13200,
+        "prep": 0.651983,
+        "cpu": 0.727755,
+        "diagnostics": "backbone 32.5703 -> 13.1836 papers=192 CPU=0.046531\nrefit 13.1836 -> 9.73828 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.09326 snapshot=0.175548 forward=0.027024 finite=96.3452 CPU=0.396522\nPrepCPU=0.651983\nPathFallbacks=0 FinishCPU=0.727755\nScore = 13200\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13200,
+        "prep": 0.548676,
+        "cpu": 0.611266,
+        "diagnostics": "backbone 32.5703 -> 13.1836 papers=192 CPU=0.043924\nrefit 13.1836 -> 9.73828 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.09326 snapshot=0.117118 forward=0.026165 finite=96.3452 CPU=0.358592\nPrepCPU=0.548676\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27851\nPathFallbacks=0 FinishCPU=0.611266\nScore = 13200\n"
+      }
+    ]
+  },
+  {
+    "seed": 95,
+    "sha256": "dc5d9e317e609c03d8d93f04ab3c1a89257936809bc27f9f476756790e28ab7d",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13421,
+        "prep": 0.629711,
+        "cpu": 0.711399,
+        "diagnostics": "backbone 32.4883 -> 12.9922 papers=192 CPU=0.049487\nrefit 12.9922 -> 9.625 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.09912 snapshot=0.140476 forward=0.024691 finite=95.6396 CPU=0.40559\nPrepCPU=0.629711\nPathFallbacks=0 FinishCPU=0.711399\nScore = 13421\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13421,
+        "prep": 0.595744,
+        "cpu": 0.665464,
+        "diagnostics": "backbone 32.4883 -> 12.9922 papers=192 CPU=0.042347\nrefit 12.9922 -> 9.625 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.09912 snapshot=0.115056 forward=0.026231 finite=95.6396 CPU=0.408121\nPrepCPU=0.595744\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28113\nPathFallbacks=0 FinishCPU=0.665464\nScore = 13421\n"
+      }
+    ]
+  },
+  {
+    "seed": 96,
+    "sha256": "436293e82287f0fa418b081ba5c470c304cfa5cc27fbf5a096ae0af3797bdfac",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 12947,
+        "prep": 0.580592,
+        "cpu": 0.657691,
+        "diagnostics": "backbone 32.6953 -> 13.2188 papers=192 CPU=0.044375\nrefit 13.2188 -> 9.77734 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.14209 snapshot=0.141511 forward=0.027698 finite=96.1582 CPU=0.36323\nPrepCPU=0.580592\nPathFallbacks=0 FinishCPU=0.657691\nScore = 12947\n"
+      },
+      {
+        "variant": "fast",
+        "score": 12947,
+        "prep": 0.563468,
+        "cpu": 0.632025,
+        "diagnostics": "backbone 32.6953 -> 13.2188 papers=192 CPU=0.044918\nrefit 13.2188 -> 9.77734 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.14209 snapshot=0.115621 forward=0.025433 finite=96.1582 CPU=0.373485\nPrepCPU=0.563468\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27545\nPathFallbacks=0 FinishCPU=0.632025\nScore = 12947\n"
+      }
+    ]
+  },
+  {
+    "seed": 97,
+    "sha256": "c25b1d5bc2eb55801dab97441c5abedd2cb90613a45617652747ac0fe583f524",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13128,
+        "prep": 0.576085,
+        "cpu": 0.654651,
+        "diagnostics": "backbone 32.2031 -> 13.0078 papers=192 CPU=0.041956\nrefit 13.0078 -> 9.66016 accepted=256 rejected=0\nexact_refit accepted=113 gain=1.22559 snapshot=0.146402 forward=0.027318 finite=96.3452 CPU=0.355502\nPrepCPU=0.576085\nPathFallbacks=0 FinishCPU=0.654651\nScore = 13128\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13128,
+        "prep": 0.565363,
+        "cpu": 0.63493,
+        "diagnostics": "backbone 32.2031 -> 13.0078 papers=192 CPU=0.042273\nrefit 13.0078 -> 9.66016 accepted=256 rejected=0\nexact_refit accepted=113 gain=1.22559 snapshot=0.11676 forward=0.026494 finite=96.3452 CPU=0.376726\nPrepCPU=0.565363\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27978\nPathFallbacks=0 FinishCPU=0.63493\nScore = 13128\n"
+      }
+    ]
+  },
+  {
+    "seed": 98,
+    "sha256": "50e7fa54b84b87172419c7a1d39bf586e86f4f4e66b7b30e39018ddcbad55036",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13502,
+        "prep": 0.573315,
+        "cpu": 0.654662,
+        "diagnostics": "backbone 32.3398 -> 13.0859 papers=192 CPU=0.044116\nrefit 13.0859 -> 9.83594 accepted=256 rejected=0\nexact_refit accepted=100 gain=1.09033 snapshot=0.140934 forward=0.02578 finite=94.8726 CPU=0.356426\nPrepCPU=0.573315\nPathFallbacks=0 FinishCPU=0.654662\nScore = 13502\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13502,
+        "prep": 0.700309,
+        "cpu": 0.765954,
+        "diagnostics": "backbone 32.3398 -> 13.0859 papers=192 CPU=0.042906\nrefit 13.0859 -> 9.83594 accepted=256 rejected=0\nexact_refit accepted=100 gain=1.09033 snapshot=0.128147 forward=0.035429 finite=94.8726 CPU=0.499887\nPrepCPU=0.700309\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=28264\nPathFallbacks=0 FinishCPU=0.765954\nScore = 13502\n"
+      }
+    ]
+  },
+  {
+    "seed": 99,
+    "sha256": "fea932c965c89ab396342f7ded2a5371959629a96dda0ae9c30b512969686453",
+    "cases": [
+      {
+        "variant": "reference",
+        "score": 13629,
+        "prep": 0.575968,
+        "cpu": 0.653148,
+        "diagnostics": "backbone 31.9648 -> 12.9727 papers=192 CPU=0.042372\nrefit 12.9727 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13574 snapshot=0.134958 forward=0.027626 finite=97.04 CPU=0.368065\nPrepCPU=0.575968\nPathFallbacks=0 FinishCPU=0.653148\nScore = 13629\n"
+      },
+      {
+        "variant": "fast",
+        "score": 13629,
+        "prep": 0.500642,
+        "cpu": 0.567616,
+        "diagnostics": "backbone 31.9648 -> 12.9727 papers=192 CPU=0.044641\nrefit 12.9727 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13574 snapshot=0.104305 forward=0.023614 finite=97.04 CPU=0.323684\nPrepCPU=0.500642\nR7FinalCalls=3584 R7FinalFallbacks=0 R7FinalInsertions=27752\nPathFallbacks=0 FinishCPU=0.567616\nScore = 13629\n"
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "source_sha256": "72c1acba09cedc2d2f3d92f576a3314bc66fdc42fa323cf391176e845ed416a8",
+  "ubsan": true,
+  "cases": [
+    {
+      "learning": 10.0,
+      "selection": 20.0,
+      "seed": 0,
+      "score": 13773,
+      "moves": 13773,
+      "errors": 0,
+      "max_moves": 34,
+      "selected_model": 32,
+      "models": 2,
+      "states": 128,
+      "prep_cpu": 2.41043,
+      "cpu": 2.70931,
+      "diagnostics": "backbone 32.7344 -> 13.2812 papers=192 CPU=0.154836\nrefit 13.2812 -> 9.74609 accepted=256 rejected=0\nTrain model=32 CPU=0.770183\nbackbone 32.1094 -> 12.8203 papers=192 CPU=0.841574\nrefit 12.8203 -> 9.70703 accepted=256 rejected=0\nTrain model=12345 CPU=1.2409\nRound model=32 cost=436085 states=128\nRound model=12345 cost=440890 states=128\nRound selected=32 states=128 models=2 PrepCPU=2.41043\nFinishCPU=2.70931\nScore = 13773\n"
+    }
+  ],
+  "partial_selection_cases": 0
+}

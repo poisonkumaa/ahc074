@@ -1,0 +1,70 @@
+{
+  "summary": {
+    "count": 10,
+    "mean": 13253.2,
+    "max_cpu": 3.00911,
+    "errors": 0
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13711,
+      "cpu": 2.70001,
+      "diagnostics": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.106673\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.140459 forward=0.028767 finite=93.6035 CPU=0.398207\nPolicyCycle=1\nexact_refit accepted=102 gain=0.902832 snapshot=0.152393 forward=0.027572 finite=93.6938 CPU=0.351261\nPolicyCycle=2\nexact_refit accepted=89 gain=0.82666 snapshot=0.126468 forward=0.029471 finite=94.0073 CPU=0.382155\nPolicyCycle=3\nexact_refit accepted=96 gain=0.895996 snapshot=0.129932 forward=0.028028 finite=94.6079 CPU=0.404027\nPrepCPU=2.6261\nPathFallbacks=0 FinishCPU=2.70001\nScore = 13711\n"
+    },
+    {
+      "seed": 1,
+      "score": 13531,
+      "cpu": 3.00911,
+      "diagnostics": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.106389\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.168594 forward=0.030006 finite=94.6426 CPU=0.399886\nPolicyCycle=1\nexact_refit accepted=89 gain=0.807617 snapshot=0.136163 forward=0.026479 finite=94.626 CPU=0.366232\nPolicyCycle=2\nexact_refit accepted=90 gain=0.759277 snapshot=0.153552 forward=0.027055 finite=94.9648 CPU=0.358879\nPolicyCycle=3\nexact_refit accepted=94 gain=0.82666 snapshot=0.227392 forward=0.037241 finite=95.1382 CPU=0.430409\nPrepCPU=2.9267\nPathFallbacks=0 FinishCPU=3.00911\nScore = 13531\n"
+    },
+    {
+      "seed": 2,
+      "score": 13132,
+      "cpu": 2.99933,
+      "diagnostics": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.107037\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.163124 forward=0.029778 finite=95.9019 CPU=0.408703\nPolicyCycle=1\nexact_refit accepted=104 gain=1.05469 snapshot=0.136577 forward=0.026167 finite=95.2163 CPU=0.361936\nPolicyCycle=2\nexact_refit accepted=106 gain=0.905273 snapshot=0.150767 forward=0.028197 finite=95.6182 CPU=0.363672\nPolicyCycle=3\nexact_refit accepted=95 gain=0.908691 snapshot=0.221342 forward=0.038323 finite=95.9331 CPU=0.433434\nPrepCPU=2.91725\nPathFallbacks=0 FinishCPU=2.99933\nScore = 13132\n"
+    },
+    {
+      "seed": 3,
+      "score": 13262,
+      "cpu": 2.6596,
+      "diagnostics": "backbone 32.2227 -> 13.1055 papers=192 CPU=0.109611\nrefit 13.1055 -> 9.80078 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=114 gain=1.15625 snapshot=0.130012 forward=0.025041 finite=95.7388 CPU=0.362037\nPolicyCycle=1\nexact_refit accepted=108 gain=1.04883 snapshot=0.141003 forward=0.027132 finite=96.2173 CPU=0.359322\nPolicyCycle=2\nexact_refit accepted=110 gain=0.936523 snapshot=0.124735 forward=0.026869 finite=96.1602 CPU=0.359572\nPolicyCycle=3\nexact_refit accepted=110 gain=0.98291 snapshot=0.127062 forward=0.027267 finite=95.8896 CPU=0.475525\nPrepCPU=2.58347\nPathFallbacks=0 FinishCPU=2.6596\nScore = 13262\n"
+    },
+    {
+      "seed": 4,
+      "score": 13197,
+      "cpu": 2.65885,
+      "diagnostics": "backbone 32.1641 -> 13.0391 papers=192 CPU=0.110176\nrefit 13.0391 -> 9.6875 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=108 gain=1.07031 snapshot=0.138442 forward=0.026051 finite=96.5073 CPU=0.359952\nPolicyCycle=1\nexact_refit accepted=106 gain=0.941895 snapshot=0.135846 forward=0.026674 finite=96.7397 CPU=0.357639\nPolicyCycle=2\nexact_refit accepted=98 gain=0.971191 snapshot=0.123472 forward=0.026324 finite=96.4302 CPU=0.39488\nPolicyCycle=3\nexact_refit accepted=92 gain=0.855957 snapshot=0.181848 forward=0.036508 finite=96.5366 CPU=0.375609\nPrepCPU=2.58069\nPathFallbacks=0 FinishCPU=2.65885\nScore = 13197\n"
+    },
+    {
+      "seed": 5,
+      "score": 13296,
+      "cpu": 2.55229,
+      "diagnostics": "backbone 32.7109 -> 13.1953 papers=192 CPU=0.109989\nrefit 13.1953 -> 9.86328 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=117 gain=1.21387 snapshot=0.140886 forward=0.027058 finite=97.4517 CPU=0.374177\nPolicyCycle=1\nexact_refit accepted=97 gain=0.874512 snapshot=0.137893 forward=0.028558 finite=97.6392 CPU=0.368094\nPolicyCycle=2\nexact_refit accepted=111 gain=0.973145 snapshot=0.125199 forward=0.027043 finite=97.4258 CPU=0.354837\nPolicyCycle=3\nexact_refit accepted=109 gain=0.987305 snapshot=0.111624 forward=0.023707 finite=97.8789 CPU=0.341403\nPrepCPU=2.4716\nPathFallbacks=0 FinishCPU=2.55229\nScore = 13296\n"
+    },
+    {
+      "seed": 6,
+      "score": 13201,
+      "cpu": 2.68032,
+      "diagnostics": "backbone 32.7344 -> 13.0742 papers=192 CPU=0.108587\nrefit 13.0742 -> 9.92578 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=105 gain=1.10596 snapshot=0.183121 forward=0.02457 finite=96.667 CPU=0.378532\nPolicyCycle=1\nexact_refit accepted=96 gain=0.873535 snapshot=0.164176 forward=0.029253 finite=96.4912 CPU=0.368985\nPolicyCycle=2\nexact_refit accepted=96 gain=0.743164 snapshot=0.126382 forward=0.026755 finite=96.7319 CPU=0.379032\nPolicyCycle=3\nexact_refit accepted=99 gain=0.842285 snapshot=0.144364 forward=0.027727 finite=96.1714 CPU=0.357359\nPrepCPU=2.60292\nPathFallbacks=0 FinishCPU=2.68032\nScore = 13201\n"
+    },
+    {
+      "seed": 7,
+      "score": 13221,
+      "cpu": 2.61535,
+      "diagnostics": "backbone 32.4844 -> 13.0586 papers=192 CPU=0.106814\nrefit 13.0586 -> 9.64844 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=89 gain=0.830078 snapshot=0.140083 forward=0.025908 finite=95.1895 CPU=0.399479\nPolicyCycle=1\nexact_refit accepted=94 gain=0.870605 snapshot=0.139312 forward=0.027301 finite=95.1553 CPU=0.355169\nPolicyCycle=2\nexact_refit accepted=85 gain=0.733398 snapshot=0.123365 forward=0.026145 finite=94.9595 CPU=0.387296\nPolicyCycle=3\nexact_refit accepted=93 gain=0.807617 snapshot=0.122589 forward=0.026787 finite=94.7549 CPU=0.349997\nPrepCPU=2.53827\nPathFallbacks=0 FinishCPU=2.61535\nScore = 13221\n"
+    },
+    {
+      "seed": 8,
+      "score": 13087,
+      "cpu": 2.58207,
+      "diagnostics": "backbone 32.332 -> 12.9609 papers=192 CPU=0.104601\nrefit 12.9609 -> 9.59375 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=107 gain=1.09814 snapshot=0.144091 forward=0.028018 finite=95.5669 CPU=0.396777\nPolicyCycle=1\nexact_refit accepted=99 gain=1.00391 snapshot=0.14163 forward=0.026624 finite=95.6333 CPU=0.351464\nPolicyCycle=2\nexact_refit accepted=100 gain=0.906738 snapshot=0.125957 forward=0.029268 finite=95.7515 CPU=0.381108\nPolicyCycle=3\nexact_refit accepted=98 gain=0.856445 snapshot=0.123633 forward=0.027112 finite=95.686 CPU=0.34781\nPrepCPU=2.50878\nPathFallbacks=0 FinishCPU=2.58207\nScore = 13087\n"
+    },
+    {
+      "seed": 9,
+      "score": 12894,
+      "cpu": 1.83319,
+      "diagnostics": "backbone 32.1641 -> 12.9922 papers=192 CPU=0.107408\nrefit 12.9922 -> 9.76562 accepted=256 rejected=0\nPolicyCycle=0\nexact_refit accepted=100 gain=1.11719 snapshot=0.098459 forward=0.018948 finite=95.0679 CPU=0.259744\nPolicyCycle=1\nexact_refit accepted=86 gain=0.838379 snapshot=0.095697 forward=0.019136 finite=94.6431 CPU=0.252887\nPolicyCycle=2\nexact_refit accepted=92 gain=0.762207 snapshot=0.086023 forward=0.020364 finite=94.5762 CPU=0.251901\nPolicyCycle=3\nexact_refit accepted=94 gain=0.766113 snapshot=0.088292 forward=0.019253 finite=94.3828 CPU=0.25958\nPrepCPU=1.78106\nPathFallbacks=0 FinishCPU=1.83319\nScore = 12894\n"
+    }
+  ]
+}

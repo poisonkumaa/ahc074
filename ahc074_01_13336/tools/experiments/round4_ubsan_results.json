@@ -1,0 +1,16 @@
+{
+  "source_sha256": "b357bd95e318e736b9552672c09e718fd442f77bfb8facbb35a9a0e61569a6e9",
+  "ubsan": true,
+  "cases": [
+    {
+      "learning": 20,
+      "refinement": 30,
+      "seed": 0,
+      "score": 13479,
+      "errors": 0,
+      "max_moves": 31,
+      "cpu": 2.50292,
+      "diagnostics": "backbone 32.1094 -> 12.8203 papers=192 CPU=0.109091\nrefit 12.8203 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.03223 CPU=1.50245\nPrepCPU=2.36994\nPathFallbacks=0 FinishCPU=2.50292\nScore = 13479\n"
+    }
+  ]
+}

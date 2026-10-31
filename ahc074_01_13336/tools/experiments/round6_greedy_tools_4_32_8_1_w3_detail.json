@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 14465.333333333334,
+    "errors": 0,
+    "max_cpu": 1.66897,
+    "max_prep": 1.58143,
+    "min_cpu": 1.65014,
+    "average_cpu": 1.6595266666666666,
+    "initial_complete": 3,
+    "refit_present": 3,
+    "repetitions": {
+      "0": 0
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 14396,
+      "errors": 0,
+      "cpu": 1.65947,
+      "prep": 1.57121,
+      "repetitions": null,
+      "snapshot": 0.147674,
+      "forward": 0.029129,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 30,
+      "log": "Greedy allocation 32.1094 -> 12.1523 papers=192 CPU=0.484377\n32:4 33:4 34:4 35:3 36:2 37:4 38:3 39:4 40:4 41:4 42:4 43:4 44:3 45:4 46:4 47:4 48:4 49:4 50:4 51:4 52:4 53:4 54:4 55:4 56:4 57:4 58:4 59:4 60:4 61:4 62:4 63:4 64:4 \nrefit 12.1523 -> 9.37109 accepted=256 rejected=0\nexact_refit accepted=87 gain=0.614746 snapshot=0.147674 forward=0.029129 finite=96.8901 CPU=0.775\nPrepCPU=1.57121\nPathFallbacks=0 FinishCPU=1.65947\nScore = 14396\n"
+    },
+    {
+      "seed": 1,
+      "score": 14695,
+      "errors": 0,
+      "cpu": 1.65014,
+      "prep": 1.56227,
+      "repetitions": null,
+      "snapshot": 0.155426,
+      "forward": 0.028607,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 31,
+      "log": "Greedy allocation 32.6367 -> 12.2969 papers=192 CPU=0.494911\n32:4 33:2 34:4 35:2 36:4 37:3 38:4 39:4 40:4 41:4 42:4 43:4 44:4 45:4 46:4 47:4 48:4 49:4 50:4 51:4 52:4 53:4 54:4 55:4 56:4 57:4 58:4 59:4 60:4 61:4 62:4 63:4 64:4 \nrefit 12.2969 -> 9.66797 accepted=256 rejected=0\nexact_refit accepted=87 gain=0.623047 snapshot=0.155426 forward=0.028607 finite=97.6958 CPU=0.747909\nPrepCPU=1.56227\nPathFallbacks=0 FinishCPU=1.65014\nScore = 14695\n"
+    },
+    {
+      "seed": 2,
+      "score": 14305,
+      "errors": 0,
+      "cpu": 1.66897,
+      "prep": 1.58143,
+      "repetitions": null,
+      "snapshot": 0.169034,
+      "forward": 0.030163,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 31,
+      "log": "Greedy allocation 32.5781 -> 12.2031 papers=192 CPU=0.469793\n32:4 33:4 34:3 35:4 36:2 37:3 38:4 39:3 40:4 41:4 42:4 43:4 44:4 45:4 46:4 47:4 48:4 49:4 50:4 51:4 52:4 53:4 54:4 55:4 56:4 57:4 58:4 59:4 60:4 61:4 62:4 63:4 64:4 \nrefit 12.2031 -> 9.50781 accepted=256 rejected=0\nexact_refit accepted=95 gain=0.626465 snapshot=0.169034 forward=0.030163 finite=98.6748 CPU=0.784678\nPrepCPU=1.58143\nPathFallbacks=0 FinishCPU=1.66897\nScore = 14305\n"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+ dp.public_data(A);vector<array<double,PrefixDP::F>>features;vector<double>value;
+ mt19937 vrng(972451);vector<int>sequence(P);iota(sequence.begin(),sequence.end(),0);shuffle(sequence.begin(),sequence.end(),vrng);
+ vector<int>future=sequence;shuffle(future.begin(),future.end(),vrng);int samples=argc>2?atoi(argv[2]):16;
+ for(int r=0;r<P+32;r++){
+  int product=r<32?vrng()%P:sequence[r-32],moves;auto chosen=dp.solve(order,A[product],moves);vector<char>selected(papers.size());for(int k:chosen)selected[k]=true;
+  for(int it=0;it<moves;it++){auto[from,to]=GlobalPrefix::best_move(order,length,selected);if(from<0)abort();int k=order[from];order.erase(order.begin()+from);order.insert(order.begin()+to,k);}
+  if(r<32)continue;
+  features.push_back(dp.features(order));dp.prepare(order);double avg=0;for(int s=0;s<samples;s++){int cost;dp.solve_prepared(A[future[s]],cost,false);avg+=cost;}value.push_back(avg/samples);
+ }
+ constexpr int F=PrefixDP::F;double matrix[F][F+1]{};double lambda=argc>1?atof(argv[1]):20;
+ for(int v=0;v<(int)value.size();v++)for(int i=0;i<F;i++){matrix[i][F]+=features[v][i]*value[v];for(int j=0;j<F;j++)matrix[i][j]+=features[v][i]*features[v][j];}
+ for(int i=0;i<F-1;i++)matrix[i][i]+=lambda;
+ for(int i=0;i<F;i++){int p=i;for(int j=i+1;j<F;j++)if(abs(matrix[j][i])>abs(matrix[p][i]))p=j;for(int j=i;j<=F;j++)swap(matrix[i][j],matrix[p][j]);double x=matrix[i][i];for(int j=i;j<=F;j++)matrix[i][j]/=x;for(int r=0;r<F;r++)if(r!=i){double x=matrix[r][i];for(int j=i;j<=F;j++)matrix[r][j]-=x*matrix[i][j];}}
+ array<double,F>weights;for(int i=0;i<F;i++)weights[i]=matrix[i][F];double mean=accumulate(value.begin(),value.end(),0.)/value.size(),sse=0,variance=0;
+ for(int v=0;v<(int)value.size();v++){double pred=inner_product(weights.begin(),weights.end(),features[v].begin(),0.);sse+=(pred-value[v])*(pred-value[v]);variance+=(value[v]-mean)*(value[v]-mean);}
+ cerr<<"Fit R2="<<1-sse/variance<<" mean="<<mean<<" weights=";for(double w:weights)cerr<<w<<",";cerr<<" CPU="<<double(clock())/CLOCKS_PER_SEC<<endl;
+ double regular=argc>3?atof(argv[3]):.1;dp.set_weights(weights,regular);if(argc>4)dp.primary=atoi(argv[4]);iota(order.begin(),order.end(),0);

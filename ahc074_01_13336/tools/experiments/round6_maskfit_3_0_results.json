@@ -1,0 +1,28 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 93480.33333333333,
+    "max_cpu": 1.26174,
+    "errors": 0
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 95411,
+      "cpu": 1.23592,
+      "diagnostics": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.110503\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.153034 forward=0.028575 finite=93.6035 CPU=0.390184\nMaskRemoved=0\nFinishCPU=1.23592\nScore = 95411\n"
+    },
+    {
+      "seed": 1,
+      "score": 94564,
+      "cpu": 1.25851,
+      "diagnostics": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.110392\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.152929 forward=0.028187 finite=94.6426 CPU=0.397043\nMaskRemoved=0\nFinishCPU=1.25851\nScore = 94564\n"
+    },
+    {
+      "seed": 2,
+      "score": 90466,
+      "cpu": 1.26174,
+      "diagnostics": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.110217\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.15214 forward=0.029133 finite=95.9019 CPU=0.408818\nMaskRemoved=0\nFinishCPU=1.26174\nScore = 90466\n"
+    }
+  ]
+}

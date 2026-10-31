@@ -1,0 +1,28 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 13254.666666666666,
+    "max_cpu": 1.04706,
+    "errors": 0
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13254,
+      "cpu": 1.00141,
+      "diagnostics": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.043119\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.158233 forward=0.029021 finite=93.6035 CPU=0.406262\nPrepCPU=0.64559\nJointDP=5449 Changed=386 JointFallback=0\nPathFallbacks=0 FinishCPU=1.00141\nScore = 13254\n"
+    },
+    {
+      "seed": 1,
+      "score": 13454,
+      "cpu": 1.01642,
+      "diagnostics": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.043649\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.15978 forward=0.029821 finite=94.6426 CPU=0.437659\nPrepCPU=0.680147\nJointDP=5529 Changed=361 JointFallback=0\nPathFallbacks=0 FinishCPU=1.01642\nScore = 13454\n"
+    },
+    {
+      "seed": 2,
+      "score": 13056,
+      "cpu": 1.04706,
+      "diagnostics": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.043441\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.15865 forward=0.029423 finite=95.9019 CPU=0.43966\nPrepCPU=0.681149\nJointDP=5465 Changed=407 JointFallback=0\nPathFallbacks=0 FinishCPU=1.04706\nScore = 13056\n"
+    }
+  ]
+}

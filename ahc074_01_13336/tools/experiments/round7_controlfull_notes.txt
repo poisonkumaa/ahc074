@@ -1,0 +1,67 @@
+Round 7: intrinsic fixed-goal control variate (not adopted)
+========================================================
+
+Only round7_controlfull* experiment files were created. main.cpp is unchanged.
+The design, exact R8 refit, goal-selection DP, and teacher are the baseline.
+Only terminal insertion tie-breaking is changed. If direct_moves cannot
+realize the proposed terminal permutation in the exact minimum number of
+moves, the existing legal shortest-path fallback is used.
+
+Reference goal construction:
+For each of the 256 public products, a one-dimensional DP finds a minimum
+number of matching prefix segments. The selected paper IDs form a fixed
+goal. Its membership is stored as four 64-bit product masks per paper.
+Another 64-bit mask per paper tracks those fixed goals for the same product
+IDs as the existing dynamic FIFO goal history. The initial sample uses the
+same shuffle as selection_teacher; real requests replace the same FIFO bit
+in both histories only after answering that request.
+
+For any suffix set of papers relevant to a mandatory-removal condition,
+the measured access score is
+  4 * popcount(dynamic FIFO union)
+  + beta * (popcount(fixed full-256 union)
+            - 4 * popcount(fixed FIFO union)).
+All six masks use the original exact OR / additional-bit insertion formula.
+No product frequencies, DP distance encoding, or future input are changed.
+This is a variance-reduction heuristic, not a claim of strict unbiasedness:
+the FIFO goals and current paper order are statistically dependent, and
+the next product excludes the current one whereas the exact control uses
+the unconditional 256-product mean.
+
+Validation:
+  beta=0, R8: seeds 0, 1, 2 match baseline stdout byte-for-byte.
+  Output bytes: 103815, 104004, 102094.
+  Scores: 13343, 13444, 13043.
+  CONTROLFULL_CHECK recomputes the full insertion quality from scratch at
+  every insertion position and checks the incremental difference. Seed 0,
+  beta=1 passed all assertions, and stdout equals the non-check binary.
+  All official tester evaluations had E=0 and respected 384 moves/query.
+
+Scores (fixed R8, diagnostic training limits 100 seconds, 2 workers):
+  Baseline first 3:  13276.6667
+  beta .5 first 3:   13312.6667
+  beta 1 first 3:    13361.0000
+  beta 2 first 3:    13460.3333
+  Baseline first 10: 13265.5000
+  beta .5 first 10:  13290.2000 (+24.7)
+  beta 1 first 10:   13378.2000 (+112.7)
+  beta .5 max/mean CPU .8356/.7340 seconds in this run.
+  beta 1 max/mean CPU .9133/.7641 seconds in this run.
+
+No configuration improved by the requested >=20 points on 10 seeds, so no
+30/100-seed or production-deadline run was performed. The fixed intrinsic
+goal has about 9.6 records, whereas dynamic minimum-move goals often include
+many additional zero-cost records (previous measurements average ~16.6).
+That difference may limit correlation of the control with actual access
+cost; it is a hypothesis, not a measured causal explanation.
+
+Build and CLI:
+  python3 tools/experiments/round7_controlfull_build.py
+  g++ -O3 -std=c++17 -DAHC_LEARNING_BUDGET=100 \
+    -DAHC_REFINEMENT_BUDGET=100 tools/experiments/round7_controlfull.cpp \
+    -o tools/experiments/round7_controlfull
+  round7_controlfull beta repetitions
+  python3 tools/experiments/round7_controlfull_verify.py
+
+Validation JSON is round7_controlfull_verify.json; official test summaries
+are round7_controlfull_tools_<beta>_8_w2_detail.json.

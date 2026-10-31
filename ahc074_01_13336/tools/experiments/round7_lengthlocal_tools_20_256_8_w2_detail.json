@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 13330.666666666666,
+    "errors": 0,
+    "max_cpu": 11.5004,
+    "max_prep": 11.4288,
+    "min_cpu": 9.27143,
+    "average_cpu": 10.693109999999999,
+    "initial_complete": 3,
+    "refit_present": 3,
+    "repetitions": {
+      "0": 0
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13286,
+      "errors": 0,
+      "cpu": 11.3075,
+      "prep": 11.2329,
+      "repetitions": null,
+      "snapshot": 0.133979,
+      "forward": 0.026614,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 30,
+      "log": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.059907\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.133979 forward=0.026614 finite=93.6035 CPU=0.369086\nLengthPass=0 before=3498 after=3480 candidates=394 paper=137 length=59->60 CPU=0.573047\nLengthPass=1 before=3475 after=3464 candidates=394 paper=63 length=49->48 CPU=1.07938\nLengthPass=2 before=3491 after=3482 candidates=394 paper=70 length=50->49 CPU=1.6398\nLengthPass=3 before=3472 after=3461 candidates=394 paper=44 length=45->44 CPU=2.14167\nLengthPass=4 before=3480 after=3470 candidates=394 paper=46 length=45->44 CPU=2.65316\nLengthPass=5 before=3482 after=3476 candidates=396 paper=48 length=46->45 CPU=3.17963\nLengthPass=6 before=3474 after=3467 candidates=396 paper=73 length=51->50 CPU=3.69877\nLengthPass=7 before=3462 after=3457 candidates=396 paper=51 length=46->45 CPU=4.21039\nLengthPass=8 before=3455 after=3450 candidates=396 paper=177 length=63->62 CPU=4.72294\nLengthPass=9 before=3452 after=3448 candidates=396 paper=91 length=53->52 CPU=5.22968\nLengthPass=10 before=3439 after=3423 candidates=396 paper=168 length=62->63 CPU=5.76749\nLengthPass=11 before=3461 after=3448 candidates=396 paper=65 length=49->48 CPU=6.29553\nLengthPass=12 before=3499 after=3491 candidates=396 paper=156 length=61->60 CPU=6.80786\nLengthPass=13 before=3455 after=3450 candidates=396 paper=133 length=58->57 CPU=7.35607\nLengthPass=14 before=3446 after=3431 candidates=396 paper=160 length=61->60 CPU=7.95632\nLengthPass=15 before=3487 after=3466 candidates=396 paper=166 length=62->63 CPU=8.48673\nLengthPass=16 before=3517 after=3499 candidates=396 paper=153 length=60->61 CPU=8.98945\nLengthPass=17 before=3507 after=3491 candidates=396 paper=149 length=60->61 CPU=9.55372\nLengthPass=18 before=3466 after=3452 candidates=396 paper=148 length=60->61 CPU=10.083\nLengthPass=19 before=3490 after=3474 candidates=396 paper=163 length=61->60 CPU=10.6373\nLengthAccepted=20\nPrepCPU=11.2329\nPathFallbacks=24 FinishCPU=11.3075\nScore = 13286\n"
+    },
+    {
+      "seed": 1,
+      "score": 13613,
+      "errors": 0,
+      "cpu": 11.5004,
+      "prep": 11.4288,
+      "repetitions": null,
+      "snapshot": 0.135619,
+      "forward": 0.027009,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 32,
+      "log": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.059971\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.135619 forward=0.027009 finite=94.6426 CPU=0.373565\nLengthPass=0 before=3392 after=3385 candidates=402 paper=87 length=53->54 CPU=0.58148\nLengthPass=1 before=3434 after=3423 candidates=402 paper=77 length=51->50 CPU=1.09395\nLengthPass=2 before=3437 after=3425 candidates=402 paper=147 length=60->61 CPU=1.65867\nLengthPass=3 before=3425 after=3414 candidates=402 paper=160 length=61->60 CPU=2.16736\nLengthPass=4 before=3462 after=3453 candidates=402 paper=167 length=62->63 CPU=2.69089\nLengthPass=5 before=3444 after=3422 candidates=402 paper=163 length=61->60 CPU=3.22939\nLengthPass=6 before=3432 after=3418 candidates=402 paper=161 length=61->60 CPU=3.74961\nLengthPass=7 before=3421 after=3401 candidates=402 paper=174 length=63->62 CPU=4.27439\nLengthPass=8 before=3432 after=3424 candidates=402 paper=79 length=52->51 CPU=4.79605\nLengthPass=9 before=3461 after=3445 candidates=402 paper=149 length=60->61 CPU=5.31633\nLengthPass=10 before=3403 after=3397 candidates=402 paper=81 length=52->51 CPU=5.86813\nLengthPass=11 before=3400 after=3393 candidates=404 paper=83 length=53->52 CPU=6.38889\nLengthPass=12 before=3421 after=3411 candidates=404 paper=175 length=63->62 CPU=6.91342\nLengthPass=13 before=3398 after=3385 candidates=404 paper=153 length=60->59 CPU=7.47532\nLengthPass=14 before=3393 after=3385 candidates=404 paper=110 length=56->57 CPU=8.11053\nLengthPass=15 before=3397 after=3391 candidates=404 paper=84 length=53->52 CPU=8.62392\nLengthPass=16 before=3399 after=3397 candidates=404 paper=47 length=45->44 CPU=9.14299\nLengthPass=17 before=3405 after=3396 candidates=404 paper=86 length=53->52 CPU=9.73938\nLengthPass=18 before=3384 after=3377 candidates=404 paper=154 length=60->59 CPU=10.2633\nLengthPass=19 before=3437 after=3428 candidates=404 paper=73 length=51->52 CPU=10.8279\nLengthAccepted=20\nPrepCPU=11.4288\nPathFallbacks=34 FinishCPU=11.5004\nScore = 13613\n"
+    },
+    {
+      "seed": 2,
+      "score": 13093,
+      "errors": 0,
+      "cpu": 9.27143,
+      "prep": 9.2156,
+      "repetitions": null,
+      "snapshot": 0.122155,
+      "forward": 0.021623,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 31,
+      "log": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.036708\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.122155 forward=0.021623 finite=95.9019 CPU=0.274568\nLengthPass=0 before=3475 after=3447 candidates=404 paper=166 length=62->63 CPU=0.472955\nLengthPass=1 before=3470 after=3447 candidates=404 paper=167 length=62->63 CPU=0.89665\nLengthPass=2 before=3497 after=3472 candidates=404 paper=171 length=62->61 CPU=1.36697\nLengthPass=3 before=3520 after=3502 candidates=404 paper=155 length=61->62 CPU=1.79453\nLengthPass=4 before=3447 after=3424 candidates=404 paper=163 length=61->62 CPU=2.21662\nLengthPass=5 before=3514 after=3494 candidates=404 paper=169 length=62->63 CPU=2.64442\nLengthPass=6 before=3482 after=3466 candidates=404 paper=133 length=58->59 CPU=3.10675\nLengthPass=7 before=3515 after=3492 candidates=404 paper=130 length=58->59 CPU=3.5328\nLengthPass=8 before=3487 after=3468 candidates=404 paper=137 length=59->60 CPU=3.95823\nLengthPass=9 before=3514 after=3500 candidates=404 paper=110 length=56->55 CPU=4.38381\nLengthPass=10 before=3475 after=3461 candidates=404 paper=71 length=50->51 CPU=4.83035\nLengthPass=11 before=3486 after=3476 candidates=404 paper=112 length=56->57 CPU=5.26917\nLengthPass=12 before=3526 after=3508 candidates=404 paper=145 length=59->60 CPU=5.7606\nLengthPass=13 before=3480 after=3456 candidates=404 paper=112 length=57->58 CPU=6.20846\nLengthPass=14 before=3479 after=3465 candidates=404 paper=123 length=57->58 CPU=6.63863\nLengthPass=15 before=3487 after=3473 candidates=404 paper=121 length=57->58 CPU=7.06454\nLengthPass=16 before=3473 after=3454 candidates=404 paper=87 length=53->52 CPU=7.48776\nLengthPass=17 before=3459 after=3442 candidates=404 paper=141 length=59->60 CPU=7.91276\nLengthPass=18 before=3514 after=3490 candidates=404 paper=147 length=60->61 CPU=8.33268\nLengthPass=19 before=3503 after=3490 candidates=404 paper=175 length=63->62 CPU=8.75754\nLengthAccepted=20\nPrepCPU=9.2156\nPathFallbacks=19 FinishCPU=9.27143\nScore = 13093\n"
+    }
+  ]
+}

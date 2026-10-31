@@ -1,0 +1,102 @@
+{
+  "parameters": {
+    "count": 10,
+    "profile": 1,
+    "rotations": [
+      0
+    ],
+    "repetitions": 8,
+    "cutoff": 57,
+    "upper": 8,
+    "lower": 4,
+    "workers": 1,
+    "binary": "round5_design_length",
+    "extra": [
+      "12",
+      "3",
+      "16"
+    ]
+  },
+  "cases": [
+    {
+      "rotation": 0,
+      "seed": 0,
+      "score": 13483,
+      "cpu": 1.66859,
+      "max_moves": 29,
+      "diagnostics": "backbone 32.1094 -> 12.6797 papers=192 CPU=0.116985\nrefit 12.6797 -> 9.44922 accepted=256 rejected=0\nexact_refit accepted=100 gain=0.943848 CPU=0.682418\nlength candidate=131 58->57 frozen=-20 rollout=447\nlength candidate=131 58->59 frozen=-19 rollout=121\nlength candidate=158 61->62 frozen=-16 rollout=498\nlength selected=-1 proposals=14 gain=0 CPU=0.217907\nPrepCPU=1.59887\nPathFallbacks=0 FinishCPU=1.66859\nScore = 13483\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 1,
+      "score": 13605,
+      "cpu": 1.81071,
+      "max_moves": 31,
+      "diagnostics": "backbone 32.6367 -> 12.8398 papers=192 CPU=0.131269\nrefit 12.8398 -> 9.57422 accepted=256 rejected=0\nexact_refit accepted=96 gain=0.897461 CPU=0.686329\nlength candidate=127 57->58 frozen=-9 rollout=-144\nlength candidate=130 58->57 frozen=-9 rollout=-3\nlength candidate=152 60->61 frozen=-8 rollout=160\nlength selected=0 proposals=11 gain=0.0352941 CPU=0.259587\nPrepCPU=1.71817\nPathFallbacks=0 FinishCPU=1.81071\nScore = 13605\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 2,
+      "score": 13097,
+      "cpu": 1.83425,
+      "max_moves": 32,
+      "diagnostics": "backbone 32.5781 -> 12.8008 papers=192 CPU=0.136488\nrefit 12.8008 -> 9.55859 accepted=256 rejected=0\nexact_refit accepted=100 gain=0.993652 CPU=0.654848\nlength candidate=163 61->60 frozen=-15 rollout=40\nlength candidate=187 64->63 frozen=-13 rollout=-394\nlength candidate=147 60->59 frozen=-13 rollout=240\nlength selected=1 proposals=11 gain=0.0965686 CPU=0.338487\nPrepCPU=1.76266\nPathFallbacks=5 FinishCPU=1.83425\nScore = 13097\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 3,
+      "score": 13187,
+      "cpu": 1.70908,
+      "max_moves": 31,
+      "diagnostics": "backbone 32.2227 -> 12.9492 papers=192 CPU=0.134304\nrefit 12.9492 -> 9.63672 accepted=256 rejected=0\nexact_refit accepted=92 gain=0.886719 CPU=0.603675\nlength candidate=157 61->60 frozen=-20 rollout=-316\nlength candidate=157 61->62 frozen=-20 rollout=-10\nlength candidate=138 59->58 frozen=-11 rollout=-54\nlength selected=0 proposals=15 gain=0.077451 CPU=0.207844\nPrepCPU=1.63637\nPathFallbacks=3 FinishCPU=1.70908\nScore = 13187\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 4,
+      "score": 12961,
+      "cpu": 1.58634,
+      "max_moves": 31,
+      "diagnostics": "backbone 32.1641 -> 12.8008 papers=192 CPU=0.1064\nrefit 12.8008 -> 9.53516 accepted=256 rejected=0\nexact_refit accepted=87 gain=0.827148 CPU=0.611292\nlength candidate=162 61->60 frozen=-13 rollout=34\nlength candidate=156 61->60 frozen=-11 rollout=-399\nlength candidate=125 57->56 frozen=-10 rollout=-82\nlength selected=1 proposals=10 gain=0.0977941 CPU=0.225399\nPrepCPU=1.50254\nPathFallbacks=2 FinishCPU=1.58634\nScore = 12961\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 5,
+      "score": 13630,
+      "cpu": 1.99505,
+      "max_moves": 30,
+      "diagnostics": "backbone 32.7109 -> 12.9258 papers=192 CPU=0.142078\nrefit 12.9258 -> 9.63672 accepted=256 rejected=0\nexact_refit accepted=90 gain=1.0459 CPU=0.759967\nlength candidate=185 64->63 frozen=-14 rollout=3\nlength candidate=138 59->58 frozen=-13 rollout=890\nlength candidate=134 58->59 frozen=-11 rollout=337\nlength selected=-1 proposals=16 gain=0 CPU=0.3126\nPrepCPU=1.88772\nPathFallbacks=0 FinishCPU=1.99505\nScore = 13630\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 6,
+      "score": 13516,
+      "cpu": 1.49811,
+      "max_moves": 33,
+      "diagnostics": "backbone 32.7344 -> 12.8047 papers=192 CPU=0.146567\nrefit 12.8047 -> 9.62109 accepted=256 rejected=0\nexact_refit accepted=101 gain=0.927246 CPU=0.542564\nlength candidate=154 60->59 frozen=-15 rollout=480\nlength candidate=154 60->61 frozen=-13 rollout=667\nlength candidate=185 64->63 frozen=-13 rollout=-187\nlength selected=2 proposals=11 gain=0.0458333 CPU=0.215923\nPrepCPU=1.44307\nPathFallbacks=3 FinishCPU=1.49811\nScore = 13516\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 7,
+      "score": 13505,
+      "cpu": 1.12485,
+      "max_moves": 31,
+      "diagnostics": "backbone 32.4844 -> 12.7695 papers=192 CPU=0.084029\nrefit 12.7695 -> 9.38281 accepted=256 rejected=0\nexact_refit accepted=99 gain=0.910156 CPU=0.425819\nlength candidate=142 59->58 frozen=-15 rollout=40\nlength candidate=139 59->58 frozen=-14 rollout=124\nlength candidate=146 60->59 frozen=-14 rollout=167\nlength selected=-1 proposals=15 gain=0 CPU=0.159086\nPrepCPU=1.0695\nPathFallbacks=0 FinishCPU=1.12485\nScore = 13505\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 8,
+      "score": 13466,
+      "cpu": 1.17111,
+      "max_moves": 31,
+      "diagnostics": "backbone 32.332 -> 12.7422 papers=192 CPU=0.082172\nrefit 12.7422 -> 9.42969 accepted=256 rejected=0\nexact_refit accepted=94 gain=0.857422 CPU=0.481765\nlength candidate=188 64->63 frozen=-16 rollout=301\nlength candidate=165 62->63 frozen=-14 rollout=-566\nlength candidate=139 59->58 frozen=-13 rollout=409\nlength selected=1 proposals=20 gain=0.138725 CPU=0.161956\nPrepCPU=1.1152\nPathFallbacks=0 FinishCPU=1.17111\nScore = 13466\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 9,
+      "score": 13229,
+      "cpu": 1.1558,
+      "max_moves": 30,
+      "diagnostics": "backbone 32.1641 -> 12.7578 papers=192 CPU=0.086548\nrefit 12.7578 -> 9.40625 accepted=256 rejected=0\nexact_refit accepted=92 gain=0.925293 CPU=0.451821\nlength candidate=174 63->62 frozen=-17 rollout=-217\nlength candidate=150 60->59 frozen=-16 rollout=371\nlength candidate=143 59->58 frozen=-14 rollout=169\nlength selected=0 proposals=14 gain=0.0531863 CPU=0.171613\nPrepCPU=1.09733\nPathFallbacks=12 FinishCPU=1.1558\nScore = 13229\n"
+    }
+  ]
+}

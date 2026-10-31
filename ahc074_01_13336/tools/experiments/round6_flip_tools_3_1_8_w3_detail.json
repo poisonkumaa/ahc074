@@ -1,0 +1,88 @@
+{
+  "summary": {
+    "count": 5,
+    "mean": 13532.8,
+    "errors": 0,
+    "max_cpu": 1.43431,
+    "max_prep": 1.31583,
+    "min_cpu": 1.18899,
+    "average_cpu": 1.339086,
+    "initial_complete": 5,
+    "refit_present": 5,
+    "repetitions": {
+      "0": 0
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13561,
+      "errors": 0,
+      "cpu": 1.39053,
+      "prep": 1.27635,
+      "repetitions": null,
+      "snapshot": 0.167417,
+      "forward": 0.032136,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 30,
+      "log": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.130651\nFlip objective=12.8945->12.8047 accepted=3 weight=1\nrefit 12.8047 -> 9.41016 accepted=256 rejected=0\nexact_refit accepted=111 gain=1.00293 snapshot=0.167417 forward=0.032136 finite=95.5127 CPU=0.453748\nPrepCPU=1.27635\nPathFallbacks=0 FinishCPU=1.39053\nScore = 13561\n"
+    },
+    {
+      "seed": 1,
+      "score": 13820,
+      "errors": 0,
+      "cpu": 1.41755,
+      "prep": 1.29982,
+      "repetitions": null,
+      "snapshot": 0.167817,
+      "forward": 0.031029,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 32,
+      "log": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.128999\nFlip objective=13.0156->12.9766 accepted=3 weight=1\nrefit 12.9766 -> 9.69141 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.15576 snapshot=0.167817 forward=0.031029 finite=94.0444 CPU=0.462955\nPrepCPU=1.29982\nPathFallbacks=0 FinishCPU=1.41755\nScore = 13820\n"
+    },
+    {
+      "seed": 2,
+      "score": 13490,
+      "errors": 0,
+      "cpu": 1.43431,
+      "prep": 1.31583,
+      "repetitions": null,
+      "snapshot": 0.169661,
+      "forward": 0.032004,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 33,
+      "log": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.130719\nFlip objective=12.9766->12.9297 accepted=4 weight=1\nrefit 12.9297 -> 9.58203 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.13818 snapshot=0.169661 forward=0.032004 finite=95.6724 CPU=0.454855\nPrepCPU=1.31583\nPathFallbacks=0 FinishCPU=1.43431\nScore = 13490\n"
+    },
+    {
+      "seed": 3,
+      "score": 13508,
+      "errors": 0,
+      "cpu": 1.26405,
+      "prep": 1.15355,
+      "repetitions": null,
+      "snapshot": 0.135483,
+      "forward": 0.026914,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 33,
+      "log": "backbone 32.2227 -> 13.1055 papers=192 CPU=0.142843\nFlip objective=13.1055->13.0703 accepted=3 weight=1\nrefit 13.0703 -> 9.74219 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.07324 snapshot=0.135483 forward=0.026914 finite=96.0381 CPU=0.380264\nPrepCPU=1.15355\nPathFallbacks=0 FinishCPU=1.26405\nScore = 13508\n"
+    },
+    {
+      "seed": 4,
+      "score": 13285,
+      "errors": 0,
+      "cpu": 1.18899,
+      "prep": 1.06738,
+      "repetitions": null,
+      "snapshot": 0.134188,
+      "forward": 0.026899,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 30,
+      "log": "backbone 32.1641 -> 13.0391 papers=192 CPU=0.10398\nFlip objective=13.0391->12.9648 accepted=4 weight=1\nrefit 12.9648 -> 9.64844 accepted=256 rejected=0\nexact_refit accepted=101 gain=1.14111 snapshot=0.134188 forward=0.026899 finite=95.4287 CPU=0.372553\nPrepCPU=1.06738\nPathFallbacks=0 FinishCPU=1.18899\nScore = 13285\n"
+    }
+  ]
+}

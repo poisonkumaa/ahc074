@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 13276.666666666666,
+    "errors": 0,
+    "max_cpu": 1.42237,
+    "max_prep": 1.34739,
+    "min_cpu": 1.15314,
+    "average_cpu": 1.327,
+    "initial_complete": 3,
+    "refit_present": 3,
+    "repetitions": {
+      "0": 0
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13343,
+      "errors": 0,
+      "cpu": 1.40549,
+      "prep": 1.33066,
+      "repetitions": null,
+      "snapshot": 0.234421,
+      "forward": 0.042405,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 29,
+      "log": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.142443\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.234421 forward=0.042405 finite=93.6035 CPU=0.4674\nUnique representatives=150 longpapers=150\nPrepCPU=1.33066\nPathFallbacks=0 FinishCPU=1.40549\nScore = 13343\n"
+    },
+    {
+      "seed": 1,
+      "score": 13444,
+      "errors": 0,
+      "cpu": 1.42237,
+      "prep": 1.34739,
+      "repetitions": null,
+      "snapshot": 0.238484,
+      "forward": 0.041823,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 30,
+      "log": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.142786\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.238484 forward=0.041823 finite=94.6426 CPU=0.453277\nUnique representatives=150 longpapers=150\nPrepCPU=1.34739\nPathFallbacks=0 FinishCPU=1.42237\nScore = 13444\n"
+    },
+    {
+      "seed": 2,
+      "score": 13043,
+      "errors": 0,
+      "cpu": 1.15314,
+      "prep": 1.08052,
+      "repetitions": null,
+      "snapshot": 0.156614,
+      "forward": 0.028218,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 30,
+      "log": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.114646\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.156614 forward=0.028218 finite=95.9019 CPU=0.383655\nUnique representatives=150 longpapers=150\nPrepCPU=1.08052\nPathFallbacks=0 FinishCPU=1.15314\nScore = 13043\n"
+    }
+  ]
+}

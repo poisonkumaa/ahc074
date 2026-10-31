@@ -1,0 +1,70 @@
+{
+  "summary": {
+    "count": 10,
+    "mean": 13427.8,
+    "max_cpu": 2.41963,
+    "errors": 0
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13487,
+      "cpu": 2.41963,
+      "diagnostics": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.100689\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.24219 snapshot=0.090538 forward=0.014621 finite=94.1943 CPU=0.210766\nbackbone 32.7344 -> 13.2617 papers=192 CPU=0.807033\nrefit 13.2617 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.27637 snapshot=0.081148 forward=0.013583 finite=95.6035 CPU=0.195299\nbackbone 32.0742 -> 13.0039 papers=192 CPU=1.18572\nrefit 13.0039 -> 9.80859 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.56445 snapshot=0.104321 forward=0.018134 finite=96.3535 CPU=0.220824\nbackbone 32.3203 -> 13.125 papers=192 CPU=1.63913\nrefit 13.125 -> 9.72266 accepted=256 rejected=0\nexact_refit accepted=102 gain=1.25586 snapshot=0.072828 forward=0.012946 finite=95.5615 CPU=0.184493\nPortfolioModel=0 Estimate=107089\nPortfolioModel=1 Estimate=106870\nPortfolioModel=2 Estimate=107049\nPortfolioModel=3 Estimate=107490\nPortfolioWinner=1\nPrepCPU=2.33286\nPathFallbacks=0 FinishCPU=2.41963\nScore = 13487\n"
+    },
+    {
+      "seed": 1,
+      "score": 13528,
+      "cpu": 2.40291,
+      "diagnostics": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.100244\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.44727 snapshot=0.088966 forward=0.014797 finite=94.5391 CPU=0.209209\nbackbone 32.3438 -> 13.0391 papers=192 CPU=0.815994\nrefit 13.0391 -> 9.67578 accepted=256 rejected=0\nexact_refit accepted=114 gain=1.40332 snapshot=0.131105 forward=0.019585 finite=96.6895 CPU=0.20685\nbackbone 32.3047 -> 12.9844 papers=192 CPU=1.25593\nrefit 12.9844 -> 9.60547 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.41895 snapshot=0.064625 forward=0.012267 finite=95.9268 CPU=0.170989\nbackbone 32.5625 -> 13.1133 papers=192 CPU=1.61048\nrefit 13.1133 -> 9.74219 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.48633 snapshot=0.078492 forward=0.013452 finite=97.3105 CPU=0.184555\nPortfolioModel=0 Estimate=106940\nPortfolioModel=1 Estimate=107228\nPortfolioModel=2 Estimate=103847\nPortfolioModel=3 Estimate=106599\nPortfolioWinner=2\nPrepCPU=2.30984\nPathFallbacks=0 FinishCPU=2.40291\nScore = 13528\n"
+    },
+    {
+      "seed": 2,
+      "score": 13303,
+      "cpu": 2.36939,
+      "diagnostics": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.097403\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.61914 snapshot=0.087736 forward=0.014644 finite=96.293 CPU=0.204885\nbackbone 32.6602 -> 13.0508 papers=192 CPU=0.782444\nrefit 13.0508 -> 9.69531 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.29492 snapshot=0.118992 forward=0.020374 finite=96.7715 CPU=0.21845\nbackbone 32.375 -> 12.9297 papers=192 CPU=1.2213\nrefit 12.9297 -> 9.66797 accepted=256 rejected=0\nexact_refit accepted=113 gain=1.3418 snapshot=0.109619 forward=0.017891 finite=96.1895 CPU=0.207727\nbackbone 32.4531 -> 13.0859 papers=192 CPU=1.66688\nrefit 13.0859 -> 9.875 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.23145 snapshot=0.070161 forward=0.013464 finite=95.1875 CPU=0.179251\nPortfolioModel=0 Estimate=106591\nPortfolioModel=1 Estimate=107440\nPortfolioModel=2 Estimate=104666\nPortfolioModel=3 Estimate=108960\nPortfolioWinner=2\nPrepCPU=2.28697\nPathFallbacks=0 FinishCPU=2.36939\nScore = 13303\n"
+    },
+    {
+      "seed": 3,
+      "score": 13042,
+      "cpu": 2.25634,
+      "diagnostics": "backbone 32.2227 -> 13.1055 papers=192 CPU=0.097103\nrefit 13.1055 -> 9.80078 accepted=256 rejected=0\nexact_refit accepted=116 gain=1.48926 snapshot=0.072502 forward=0.013481 finite=95.6855 CPU=0.185725\nbackbone 32.4844 -> 13.1523 papers=192 CPU=0.692346\nrefit 13.1523 -> 9.73047 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.4209 snapshot=0.082227 forward=0.013421 finite=94.2451 CPU=0.183529\nbackbone 32.1875 -> 13.1758 papers=192 CPU=1.04\nrefit 13.1758 -> 9.74219 accepted=256 rejected=0\nexact_refit accepted=113 gain=1.55762 snapshot=0.077472 forward=0.01401 finite=95.1279 CPU=0.196943\nbackbone 32.875 -> 13.3672 papers=192 CPU=1.43065\nrefit 13.3672 -> 9.87109 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.4707 snapshot=0.077058 forward=0.013532 finite=95.998 CPU=0.234872\nPortfolioModel=0 Estimate=107593\nPortfolioModel=1 Estimate=107612\nPortfolioModel=2 Estimate=108113\nPortfolioModel=3 Estimate=106999\nPortfolioWinner=3\nPrepCPU=2.16384\nPathFallbacks=0 FinishCPU=2.25634\nScore = 13042\n"
+    },
+    {
+      "seed": 4,
+      "score": 13525,
+      "cpu": 2.29447,
+      "diagnostics": "backbone 32.1641 -> 13.0391 papers=192 CPU=0.100036\nrefit 13.0391 -> 9.6875 accepted=256 rejected=0\nexact_refit accepted=114 gain=1.46777 snapshot=0.075984 forward=0.013858 finite=96.6201 CPU=0.189708\nbackbone 33.0938 -> 13.3789 papers=192 CPU=0.724227\nrefit 13.3789 -> 9.91016 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.30078 snapshot=0.079601 forward=0.013271 finite=94.9688 CPU=0.183559\nbackbone 32.168 -> 12.9766 papers=192 CPU=1.07402\nrefit 12.9766 -> 9.52734 accepted=256 rejected=0\nexact_refit accepted=102 gain=1.2207 snapshot=0.07541 forward=0.01543 finite=93.0078 CPU=0.188199\nbackbone 32.6953 -> 13.0781 papers=192 CPU=1.45471\nrefit 13.0781 -> 9.64453 accepted=256 rejected=0\nexact_refit accepted=111 gain=1.3916 snapshot=0.072844 forward=0.01397 finite=96.8213 CPU=0.258558\nPortfolioModel=0 Estimate=107070\nPortfolioModel=1 Estimate=107591\nPortfolioModel=2 Estimate=107374\nPortfolioModel=3 Estimate=105426\nPortfolioWinner=3\nPrepCPU=2.20558\nPathFallbacks=0 FinishCPU=2.29447\nScore = 13525\n"
+    },
+    {
+      "seed": 5,
+      "score": 13632,
+      "cpu": 2.12386,
+      "diagnostics": "backbone 32.7109 -> 13.1953 papers=192 CPU=0.094955\nrefit 13.1953 -> 9.86328 accepted=256 rejected=0\nexact_refit accepted=122 gain=1.41211 snapshot=0.075922 forward=0.01406 finite=97.4775 CPU=0.187229\nbackbone 32.4961 -> 13.2461 papers=192 CPU=0.711329\nrefit 13.2461 -> 9.75 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.38672 snapshot=0.075679 forward=0.013174 finite=95.5557 CPU=0.185577\nbackbone 32.7305 -> 13.2852 papers=192 CPU=1.06028\nrefit 13.2852 -> 9.87891 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.40918 snapshot=0.08239 forward=0.015539 finite=95.8174 CPU=0.18255\nbackbone 32.5273 -> 12.9883 papers=192 CPU=1.44416\nrefit 12.9883 -> 9.71484 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.52832 snapshot=0.070647 forward=0.013377 finite=95.6104 CPU=0.172662\nPortfolioModel=0 Estimate=107360\nPortfolioModel=1 Estimate=104434\nPortfolioModel=2 Estimate=106058\nPortfolioModel=3 Estimate=107385\nPortfolioWinner=1\nPrepCPU=2.03342\nPathFallbacks=0 FinishCPU=2.12386\nScore = 13632\n"
+    },
+    {
+      "seed": 6,
+      "score": 13397,
+      "cpu": 2.31257,
+      "diagnostics": "backbone 32.7344 -> 13.0742 papers=192 CPU=0.107923\nrefit 13.0742 -> 9.92578 accepted=256 rejected=0\nexact_refit accepted=113 gain=1.3877 snapshot=0.102364 forward=0.013301 finite=96.6553 CPU=0.182743\nbackbone 32.3008 -> 13.1484 papers=192 CPU=0.805462\nrefit 13.1484 -> 9.74609 accepted=256 rejected=0\nexact_refit accepted=116 gain=1.48535 snapshot=0.081102 forward=0.014333 finite=96.0371 CPU=0.181412\nbackbone 32.2578 -> 13.0898 papers=192 CPU=1.15202\nrefit 13.0898 -> 9.73047 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.35938 snapshot=0.078359 forward=0.01537 finite=96.9033 CPU=0.202408\nbackbone 32.6562 -> 13.1133 papers=192 CPU=1.55958\nrefit 13.1133 -> 9.73047 accepted=256 rejected=0\nexact_refit accepted=104 gain=1.48145 snapshot=0.079109 forward=0.015306 finite=94.6816 CPU=0.206282\nPortfolioModel=0 Estimate=106656\nPortfolioModel=1 Estimate=107323\nPortfolioModel=2 Estimate=106939\nPortfolioModel=3 Estimate=106342\nPortfolioWinner=3\nPrepCPU=2.23132\nPathFallbacks=0 FinishCPU=2.31257\nScore = 13397\n"
+    },
+    {
+      "seed": 7,
+      "score": 13345,
+      "cpu": 2.29913,
+      "diagnostics": "backbone 32.4844 -> 13.0586 papers=192 CPU=0.106084\nrefit 13.0586 -> 9.64844 accepted=256 rejected=0\nexact_refit accepted=99 gain=1.21973 snapshot=0.077307 forward=0.013525 finite=95.5771 CPU=0.183143\nbackbone 32.5078 -> 13.207 papers=192 CPU=0.801305\nrefit 13.207 -> 9.71094 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.46973 snapshot=0.080784 forward=0.013392 finite=96.3174 CPU=0.188691\nbackbone 32.4922 -> 13.2031 papers=192 CPU=1.15792\nrefit 13.2031 -> 9.75781 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.41992 snapshot=0.080453 forward=0.015004 finite=95.8213 CPU=0.199651\nbackbone 32.6914 -> 13.0586 papers=192 CPU=1.56159\nrefit 13.0586 -> 9.69531 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.3877 snapshot=0.076318 forward=0.013555 finite=96.0254 CPU=0.216023\nPortfolioModel=0 Estimate=105850\nPortfolioModel=1 Estimate=105584\nPortfolioModel=2 Estimate=106921\nPortfolioModel=3 Estimate=107874\nPortfolioWinner=1\nPrepCPU=2.21322\nPathFallbacks=0 FinishCPU=2.29913\nScore = 13345\n"
+    },
+    {
+      "seed": 8,
+      "score": 13456,
+      "cpu": 2.27075,
+      "diagnostics": "backbone 32.332 -> 12.9609 papers=192 CPU=0.107112\nrefit 12.9609 -> 9.59375 accepted=256 rejected=0\nexact_refit accepted=98 gain=1.26465 snapshot=0.07815 forward=0.013953 finite=95.4199 CPU=0.190557\nbackbone 32.3555 -> 12.957 papers=192 CPU=0.778856\nrefit 12.957 -> 9.62109 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.37402 snapshot=0.07819 forward=0.013307 finite=95.5039 CPU=0.196155\nbackbone 32.3203 -> 13.1055 papers=192 CPU=1.13928\nrefit 13.1055 -> 9.66797 accepted=256 rejected=0\nexact_refit accepted=100 gain=1.21094 snapshot=0.078836 forward=0.014203 finite=95.1924 CPU=0.196965\nbackbone 32.6719 -> 13.1992 papers=192 CPU=1.53808\nrefit 13.1992 -> 9.78125 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.5 snapshot=0.076112 forward=0.014109 finite=95.9502 CPU=0.216459\nPortfolioModel=0 Estimate=106889\nPortfolioModel=1 Estimate=108010\nPortfolioModel=2 Estimate=107121\nPortfolioModel=3 Estimate=106545\nPortfolioWinner=3\nPrepCPU=2.18534\nPathFallbacks=0 FinishCPU=2.27075\nScore = 13456\n"
+    },
+    {
+      "seed": 9,
+      "score": 13563,
+      "cpu": 1.60738,
+      "diagnostics": "backbone 32.1641 -> 12.9922 papers=192 CPU=0.099545\nrefit 12.9922 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=102 gain=1.33594 snapshot=0.055191 forward=0.009927 finite=95.1045 CPU=0.126107\nbackbone 32.2148 -> 12.9414 papers=192 CPU=0.528114\nrefit 12.9414 -> 9.69922 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.53418 snapshot=0.074237 forward=0.01257 finite=95.2939 CPU=0.151309\nbackbone 32.8203 -> 13.2578 papers=192 CPU=0.821725\nrefit 13.2578 -> 9.94531 accepted=256 rejected=0\nexact_refit accepted=99 gain=1.30469 snapshot=0.050939 forward=0.009725 finite=94.5713 CPU=0.139634\nbackbone 32.6797 -> 13.1602 papers=192 CPU=1.10087\nrefit 13.1602 -> 9.88672 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.33301 snapshot=0.059836 forward=0.010429 finite=96.1709 CPU=0.130545\nPortfolioModel=0 Estimate=107064\nPortfolioModel=1 Estimate=107417\nPortfolioModel=2 Estimate=104854\nPortfolioModel=3 Estimate=106292\nPortfolioWinner=2\nPrepCPU=1.55059\nPathFallbacks=0 FinishCPU=1.60738\nScore = 13563\n"
+    }
+  ]
+}

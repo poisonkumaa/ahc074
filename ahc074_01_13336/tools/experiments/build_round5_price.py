@@ -1,0 +1,15 @@
+from pathlib import Path
+d=Path(__file__).resolve().parent;root=d.parents[1]
+s=(root/'main.cpp').read_text()
+s=s.replace('#define AHC_LEARNING_BUDGET 0.5','#define AHC_LEARNING_BUDGET 100').replace('#define AHC_REFINEMENT_BUDGET 1.45','#define AHC_REFINEMENT_BUDGET 100')
+s=s.replace('using namespace std;using U64=uint64_t;','using namespace std;using U64=uint64_t;int usage_strength=64;')
+s=s.replace('unit=regularizer?32:1;', 'unit=usage_strength?128:1;vector<int>usage(K),price(K);')
+s=s.replace('vector<char>selected(K);for(int k:chosen)selected[k]=true;', 'vector<char>selected(K);for(int k:chosen){selected[k]=true;if(r>=128)usage[k]++;}')
+s=s.replace(' vector<array<int,192>>start(P);',' for(int k=0;k<K;k++)price[k]=-int((1LL*usage_strength*usage[k]+M/2)/M);\n vector<array<int,192>>start(P);')
+s=s.replace('array<array<uint16_t,193>,65>F,B;', 'array<array<int16_t,193>,65>F,B;')
+s=s.replace('int cost=regularizer;', 'int cost=price[z];')
+s=s.replace('if(q<h)return regularizer;', 'if(q<h)return price[z];')
+s=s.replace('unit*(moved+(upper>moved))+regularizer;', 'unit*(moved+(upper>moved))+price[z];')
+s=s.replace('int main(){','int main(int argc,char**argv){')
+s=s.replace(' exact_state_refit(A,papers,1,43,32,8,0);', ' usage_strength=argc>1?atoi(argv[1]):64;int repetitions=argc>2?atoi(argv[2]):8;\n exact_state_refit(A,papers,1,43,32,repetitions,0);')
+(d/'round5_price.cpp').write_text(s)

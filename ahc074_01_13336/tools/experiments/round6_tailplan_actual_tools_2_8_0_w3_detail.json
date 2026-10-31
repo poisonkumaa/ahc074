@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 13781.0,
+    "errors": 0,
+    "max_cpu": 1.59953,
+    "max_prep": 1.17409,
+    "min_cpu": 1.59526,
+    "average_cpu": 1.5971133333333334,
+    "initial_complete": 3,
+    "refit_present": 3,
+    "repetitions": {
+      "0": 0
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13748,
+      "errors": 0,
+      "cpu": 1.59526,
+      "prep": 1.16098,
+      "repetitions": null,
+      "snapshot": 0.154703,
+      "forward": 0.028838,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 31,
+      "log": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.107738\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.154703 forward=0.028838 finite=93.6035 CPU=0.410359\nTail orientations=2 PrepCPU=1.16098\nFinishCPU=1.59526\nScore = 13748\n"
+    },
+    {
+      "seed": 1,
+      "score": 14042,
+      "errors": 0,
+      "cpu": 1.59953,
+      "prep": 1.15443,
+      "repetitions": null,
+      "snapshot": 0.157345,
+      "forward": 0.028808,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 35,
+      "log": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.104527\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.157345 forward=0.028808 finite=94.6426 CPU=0.404864\nTail orientations=2 PrepCPU=1.15443\nFinishCPU=1.59953\nScore = 14042\n"
+    },
+    {
+      "seed": 2,
+      "score": 13553,
+      "errors": 0,
+      "cpu": 1.59655,
+      "prep": 1.17409,
+      "repetitions": null,
+      "snapshot": 0.155771,
+      "forward": 0.028557,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 31,
+      "log": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.105896\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.155771 forward=0.028557 finite=95.9019 CPU=0.416303\nTail orientations=2 PrepCPU=1.17409\nFinishCPU=1.59655\nScore = 13553\n"
+    }
+  ]
+}

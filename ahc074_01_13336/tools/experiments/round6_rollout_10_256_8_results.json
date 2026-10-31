@@ -1,0 +1,70 @@
+{
+  "summary": {
+    "count": 10,
+    "mean": 13410.4,
+    "max_cpu": 1.66766,
+    "errors": 0
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13382,
+      "cpu": 1.57172,
+      "diagnostics": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.112753\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nRolloutBest=3177 Rejected=11\nexact_refit accepted=62 gain=0.661133 snapshot=0.17615 forward=0.028611 finite=93.6035 CPU=0.744214\nPrepCPU=1.48414\nPathFallbacks=0 FinishCPU=1.57172\nScore = 13382\n"
+    },
+    {
+      "seed": 1,
+      "score": 13792,
+      "cpu": 1.58488,
+      "diagnostics": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.115532\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nRolloutBest=3292 Rejected=13\nexact_refit accepted=37 gain=0.456543 snapshot=0.150586 forward=0.02911 finite=94.6426 CPU=0.754429\nPrepCPU=1.49524\nPathFallbacks=0 FinishCPU=1.58488\nScore = 13792\n"
+    },
+    {
+      "seed": 2,
+      "score": 13396,
+      "cpu": 1.61468,
+      "diagnostics": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.117787\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nRolloutBest=3139 Rejected=11\nexact_refit accepted=60 gain=0.815918 snapshot=0.177808 forward=0.029139 finite=95.9019 CPU=0.750379\nPrepCPU=1.52139\nPathFallbacks=0 FinishCPU=1.61468\nScore = 13396\n"
+    },
+    {
+      "seed": 3,
+      "score": 13322,
+      "cpu": 1.66766,
+      "diagnostics": "backbone 32.2227 -> 13.1055 papers=192 CPU=0.126465\nrefit 13.1055 -> 9.80078 accepted=256 rejected=0\nRolloutBest=3395 Rejected=18\nexact_refit accepted=14 gain=0.131348 snapshot=0.143281 forward=0.027079 finite=95.7388 CPU=0.868185\nPrepCPU=1.57164\nPathFallbacks=0 FinishCPU=1.66766\nScore = 13322\n"
+    },
+    {
+      "seed": 4,
+      "score": 13454,
+      "cpu": 1.65759,
+      "diagnostics": "backbone 32.1641 -> 13.0391 papers=192 CPU=0.123149\nrefit 13.0391 -> 9.6875 accepted=256 rejected=0\nRolloutBest=3125 Rejected=9\nexact_refit accepted=64 gain=0.702637 snapshot=0.141698 forward=0.026589 finite=96.5073 CPU=0.854428\nPrepCPU=1.56259\nPathFallbacks=0 FinishCPU=1.65759\nScore = 13454\n"
+    },
+    {
+      "seed": 5,
+      "score": 13423,
+      "cpu": 1.49315,
+      "diagnostics": "backbone 32.7109 -> 13.1953 papers=192 CPU=0.113957\nrefit 13.1953 -> 9.86328 accepted=256 rejected=0\nRolloutBest=3184 Rejected=13\nexact_refit accepted=36 gain=0.47168 snapshot=0.138187 forward=0.026423 finite=97.4517 CPU=0.780126\nPrepCPU=1.40989\nPathFallbacks=0 FinishCPU=1.49315\nScore = 13423\n"
+    },
+    {
+      "seed": 6,
+      "score": 13438,
+      "cpu": 1.60391,
+      "diagnostics": "backbone 32.7344 -> 13.0742 papers=192 CPU=0.129286\nrefit 13.0742 -> 9.92578 accepted=256 rejected=0\nRolloutBest=3241 Rejected=14\nexact_refit accepted=38 gain=0.457031 snapshot=0.131319 forward=0.025504 finite=96.667 CPU=0.825085\nPrepCPU=1.51752\nPathFallbacks=0 FinishCPU=1.60391\nScore = 13438\n"
+    },
+    {
+      "seed": 7,
+      "score": 13392,
+      "cpu": 1.57465,
+      "diagnostics": "backbone 32.4844 -> 13.0586 papers=192 CPU=0.11767\nrefit 13.0586 -> 9.64844 accepted=256 rejected=0\nRolloutBest=3462 Rejected=12\nexact_refit accepted=40 gain=0.395996 snapshot=0.172045 forward=0.035486 finite=95.1895 CPU=0.792738\nPrepCPU=1.49852\nPathFallbacks=0 FinishCPU=1.57465\nScore = 13392\n"
+    },
+    {
+      "seed": 8,
+      "score": 13413,
+      "cpu": 1.47832,
+      "diagnostics": "backbone 32.332 -> 12.9609 papers=192 CPU=0.121364\nrefit 12.9609 -> 9.59375 accepted=256 rejected=0\nRolloutBest=3048 Rejected=11\nexact_refit accepted=47 gain=0.520996 snapshot=0.136792 forward=0.02346 finite=95.5669 CPU=0.707163\nPrepCPU=1.39129\nPathFallbacks=0 FinishCPU=1.47832\nScore = 13413\n"
+    },
+    {
+      "seed": 9,
+      "score": 13092,
+      "cpu": 1.04759,
+      "diagnostics": "backbone 32.1641 -> 12.9922 papers=192 CPU=0.100936\nrefit 12.9922 -> 9.76562 accepted=256 rejected=0\nRolloutBest=3182 Rejected=10\nexact_refit accepted=51 gain=0.636719 snapshot=0.102522 forward=0.019494 finite=95.0679 CPU=0.52018\nPrepCPU=0.991878\nPathFallbacks=0 FinishCPU=1.04759\nScore = 13092\n"
+    }
+  ]
+}

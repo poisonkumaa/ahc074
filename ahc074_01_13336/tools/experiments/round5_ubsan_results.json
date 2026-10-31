@@ -1,0 +1,23 @@
+{
+  "source_sha256": "12f6ae6570b5d322e73a2e169e7f05d7ce5058a775fd65892f7b5da6f4209142",
+  "a_out_sha256": "b36bf8375c2fac50f18460f6dc204a51bef7a98d644a6fcf350aba9d4f1a3aaf",
+  "ubsan": true,
+  "status": "passed",
+  "cases": [
+    {
+      "learning": 20.0,
+      "refinement": 30.0,
+      "seed": 0,
+      "score": 13236,
+      "moves": 13236,
+      "errors": 0,
+      "max_moves": 29,
+      "adaptive_repetitions": 32,
+      "prep_cpu": 6.77276,
+      "cpu": 7.00177,
+      "fallbacks": 0,
+      "output_sha256": "355cd31309e161752da344926f985a8b8ac47516e366a51794dc9cddc9179f48",
+      "diagnostics": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.19\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nAdaptiveR=32 capture_per_repetition=0.0468855 before=0.920172\nexact_refit accepted=99 gain=0.701416 snapshot=1.44929 forward=0.145782 finite=93.5564 CPU=4.43414\nPrepCPU=6.77276\nPathFallbacks=0 FinishCPU=7.00177\nScore = 13236\n"
+    }
+  ]
+}

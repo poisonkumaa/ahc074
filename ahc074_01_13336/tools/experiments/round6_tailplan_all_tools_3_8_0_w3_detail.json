@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 14413.666666666666,
+    "errors": 0,
+    "max_cpu": 5.28208,
+    "max_prep": 1.77039,
+    "min_cpu": 4.97696,
+    "average_cpu": 5.149533333333333,
+    "initial_complete": 3,
+    "refit_present": 3,
+    "repetitions": {
+      "0": 0
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 14347,
+      "errors": 0,
+      "cpu": 4.97696,
+      "prep": 1.50931,
+      "repetitions": null,
+      "snapshot": 0.155923,
+      "forward": 0.026921,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 30,
+      "log": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.114495\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=0.999512 snapshot=0.155923 forward=0.026921 finite=93.6035 CPU=0.401201\nTail orientations=6 PrepCPU=1.50931\nFinishCPU=4.97696\nScore = 14347\n"
+    },
+    {
+      "seed": 1,
+      "score": 14615,
+      "errors": 0,
+      "cpu": 5.28208,
+      "prep": 1.77039,
+      "repetitions": null,
+      "snapshot": 0.193237,
+      "forward": 0.028874,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 30,
+      "log": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.130959\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.13916 snapshot=0.193237 forward=0.028874 finite=94.6426 CPU=0.406291\nTail orientations=6 PrepCPU=1.77039\nFinishCPU=5.28208\nScore = 14615\n"
+    },
+    {
+      "seed": 2,
+      "score": 14279,
+      "errors": 0,
+      "cpu": 5.18956,
+      "prep": 1.73264,
+      "repetitions": null,
+      "snapshot": 0.216321,
+      "forward": 0.02882,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 32,
+      "log": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.121128\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.20947 snapshot=0.216321 forward=0.02882 finite=95.9019 CPU=0.404747\nTail orientations=6 PrepCPU=1.73264\nFinishCPU=5.18956\nScore = 14279\n"
+    }
+  ]
+}

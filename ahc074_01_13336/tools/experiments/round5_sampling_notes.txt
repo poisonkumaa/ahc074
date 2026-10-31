@@ -1,0 +1,68 @@
+Round 5 sampling / exact-refit acceleration, 2026-10-31
+
+All scores below are official tester seeds 0..99, E=0. Diagnostic builds use
+AHC_LEARNING_BUDGET=100 and AHC_REFINEMENT_BUDGET=100 unless stated otherwise.
+
+Original uniform extras6, one exact learning pass:
+  R8  13530.22 (previous round baseline)
+  R16 13495.98
+  R32 13471.03
+
+Extras8 for lengths >=57, extras4 below:
+  R8  13437.28 (larger_templates agent)
+  R16 13411.67
+  R32 13372.93
+  R64 13395.29
+
+Extras8 for lengths >=53, extras4 below:
+  R8  13337.73 (larger_templates agent)
+  R32 13323.33
+  adaptive R8/12/16/24/32, initial deadline .5, exact deadline 1.65:
+      13349.02, max CPU 1.81627s, mean CPU 1.66273s, max prep 1.71286s
+      chosen repetitions 8:4, 12:20, 16:73, 24:3, 32:0
+      initial refit completed all 256 levels in 53/100 cases;
+      exact refit ran in all 100 cases. Seed0 standalone RSS146208KB.
+
+Best standalone production candidate:
+  round5_sampling_adaptive.cpp, no CLI/external files; no main.cpp edits.
+Diagnostic forced-R version:
+  round5_sampling_adaptive_diagnostic.cpp, argv[1]=R, default adaptive.
+Fixed diagnostic source:
+  round5_sampling_cut53.cpp, argv repetitions, outer cycles, bottom(default43).
+  Compile -O3 -std=c++17 -DAHC_LEARNING_BUDGET=100 -DAHC_REFINEMENT_BUDGET=100
+
+Equivalent accelerations are in the following ordered builders:
+  round5_sampling_compact_build.py:
+    finite distances<=192 => uint8 F/B/route, INF255 (regularizer MUST be0)
+    sparse F=(h<<8)|cost, active insertion order preserved
+    B stores only bottom..64; Scenario positions uint8 and cnt rows0..64
+    R32 seed0 RSS555164KB ->148768KB with identical output.
+  round5_sampling_group_build.py:
+    group B candidate papers by equal length; sweep h downward maintaining
+    same and greater D=cnt[l+1]-cnt[len] buckets. Exact B, no policy tie change.
+  round5_sampling_fast_build.py:
+    raw edge cost j->L is cached before route suffix minimum. Once L papers
+    have been refitted, distribute each edge to all crossed bypass levels.
+    F below L and B at L cannot change during subsequent shorter refits.
+  round5_sampling_sparse_build.py:
+    parent's sparse trie-gain changes (CSR packed depth/value) combined above.
+  round5_sampling_cut53_build.py:
+    change cutoff57 to53.
+  round5_sampling_adaptive_build.py:
+    calibrate first4 repetitions snapshot CPU; choose largest of8/12/16/24/32
+    fitting absolute exact deadline using total-cost factor4.0.
+
+Validation:
+  compact uniform R16/R32 seed0 output byte-identical to old implementation.
+  compact uniform R16/R32 ten cases each score-identical old implementation.
+  compact/group/sparse cut57 R32 ten cases each score-identical original.
+  SAMPLING_CHECK_B compiles reference recurrence and asserts every B cell and
+  bypass state; seed0 cut57 R8 passes and output byte-identical.
+  cut53 R32 official100 and adaptive official100 all valid/no errors.
+
+RAM at R32 after full optimizations ~159MB; R64 offline ~315MB, not proposed
+for submission. Final max32 even on faster judge. Do not merge regularizer or
+negative usage edge rewards without widening distances/revising INF.
+
+CPU experiment status: all our batches finished, nothing paused/running.
+Parent is examining a two-model R8 portfolio because cut53 R8->R32 gains only14.

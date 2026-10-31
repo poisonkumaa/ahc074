@@ -1,0 +1,57 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 13871.333333333334,
+    "minimum": 13719,
+    "maximum": 14122,
+    "errors": 0,
+    "max_cpu": 1.66114,
+    "max_prep_cpu": 1.40019,
+    "min_states": 89,
+    "model_counts": {
+      "2": 3
+    },
+    "winners": {
+      "32": 2,
+      "12345": 1
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13773,
+      "errors": 0,
+      "cpu": 1.65388,
+      "models": [],
+      "winner": 32,
+      "states": 89,
+      "model_count": 2,
+      "prep_cpu": 1.40015,
+      "max_moves": 34
+    },
+    {
+      "seed": 1,
+      "score": 14122,
+      "errors": 0,
+      "cpu": 1.66114,
+      "models": [],
+      "winner": 32,
+      "states": 94,
+      "model_count": 2,
+      "prep_cpu": 1.40019,
+      "max_moves": 31
+    },
+    {
+      "seed": 2,
+      "score": 13719,
+      "errors": 0,
+      "cpu": 1.64763,
+      "models": [],
+      "winner": 12345,
+      "states": 91,
+      "model_count": 2,
+      "prep_cpu": 1.40012,
+      "max_moves": 32
+    }
+  ]
+}

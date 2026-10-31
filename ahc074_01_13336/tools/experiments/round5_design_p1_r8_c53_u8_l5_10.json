@@ -1,0 +1,98 @@
+{
+  "parameters": {
+    "count": 10,
+    "profile": 1,
+    "rotations": [
+      0
+    ],
+    "repetitions": 8,
+    "cutoff": 53,
+    "upper": 8,
+    "lower": 5,
+    "workers": 1,
+    "binary": "round5_design",
+    "extra": []
+  },
+  "cases": [
+    {
+      "rotation": 0,
+      "seed": 0,
+      "score": 13504,
+      "cpu": 2.15054,
+      "max_moves": 32,
+      "diagnostics": "backbone 32.1094 -> 13.0391 papers=192 CPU=0.1544\nrefit 13.0391 -> 9.66406 accepted=256 rejected=0\nexact_refit accepted=103 gain=1.17578 CPU=1.01495\nPrepCPU=2.03041\nPathFallbacks=0 FinishCPU=2.15054\nScore = 13504\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 1,
+      "score": 13304,
+      "cpu": 2.2066,
+      "max_moves": 31,
+      "diagnostics": "backbone 32.6367 -> 13.0586 papers=192 CPU=0.182475\nrefit 13.0586 -> 9.77734 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.16211 CPU=0.953174\nPrepCPU=2.0959\nPathFallbacks=0 FinishCPU=2.2066\nScore = 13304\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 2,
+      "score": 13058,
+      "cpu": 2.19491,
+      "max_moves": 31,
+      "diagnostics": "backbone 32.5781 -> 13.0156 papers=192 CPU=0.178798\nrefit 13.0156 -> 9.83594 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.12891 CPU=1.0422\nPrepCPU=2.08253\nPathFallbacks=0 FinishCPU=2.19491\nScore = 13058\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 3,
+      "score": 13449,
+      "cpu": 2.30939,
+      "max_moves": 37,
+      "diagnostics": "backbone 32.2227 -> 13.1602 papers=192 CPU=0.156923\nrefit 13.1602 -> 9.89453 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.01416 CPU=1.22141\nPrepCPU=2.19352\nPathFallbacks=0 FinishCPU=2.30939\nScore = 13449\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 4,
+      "score": 13200,
+      "cpu": 2.0134,
+      "max_moves": 30,
+      "diagnostics": "backbone 32.1641 -> 13.1367 papers=192 CPU=0.177063\nrefit 13.1367 -> 9.80469 accepted=256 rejected=0\nexact_refit accepted=110 gain=1.15137 CPU=0.870995\nPrepCPU=1.90261\nPathFallbacks=0 FinishCPU=2.0134\nScore = 13200\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 5,
+      "score": 13209,
+      "cpu": 1.98277,
+      "max_moves": 29,
+      "diagnostics": "backbone 32.7109 -> 13.2578 papers=192 CPU=0.162025\nrefit 13.2578 -> 9.95703 accepted=256 rejected=0\nexact_refit accepted=92 gain=0.922852 CPU=0.859213\nPrepCPU=1.87709\nPathFallbacks=0 FinishCPU=1.98277\nScore = 13209\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 6,
+      "score": 13647,
+      "cpu": 2.04334,
+      "max_moves": 31,
+      "diagnostics": "backbone 32.7344 -> 13.1836 papers=192 CPU=0.190161\nrefit 13.1836 -> 9.9375 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.16309 CPU=0.836897\nPrepCPU=1.92678\nPathFallbacks=0 FinishCPU=2.04334\nScore = 13647\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 7,
+      "score": 12983,
+      "cpu": 2.00005,
+      "max_moves": 30,
+      "diagnostics": "backbone 32.4844 -> 13.2344 papers=192 CPU=0.149666\nrefit 13.2344 -> 9.76172 accepted=256 rejected=0\nexact_refit accepted=107 gain=1.06445 CPU=0.8546\nPrepCPU=1.89132\nPathFallbacks=0 FinishCPU=2.00005\nScore = 12983\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 8,
+      "score": 13206,
+      "cpu": 2.12665,
+      "max_moves": 32,
+      "diagnostics": "backbone 32.332 -> 13.0273 papers=192 CPU=0.15635\nrefit 13.0273 -> 9.70703 accepted=256 rejected=0\nexact_refit accepted=108 gain=1.14355 CPU=1.09071\nPrepCPU=2.00537\nPathFallbacks=0 FinishCPU=2.12665\nScore = 13206\n"
+    },
+    {
+      "rotation": 0,
+      "seed": 9,
+      "score": 13499,
+      "cpu": 2.01204,
+      "max_moves": 31,
+      "diagnostics": "backbone 32.1641 -> 13.0742 papers=192 CPU=0.155764\nrefit 13.0742 -> 9.84766 accepted=256 rejected=0\nexact_refit accepted=105 gain=1.11475 CPU=0.87636\nPrepCPU=1.89843\nPathFallbacks=0 FinishCPU=2.01204\nScore = 13499\n"
+    }
+  ]
+}

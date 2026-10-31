@@ -1,0 +1,28 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 14205.666666666666,
+    "max_cpu": 0.586988,
+    "errors": 0
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 14288,
+      "cpu": 0.532646,
+      "diagnostics": "Allocation=33:4,34:4,35:4,36:4,37:4,38:4,39:4,40:4,41:4,42:4,43:4,44:4,45:4,46:4,47:4,48:4,49:4,50:4,51:4,52:4,53:4,54:4,55:4,56:4,57:4,58:4,59:4,60:4,61:4,62:4,63:4,64:3,\nbackbone 32.1094 -> 12.8555 papers=192 CPU=0.051459\nrefit 12.8555 -> 9.60547 accepted=256 rejected=0\nexact_refit accepted=100 gain=0.8125 snapshot=0.09973 forward=0.017516 finite=97.4424 CPU=0.240693\nPrepCPU=0.426132\nPathFallbacks=0 FinishCPU=0.532646\nScore = 14288\n"
+    },
+    {
+      "seed": 1,
+      "score": 14498,
+      "cpu": 0.536176,
+      "diagnostics": "Allocation=33:4,34:4,35:4,36:4,37:4,38:4,39:4,40:4,41:4,42:4,43:4,44:4,45:4,46:4,47:4,48:4,49:4,50:4,51:4,52:4,53:4,54:4,55:4,56:4,57:4,58:4,59:4,60:4,61:4,62:4,63:4,64:3,\nbackbone 32.6367 -> 12.9453 papers=192 CPU=0.050631\nrefit 12.9453 -> 9.82422 accepted=256 rejected=0\nexact_refit accepted=87 gain=0.788086 snapshot=0.100631 forward=0.0168 finite=96.96 CPU=0.242511\nPrepCPU=0.428549\nPathFallbacks=0 FinishCPU=0.536176\nScore = 14498\n"
+    },
+    {
+      "seed": 2,
+      "score": 13831,
+      "cpu": 0.586988,
+      "diagnostics": "Allocation=33:4,34:4,35:4,36:4,37:4,38:4,39:4,40:4,41:4,42:4,43:4,44:4,45:4,46:4,47:4,48:4,49:4,50:4,51:4,52:4,53:4,54:4,55:4,56:4,57:4,58:4,59:4,60:4,61:4,62:4,63:4,64:3,\nbackbone 32.5781 -> 12.9805 papers=192 CPU=0.050715\nrefit 12.9805 -> 9.76562 accepted=256 rejected=0\nexact_refit accepted=99 gain=1.03125 snapshot=0.101093 forward=0.025139 finite=98.2461 CPU=0.294346\nPrepCPU=0.482429\nPathFallbacks=0 FinishCPU=0.586988\nScore = 13831\n"
+    }
+  ]
+}

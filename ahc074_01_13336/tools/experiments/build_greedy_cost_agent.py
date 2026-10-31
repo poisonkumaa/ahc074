@@ -1,0 +1,27 @@
+from pathlib import Path
+p=Path(__file__).parent
+h=(p/'greedy_alloc_agent.h').read_text()
+h=h.replace('int lengthpenalty,int minlen)','int lengthpenalty,int minlen,int alpha)')
+h=h.replace('const int P=A.size(),N=64,INF=1000;','const int P=A.size(),N=64,INF=100000;')
+h=h.replace('vector<array<int,192>>start(P);vector<array<int,65>>F(P),B(P);','vector<array<int,192>>start(P);vector<array<int,65>>F(P),B(P),bypass(P);vector<int>cost(65,4);')
+h=h.replace('auto distances=[&](){int total=0;','auto distances=[&](){for(int l=1;l<=N;l++)cost[l]=4+alpha*(int(level[l].size())-1);int total=0;')
+h=h.replace('f[j]+1','f[j]+cost[l]').replace('b[l]+1','b[l]+cost[l]')
+h=h.replace('total+=f[N];','total+=f[N];bypass[v].fill(INF);for(int k=0;k<int(papers.size());k++){int l=papers[k].len,pre=INF;for(int j=start[v][k];j<l;j++){pre=min(pre,f[j]);if(j+1<l)bypass[v][j+1]=min(bypass[v][j+1],pre+cost[l]+b[l]);}}')
+h=h.replace('if(extras[l]>=maxextra)continue;','if(extras[l]>=maxextra||level[l].size()>=8)continue;')
+h=h.replace('for(int v=0;v<P;v++){\n    int pre=INF,prev=0;','int penalty=0;for(int v=0;v<P;v++){\n    int adjusted=min(bypass[v][l],F[v][l]+B[v][l]+alpha);penalty+=F[v][N]-adjusted;int pre=INF,prev=0;')
+h=h.replace('F[v][N]-(pre+1+B[v][l])','adjusted-(pre+cost[l]+alpha+B[v][l])')
+h=h.replace('int score=nodes[0].best-lengthpenalty*extras[l];','int score=nodes[0].best+importance*penalty-lengthpenalty*extras[l];')
+(p/'greedy_cost_agent.h').write_text(h)
+s=(p/'greedy_alloc_agent.cpp').read_text().replace('#include "greedy_alloc_agent.h"','#include "greedy_cost_agent.h"')
+s=s.replace('argc>7?atoi(argv[7]):1);','argc>7?atoi(argv[7]):1,argc>8?atoi(argv[8]):1);')
+# This refit optimizes the same static copy-dependent edge costs after allocation.
+a=s.index('inline void refit_all_prefix_papers(');b=s.index('#include "greedy_cost_agent.h"',a)
+f=s[a:b].replace('int passes,int importance)','int passes,int importance,int alpha)')
+f=f.replace('INF=1000','INF=100000')
+f=f.replace('for(int k=0;k<K;k++)level[papers[k].len].push_back(k);','for(int k=0;k<K;k++)level[papers[k].len].push_back(k);vector<int>edgecost(65);for(int l=1;l<=N;l++)edgecost[l]=4+alpha*(int(level[l].size())-1);')
+f=f.replace('f[j]+1','f[j]+edgecost[l]').replace('b[l]+1','b[l]+edgecost[l]')
+f=f.replace('f[upper]=std::min(f[upper],f[j]+edgecost[l])','f[upper]=std::min(f[upper],f[j]+edgecost[upper])')
+f=f.replace('bestprefix+1+B[v][l]','bestprefix+edgecost[l]+B[v][l]').replace('(N+1-route)','(10000-route)')
+s=s[:a]+f+s[b:]
+s=s.replace('argc>6?atoi(argv[6]):32);','argc>6?atoi(argv[6]):32,argc>8?atoi(argv[8]):1);')
+(p/'greedy_cost_agent.cpp').write_text(s)

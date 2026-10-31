@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "count": 3,
+    "mean": 13382.666666666666,
+    "errors": 0,
+    "max_cpu": 0.672041,
+    "max_prep": 0.583675,
+    "min_cpu": 0.529545,
+    "average_cpu": 0.624088,
+    "initial_complete": 3,
+    "refit_present": 3,
+    "repetitions": {
+      "0": 0
+    }
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "score": 13520,
+      "errors": 0,
+      "cpu": 0.672041,
+      "prep": 0.583675,
+      "repetitions": null,
+      "snapshot": 0.081645,
+      "forward": 0.013609,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 33,
+      "log": "backbone 32.1094 -> 12.8945 papers=192 CPU=0.039608\nrefit 12.8945 -> 9.58984 accepted=256 rejected=0\nexact_refit accepted=106 gain=1.24219 snapshot=0.079094 forward=0.013364 finite=94.1943 CPU=0.183703\nexact_refit accepted=102 gain=1.23145 snapshot=0.081645 forward=0.013609 finite=93.2207 CPU=0.170117\nPrepCPU=0.583675\nPathFallbacks=0 FinishCPU=0.672041\nScore = 13520\n"
+    },
+    {
+      "seed": 1,
+      "score": 13517,
+      "errors": 0,
+      "cpu": 0.670678,
+      "prep": 0.582552,
+      "repetitions": null,
+      "snapshot": 0.082249,
+      "forward": 0.013598,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 33,
+      "log": "backbone 32.6367 -> 13.0156 papers=192 CPU=0.039463\nrefit 13.0156 -> 9.67188 accepted=256 rejected=0\nexact_refit accepted=109 gain=1.44727 snapshot=0.078248 forward=0.014174 finite=94.5391 CPU=0.183623\nexact_refit accepted=92 gain=1.02832 snapshot=0.082249 forward=0.013598 finite=94.6953 CPU=0.169714\nPrepCPU=0.582552\nPathFallbacks=0 FinishCPU=0.670678\nScore = 13517\n"
+    },
+    {
+      "seed": 2,
+      "score": 13111,
+      "errors": 0,
+      "cpu": 0.529545,
+      "prep": 0.474298,
+      "repetitions": null,
+      "snapshot": 0.056505,
+      "forward": 0.009903,
+      "initial_complete": true,
+      "refit_present": true,
+      "max_moves": 30,
+      "log": "backbone 32.5781 -> 12.9766 papers=192 CPU=0.042838\nrefit 12.9766 -> 9.73438 accepted=256 rejected=0\nexact_refit accepted=112 gain=1.61914 snapshot=0.072468 forward=0.011823 finite=96.293 CPU=0.154825\nexact_refit accepted=103 gain=1.23828 snapshot=0.056505 forward=0.009903 finite=95.3857 CPU=0.122381\nPrepCPU=0.474298\nPathFallbacks=0 FinishCPU=0.529545\nScore = 13111\n"
+    }
+  ]
+}
