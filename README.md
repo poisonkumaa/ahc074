@@ -73,6 +73,7 @@ AtCoder Heuristic Contest 074「Layered Barcode Display」の最終提出版を�
 | 項目 | 結果 |
 | --- | ---: |
 | 暫定テスト50ケースの絶対スコア合計 | 525,766 |
+|seed0~seed499までの1ケース平均 |10507 |
 | 提出時点の暫定順位 | 11位 |
 
 ## 実行方法
