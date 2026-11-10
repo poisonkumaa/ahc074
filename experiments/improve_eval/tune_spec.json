@@ -1,0 +1,8 @@
+[
+ {"name":"baseline","exe":"experiments/improve_eval/baseline.exe"},
+ {"name":"history84","exe":"experiments/improve_eval/baseline.exe","env":{"HIST_SAMPLES":84}},
+ {"name":"swap4","exe":"experiments/improve_eval/baseline.exe","env":{"SW_FOUR":1}},
+ {"name":"mdp75","exe":"experiments/improve_eval/baseline.exe","env":{"BMDP_WEIGHT":0.75}},
+ {"name":"drop25","exe":"experiments/improve_eval/baseline.exe","env":{"ROUTE_DROP_WEIGHT":0.25}},
+ {"name":"extract75","exe":"experiments/improve_eval/baseline.exe","env":{"EXTRACT_UTILITY":0.75}}
+]

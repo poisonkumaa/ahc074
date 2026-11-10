@@ -1,0 +1,29 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/v25_v6/main_baseline_linux",
+    "env": {}
+  },
+  {
+    "name": "q512",
+    "exe": "experiments/v25_v6/main_baseline_linux",
+    "env": {
+      "NOV8_QUERIES": 512
+    }
+  },
+  {
+    "name": "q1024",
+    "exe": "experiments/v25_v6/main_baseline_linux",
+    "env": {
+      "NOV8_QUERIES": 1024
+    }
+  },
+  {
+    "name": "early",
+    "exe": "experiments/v25_v6/main_baseline_linux",
+    "env": {
+      "NOV8_SELECT_END": 1.95,
+      "NOV8_SELECT_HARD": 2.05
+    }
+  }
+]

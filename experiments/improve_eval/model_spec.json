@@ -1,0 +1,7 @@
+[
+ {"name":"baseline","exe":"experiments/improve_eval/baseline.exe"},
+ {"name":"mdp_state","exe":"experiments/improve_eval/costmodel.exe","env":{"ROUTE_STATE_MDP":1}},
+ {"name":"refresh","exe":"experiments/improve_eval/costmodel.exe","env":{"ROUTE_STATE_MDP":0,"BMDP_REFRESH":1}},
+ {"name":"core","exe":"experiments/improve_eval/costmodel.exe","env":{"ROUTE_STATE_MDP":0,"ROUTE_STATE_CORE":1}},
+ {"name":"core_half","exe":"experiments/improve_eval/costmodel.exe","env":{"ROUTE_STATE_MDP":0,"ROUTE_STATE_CORE":0.5}}
+]

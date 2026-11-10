@@ -1,0 +1,158 @@
+--- main_baseline.cpp
++++ main.cpp
+@@ -15,6 +15,10 @@
+ // Only physically legal routes with the target display and a reusable deck pass.
+ #if defined(__GNUC__)
+ #pragma GCC optimize("O3")
++#endif
++// Count the 64-window masks with the hardware instruction on x86 judges.
++#if defined(__GNUC__) && (defined(__x86_64__) || defined(__i386__))
++#pragma GCC target("popcnt")
+ #endif
+ // Exact accelerations: DAG metric memoization, backing route reuse,
+ // prefix-hole marginal evaluation and prefix-coverage trace compression.
+@@ -1782,6 +1786,9 @@
+     long long front_support_kept=0,front_support_core_returns=0;
+     int post_support_choices=getenv("POST_SUPPORT_CHOICES")?atoi(getenv("POST_SUPPORT_CHOICES")):4;
+     int post_support_rank=0,post_first_option_count=0;
++    int post_second_choices=clamp(search_budget::integer("POST_SECOND_CHOICES",4),1,8);
++    int post_second_rank=0,post_second_option_count=0;
++    long long post_second_trials=0,post_second_wins=0,post_second_saved=0;
+     long long post_choice_trials=0,post_choice_wins=0,post_choice_saved=0;
+ 
+     static constexpr int batch_limit=3, overlay_count=3;
+@@ -1814,7 +1821,7 @@
+     }
+     struct SharedTail{
+         vector<int> start,supports,cuts;
+-        int main,limit,penalty,rank,late,late_at,pending,pending_at,cost;
++        int main,limit,penalty,rank,second_rank,late,late_at,pending,pending_at,cost;
+     };
+     vector<SharedTail> tails;int used_tails=0;
+     double route_state_value() const {
+@@ -2127,7 +2134,7 @@
+         used_tails=0;
+         nov9_insert_positions.clear();
+         batch_sources.clear();
+-        post_support_rank=0;
++        post_support_rank=0;post_second_rank=0;
+         bool guard=route_branching && route_deadline>0 && clock()>=route_deadline;
+         if(guard)route_guard_hits++;
+         if(!route_branching || route_policies==1 || guard){set_route_policy(0);return query_impl(a);}
+@@ -2135,6 +2142,7 @@
+         RouteState best_state;
+         vector<pair<int,int>> best_moves;
+         double best=1e100;int best_policy=0,best_options=0;
++        int best_first_rank=0,best_second_options=0;
+         unsigned distinct=~0u;
+         for(int i=0;i<10+batch_limit+overlay_count;i++)if(route_policies&(1<<i)) {
+             if(i>=10 && (before.main<0 || before.main==prod_to_paper[a] || before.supports.size()>2 ||
+@@ -2151,7 +2159,9 @@
+             if(batch_failed)continue;
+             assert(moves.size()<=2*K && sim.current_display()==A[a]);
+             double score=moves.size()+route_state_value();
+-            if(score<best-1e-9){best=score;best_policy=i;best_options=post_first_option_count;best_state=save_route_state();best_moves=move(moves);}
++            if(score<best-1e-9){best=score;best_policy=i;best_options=post_first_option_count;
++                best_first_rank=0;best_second_options=post_second_option_count;
++                best_state=save_route_state();best_moves=move(moves);}
+         }
+         for(int rank=1;rank<std::min(post_support_choices,best_options);rank++) {
+             if(route_deadline>0 && clock()>=route_deadline)break;
+@@ -2160,8 +2170,27 @@
+             if(batch_failed)continue;
+             assert(moves.size()<=2*K && sim.current_display()==A[a]);
+             double score=moves.size()+route_state_value();
+-            if(score<best-1e-9){post_choice_wins++;post_choice_saved+=int(best_moves.size())-int(moves.size());best=score;best_state=save_route_state();best_moves=move(moves);}
+-        }
++            if(score<best-1e-9){post_choice_wins++;post_choice_saved+=int(best_moves.size())-int(moves.size());
++                best_first_rank=rank;best_second_options=post_second_option_count;
++                best=score;best_state=save_route_state();best_moves=move(moves);}
++        }
++        // Keep the winning first donor and policy fixed while varying the
++        // next post-promotion donor. All replays start from the original deck.
++        const int second_first_rank=best_first_rank,second_policy=best_policy;
++        const int second_options=min(post_second_choices,best_second_options);
++        for(int rank=1;rank<second_options;rank++) {
++            if(routing_budget::expired(route_deadline))break;
++            restore_route_state(before);set_route_policy(second_policy);
++            post_support_rank=second_first_rank;post_second_rank=rank;
++            auto moves=query_impl(a);post_second_trials++;
++            if(batch_failed || post_second_option_count<=rank)continue;
++            assert(moves.size()<=2*K && sim.current_display()==A[a]);
++            double score=moves.size()+route_state_value();
++            if(score<best-1e-9){post_second_wins++;post_second_saved+=int(best_moves.size())-int(moves.size());
++                best=score;best_state=save_route_state();best_moves=move(moves);}
++        }
++        // Later return/borrow alternatives use their original donor policy.
++        post_second_rank=0;
+         // Returning a visible main or support can expose a different bank
+         // head at the same price. Replay the preferred ordinary policy from
+         // the original deck, pinning only that sheet's return position.
+@@ -2417,6 +2446,7 @@
+     }
+ 
+     vector<pair<int,int>> query_impl(int a_r) {
++        post_first_option_count=0;post_second_option_count=0;
+         // A policy can diverge only at one of the decisions marked below.
+         policy_effects=(1u<<8)|(1u<<9);
+         auto tested_threshold=[&](int gain,int gate){
+@@ -2943,6 +2973,7 @@
+             for(int h=0;h<used_tails;h++){const auto& t=tails[h];
+                 if(t.cost>tail_start || t.main!=active_main || t.limit!=runtime_support_limit ||
+                         t.penalty!=runtime_return_penalty || t.rank!=post_support_rank ||
++                        t.second_rank!=post_second_rank ||
+                         t.late!=later || (later>=0 && t.late_at!=late_depth) ||
+                         t.pending!=pending || (pending>=0 && t.pending_at!=pending_cut) ||
+                         t.supports!=active_supports || t.start!=sim.order)continue;
+@@ -2955,6 +2986,7 @@
+             auto& t=tails[used_tails++];t.cost=tail_start;
+             t.start=sim.order;t.supports=active_supports;t.cuts=support_cut;t.main=active_main;
+             t.limit=runtime_support_limit;t.penalty=runtime_return_penalty;t.rank=post_support_rank;
++            t.second_rank=post_second_rank;
+             t.late=later;t.late_at=late_depth;t.pending=pending;t.pending_at=pending_cut;
+         }
+         // Rearrange all blockers jointly, preserving the untouched suffix order.
+@@ -3106,10 +3138,11 @@
+         }
+         // Borrow main sheets across an interval of buckets.
+         uint64_t holes=index_main_mask & ~opaque[p_new];
+-        bool first_support_decision=true;post_first_option_count=0;
+-        const bool allow_post_options=route_branching && post_support_choices>1
++        int support_decision=0;
++        const bool want_post_options=post_support_choices>1 || post_second_choices>1;
++        const bool allow_post_options=route_branching && want_post_options
+             && !routing_budget::expired(route_deadline);
+-        if(route_branching && post_support_choices>1 && !allow_post_options)
++        if(route_branching && want_post_options && !allow_post_options)
+             routing_budget::counters().post_option_skips++;
+         for(int layer=(int)active_supports.size();layer<runtime_support_limit;layer++) {
+             uint64_t diff=sim.current_display() ^ target_mask;
+@@ -3161,12 +3194,15 @@
+                 if(allow_post_options && gain>=MIN_GAIN)options.push_back({gain,k,cut});
+                 if(gain>best_gain) {best_gain=gain;chosen=k;chosen_cut=cut;}
+             }
+-            if(first_support_decision)post_first_option_count=options.size();
+-            if(first_support_decision && post_support_rank>0 && post_support_rank<int(options.size())) {
++            if(support_decision==0)post_first_option_count=int(options.size());
++            if(support_decision==1)post_second_option_count=int(options.size());
++            const int option_rank=support_decision==0?post_support_rank:
++                (support_decision==1?post_second_rank:0);
++            if(option_rank>0 && option_rank<int(options.size())) {
+                 stable_sort(options.begin(),options.end(),[](auto a,auto b){return a.gain>b.gain;});
+-                auto option=options[post_support_rank];chosen=option.paper;chosen_cut=option.cut;
+-            }
+-            first_support_decision=false;
++                auto option=options[option_rank];chosen=option.paper;chosen_cut=option.cut;
++            }
++            support_decision++;
+             if(chosen<0){if(near)policy_effects|=1u<<4;break;}
+             if(best_gain==MIN_GAIN)policy_effects|=1u<<5;
+             int w=paper_bucket[chosen];
+@@ -6664,6 +6700,7 @@
+     cerr<<"POLICY_GUARD hits="<<actual.route_guard_hits<<"\n";
+     cerr<<"ALTERNATE_RETURN trials="<<actual.return_trials<<" selected="<<actual.return_wins<<"\n";
+     cerr<<"ROUND12 choices="<<actual.post_choice_trials<<" wins="<<actual.post_choice_wins<<" saved="<<actual.post_choice_saved<<" front_kept="<<actual.front_support_kept<<" core_returns="<<actual.front_support_core_returns<<"\n";
++    cerr<<"POST_SECOND choices="<<actual.post_second_trials<<" wins="<<actual.post_second_wins<<" saved="<<actual.post_second_saved<<"\n";
+     cerr<<"NOV9_INSERT_CACHE requests="<<actual.nov9_insert_requests<<" hits="<<actual.nov9_insert_hits
+         <<" misses="<<actual.nov9_insert_misses<<" scanned="<<actual.nov9_insert_scanned
+         <<" peak="<<actual.nov9_insert_peak<<" long_keys="<<actual.nov9_insert_long_keys

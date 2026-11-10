@@ -1,0 +1,46 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/design_v3/selection_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "FINAL_RACE_CPU": 10,
+      "FINAL_RACE_END": 30,
+      "FINAL_RACE": 0
+    }
+  },
+  {
+    "name": "final128",
+    "exe": "experiments/design_v3/selection_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "FINAL_RACE_CPU": 10,
+      "FINAL_RACE_END": 30,
+      "FINAL_RACE": 1,
+      "FINAL_RACE_QUERIES": 128
+    }
+  },
+  {
+    "name": "final256",
+    "exe": "experiments/design_v3/selection_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "FINAL_RACE_CPU": 10,
+      "FINAL_RACE_END": 30,
+      "FINAL_RACE": 1,
+      "FINAL_RACE_QUERIES": 256
+    }
+  }
+]

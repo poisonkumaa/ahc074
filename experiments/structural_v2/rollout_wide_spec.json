@@ -1,0 +1,4 @@
+[
+ {"name":"baseline","exe":"experiments/structural_v2/baseline_linux","env":{"NOV8_ROUTE_END":6.0,"NOV8_SHORT_END":6.0,"NOV8_RELAX_END":6.0}},
+ {"name":"rollout16_true","exe":"experiments/structural_v2/rollout_wide_linux","env":{"ROUTE_ROLLOUT":1,"ROLLOUT_SAMPLES":16,"ROLLOUT_CPU":2.0,"NOV8_ROUTE_END":6.0,"NOV8_SHORT_END":6.0,"NOV8_RELAX_END":6.0}}
+]

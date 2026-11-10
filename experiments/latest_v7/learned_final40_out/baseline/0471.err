@@ -1,0 +1,79 @@
+NOV8_BUDGET scale=0.6 optional_end=1.8
+SPLIT before=27221 after=25359 it=1024 cpu=0.009881
+EDGE_SWEEP done=74 changes=8 gain=2900 cpu=0.005095
+EXACT_COST W=37 complete=1 count=149 total=149 cheap_pairs=69 cheap_cpu=0.003675 metric_cpu=0.000389 metric_cache_hits=0 metric_unique=0
+MATCH W=37 cost=1351.75 feasible_edges=149
+PREFIX_COLUMN_ORDER min=22 max=34
+SPLIT before=22629 after=22629 it=1024 cpu=0.018778
+EDGE_SWEEP done=72 changes=8 gain=396 cpu=0.012875
+EXACT_COST W=38 complete=1 count=342 total=342 cheap_pairs=70 cheap_cpu=0.003658 metric_cpu=0.000734 metric_cache_hits=0 metric_unique=0
+MATCH W=38 cost=1344.44 feasible_edges=342
+PREFIX_COLUMN_ORDER min=19 max=32
+SPLIT before=22454 after=22454 it=512 cpu=0.010038
+EDGE_SWEEP done=38 changes=3 gain=252 cpu=0.005919
+SPLIT before=22166 after=22166 it=512 cpu=0.009036
+EDGE_SWEEP done=37 changes=1 gain=50 cpu=0.004978
+EXACT_COST W=39 complete=1 count=273 total=273 cheap_pairs=70 cheap_cpu=0.003601 metric_cpu=0.000635 metric_cache_hits=0 metric_unique=0
+MATCH W=39 cost=1333.25 feasible_edges=273
+PREFIX_COLUMN_ORDER min=17 max=31
+SPLIT before=24807 after=22949 it=512 cpu=0.009252
+EDGE_SWEEP done=37 changes=4 gain=266 cpu=0.005452
+SPLIT before=22695 after=22548 it=512 cpu=0.009284
+EDGE_SWEEP done=36 changes=4 gain=90 cpu=0.005154
+EXACT_COST W=39 complete=1 count=219 total=219 cheap_pairs=70 cheap_cpu=0.00351 metric_cpu=0.000515 metric_cache_hits=0 metric_unique=0
+MATCH W=39 cost=1352 feasible_edges=219
+PREFIX_COLUMN_ORDER min=18 max=32
+PREFIX_COLUMN_ORDER min=25 max=31
+PREFIX_COLUMN_ORDER min=22 max=31
+PREFIX_COLUMN_ORDER min=22 max=25
+PAIR_OFFSPRING index=7 first_only=1 second_only=2
+PREFIX_COLUMN_ORDER min=15 max=33
+COVER_SIBLING n=512 delta=-8.07 keep=0 start=1.39587 added=0.0946667
+GUARD_GATE34 used=1 W=39 samples=1152
+RESCUE30 count=512 delta=-7.71567 keep=0
+HEAD_ERASE samples=42 cuts=4 proxy=2.90476
+CHOSEN W=39 index=2 candidates=9
+HOME51 12 10 7.53413 0.010992
+BMDP_BUCKET w=1 n=3 actual_n=3 projected=0 states=6 stages=3 correction_span=32.0138 residual=0.0392378
+BMDP_BUCKET w=0 n=3 actual_n=3 projected=0 states=6 stages=3 correction_span=24.5999 residual=0.0305411
+BMDP_BUCKET w=2 n=4 actual_n=4 projected=0 states=12 stages=3 correction_span=68.5162 residual=0.0834244
+BMDP_BUCKET w=23 n=5 actual_n=12 projected=1 states=30 stages=3 correction_span=347.92 residual=0.307117
+BMDP_BUCKET w=20 n=5 actual_n=10 projected=1 states=30 stages=3 correction_span=225.011 residual=0.210691
+BMDP_BUCKET w=9 n=6 actual_n=6 projected=0 states=60 stages=3 correction_span=197.052 residual=0.222262
+BMDP_BUCKET w=5 n=5 actual_n=5 projected=0 states=60 stages=3 correction_span=106.783 residual=0.126083
+BMDP_BUCKET w=6 n=5 actual_n=5 projected=0 states=60 stages=3 correction_span=94.8069 residual=0.113002
+BMDP_BUCKET w=4 n=5 actual_n=5 projected=0 states=60 stages=3 correction_span=75.7172 residual=0.0918069
+BMDP_BUCKET w=3 n=5 actual_n=5 projected=0 states=60 stages=3 correction_span=78.0705 residual=0.0944917
+BMDP_BUCKET w=24 n=6 actual_n=12 projected=1 states=90 stages=3 correction_span=343.215 residual=0.295321
+BMDP_BUCKET w=22 n=6 actual_n=11 projected=1 states=90 stages=3 correction_span=325.494 residual=0.298582
+BMDP_BUCKET w=10 n=7 actual_n=7 projected=0 states=105 stages=3 correction_span=442.147 residual=0.469233
+BMDP_BUCKET w=7 n=6 actual_n=6 projected=0 states=120 stages=3 correction_span=188.682 residual=0.217255
+BMDP_BUCKET w=14 n=8 actual_n=8 projected=0 states=168 stages=3 correction_span=522.512 residual=0.546132
+BMDP_BUCKET w=19 n=6 actual_n=10 projected=1 states=180 stages=3 correction_span=352.007 residual=0.326276
+BMDP_BUCKET w=8 n=6 actual_n=6 projected=0 states=180 stages=3 correction_span=189.225 residual=0.216186
+BMDP_BUCKET w=16 n=9 actual_n=9 projected=0 states=252 stages=3 correction_span=733.018 residual=0.705996
+BMDP_BUCKET w=12 n=7 actual_n=7 projected=0 states=420 stages=3 correction_span=183.821 residual=0.210314
+BMDP_BUCKET w=11 n=7 actual_n=7 projected=0 states=420 stages=3 correction_span=340.677 residual=0.365004
+BMDP_BUCKET w=21 n=7 actual_n=11 projected=1 states=630 stages=3 correction_span=345.448 residual=0.316291
+BMDP_BUCKET w=17 n=9 actual_n=9 projected=0 states=1512 stages=3 correction_span=593.562 residual=0.584643
+BMDP_BUCKET w=15 n=8 actual_n=8 projected=0 states=1680 stages=3 correction_span=383.893 residual=0.391156
+BMDP_BUCKET w=13 n=8 actual_n=8 projected=0 states=1680 stages=3 correction_span=346.436 residual=0.367161
+BMDP_BUCKET w=18 n=9 actual_n=9 projected=0 states=3780 stages=3 correction_span=420.931 residual=0.44022
+BMDP_BUILD buckets=25 projected=6 projection_cap=2 states=11691 stages=75 correction_span=733.018 weight=0.5 repair=0.5 cpu=0.017613 timeout=0
+U48 eligible=0 edited=0 rejected=0
+O48 proposed=38 accepted=16 head=16 rejected=0
+SH58 1024 1127 19 19 19 0 0 0.001829
+LOAN_TAIL wins=0 saved=0 veto=0 cpu=0.037111 pertype=0,0,0,0 savings=0,0,0,0
+DUO47 717 133 5 60
+FINAL_DECK saved=3
+SETTLED 79
+BUDGET design_ready=1.62761 online_started=1.66052 synthetic_queries=1152 cpu=1.62258 budget_units=2.7043 future_aborts=0 utility_aborts=0 policy_stops=0 extract_aborts=0 trace_skips=144 trace_aborts=0
+TRACE_SHORTEN saved=0 queries=0
+NOV5_RELAX calls=4348 trials=244233 display=1729 state=1724 accepted=1989 saved=2170 auto_skipped=287 extra_supports=1417 wide=407 interleaved=479 triples=36630 early_main=40174 early_color=83628 cpu=0.150415
+BACKING_ROUTE_CACHE hits=5493 misses=567
+BMDP_USE hits=2234 misses=0 support_fallbacks=0 projection_hits=1205
+POLICY_GUARD hits=0
+ALTERNATE_RETURN trials=1735 selected=96
+ROUND12 choices=295 wins=35 saved=4 front_kept=289 core_returns=3029
+NOV9_INSERT_CACHE requests=67784 hits=52457 misses=15327 scanned=139836 peak=41 long_keys=0 full=0 enabled=1 storage=fixed256
+EXTRACT_DP calls=627 improved=326 cache_hits=4502 gain=594.529

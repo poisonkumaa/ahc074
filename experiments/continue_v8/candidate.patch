@@ -1,0 +1,388 @@
+--- main.cpp (baseline)
++++ main.cpp (candidate)
+@@ -6805,6 +6805,333 @@
+     }
+     spent+=clock()-t0;return false;
+ }
++}
++
++namespace shift68 {
++using Op=pair<int,int>;
++using Mask=bitset<K>;
++static long long calls=0,offers=0,goals=0,reachable=0,wins=0,saved=0,loans=0,backsave=0,orsave=0,spent=0,returnwins=0;
++struct Core{array<int,7> ord{};array<uint64_t,8> prefix{};uint64_t color=0;int moved=-1;};
++static void improve(OnlineRouter& r,int a,const vector<int>& start,vector<Op>& ops,const vector<int>& old,clock_t end){
++    static const bool enabled=!getenv("NO_SHIFT68");
++    if(!enabled || !r.graph || r.prod_to_pair_idx[a]<0 || ops.size()<3 || ops.size()>20 || r.tot_B>6)return;
++    if(spent>clock_t(.07*CLOCKS_PER_SEC) || clock()>=end)return;
++    const int B=r.tot_B,main=r.prod_to_paper[a],hm=r.paper_bucket[main];
++    const auto incumbent=r.save_route_state();const auto& deck=incumbent.order;
++    if(deck[0]!=main)return;
++    int incumbent_core=-1,ncore=0;
++    for(int i=1;ncore<B;i++){
++        if(deck[i]<B){++ncore;continue;}
++        if(incumbent_core>=0)return;
++        incumbent_core=deck[i];
++    }
++    uint64_t busy=1ull<<hm;Mask outside;outside.set(main);
++    for(int k:incumbent.supports){busy|=1ull<<r.paper_bucket[k];outside.set(k);}
++    int backs=0,used=0;Mask paid;array<int,64> resident_moves{};
++    for(auto [k,d]:ops){if(k<B){++backs;continue;}paid.set(k);++resident_moves[r.paper_bucket[k]];}
++
++    uint64_t target=r.A[a],ph=~r.opaque[main]&r.index_main_mask,sh=~(r.opaque[main]|r.index_main_mask);
++    if(!sh)return;
++    vector<int> donors;
++    auto consider=[&](int k){
++        if(k<B || k==main || (incumbent_core>=0 && incumbent_core!=k) || (r.opaque[k]&ph&(r.black[k]^target)))return;
++        if(incumbent_core!=k && !(r.opaque[k]&sh&~(r.black[k]^target)))return;
++        bool already=outside[k];
++        if(!already && (busy>>r.paper_bucket[k]&1))return;
++        if(find(donors.begin(),donors.end(),k)==donors.end())donors.push_back(k);
++    };
++    for(auto [k,d]:ops)consider(k);
++    for(int k:incumbent.supports)consider(k);
++    if(donors.empty())return;
++    clock_t began=clock();++calls;
++    auto best=incumbent;vector<Op> win;int picked=-1;double score=ops.size()+r.route_state_value();
++    array<Core,36> cores;int nc=0;
++    auto add=[&](const array<int,7>& ord,int moved){
++        Core& c=cores[nc++];c.ord=ord;c.moved=moved;c.prefix[0]=0;c.color=0;
++        for(int i=0;i<B;i++){int k=ord[i];c.color|=r.black[k]&~c.prefix[i];c.prefix[i+1]=c.prefix[i]|r.opaque[k];}
++    };
++    array<int,7> base{};int z=0;for(int k:start)if(k<B)base[z++]=k;add(base,-1);
++    if(backs>=1)for(int i=0;i<B-1;i++)for(int j=0;j<B;j++)if(i!=j){
++        auto q=base;int k=q[i];if(i<j)rotate(q.begin()+i,q.begin()+i+1,q.begin()+j+1);else rotate(q.begin()+j,q.begin()+i,q.begin()+i+1);
++        add(q,k);
++    }
++    Mask oldcards;uint64_t unavailable=busy;for(int k:old){oldcards.set(k);unavailable|=1ull<<r.paper_bucket[k];}
++    for(int k:donors){
++        // Windows fully covered by this donor need no colour repair at the regular shelf.
++        uint64_t reset=0;
++        for(uint64_t z=r.opaque[k]&ph&~unavailable&~(1ull<<r.paper_bucket[k]);z;z&=z-1){
++            int w=__builtin_ctzll(z);if(resident_moves[w])reset|=1ull<<w;
++        }
++        Mask take=paid;if(paid[k] || !oldcards[k] || incumbent_core!=k)take.set(k);vector<int> tail;
++        for(auto [p,d]:ops)if(p>=B && (reset>>r.paper_bucket[p]&1))take.reset(p);
++        int nt=take.count();if(nt>=int(ops.size()))continue;
++        uint64_t initialized=0;
++        for(int p:deck){
++            if(p==main || p<B || p==k)continue;
++            int w=r.paper_bucket[p];
++            if(!(reset>>w&1)){tail.push_back(p);continue;}
++            if(initialized>>w&1)continue;initialized|=1ull<<w;
++            for(int q:start)if(q>=B && r.paper_bucket[q]==w)tail.push_back(q);
++        }
++        if(int(tail.size())!=K-B-2)continue;
++        for(int v=0;v<nc;v++){
++            auto& c=cores[v];int n=nt+int(c.moved>=0);
++            if(n>=int(ops.size())||(!win.empty() && n>int(win.size())))continue;
++            uint64_t wrong=(c.color^target)&sh;
++            if((!wrong && !reset) || (wrong&~r.opaque[k]))continue;
++            int d=B;while(d && (c.prefix[d]&wrong))--d;
++            if(r.opaque[k]&(r.black[k]^target)&sh&~c.prefix[d])continue;
++            ++offers;
++            vector<int> goal;goal.reserve(K);goal.push_back(main);
++            for(int i=0;i<=B;i++){if(i==d)goal.push_back(k);if(i<B)goal.push_back(c.ord[i]);}
++            goal.insert(goal.end(),tail.begin(),tail.end());
++            uint64_t seen=0,display=0;for(int p:goal){display|=r.black[p]&~seen;seen|=r.opaque[p];if(seen==~0ull)break;}
++            if(display!=target)continue;
++            OnlineRouter::RouteState state;if(!nov5_relaxed_trace::rebuild_state(r,goal,a,state,5))continue;
++            Mask set=take;if(c.moved>=0)set.set(c.moved);
++            int at=0;bool match=true;
++            for(int p:start)if(!set[p]){while(at<K && set[goal[at]])++at;if(at==K||goal[at++]!=p){match=false;break;}}
++            if(!match)continue;
++            ++goals;
++            fixed_deck::Work work(r.opaque,start,goal,n);
++            if(!work.orderable(set))continue;
++            ++reachable;
++            r.restore_route_state(state);double value=work.answer.size()+r.route_state_value();
++            if(value<score-1e-9){score=value;best=move(state);win=move(work.answer);picked=k;}
++        }
++    }
++    r.restore_route_state(best);
++    if(!win.empty()){
++        int nb=0;for(auto [p,d]:win)nb+=p<B;
++        ++wins;saved+=ops.size()-win.size();backsave+=backs-nb;orsave+=int(ops.size())-int(win.size())-backs+nb;
++        loans+=int(best.supports.size())-int(incumbent.supports.size());returnwins+=oldcards[picked];
++        ops=move(win);
++    }
++    spent+=clock()-began;
++}
++}
++namespace pair68 {
++using Op=pair<int,int>;
++static long long calls=0,pairs=0,goals=0,reached=0,wins=0,saved=0,backsave=0,ordsave=0,loans=0,spent=0;
++static long long distance_rows=0,distance_verified=0,deadline_stops=0;
++static clock_t distance_ticks=0;
++static long long inner_clock_checks=0,guard_survivors=0,guard_schedulers=0;
++static long long filter_queries=0,filter_full=0,filter_selected=0;
++static void improve(OnlineRouter& r,int a,const vector<int>& start,vector<Op>& ops,const vector<int>& old,clock_t end){
++    static const bool on=!getenv("NO_PAIR68");
++    static const bool lazy=search_budget::integer("PAIRS_LAZY",1)!=0;
++    static const int guard_mode=search_budget::integer("PAIRS_TIME_GUARD",2);
++    static const bool verify=search_budget::integer("PAIRS_VERIFY",0)!=0;
++    static const clock_t allowance=clock_t(max(0.,search_budget::real("PAIRS_BUDGET",.060))*CLOCKS_PER_SEC);
++    if(!on || !r.graph || r.prod_to_pair_idx[a]<0 || ops.size()>17 || ops.size()<4 || clock()>=end || spent>allowance)return;
++    const int B=r.tot_B,m=r.prod_to_paper[a],wm=r.paper_bucket[m];if(B>6)return;
++    const auto init=r.save_route_state();const auto& deck=init.order;
++    int backs=0,co=0;array<int,2> priorcore{};int ncore=0;
++    uint64_t busy=1ull<<wm;bitset<K> paid,support;
++    for(int k:init.supports){busy|=1ull<<r.paper_bucket[k];support.set(k);}
++    for(int j=1;co<B;j++){int k=deck[j];if(k<B)++co;else{if(ncore==2)return;priorcore[ncore++]=k;}}
++    for(auto [k,d]:ops)if(k<B)++backs;else paid.set(k);
++    if(backs==0)return;
++    uint64_t want=r.A[a],ph=~r.opaque[m]&r.index_main_mask,sh=~(r.opaque[m]|r.index_main_mask);
++    if(!sh)return;
++    vector<int> options;
++    for(int k:old)if(k!=m)options.push_back(k);
++    for(auto [k,d]:ops)if(k>=B&&k!=m&&find(options.begin(),options.end(),k)==options.end())options.push_back(k);
++    for(int k:init.supports)if(find(options.begin(),options.end(),k)==options.end())options.push_back(k);
++    bitset<K> existing;for(int k:options)existing.set(k);
++    uint64_t undisturbed=0;
++    for(int k:start)if(k>=B && k!=m && !existing[k]){
++        if(r.opaque[k]&~undisturbed)options.push_back(k);
++        undisturbed|=r.opaque[k];
++    }
++    if(options.size()<2)return;
++    uint64_t block_reset=busy;for(int k:old)block_reset|=1ull<<r.paper_bucket[k];
++    struct Plan{int u,l;uint64_t reset,bad,missing;};
++    vector<Plan> p;
++    for(int u:options)for(int l:options){
++        int hu=r.paper_bucket[u],hl=r.paper_bucket[l];if(hu==hl||hu==wm||hl==wm||(!existing[u]&&!existing[l]))continue;
++        if(((busy>>hu&1)&&!support[u])||((busy>>hl&1)&&!support[l]))continue;
++        bool ok=true;for(int j=0;j<ncore;j++)if(priorcore[j]!=u && priorcore[j]!=l)ok=false;if(!ok)continue;
++        uint64_t ink=r.opaque[u]|r.opaque[l];
++        uint64_t bad=((r.black[u]^want)&r.opaque[u])|((r.black[l]^want)&r.opaque[l]&~r.opaque[u]);
++        if(bad&ph)continue;
++        if(!(ink&sh&~bad) || !(ink&ph))continue;
++        p.push_back({u,l,ink&ph&~block_reset&~((1ull<<hu)|(1ull<<hl)),bad,sh&~ink});
++    }
++    if(p.empty())return;clock_t now=clock();++calls;pairs+=p.size();
++    static vector<shift68::Core> cores;static vector<uint8_t> distance,ready,checked;
++    const auto& tab=r.graph->table;int S=tab.states;array<uint8_t,9> bo{};
++    int nb=0;for(int k:start)if(k<B)bo[nb++]=k;
++    const int src=tab.rank(bo);
++    auto build_row=[&](int j){
++        array<uint8_t,9> pos{},relative{};
++        for(int i=0;i<B;i++)pos[tab.permutations[j][i]]=i;
++        for(int t=0;t<S;t++){
++            for(int i=0;i<B;i++)relative[i]=pos[tab.permutations[t][i]];
++            distance[j*S+t]=tab.distance[tab.rank(relative)];
++        }
++        ready[j]=1;++distance_rows;
++    };
++    if(cores.empty()){
++        cores.resize(S);distance.resize(S*S);ready.assign(S,0);checked.assign(S,0);
++        for(int j=0;j<S;j++){
++            auto& c=cores[j];for(int i=0;i<B;i++){int k=tab.permutations[j][i];c.ord[i]=k;c.color|=r.black[k]&~c.prefix[i];c.prefix[i+1]=c.prefix[i]|r.opaque[k];}
++        }
++        if(!lazy){const clock_t t=clock();for(int j=0;j<S;j++)build_row(j);distance_ticks+=clock()-t;}
++    }
++    if(!ready[src]){const clock_t t=clock();build_row(src);distance_ticks+=clock()-t;}
++    if(verify && !checked[src]){
++        // Independent graph traversal from the actual labelled source order.
++        // The lowest backing is not selectable: preserve that rule in the BFS.
++        vector<uint8_t> expected(S,255);vector<int> queue;queue.reserve(S);
++        expected[src]=0;queue.push_back(src);
++        for(size_t h=0;h<queue.size();h++){
++            int from=queue[h];
++            for(int i=0;i<B-1;i++)for(int j=0;j<B;j++)if(i!=j){
++                auto order=tab.permutations[from];uint8_t k=order[i];
++                if(i<j)for(int z=i;z<j;z++)order[z]=order[z+1];
++                else for(int z=i;z>j;z--)order[z]=order[z-1];
++                order[j]=k;int to=tab.rank(order);
++                if(expected[to]==255){expected[to]=expected[from]+1;queue.push_back(to);}
++            }
++        }
++        assert(int(queue.size())==S);
++        for(int t=0;t<S;t++){assert(distance[src*S+t]==expected[t]);++distance_verified;}
++        checked[src]=1;
++    }
++    bool stopped=false;unsigned surviving=0,schedulers=0;
++    auto out_of_time=[&](){
++        if(stopped)return true;
++        if(guard_mode==0)return false;
++        ++inner_clock_checks;const clock_t at=clock();
++        if(at>=end || spent+at-now>allowance){++deadline_stops;stopped=true;}
++        return stopped;
++    };
++    static const bool filter=search_budget::integer("PAIRS_FILTER",1)!=0;
++    const uint8_t* core_distance=distance.data()+src*S;
++    vector<uint64_t> core_bad;
++    array<vector<int>,7> admissible;
++    if(filter){
++        ++filter_queries;core_bad.resize(S);
++        for(int limit=0;limit<=B;limit++)admissible[limit].reserve(S);
++        for(int zc=0;zc<S;zc++){
++            core_bad[zc]=(cores[zc].color^want)&sh;
++            if(!core_bad[zc])continue;
++            for(int limit=core_distance[zc];limit<=B;limit++)admissible[limit].push_back(zc);
++        }
++    }
++    auto best=init;double score=ops.size()+r.route_state_value();vector<Op> win;
++    for(auto z:p){
++        if(stopped || clock()>=end || spent+clock()-now>allowance)break;
++        auto take=paid;int u=z.u,l=z.l;
++        for(int k:{u,l})if(find(old.begin(),old.end(),k)==old.end() || find(priorcore.begin(),priorcore.begin()+ncore,k)==priorcore.begin()+ncore)take.set(k);
++        for(auto [k,d]:ops)if(k>=B && (z.reset>>r.paper_bucket[k]&1))take.reset(k);
++        int nt=take.count();if(nt>=int(ops.size()))continue;
++        vector<int> tail;uint64_t done=0;
++        for(int k:deck)if(k>=B && k!=m && k!=u && k!=l){
++            int w=r.paper_bucket[k];if(!(z.reset>>w&1)){tail.push_back(k);continue;}
++            if(done>>w&1)continue;done|=1ull<<w;for(int q:start)if(q>=B && r.paper_bucket[q]==w)tail.push_back(q);
++        }
++        if(tail.size()!=K-B-3)continue;
++        int maximum_distance=min(B,min(int(ops.size())-nt-1,18-nt));
++        if(!win.empty())maximum_distance=min(maximum_distance,int(win.size())-nt);
++        if(filter && maximum_distance<0)continue;
++        const vector<int>* ids=filter?&admissible[maximum_distance]:nullptr;
++        const int count=ids?int(ids->size()):S;
++        filter_full+=S;filter_selected+=count;
++        for(int index=0;index<count && !stopped;index++){
++            const int zc=ids?(*ids)[index]:index;
++            if(guard_mode==1 && (zc&31)==0 && out_of_time())break;
++            const auto& c=cores[zc];uint64_t bad=filter?core_bad[zc]:(c.color^want)&sh;if(!bad || (bad&z.missing))continue;
++            int n=nt+core_distance[zc];if(n>=int(ops.size())||n>18||(!win.empty()&&n>int(win.size())))continue;
++            ++guard_survivors;
++            // Reject almost all core orders using bit masks and counts before
++            // paying for a clock call. The original outer-plan guard remains.
++            if(guard_mode>=2 && (++surviving&31)==1 && out_of_time())break;
++            // Deepest legal slots first; alternative relative gaps can change accessibility.
++            for(int dl=B;dl>=0 && !stopped;dl--){
++                uint64_t low=r.opaque[l]&~c.prefix[dl]&sh;
++                uint64_t residual=(bad&~low)|((r.black[l]^want)&low);if(residual&~r.opaque[u])continue;
++                for(int du=dl;du>=0 && !stopped;du--){
++                    uint64_t up=r.opaque[u]&~c.prefix[du]&sh;
++                    if((residual&~up)||((r.black[u]^want)&up))continue;
++                    vector<int> goal;goal.reserve(K);goal.push_back(m);for(int i=0;i<=B;i++){
++                        if(du==i)goal.push_back(u);if(dl==i)goal.push_back(l);if(i<B)goal.push_back(c.ord[i]);}
++                    goal.insert(goal.end(),tail.begin(),tail.end());uint64_t seen=0,display=0;
++                    for(int k:goal){display|=r.black[k]&~seen;seen|=r.opaque[k];if(seen==~0ull)break;}
++                    if(display!=want)continue;
++                    OnlineRouter::RouteState st;if(!nov5_relaxed_trace::rebuild_state(r,goal,a,st,5))continue;
++                    for(unsigned mask=0;mask<(1u<<B) && !stopped;mask++){
++                        if(__builtin_popcount(mask)!=n-nt)continue;
++                        int g=0;bool same=true;
++                        for(int b=0;b<B;b++)if(!(mask>>bo[b]&1)){
++                            while(g<B && (mask>>c.ord[g]&1))++g;
++                            if(g==B || c.ord[g++]!=bo[b]){same=false;break;}
++                        }
++                        if(!same)continue;
++                        auto set=take;for(int h=0;h<B;h++)if(mask>>h&1)set.set(h);
++                        int j=0;bool ok=true;
++                        for(int k:start)if(!set[k]){while(j<K&&set[goal[j]])++j;if(j==K||goal[j++]!=k){ok=false;break;}}
++                        if(!ok)continue;
++                        ++guard_schedulers;
++                        if((guard_mode==1 || (guard_mode>=2 && (++schedulers&15)==1)) && out_of_time())break;
++                        ++goals;fixed_deck::Work w(r.opaque,start,goal,n);if(!w.orderable(set))continue;
++                        ++reached;r.restore_route_state(st);double v=w.answer.size()+r.route_state_value();
++                        if(v<score-1e-9){score=v;best=st;win=move(w.answer);}
++                        break;
++                    }
++                }
++            }
++        }
++    }
++    r.restore_route_state(best);
++    if(!win.empty()){++wins;saved+=int(ops.size())-int(win.size());int nw=0;for(auto x:win)nw+=x.first<B;
++        backsave+=backs-nw;ordsave+=int(ops.size())-int(win.size())-(backs-nw);loans+=int(best.supports.size())-int(init.supports.size());ops=move(win);}
++    spent+=clock()-now;
++}
++}
++
++namespace headvalue64 {
++struct Value {
++inline static constexpr float next64[12][5][5][2]={{{{0.00965798f,0.98869645f},{0.01638101f,0.60187524f},{0.38143485f,0.98343066f},{0.99999992f,0.99999997f},{0.00000001f,0.00000003f}},{{0.00416074f,0.98919343f},{0.01776850f,0.67949569f},{0.42978166f,0.98632603f},{0.99999961f,0.99999965f},{0.00000004f,0.00000031f}},{{0.01108523f,0.99564637f},{0.02413260f,0.54897880f},{0.28669794f,0.98622302f},{0.99999924f,0.99999982f},{0.00000007f,0.00000017f}},{{0.01241883f,0.82594259f},{0.01797054f,0.23300115f},{0.39154868f,0.92813485f},{0.99999720f,0.99999924f},{0.00000026f,0.00000054f}},{{0.17289239f,0.98599732f},{0.05817452f,0.58992753f},{0.73629371f,0.98257787f},{0.99999860f,0.99999876f},{0.00000015f,0.00000103f}}},{{{0.01446996f,0.98513238f},{0.03519734f,0.62709356f},{0.36782851f,0.96986251f},{0.99999969f,0.99999986f},{0.00000002f,0.00000012f}},{{0.00736680f,0.98645232f},{0.02630390f,0.69676251f},{0.41543931f,0.96068722f},{0.99999893f,0.99999905f},{0.00000009f,0.00000073f}},{{0.01480658f,0.99258373f},{0.01722833f,0.57903472f},{0.28440262f,0.97265107f},{0.99999807f,0.99999948f},{0.00000017f,0.00000039f}},{{0.01729258f,0.84287469f},{0.03461052f,0.32845469f},{0.37938041f,0.89765804f},{0.99999460f,0.99999839f},{0.00000046f,0.00000119f}},{{0.15660369f,0.98244506f},{0.10760373f,0.61473198f},{0.65858638f,0.96732991f},{0.99999688f,0.99999759f},{0.00000029f,0.00000196f}}},{{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}}},{{{0.01082365f,0.97783067f},{0.05752740f,0.61377493f},{0.32872745f,0.95501501f},{0.99995691f,0.99997455f},{0.00000263f,0.00001907f}},{{0.00487728f,0.97806942f},{0.04036784f,0.57028787f},{0.37563686f,0.95342863f},{0.99993611f,0.99996437f},{0.00000429f,0.00002992f}},{{0.01066813f,0.99143858f},{0.02937504f,0.53117870f},{0.32872103f,0.95965980f},{0.99993008f,0.99996303f},{0.00000492f,0.00002826f}},{{0.01106567f,0.81439878f},{0.05076832f,0.53803487f},{0.35121387f,0.92483217f},{0.99992280f,0.99995918f},{0.00000554f,0.00003114f}},{{0.04910641f,0.97349695f},{0.05287507f,0.58117076f},{0.43097110f,0.95240487f},{0.99992589f,0.99995918f},{0.00000532f,0.00003179f}}},{{{0.01881899f,0.98255288f},{0.04781251f,0.58768827f},{0.41722122f,0.95179785f},{0.99911749f,0.99964062f},{0.00000000f,0.00000001f}},{{0.01076036f,0.97872520f},{0.03950212f,0.64782762f},{0.44679240f,0.95267064f},{0.99997180f,0.99997906f},{0.00000001f,0.00000006f}},{{0.01990903f,0.98969844f},{0.05917528f,0.54879250f},{0.35709795f,0.96189595f},{0.99993689f,0.99999136f},{0.00000001f,0.00000003f}},{{0.02008523f,0.88420958f},{0.04731768f,0.34258894f},{0.42937655f,0.89940910f},{0.99945308f,0.99994126f},{0.00000012f,0.00000015f}},{{0.12168047f,0.98060181f},{0.11930116f,0.57512780f},{0.70485048f,0.95269074f},{0.99986398f,0.99977973f},{0.00000003f,0.00000057f}}},{{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}}},{{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}}},{{{0.02147798f,0.97802080f},{0.05997858f,0.57452606f},{0.44031683f,0.94272481f},{0.99998067f,0.99999997f},{0.00000001f,0.00002116f}},{{0.01397030f,0.98118680f},{0.04582489f,0.62492397f},{0.47352055f,0.93817246f},{0.99878584f,0.99999990f},{0.00000001f,0.00006520f}},{{0.03013874f,0.98595125f},{0.07102011f,0.54530693f},{0.38852802f,0.95188490f},{0.99994532f,0.99999996f},{0.00000002f,0.00127787f}},{{0.02452915f,0.90449296f},{0.05844978f,0.36228494f},{0.45514531f,0.90376152f},{0.99956027f,0.99999975f},{0.00000020f,0.00017287f}},{{0.12655034f,0.97803914f},{0.13867698f,0.57056934f},{0.68350936f,0.94364458f},{0.99984593f,0.99999914f},{0.00000008f,0.00046458f}}},{{{0.02623251f,0.97557334f},{0.07240345f,0.56012309f},{0.45672844f,0.93278443f},{0.99999988f,0.99999998f},{0.00000001f,0.00000004f}},{{0.01626090f,0.97230725f},{0.05645867f,0.61608567f},{0.49249199f,0.92440081f},{0.99999990f,0.99999995f},{0.00000001f,0.00000008f}},{{0.02924826f,0.98349302f},{0.08269780f,0.51859885f},{0.39630435f,0.94233995f},{0.99999978f,0.99999998f},{0.00000001f,0.00000004f}},{{0.02654560f,0.91269738f},{0.06973753f,0.38531275f},{0.47006765f,0.89708402f},{0.99999762f,0.99999987f},{0.00000017f,0.00000024f}},{{0.10835570f,0.97531422f},{0.12383618f,0.54308195f},{0.64798668f,0.93374662f},{0.99999925f,0.99999932f},{0.00000005f,0.00000082f}}},{{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}}},{{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}},{{0.01900301f,0.98086050f},{0.06644267f,0.48732585f},{0.51103079f,0.93499609f},{0.99974588f,0.99988943f},{0.00002285f,0.00008742f}}},{{{0.02676395f,0.97100039f},{0.07946823f,0.49851858f},{0.50104644f,0.91690156f},{0.99999035f,0.99999429f},{0.00000000f,0.00000002f}},{{0.02019932f,0.95819945f},{0.08281038f,0.53397018f},{0.68021364f,0.89687046f},{0.99973117f,0.99999538f},{0.00000000f,0.00000001f}},{{0.03982643f,0.97816070f},{0.09874363f,0.30404018f},{0.45815922f,0.91762415f},{0.99999331f,0.99980779f},{0.00000000f,0.00000000f}},{{0.02903905f,0.89459353f},{0.08513798f,0.32654637f},{0.60250190f,0.89266777f},{0.99983128f,0.99998866f},{0.00000007f,0.00000005f}},{{0.08886155f,0.96825936f},{0.11087837f,0.37114209f},{0.65015530f,0.91242356f},{0.99997553f,0.99987412f},{0.00000001f,0.00000036f}}}};
++inline static constexpr float reward64[12][5][5][2]={{{{0.00024103f,0.00020256f},{0.00000001f,0.37415406f},{0.35881333f,0.00000001f},{0.60246187f,1.31562239f},{1.35433763f,0.63299226f}},{{0.00024644f,0.00011916f},{0.00000005f,0.28597643f},{0.43695997f,0.00000011f},{0.56384557f,1.29914139f},{1.37226940f,0.56492341f}},{{0.00000117f,0.00040239f},{0.00000010f,0.45880186f},{0.25688809f,0.00000005f},{0.61735220f,1.44706458f},{1.33581901f,0.75509886f}},{{0.00022326f,0.00029291f},{0.00000249f,0.03947684f},{0.35548178f,0.00000027f},{0.60981957f,1.03275505f},{1.37032881f,0.58361931f}},{{0.00000321f,0.00022571f},{0.00000030f,0.37174025f},{0.03622744f,0.00000247f},{0.44032645f,1.34489363f},{1.20710843f,0.66027034f}}},{{{0.00033543f,0.00048260f},{0.00039484f,0.33746638f},{0.33521519f,0.00000003f},{1.23095003f,1.85453485f},{1.79896266f,1.30504260f}},{{0.00099988f,0.00045038f},{0.00000717f,0.25213768f},{0.42285933f,0.00000026f},{1.15606228f,1.96535049f},{1.88829211f,1.24733383f}},{{0.00022960f,0.00051137f},{0.00001622f,0.42452520f},{0.24055946f,0.00000011f},{1.42363487f,1.98087222f},{1.75461818f,1.21462304f}},{{0.00043328f,0.00001380f},{0.00028765f,0.05603273f},{0.33412027f,0.00000063f},{1.24514734f,1.81628833f},{1.83031212f,1.19181517f}},{{0.00001268f,0.00047172f},{0.00003945f,0.33637534f},{0.05275583f,0.00000433f},{1.02129003f,1.91193250f},{1.68642833f,1.29486246f}}},{{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}}},{{{0.00000009f,0.00051849f},{0.00019009f,0.33151713f},{0.30097016f,0.00001254f},{0.92711091f,1.87268905f},{1.71625645f,1.08898279f}},{{0.00000032f,0.00012386f},{0.01012965f,0.31071797f},{0.36441837f,0.00004934f},{1.18502652f,1.94903739f},{1.79583712f,1.39448281f}},{{0.00000069f,0.00207500f},{0.00100082f,0.49131444f},{0.27137013f,0.00003465f},{1.12701015f,2.06032182f},{1.80262780f,1.37256710f}},{{0.00000477f,0.00029520f},{0.00243951f,0.27421167f},{0.31148173f,0.00007964f},{1.20274038f,2.10827201f},{1.90295627f,1.34935966f}},{{0.00000172f,0.00073800f},{0.00180148f,0.35990282f},{0.24918539f,0.00009457f},{1.19463076f,2.10827201f},{1.84683802f,1.37747132f}}},{{{0.00059581f,0.00068284f},{0.00087476f,0.37128112f},{0.37163416f,0.00194205f},{1.65832152f,2.44254990f},{2.33693978f,1.65310775f}},{{0.00083933f,0.00047954f},{0.00070115f,0.26360366f},{0.46934421f,0.00259868f},{1.75994223f,2.30386200f},{2.48811862f,1.75524741f}},{{0.00020945f,0.00067691f},{0.00264655f,0.47349663f},{0.25692762f,0.00202897f},{1.64063994f,2.63323819f},{2.31143612f,1.70973638f}},{{0.00060517f,0.00020443f},{0.00094197f,0.01684423f},{0.37174868f,0.00005737f},{1.67721278f,2.08027950f},{2.37084947f,1.51136515f}},{{0.00060436f,0.00064481f},{0.00003064f,0.37378841f},{0.01911961f,0.00196376f},{1.48966950f,2.46771478f},{2.17966539f,1.67732567f}}},{{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}}},{{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}}},{{{0.00109113f,0.00106412f},{0.00163158f,0.38226099f},{0.39156192f,0.00146988f},{2.19488236f,3.12287838f},{3.02260756f,1.97585674f}},{{0.00144515f,0.00025721f},{0.00081207f,0.26770652f},{0.50451343f,0.00152865f},{2.43616116f,2.97923676f},{3.02390536f,2.12150001f}},{{0.00027708f,0.00144191f},{0.00169157f,0.48624682f},{0.25786384f,0.00115534f},{2.40106615f,3.30153936f},{2.79329798f,1.98319125f}},{{0.00107836f,0.00081963f},{0.00144421f,0.01974916f},{0.39600115f,0.00070271f},{2.30857364f,2.70165736f},{2.97022263f,1.74072096f}},{{0.00044341f,0.00107371f},{0.00468062f,0.37813187f},{0.02324223f,0.00133147f},{2.15190901f,3.14732933f},{2.58581927f,1.99068758f}}},{{{0.00131896f,0.00152274f},{0.00333570f,0.40713864f},{0.41035823f,0.00157819f},{2.91725143f,3.65735734f},{3.69078700f,2.54921180f}},{{0.00232519f,0.00105848f},{0.00192077f,0.25969038f},{0.53898047f,0.00321423f},{2.94616059f,3.73963154f},{3.67059737f,2.74287317f}},{{0.00121128f,0.00176943f},{0.00170096f,0.52558660f},{0.25630368f,0.00180823f},{3.00120283f,3.82312939f},{3.47335011f,2.67403466f}},{{0.00168696f,0.00046749f},{0.00237694f,0.02046546f},{0.42040136f,0.00187121f},{2.90881391f,3.56393832f},{3.61548047f,2.32179070f}},{{0.00049158f,0.00149918f},{0.00159126f,0.41365610f},{0.02193791f,0.00196286f},{2.34394162f,3.73526595f},{3.13944922f,2.62100630f}}},{{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}}},{{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}},{{0.00072607f,0.00073687f},{0.00194777f,0.47120355f},{0.46806217f,0.00186780f},{2.41735374f,3.33490337f},{3.30802796f,2.37137945f}}},{{{0.00231922f,0.00208348f},{0.00213179f,0.46840064f},{0.47358643f,0.00218550f},{3.50527114f,4.14592867f},{4.38321682f,3.35200945f}},{{0.00304874f,0.00126772f},{0.00280185f,0.19984916f},{0.76390229f,0.00416395f},{3.76051266f,4.07156730f},{4.71042008f,3.46249718f}},{{0.00078792f,0.00307505f},{0.00391510f,0.78374855f},{0.20707703f,0.00216138f},{3.40125721f,4.62123394f},{4.21701967f,3.90049390f}},{{0.00233452f,0.00006243f},{0.00280335f,0.02272836f},{0.57213175f,0.00190679f},{3.60255182f,4.33121662f},{4.54711625f,2.74561847f}},{{0.00060111f,0.00236316f},{0.00204536f,0.59575918f},{0.02091145f,0.00249061f},{2.88194105f,4.44871785f},{4.23634260f,3.66815880f}}}};
++
++    std::array<std::array<std::array<double,3>,5>,64> diff{};
++    std::array<std::array<uint8_t,64>,P> event{};
++    explicit Value(const Design& d){
++        for(int w=d.C;w<d.T;w++){
++            std::array<int,5> n{};int paper=0;
++            for(int k=d.tot_B;k<K;k++)paper+=d.paper_bucket[k]==w;
++            int bin=(4*w/d.T)*3+std::min(2,(paper-1)/4);
++            for(int a=0;a<P;a++){
++                int k=d.prod_to_paper[a],c=(d.internal_catalog[a]>>w)&1;
++                int e=d.paper_bucket[k]==w?3+c:d.S_init[k][w]=='.'?1+c:0;event[a][w]=e;n[e]++;
++            }
++            double future[10]{},reward[10]{},trans[10][10]{};
++            for(int i=0;i<5;i++)for(int h=0;h<2;h++)for(int j=0;j<5;j++){
++                double q=n[i]?double(n[j]-(i==j))/(P-1):double(n[j])/P;
++                double p=next64[bin][i][j][h];int from=2*i+h;
++                reward[from]+=q*reward64[bin][i][j][h];trans[from][2*j]+=q*(1-p);trans[from][2*j+1]+=q*p;
++            }
++            for(int step=1;step<=8;step++){
++                double next[10];for(int i=0;i<10;i++){
++                    next[i]=reward[i];for(int j=0;j<10;j++)next[i]+=trans[i][j]*future[j];}
++                std::copy(next,next+10,future);
++                if(step==1||step==4||step==8)for(int i=0;i<5;i++)diff[w][i][step==1?0:step==4?1:2]=next[2*i+1]-next[2*i];
++            }
++        }
++    }
++    uint64_t heads(const OnlineRouter& r,const OnlineRouter::RouteState& state)const{
++        std::array<bool,K> loan{};for(int k:state.supports)loan[k]=true;
++        uint64_t seen=0,out=0;for(int k:state.order)if(k!=state.main && k>=r.tot_B && !loan[k]){
++            uint64_t bit=1ull<<r.paper_bucket[k];if(!(seen&bit)){seen|=bit;out|=r.black[k]&bit;}
++        }return out;
++    }
++    std::array<double,3> difference(int a,uint64_t base,uint64_t alt)const{
++        std::array<double,3> out{};for(auto x=base^alt;x;x&=x-1){int w=__builtin_ctzll(x),sign=alt>>w&1?1:-1;
++            for(int d=0;d<3;d++)out[d]+=sign*diff[w][event[a][w]][d];}return out;
++    }
++};
+ }
+ 
+ int main() {
+@@ -8507,6 +8834,7 @@
+     const double online_started=design_elapsed();
+     actual.route_deadline=absolute_deadline(search_budget::real("NOV8_ROUTE_END",2.98));
+     actual.route_branching=true;
++    headvalue64::Value value64(chosen);bool use_pred64=!getenv("NO_HEADVALUE64");int actions64=0,changed64=0;
+     int end_deck_saved=0;
+     int trace_saved=0,trace_queries=0;
+     BankFeedback feedback(actual);
+@@ -8515,6 +8843,7 @@
+     for(int q=0;q<R;q++) {
+         int a;
+         if(!(cin>>a)||a==-1)return 0;
++        auto old68=actual.active_supports;if(actual.active_main>=0)old68.push_back(actual.active_main);
+         auto trace_start=actual.sim.order;uint64_t previous_heads=feedback.background(actual);
+         clock_t before_route=clock();
+         actual.save_second=true;
+@@ -8632,6 +8961,13 @@
+                     const int extra_loans=int(other.supports.size())-int(first_state.supports.size());
+                     forecast+=clamp(.470127683*future-.16391087*extra_loans,-.45,.45);
+                 }
++                if(use_pred64){
++                    auto values=value64.difference(a,value64.heads(actual,first_state),value64.heads(actual,other));
++                    double extra=std::clamp((0.6500000000)*(values[2]-values[0]),-.35,.35);
++                    if(extra!=0){bool was=forecast<-.05 || (forecast<=.05 && choose);
++                        forecast+=extra;bool now=forecast<-.05 || (forecast<=.05 && choose);
++                        ++actions64;changed64+=int(was!=now);}
++                }
+                 if(forecast<-.05)choose=true;
+                 if(forecast>.05)choose=false;
+                 cached_features=choose?fb:fa;have_features=true;compared=true;
+@@ -8688,6 +9024,7 @@
+         return_pair53::adjust(actual,trace_start,moves,a);
+         ordinary54::apply(actual,trace_start,moves,a);
+         shelf58::apply(actual,trace_start,moves,a);
++        pair68::improve(actual,a,trace_start,moves,old68,tail_deadline);
+         feedback.observe(actual,a,previous_heads,q);
+         if(q>=15 && q<780 && (q&3)==3){
+             live_heads.emplace_back();capture_heads(actual,live_heads.back());
+@@ -8706,7 +9043,13 @@
+     }
+     cerr<<"U48 eligible="<<return_pair53::eligible<<" edited="<<return_pair53::edited<<" rejected="<<return_pair53::rejected<<"\n";
+     cerr<<"O48 proposed="<<ordinary54::proposed<<" accepted="<<ordinary54::accepted<<" head="<<ordinary54::changed_head<<" rejected="<<ordinary54::rejected<<"\n";
++    cerr<<"PAIR_FILTER queries="<<pair68::filter_queries<<" full="<<pair68::filter_full<<" selected="<<pair68::filter_selected<<"\n";
++    cerr<<"PAIR_GUARD clocks="<<pair68::inner_clock_checks<<" surviving="<<pair68::guard_survivors<<" schedulers="<<pair68::guard_schedulers<<"\n";
++    cerr<<"PAIR_LAZY rows="<<pair68::distance_rows<<" verified="<<pair68::distance_verified<<" guards="<<pair68::deadline_stops<<" distance_cpu="<<double(pair68::distance_ticks)/CLOCKS_PER_SEC<<"\n";
++    cerr<<"PAIR68 "<<pair68::calls<<" "<<pair68::pairs<<" "<<pair68::goals<<" "<<pair68::reached<<" "<<pair68::wins<<" "<<pair68::saved<<" "<<pair68::loans<<" "<<pair68::backsave<<" "<<pair68::ordsave<<" "<<0<<" "<<pair68::spent<<"\n";
++    cerr<<"SHIFT68 "<<shift68::calls<<" "<<shift68::offers<<" "<<shift68::goals<<" "<<shift68::reachable<<" "<<shift68::wins<<" "<<shift68::saved<<" "<<shift68::loans<<" "<<shift68::backsave<<" "<<shift68::orsave<<" "<<shift68::returnwins<<" "<<shift68::spent<<"\n";
+     cerr<<"SH58 "<<shelf58::calls<<" "<<shelf58::eligible<<" "<<shelf58::tried<<" "<<shelf58::changed<<" "<<shelf58::loanhomes<<" "<<shelf58::two<<" "<<shelf58::visfail<<" "<<double(shelf58::spent)/CLOCKS_PER_SEC<<"\n";
++    cerr<<"HEADV64 "<<actions64<<" "<<changed64<<"\n";
+     cerr<<"LOAN_TAIL wins="<<loan_tail::wins<<" saved="<<loan_tail::saved<<" veto="<<loan_tail::vetos<<" cpu="<<loan_tail::cpu<<" pertype="<<loan_tail::by_type[0]<<","<<loan_tail::by_type[1]<<","<<loan_tail::by_type[2]<<","<<loan_tail::by_type[3]<<" savings="<<loan_tail::savings[0]<<","<<loan_tail::savings[1]<<","<<loan_tail::savings[2]<<","<<loan_tail::savings[3]<<"\n";
+     cerr<<"DUO47 "<<actual.attempt47<<" "<<actual.found47<<" "<<actual.chosen47<<" "<<actual.preonly47<<"\n";
+     cerr<<"FINAL_DECK saved="<<end_deck_saved<<"\n";

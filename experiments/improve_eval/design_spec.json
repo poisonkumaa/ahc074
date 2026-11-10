@@ -1,0 +1,8 @@
+[
+ {"name":"baseline","exe":"experiments/improve_eval/baseline.exe"},
+ {"name":"width38","exe":"experiments/improve_eval/design.exe","env":{"CORE5_W":38}},
+ {"name":"screen20","exe":"experiments/improve_eval/design.exe","env":{"CGEN_SCREEN":20}},
+ {"name":"beam3","exe":"experiments/improve_eval/design.exe","env":{"CGEN_BEAM":3}},
+ {"name":"spread","exe":"experiments/improve_eval/design.exe","env":{"RELAX_TRIPLE_SPREAD":1}},
+ {"name":"mdp25","exe":"experiments/improve_eval/baseline.exe","env":{"BMDP_WEIGHT":0.25}}
+]

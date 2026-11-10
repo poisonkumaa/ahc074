@@ -1,0 +1,5 @@
+[
+ {"name":"baseline","exe":"experiments/structural_v2/baseline_linux","env":{}},
+ {"name":"rollout4","exe":"experiments/structural_v2/rollout_linux","env":{"ROUTE_ROLLOUT":1}},
+ {"name":"rollout16","exe":"experiments/structural_v2/rollout_linux","env":{"ROUTE_ROLLOUT":1,"ROLLOUT_SAMPLES":16,"ROLLOUT_CPU":0.4}}
+]

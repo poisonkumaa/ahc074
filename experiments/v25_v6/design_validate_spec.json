@@ -1,0 +1,14 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/v25_v6/main_baseline_linux",
+    "env": {}
+  },
+  {
+    "name": "half",
+    "exe": "experiments/v25_v6/design_candidate_linux",
+    "env": {
+      "DESIGN_FLIP": 0.5
+    }
+  }
+]

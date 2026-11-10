@@ -1,0 +1,23 @@
+[
+  {
+    "name": "control",
+    "exe": "experiments/v25_v6/design_candidate_linux",
+    "env": {
+      "DESIGN_FLIP": 0
+    }
+  },
+  {
+    "name": "half",
+    "exe": "experiments/v25_v6/design_candidate_linux",
+    "env": {
+      "DESIGN_FLIP": 0.5
+    }
+  },
+  {
+    "name": "exact",
+    "exe": "experiments/v25_v6/design_candidate_linux",
+    "env": {
+      "DESIGN_FLIP": 1
+    }
+  }
+]

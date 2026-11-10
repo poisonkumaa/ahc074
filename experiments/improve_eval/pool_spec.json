@@ -1,0 +1,6 @@
+[
+ {"name":"pool4","exe":"experiments/improve_eval/fast_pool_linux"},
+ {"name":"pool6","exe":"experiments/improve_eval/fast_pool_linux","env":{"NOV8_POOL":6}},
+ {"name":"alternate6","exe":"experiments/improve_eval/fast_pool_linux","env":{"NOV8_POOL":6,"POOL_ALTERNATE":1}},
+ {"name":"alternate8","exe":"experiments/improve_eval/fast_pool_linux","env":{"NOV8_POOL":8,"POOL_ALTERNATE":1}}
+]

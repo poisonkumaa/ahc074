@@ -1,0 +1,29 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/beam_v1/baseline_linux",
+    "env": {}
+  },
+  {
+    "name": "portfolio1",
+    "exe": "experiments/design_v3/quick_portfolio_linux",
+    "env": {
+      "ROUTE_PORTFOLIO": 1,
+      "PORTFOLIO_TRIES": 1,
+      "PORTFOLIO_PAIRS": 100,
+      "PORTFOLIO_TRIPLES": 24,
+      "PORTFOLIO_CPU": 0.4,
+      "NOV5_RELAX_BUDGET": 0.7
+    }
+  },
+  {
+    "name": "quick3",
+    "exe": "experiments/design_v3/quick_portfolio_linux",
+    "env": {
+      "ROUTE_PORTFOLIO": 1,
+      "PORTFOLIO_TRIES": 3,
+      "PORTFOLIO_CPU": 0.55,
+      "NOV5_RELAX_BUDGET": 0.9
+    }
+  }
+]

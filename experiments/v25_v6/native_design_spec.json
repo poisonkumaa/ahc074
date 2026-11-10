@@ -1,0 +1,19 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/v25_v6/native_baseline_linux",
+    "env": {}
+  },
+  {
+    "name": "diverse",
+    "exe": "experiments/v25_v6/native_diverse_linux",
+    "env": {
+      "DESIGN_FLIP": 0.5
+    }
+  },
+  {
+    "name": "half",
+    "exe": "experiments/v25_v6/native_half_linux",
+    "env": {}
+  }
+]

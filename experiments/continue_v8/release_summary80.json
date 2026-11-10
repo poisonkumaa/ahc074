@@ -1,0 +1,37 @@
+{
+  "baseline": {
+    "count": 80,
+    "mean": 10632.925,
+    "total": 850634,
+    "errors": 0,
+    "max_round_moves": 21,
+    "cpu_mean": 1.610508125,
+    "cpu_max": 1.80808,
+    "wall_max": 1.889630997000495
+  },
+  "candidate": {
+    "count": 80,
+    "mean": 10626.6375,
+    "total": 850131,
+    "errors": 0,
+    "max_round_moves": 21,
+    "cpu_mean": 1.662871875,
+    "cpu_max": 1.78828,
+    "wall_max": 1.8533991820004303
+  },
+  "paired": {
+    "mean_delta": -6.2875,
+    "total_delta": -503,
+    "standard_error": 3.1919694403655945,
+    "wins": 47,
+    "ties": 0,
+    "losses": 33,
+    "min_delta": -121,
+    "max_delta": 87
+  },
+  "source_sha256": "d4e5be258b4e202bd5228d233460318e37046c73f92cf631fc940cc546f50e5b",
+  "reports": [
+    "final_filter40.json",
+    "final_filter_confirm40.json"
+  ]
+}

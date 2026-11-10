@@ -1,0 +1,41 @@
+FIXED_LAYOUT online_only=1 W=39 B=6
+CHOSEN W=39 index=0 candidates=0
+BMDP_BUCKET w=1 n=2 actual_n=2 projected=0 states=2 stages=3 correction_span=0 residual=0
+BMDP_BUCKET w=0 n=2 actual_n=2 projected=0 states=2 stages=3 correction_span=0 residual=0
+BMDP_BUCKET w=2 n=3 actual_n=3 projected=0 states=6 stages=3 correction_span=32.0088 residual=0.039225
+BMDP_BUCKET w=3 n=3 actual_n=3 projected=0 states=6 stages=3 correction_span=44.0876 residual=0.0532412
+BMDP_BUCKET w=5 n=4 actual_n=4 projected=0 states=24 stages=3 correction_span=60.886 residual=0.0719896
+BMDP_BUCKET w=4 n=4 actual_n=4 projected=0 states=24 stages=3 correction_span=44.3552 residual=0.0538022
+BMDP_BUCKET w=24 n=5 actual_n=14 projected=1 states=30 stages=3 correction_span=361.839 residual=0.304731
+BMDP_BUCKET w=20 n=5 actual_n=11 projected=1 states=30 stages=3 correction_span=349.368 residual=0.323659
+BMDP_BUCKET w=17 n=5 actual_n=10 projected=1 states=30 stages=3 correction_span=230.284 residual=0.226676
+BMDP_BUCKET w=10 n=6 actual_n=6 projected=0 states=30 stages=3 correction_span=302.451 residual=0.335983
+BMDP_BUCKET w=7 n=5 actual_n=5 projected=0 states=30 stages=3 correction_span=135.723 residual=0.154271
+BMDP_BUCKET w=6 n=5 actual_n=5 projected=0 states=60 stages=3 correction_span=93.9799 residual=0.111652
+BMDP_BUCKET w=8 n=6 actual_n=6 projected=0 states=120 stages=3 correction_span=208.204 residual=0.235595
+BMDP_BUCKET w=13 n=8 actual_n=8 projected=0 states=168 stages=3 correction_span=354.086 residual=0.390735
+BMDP_BUCKET w=22 n=6 actual_n=12 projected=1 states=180 stages=3 correction_span=366.618 residual=0.32033
+BMDP_BUCKET w=19 n=6 actual_n=11 projected=1 states=180 stages=3 correction_span=310.594 residual=0.304896
+BMDP_BUCKET w=9 n=6 actual_n=6 projected=0 states=180 stages=3 correction_span=123.254 residual=0.142641
+BMDP_BUCKET w=12 n=7 actual_n=7 projected=0 states=210 stages=3 correction_span=283.181 residual=0.316098
+BMDP_BUCKET w=11 n=7 actual_n=7 projected=0 states=210 stages=3 correction_span=313.735 residual=0.346109
+BMDP_BUCKET w=16 n=9 actual_n=9 projected=0 states=252 stages=3 correction_span=534.102 residual=0.55057
+BMDP_BUCKET w=14 n=8 actual_n=8 projected=0 states=280 stages=3 correction_span=452.56 residual=0.489784
+BMDP_BUCKET w=23 n=7 actual_n=13 projected=1 states=630 stages=3 correction_span=350.849 residual=0.310493
+BMDP_BUCKET w=21 n=7 actual_n=12 projected=1 states=630 stages=3 correction_span=343.299 residual=0.316333
+BMDP_BUCKET w=18 n=7 actual_n=10 projected=1 states=630 stages=3 correction_span=301.209 residual=0.302051
+BMDP_BUCKET w=15 n=8 actual_n=8 projected=0 states=1680 stages=3 correction_span=322.589 residual=0.345428
+BMDP_BUILD buckets=25 projected=8 projection_cap=2 states=5624 stages=75 correction_span=534.102 weight=0.5 repair=0.5 cpu=0.008499 timeout=0
+BUDGET design_ready=0.00199167 online_started=0.0218967 synthetic_queries=0 cpu=0.618158 budget_units=1.03027 future_aborts=0 utility_aborts=0 policy_stops=0 extract_aborts=0 trace_skips=0 trace_aborts=0
+TRACE_SHORTEN saved=0 queries=0
+TRACE_BEAM queries=1024 calls=1020 pivots=539 nodes=5919 children=87739 neutral=26432 display=25 state=2 accepted=2 saved=2 timeout=0 cpu=0.091373
+NOV5_RELAX calls=1027 trials=108077 display=120 state=116 accepted=114 saved=124 auto_skipped=16 extra_supports=122 wide=41 interleaved=58 triples=26147 early_main=16756 early_color=35937 cpu=0.135116
+BACKING_ROUTE_CACHE hits=5190 misses=551
+BMDP_USE hits=157650 misses=0 support_fallbacks=22344 projection_hits=114110
+POLICY_GUARD hits=0
+ALTERNATE_RETURN trials=1574 selected=72
+ROUND12 choices=243 wins=24 saved=2 front_kept=486 core_returns=3386
+POST_SECOND choices=16 wins=1 saved=0
+POST_BEAM calls=899 expanded=4809 generated=27788 completed=26321 duplicates=2366 invalid=0 lower_gain=26102 max_depth=3 changed=2 selected=1 saved=1 timeouts=0 cpu=0.1639
+NOV9_INSERT_CACHE requests=150059 hits=129206 misses=20853 scanned=188453 peak=64 long_keys=0 full=0 enabled=1 storage=fixed256
+EXTRACT_DP calls=656 improved=351 cache_hits=4567 gain=663.134

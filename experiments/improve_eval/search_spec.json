@@ -1,0 +1,7 @@
+[
+ {"name":"control","exe":"experiments/improve_eval/search_all.exe"},
+ {"name":"keep3","exe":"experiments/improve_eval/search_all.exe","env":{"KEEP_MAX_SOURCES":3}},
+ {"name":"second4","exe":"experiments/improve_eval/search_all.exe","env":{"POST_SECOND_CHOICES":4}},
+ {"name":"portfolio","exe":"experiments/improve_eval/search_all.exe","env":{"ROUTE_WEIGHT_PORTFOLIO":1}},
+ {"name":"second8","exe":"experiments/improve_eval/search_all.exe","env":{"POST_SECOND_CHOICES":4,"POST_SUPPORT_CHOICES":8}}
+]

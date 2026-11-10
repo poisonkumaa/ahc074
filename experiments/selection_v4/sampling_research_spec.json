@@ -1,0 +1,83 @@
+[
+    {
+        "env":  {
+                    "NOV8_RELAX_END":  30,
+                    "NOV8_PACK_END":  30,
+                    "NOV8_POOL_END":  30,
+                    "NOV8_SELECT_HARD":  30,
+                    "NOV8_INIT_END":  30,
+                    "PAIR_SNAPSHOT_END":  30,
+                    "NOV8_HOLES_END":  30,
+                    "NOV8_SHORT_END":  30,
+                    "NOV8_ROUTE_END":  30,
+                    "MAP_CAP":  10,
+                    "NOV5_RELAX_BUDGET":  10,
+                    "NOV8_PAIR_CAP":  10,
+                    "PAIR_SNAPSHOT_CAP":  10,
+                    "NOV8_FLEX_CAP":  10,
+                    "NOV8_MDP_END":  30,
+                    "SEL4_MODE":  0,
+                    "BMDP_CPU":  10,
+                    "NOV8_SUPPORT_CAP":  10,
+                    "NOV8_LAYOUT_END":  30,
+                    "NOV8_SELECT_END":  30,
+                    "NOV8_MATCH_END":  30
+                },
+        "exe":  "experiments/selection_v4/selection_sampling_linux",
+        "name":  "mode0"
+    },
+    {
+        "env":  {
+                    "NOV8_RELAX_END":  30,
+                    "NOV8_PACK_END":  30,
+                    "NOV8_POOL_END":  30,
+                    "NOV8_SELECT_HARD":  30,
+                    "NOV8_INIT_END":  30,
+                    "PAIR_SNAPSHOT_END":  30,
+                    "NOV8_HOLES_END":  30,
+                    "NOV8_SHORT_END":  30,
+                    "NOV8_ROUTE_END":  30,
+                    "MAP_CAP":  10,
+                    "NOV5_RELAX_BUDGET":  10,
+                    "NOV8_PAIR_CAP":  10,
+                    "PAIR_SNAPSHOT_CAP":  10,
+                    "NOV8_FLEX_CAP":  10,
+                    "NOV8_MDP_END":  30,
+                    "SEL4_MODE":  1,
+                    "BMDP_CPU":  10,
+                    "NOV8_SUPPORT_CAP":  10,
+                    "NOV8_LAYOUT_END":  30,
+                    "NOV8_SELECT_END":  30,
+                    "NOV8_MATCH_END":  30
+                },
+        "exe":  "experiments/selection_v4/selection_sampling_linux",
+        "name":  "mode1"
+    },
+    {
+        "env":  {
+                    "NOV8_RELAX_END":  30,
+                    "NOV8_PACK_END":  30,
+                    "NOV8_POOL_END":  30,
+                    "NOV8_SELECT_HARD":  30,
+                    "NOV8_INIT_END":  30,
+                    "PAIR_SNAPSHOT_END":  30,
+                    "NOV8_HOLES_END":  30,
+                    "NOV8_SHORT_END":  30,
+                    "NOV8_ROUTE_END":  30,
+                    "MAP_CAP":  10,
+                    "NOV5_RELAX_BUDGET":  10,
+                    "NOV8_PAIR_CAP":  10,
+                    "PAIR_SNAPSHOT_CAP":  10,
+                    "NOV8_FLEX_CAP":  10,
+                    "NOV8_MDP_END":  30,
+                    "SEL4_MODE":  3,
+                    "BMDP_CPU":  10,
+                    "NOV8_SUPPORT_CAP":  10,
+                    "NOV8_LAYOUT_END":  30,
+                    "NOV8_SELECT_END":  30,
+                    "NOV8_MATCH_END":  30
+                },
+        "exe":  "experiments/selection_v4/selection_sampling_linux",
+        "name":  "mode3"
+    }
+]

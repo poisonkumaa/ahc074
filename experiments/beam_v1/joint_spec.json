@@ -1,0 +1,38 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/beam_v1/fixture_baseline_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV8_RELAX_END": 30
+    }
+  },
+  {
+    "name": "joint0",
+    "exe": "experiments/beam_v1/fixture_joint_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV8_RELAX_END": 30,
+      "EARLY_BEAM": 1,
+      "EARLY_BEAM_CPU": 10
+    }
+  },
+  {
+    "name": "joint_minus",
+    "exe": "experiments/beam_v1/fixture_joint_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV8_RELAX_END": 30,
+      "EARLY_BEAM": 1,
+      "EARLY_BEAM_CPU": 10,
+      "EARLY_POST_MIN_GAIN": -1,
+      "EARLY_BEAM_NODES": 64
+    }
+  }
+]

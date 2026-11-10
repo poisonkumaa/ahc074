@@ -1,0 +1,45 @@
+FIXED_LAYOUT_V2 post_home=1 W=38 B=6
+BMDP_BUCKET w=2 n=3 actual_n=3 projected=0 states=6 stages=3 correction_span=36.8519 residual=0.0448554
+BMDP_BUCKET w=0 n=3 actual_n=3 projected=0 states=6 stages=3 correction_span=33.2184 residual=0.0406339
+BMDP_BUCKET w=1 n=3 actual_n=3 projected=0 states=6 stages=3 correction_span=32.0568 residual=0.0393237
+BMDP_BUCKET w=4 n=4 actual_n=4 projected=0 states=24 stages=3 correction_span=61.5036 residual=0.0723182
+BMDP_BUCKET w=3 n=4 actual_n=4 projected=0 states=24 stages=3 correction_span=58.9198 residual=0.0699966
+BMDP_BUCKET w=24 n=5 actual_n=12 projected=1 states=30 stages=3 correction_span=347.307 residual=0.306674
+BMDP_BUCKET w=22 n=5 actual_n=11 projected=1 states=30 stages=3 correction_span=247.465 residual=0.219054
+BMDP_BUCKET w=14 n=7 actual_n=7 projected=0 states=42 stages=3 correction_span=452.322 residual=0.47425
+BMDP_BUCKET w=11 n=7 actual_n=7 projected=0 states=42 stages=3 correction_span=411.944 residual=0.445132
+BMDP_BUCKET w=5 n=5 actual_n=5 projected=0 states=60 stages=3 correction_span=89.1698 residual=0.106733
+BMDP_BUCKET w=6 n=5 actual_n=5 projected=0 states=60 stages=3 correction_span=134.256 residual=0.155533
+BMDP_BUCKET w=7 n=5 actual_n=5 projected=0 states=60 stages=3 correction_span=119.922 residual=0.139962
+BMDP_BUCKET w=10 n=6 actual_n=6 projected=0 states=120 stages=3 correction_span=182.8 residual=0.209616
+BMDP_BUCKET w=9 n=6 actual_n=6 projected=0 states=120 stages=3 correction_span=203.87 residual=0.232344
+BMDP_BUCKET w=17 n=8 actual_n=8 projected=0 states=168 stages=3 correction_span=497.758 residual=0.493026
+BMDP_BUCKET w=8 n=6 actual_n=6 projected=0 states=180 stages=3 correction_span=140.785 residual=0.160345
+BMDP_BUCKET w=18 n=9 actual_n=9 projected=0 states=252 stages=3 correction_span=629.462 residual=0.641727
+BMDP_BUCKET w=13 n=7 actual_n=7 projected=0 states=420 stages=3 correction_span=358.335 residual=0.378653
+BMDP_BUCKET w=25 n=7 actual_n=12 projected=1 states=630 stages=3 correction_span=339.996 residual=0.299451
+BMDP_BUCKET w=23 n=7 actual_n=11 projected=1 states=630 stages=3 correction_span=322.661 residual=0.304235
+BMDP_BUCKET w=21 n=7 actual_n=10 projected=1 states=630 stages=3 correction_span=304.703 residual=0.299101
+BMDP_BUCKET w=20 n=7 actual_n=10 projected=1 states=630 stages=3 correction_span=322.594 residual=0.310886
+BMDP_BUCKET w=12 n=7 actual_n=7 projected=0 states=630 stages=3 correction_span=220.324 residual=0.243614
+BMDP_BUCKET w=16 n=8 actual_n=8 projected=0 states=840 stages=3 correction_span=507.045 residual=0.50483
+BMDP_BUCKET w=15 n=8 actual_n=8 projected=0 states=840 stages=3 correction_span=512.129 residual=0.508423
+BMDP_BUCKET w=19 n=9 actual_n=9 projected=0 states=5040 stages=3 correction_span=408.273 residual=0.397143
+BMDP_BUILD buckets=26 projected=6 projection_cap=2 states=11520 stages=78 correction_span=629.462 weight=0.5 repair=0.5 cpu=0.015916 timeout=0
+U48 eligible=8 edited=8 rejected=0
+O48 proposed=34 accepted=13 head=12 rejected=0
+SH58 1024 1107 43 43 43 0 0 0.001956
+LOAN_TAIL wins=8 saved=8 veto=0 cpu=0.06139 pertype=1,1,1,5 savings=1,1,1,5
+DUO47 716 127 9 71
+FINAL_DECK saved=1
+SETTLED 94
+BUDGET design_ready=0.00246167 online_started=0.0361417 synthetic_queries=0 cpu=0.656058 budget_units=1.09344 future_aborts=0 utility_aborts=0 policy_stops=0 extract_aborts=0 trace_skips=0 trace_aborts=0
+TRACE_SHORTEN saved=0 queries=0
+NOV5_RELAX calls=4837 trials=293500 display=1937 state=1934 accepted=2199 saved=2432 auto_skipped=319 extra_supports=1527 wide=428 interleaved=487 triples=41076 early_main=45923 early_color=95141 cpu=0.193875
+BACKING_ROUTE_CACHE hits=5736 misses=840
+BMDP_USE hits=2852 misses=0 support_fallbacks=0 projection_hits=1779
+POLICY_GUARD hits=0
+ALTERNATE_RETURN trials=1745 selected=80
+ROUND12 choices=321 wins=26 saved=2 front_kept=291 core_returns=3343
+NOV9_INSERT_CACHE requests=70523 hits=54950 misses=15573 scanned=175338 peak=43 long_keys=0 full=0 enabled=1 storage=fixed256
+EXTRACT_DP calls=606 improved=337 cache_hits=4380 gain=582.191

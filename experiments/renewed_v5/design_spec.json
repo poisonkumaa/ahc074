@@ -1,0 +1,16 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/renewed_v5/design_popcnt_linux",
+    "env": {
+      "DESIGN_MATCHING": 0
+    }
+  },
+  {
+    "name": "matching",
+    "exe": "experiments/renewed_v5/design_popcnt_linux",
+    "env": {
+      "DESIGN_MATCHING": 1
+    }
+  }
+]

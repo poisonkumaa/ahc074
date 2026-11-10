@@ -1,3 +1,0 @@
-#include <bits/stdc++.h>
-using namespace std;
-int main(){vector<array<int,4>>ps;array<int,4>p={0,1,2,3};do{if(p[0]!=3)ps.push_back(p);}while(next_permutation(p.begin(),p.end()));vector<vector<int>>fs;for(int s=0;s<27;s++){vector<int>f;for(auto p:ps){int b=0;for(int i:p){int x=i==3?1:(s/(i==0?1:i==1?3:9))%3;if(x){b=x-1;break;}}f.push_back(b);}fs.push_back(f);}int best=0;for(int a=0;a<18;a++)for(int b=a+1;b<18;b++)for(int c=b+1;c<18;c++)for(int d=c+1;d<18;d++){int seen=0;for(auto f:fs)seen|=1<<(f[a]|f[b]<<1|f[c]<<2|f[d]<<3);int n=__builtin_popcount((unsigned)seen);if(n>best){best=n;cout<<n<<": ";for(int i:{a,b,c,d}){for(int j:ps[i])cout<<j;cout<<" ";}cout<<endl;}}}

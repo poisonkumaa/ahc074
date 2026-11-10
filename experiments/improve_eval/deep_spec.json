@@ -1,0 +1,6 @@
+[
+ {"name":"baseline","exe":"experiments/improve_eval/baseline.exe"},
+ {"name":"deep","exe":"experiments/improve_eval/baseline.exe","env":{"NOV5_RELAX_TRIPLES":128,"NOV5_RELAX_PAIRS":180}},
+ {"name":"deep_recurse","exe":"experiments/improve_eval/candidate.exe","env":{"SEL_UNIFORM":0,"SEL_BRANCH":0,"RELAX_RECURSE_ONE":1,"NOV5_RELAX_TRIPLES":128,"NOV5_RELAX_PAIRS":180}},
+ {"name":"refine","exe":"experiments/improve_eval/refine.exe","env":{"REFINE_VALIDATE_END":2.42,"REFINE_VALIDATE_CAP":0.15,"REFINE_BRANCH":1,"REFINE_GUARD":0}}
+]

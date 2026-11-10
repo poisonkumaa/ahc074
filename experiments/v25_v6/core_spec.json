@@ -1,0 +1,14 @@
+[
+  {
+    "name": "control",
+    "exe": "experiments/v25_v6/design_core_linux",
+    "env": {}
+  },
+  {
+    "name": "refit",
+    "exe": "experiments/v25_v6/design_core_linux",
+    "env": {
+      "DESIGN_CORE": 1
+    }
+  }
+]

@@ -1,0 +1,7 @@
+[
+ {"name":"control","exe":"experiments/improve_eval/candidate.exe","env":{"SEL_UNIFORM":0,"SEL_BRANCH":0}},
+ {"name":"uniform","exe":"experiments/improve_eval/candidate.exe","env":{"SEL_UNIFORM":1,"SEL_BRANCH":0}},
+ {"name":"branch","exe":"experiments/improve_eval/candidate.exe","env":{"SEL_UNIFORM":0,"SEL_BRANCH":1}},
+ {"name":"both","exe":"experiments/improve_eval/candidate.exe","env":{"SEL_UNIFORM":1,"SEL_BRANCH":1}},
+ {"name":"recurse","exe":"experiments/improve_eval/candidate.exe","env":{"SEL_UNIFORM":0,"SEL_BRANCH":0,"RELAX_RECURSE_ONE":1}}
+]

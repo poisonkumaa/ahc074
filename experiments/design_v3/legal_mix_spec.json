@@ -1,0 +1,65 @@
+[
+  {
+    "name": "weight4",
+    "exe": "experiments/design_v3/metric_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "PAIR_CORE_WEIGHT": 4
+    }
+  },
+  {
+    "name": "legal_sample",
+    "exe": "experiments/design_v3/legal_metric_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "PAIR_LEGAL_METRIC": 1,
+      "PAIR_LEGAL_CAP": 1
+    }
+  },
+  {
+    "name": "legal_all",
+    "exe": "experiments/design_v3/legal_metric_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "PAIR_LEGAL_METRIC": 1,
+      "PAIR_LEGAL_CAP": 1,
+      "PAIR_LEGAL_ALL": 1
+    }
+  },
+  {
+    "name": "mix10",
+    "exe": "experiments/design_v3/metric_mix_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "PAIR_ALT_MASK": 10
+    }
+  },
+  {
+    "name": "mix5",
+    "exe": "experiments/design_v3/metric_mix_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "PAIR_ALT_MASK": 5
+    }
+  }
+]

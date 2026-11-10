@@ -1,0 +1,59 @@
+[
+  {
+    "name": "baseline",
+    "exe": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/baseline_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10
+    }
+  },
+  {
+    "name": "head",
+    "exe": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/alternative_both_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "NO_PAIR68": 1
+    }
+  },
+  {
+    "name": "pair",
+    "exe": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/alternative_both_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "NO_HEADVALUE64": 1
+    }
+  },
+  {
+    "name": "both",
+    "exe": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/alternative_both_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10
+    }
+  },
+  {
+    "name": "pre_utility",
+    "exe": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/design_pre_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/continue_v8/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10
+    }
+  }
+]

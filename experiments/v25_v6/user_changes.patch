@@ -1,0 +1,1225 @@
+--- previous.cpp
++++ v25.cpp
+@@ -1,3 +1,6 @@
++// AHC074 v25. Shelf-color pricing, batched comparison maps and budgeted route alternatives.
++// v24. Prune persistent comparison cycles, reserve CPU for remaining orders,
++// and compare a third distinct routing trace when the measured budget allows.
+ #include <bitset>
+ // AHC074 Layered Barcode Display. Build with g++ -std=c++17 -O2.
+ // v12 blends the relation-count price with the legal mean distance over all
+@@ -1810,6 +1813,24 @@
+         vector<int> order,position,supports,cuts;
+         int main;
+     };
++    bool save_second=false;
++    // A few distinct raw paths compete for the remaining shortening budget.
++    struct RouteCandidate {
++        uint64_t key=0;
++        double rank=0,score=0;
++        vector<pair<int,int>> moves;
++        RouteState state;
++    };
++    vector<RouteCandidate> reservoir;
++    static uint64_t paper_hash(const vector<pair<int,int>>& ops){
++        uint64_t h=0x9e3779b97f4a7c15ULL;
++        for(auto m:ops)h=(h^unsigned(m.first+1))*0x100000001b3ULL;
++        return h;
++    }
++    RouteState second_state,third_state;
++    vector<pair<int,int>> second_moves;
++    vector<pair<int,int>> third_moves;
++    double third_score=0,second_score=0;
+     RouteState save_route_state() const {return {sim.order,sim.position,active_supports,support_cut,active_main};}
+     void restore_route_state(const RouteState& s) {
+         sim.order=s.order;sim.position=s.position;active_supports=s.supports;support_cut=s.cuts;active_main=s.main;
+@@ -1819,6 +1840,11 @@
+         int main,limit,penalty,rank,late,late_at,pending,pending_at,cost;
+     };
+     vector<SharedTail> tails;int used_tails=0;
++    // Route variants perturb only a few home shelves. Reuse the last exact
++    // queue contribution on shelves whose subsequence and main credit match.
++    mutable array<int,K> valued_papers{};
++    mutable array<int,64> valued_shape{};
++    mutable array<double,64> valued_queue{};
+     double route_state_value() const {
+         double cost=0;
+         if(route_queue_weight!=0){
+@@ -1831,6 +1857,14 @@
+             }
+             for(int w=C;w<T;w++) {
+                 const int* b=papers.data()+start[w];
++                int special=active_main>=0 && paper_bucket[active_main]==w
++                    ?1+int((black[active_main]>>w)&1):0;
++                int shape=1+3*length[w]+special;
++                auto prior=valued_papers.data()+start[w];
++                if(shape==valued_shape[w] && equal(b,b+length[w],prior)){
++                    cost+=valued_queue[w];continue;
++                }
++                valued_shape[w]=shape;copy(b,b+length[w],prior);
+                 double q=0;
+                 for(int i=0;i<length[w];i++)q+=(1+int(paper_is_paired[b[i]]))*(i+1);
+                 if(length[w]>=2) {
+@@ -1844,7 +1878,7 @@
+                     if(first[0]+first[1]==1)q+=.5*(int(paper_is_paired[b[0]])-int(paper_is_paired[b[1]]));
+                 }
+                 for(int i=0;i<length[w]&&i<32;i++)q-=support_order_weight*support_utility[b[i]][i];
+-                cost+=route_queue_weight*q/P;
++                valued_queue[w]=route_queue_weight*q/P;cost+=valued_queue[w];
+             }
+         }
+         if(route_drop_weight!=0)for(int k:active_supports)cost+=route_drop_weight*(route_drop_model==1 ? 1.0 : support_drop[k][support_cut[k]+1]);
+@@ -2127,6 +2161,8 @@
+         return true;
+     }
+     vector<pair<int,int>> query(int a) {
++        valued_shape.fill(0);
++        if(save_second){reservoir.clear();third_score=second_score=1.e100;second_moves.clear();third_moves.clear();}
+         used_tails=0;
+         nov9_insert_positions.clear();
+         batch_sources.clear();
+@@ -2138,6 +2174,43 @@
+         RouteState best_state;
+         vector<pair<int,int>> best_moves;
+         double best=1e100;int best_policy=0,best_options=0;
++        auto second_choice=[&](double score,const auto& moves){
++            if(save_second && score<best+2.15){
++                uint64_t key=paper_hash(moves);
++                array<uint64_t,3> seen{};int repeated=0;
++                for(auto [k,d]:moves){
++                    uint64_t bit=1ULL<<(k%64);repeated+=bool(seen[k/64]&bit);seen[k/64]|=bit;
++                }
++                double rank=score-.35*repeated;
++                int found=-1,worst=-1;
++                for(int i=0;i<int(reservoir.size());i++){
++                    if(reservoir[i].key==key){found=i;break;}
++                    if(worst<0 || reservoir[worst].rank<reservoir[i].rank)worst=i;
++                }
++                if(found<0 && reservoir.size()<8){found=int(reservoir.size());reservoir.emplace_back();reservoir.back().rank=1e100;}
++                if(found<0)found=worst;
++                if(rank<reservoir[found].rank-1.e-9)
++                    reservoir[found]={key,rank,score,moves,save_route_state()};
++            }
++            if(!save_second || best_moves.empty() || score>best+1.6)return;
++            // A different set/order of moved papers gives the deletion search
++            // another starting trace. Ignore pure insertion-depth variants.
++            if(moves.size()==best_moves.size() && equal(moves.begin(),moves.end(),best_moves.begin(),
++                [](const auto& x,const auto& y){return x.first==y.first;}))return;
++            auto same_papers=[](const auto& a,const auto& b){
++                return a.size()==b.size() && equal(a.begin(),a.end(),b.begin(),
++                    [](auto x,auto y){return x.first==y.first;});
++            };
++            if(score<best-1e-9 || score<second_score){
++                if(!second_moves.empty() && !same_papers(second_moves,moves)){
++                    third_score=second_score;third_moves=move(second_moves);third_state=move(second_state);
++                }
++                if(score<best-1e-9){second_score=best;second_moves=best_moves;second_state=best_state;}
++                else {second_score=score;second_moves=moves;second_state=save_route_state();}
++            }else if(score<third_score && !same_papers(second_moves,moves)){
++                third_score=score;third_moves=moves;third_state=save_route_state();
++            }
++        };
+         unsigned distinct=~0u;
+         for(int i=0;i<10+batch_limit+overlay_count;i++)if(route_policies&(1<<i)) {
+             if(i>=10 && (before.main<0 || before.main==prod_to_paper[a] || int(before.supports.size())+1>max_batch_sources ||
+@@ -2153,7 +2226,7 @@
+             if(i==0)distinct=policy_effects;
+             if(batch_failed)continue;
+             assert(moves.size()<=2*K && sim.current_display()==A[a]);
+-            double score=moves.size()+route_state_value();
++            double score=moves.size()+route_state_value();second_choice(score,moves);
+             if(score<best-1e-9){best=score;best_policy=i;best_options=post_first_option_count;best_state=save_route_state();best_moves=move(moves);}
+         }
+         for(int rank=1;rank<std::min(post_support_choices,best_options);rank++) {
+@@ -2162,7 +2235,7 @@
+             auto moves=query_impl(a);post_choice_trials++;
+             if(batch_failed)continue;
+             assert(moves.size()<=2*K && sim.current_display()==A[a]);
+-            double score=moves.size()+route_state_value();
++            double score=moves.size()+route_state_value();second_choice(score,moves);
+             if(score<best-1e-9){post_choice_wins++;post_choice_saved+=int(best_moves.size())-int(moves.size());best=score;best_state=save_route_state();best_moves=move(moves);}
+         }
+         // Returning a visible main or support can expose a different bank
+@@ -2184,7 +2257,7 @@
+             return_alternative=-1;used_tails=0;++return_trials;
+             if(batch_failed)return;
+             assert(alternative.size()<=2*K && sim.current_display()==A[a]);
+-            double score=alternative.size()+route_state_value();
++            double score=alternative.size()+route_state_value();second_choice(score,alternative);
+             if(score<best-1e-9){
+                 ++return_wins;best=score;best_state=save_route_state();best_moves=move(alternative);
+             }
+@@ -2201,7 +2274,7 @@
+                 auto moves=query_impl(a);add_backing=false;
+                 if(!batch_failed){
+                     assert(sim.current_display()==A[a]);
+-                    double score=moves.size()+route_state_value();
++                    double score=moves.size()+route_state_value();second_choice(score,moves);
+                     if(score<best){best=score;best_moves=move(moves);best_state=save_route_state();
+                         revisit_mode=1;revisit_policy=policy;revisit_rank=rank;}
+                 }
+@@ -2264,7 +2337,7 @@
+                     restore_route_state(before);set_route_policy(0);post_support_rank=0;keep_sources=mask;park_sources=park;extra_source=ex;
+                     auto alt=query_impl(a);keep_sources=0;park_sources=0;extra_source=-1;
+                     if(!batch_failed && sim.current_display()==A[a]){
+-                        double sc=alt.size()+route_state_value();
++                        double sc=alt.size()+route_state_value();second_choice(sc,alt);
+                         if(sc<best-1e-9){best=sc;best_state=save_route_state();best_moves=move(alt);
+                             revisit_mode=2;revisit_keep=mask;revisit_park=park;revisit_extra=ex;}
+                     }
+@@ -2288,7 +2361,7 @@
+                 auto alt=query_impl(a);
+                 return_alternative=-1;used_tails=0;add_backing=false;keep_sources=park_sources=0;extra_source=-1;
+                 if(!batch_failed && sim.current_display()==A[a]){
+-                    double score=alt.size()+route_state_value();
++                    double score=alt.size()+route_state_value();second_choice(score,alt);
+                     if(score<best-1e-9){best=score;best_state=save_route_state();best_moves=move(alt);}
+                 }
+             };
+@@ -2297,7 +2370,7 @@
+         if(before.main==prod_to_paper[a] && prod_to_pair_idx[a]>=0 && !routing_budget::expired(route_deadline)){
+             restore_route_state(before);set_route_policy(0);post_support_rank=0;stay_main=true;runtime_pre_limit=0;
+             auto alt=query_impl(a);stay_main=false;
+-            if(!batch_failed){assert(sim.current_display()==A[a]);double sc=alt.size()+route_state_value();
++            if(!batch_failed){assert(sim.current_display()==A[a]);double sc=alt.size()+route_state_value();second_choice(sc,alt);
+                 if(sc<best-1e-9){best=sc;best_state=save_route_state();best_moves=move(alt);}}
+         }
+         post_support_rank=0;
+@@ -3273,70 +3346,56 @@
+                           OnlineRouter::RouteState&state,int max_supports) {
+     const int main=router.prod_to_paper[product];
+     if(order.empty() || order[0]!=main)return false;
+-    array<int,K> position{};array<bool,K> is_support{};
+-    int first_backing=K,last_backing=-1,backing_count=0;
+-    for(int d=0;d<K;d++) {
+-        int k=order[d];position[k]=d;
+-        if(k<router.tot_B){first_backing=min(first_backing,d);last_backing=d;backing_count++;}
+-    }
+-    if(backing_count!=router.tot_B)return false;
++    // Earlier ordinary sheets can stay on loan only once per home. Reject a
++    // duplicate before allocating the RouteState used by accepted trials.
++    uint64_t borrowed_homes=0;
++    array<bool,K> is_support{};
++    int support_count=0;
++    auto borrow=[&](int k){
++        int w=router.paper_bucket[k];
++        if(w<router.C || w>=router.T || w==router.paper_bucket[main] ||
++           support_count>=max_supports || ((borrowed_homes>>w)&1))return false;
++        borrowed_homes|=1ULL<<w;is_support[k]=true;++support_count;return true;
++    };
+     static const bool wide=!getenv("NOV5_RELAX_WIDE") || atoi(getenv("NOV5_RELAX_WIDE"));
+-    if(!wide) {
+-        if(router.prod_to_pair_idx[product]>=0 && first_backing!=1)return false;
+-        for(int d=first_backing;d<=last_backing;d++)if(order[d]>=router.tot_B)return false;
+-    }
+-    // Every ordinary sheet before or among the backings is now a front loan.
+-    // On the next paired request, core_return is true for every such loan.
+-    // Processing loans in deck order, with return_main_now if needed, exposes
+-    // each loan's prefix anchor and returns it below every backing. Therefore
+-    // graph->route still starts with a contiguous backing prefix. For a new
+-    // singleton, no backing route is needed. Current display validity was
+-    // checked before this reconstruction, including when it is a paired main.
+-    for(int d=1;d<last_backing;d++)if(order[d]>=router.tot_B) {
+-        if(!router.front_support_enabled)return false;
+-        is_support[order[d]]=true;
+-    }
+-
+-    // Ordinary papers must still form the ordered home buckets. A sheet may
+-    // occur early as a loan, but may not split a home bucket's ordinary papers.
+-    int next_bucket=router.T;
+-    for(int d=K-1;d>last_backing;d--) {
++    int last_backing=0,remaining=router.tot_B;
++    for(int d=1;remaining && d<K;d++) {
++        int k=order[d];
++        if(k<router.tot_B){--remaining;last_backing=d;}
++        else if(!router.front_support_enabled || !borrow(k))return false;
++    }
++    if(remaining)return false;
++    if(!wide){
++        int first=1;while(first<K && order[first]>=router.tot_B)++first;
++        if(router.prod_to_pair_idx[product]>=0 && first!=1)return false;
++        if(last_backing-first+1!=router.tot_B)return false;
++    }
++    int next=router.T;
++    for(int d=K-1;d>last_backing;--d){
+         int k=order[d],w=router.paper_bucket[k];
+         if(w<router.C || w>=router.T)return false;
+-        if(w>next_bucket)is_support[k]=true;
+-        else next_bucket=w;
+-    }
+-    vector<int> supports,cuts(K,-1);
+-    array<int,64> support_home{};support_home.fill(-1);
+-    for(int d=1;d<K;d++)if(is_support[order[d]]) {
+-        int k=order[d],w=router.paper_bucket[k];
+-        if(w<router.C || w>=router.T || w==router.paper_bucket[main])return false;
+-        // The existing return procedure assumes no two loans share a home
+-        // bucket. Enforce this before handing a relaxed state back to it.
+-        if(support_home[w]>=0)return false;
+-        support_home[w]=k;supports.push_back(k);
+-    }
+-    if(int(supports.size())>max_supports)return false;
+-    int previous=router.C-1;
+-    array<int,K+1> next_regular{};next_regular[K]=router.T;
+-    for(int d=K-1;d>=0;d--) {
+-        int k=order[d];next_regular[d]=next_regular[d+1];
+-        if(k!=main && k>=router.tot_B && !is_support[k])next_regular[d]=router.paper_bucket[k];
+-    }
+-    for(int d=1;d<K;d++) {
++        if(w>next){if(!borrow(k))return false;}else next=w;
++    }
++    int previous=router.C-1;bool after_loan=false;
++    array<int,K> loan_cut;
++    for(int d=1;d<K;++d){
+         int k=order[d];if(k<router.tot_B)continue;
+         int w=router.paper_bucket[k];
+-        if(is_support[k]) {
+-            int cut=previous;
+-            if(cut>=w || next_regular[d+1]<=cut)return false;
+-            cuts[k]=cut;
+-        }else {
+-            if(w<previous)return false;
+-            previous=w;
+-        }
+-    }
+-    state.order.assign(order.begin(),order.end());state.position.assign(position.begin(),position.end());
+-    state.supports=move(supports);state.cuts=move(cuts);state.main=main;
++        if(is_support[k]){
++            if(previous>=w)return false;
++            loan_cut[k]=previous;after_loan=true;
++        }else{
++            if(w<previous || (after_loan && w==previous))return false;
++            previous=w;after_loan=false;
++        }
++    }
++    state.order.assign(order.begin(),order.end());state.position.resize(K);
++    state.supports.clear();state.supports.reserve(support_count);state.cuts.assign(K,-1);
++    for(int d=0;d<K;++d){
++        int k=order[d];state.position[k]=d;
++        if(is_support[k]){state.supports.push_back(k);state.cuts[k]=loan_cut[k];}
++    }
++    state.main=main;
+     return true;
+ }
+ 
+@@ -3470,6 +3529,28 @@
+         if(w>last_home)break;
+         last_home=w;--repair_begin;
+     }
++    // All trials match the reference up to the first omission or redirection.
++    // After the repair suffix begins, a move can also disappear implicitly.
++    struct PrefixDeck {array<uint8_t,K> order,position;};
++    vector<PrefixDeck> snapshots(repair_begin+1);snapshots[0]={compact_start,compact_position};
++    for(int i=0;i<repair_begin;i++){
++        auto& deck=snapshots[i+1];deck=snapshots[i];
++        const auto& x=actions[i];int f=x.from,d=x.depth;
++        if(f<d)memmove(&deck.order[f],&deck.order[f+1],d-f);
++        else if(d<f)memmove(&deck.order[d+1],&deck.order[d],f-d);
++        deck.order[d]=x.paper;
++        for(int j=min(f,d);j<=max(f,d);j++)deck.position[deck.order[j]]=j;
++    }
++    // A newly borrowed sheet can be inserted only at the end, immediately
++    // before promotion, or at the start. Cache the visibility at those cuts.
++    array<uint8_t,K> start_can{},promote_can{};
++    auto mark_visible=[&](const auto& order,auto& out){
++        out.fill(0);uint64_t seen=0;
++        for(int k:order){out[k]=bool(router.opaque[k]&~seen);seen|=router.opaque[k];if(seen==~0ULL)break;}
++    };
++    mark_visible(compact_start,start_can);
++    array<pair<int,int>,2*K> result,ops;
++    array<uint8_t,2*K> replay_from;
+     array<uint64_t,256> repaired{};
+     int repairs_tried=0;
+     bool different_core=false,different_left=false;
+@@ -3486,13 +3567,18 @@
+ #ifndef NOV6_TRACE_VERIFY_PRUNE
+         if(doomed==1 || (doomed==2 && (omit_b<0 || repairs_tried>=40)))return false;
+ #endif
+-        auto order=compact_start,pos=compact_position;
+-        array<pair<int,int>,2*K> result;array<uint8_t,2*K> replay_from;
++        int first=repair_begin;
++        for(int i:{omit_a,omit_b,omit_c,redirect})if(i>=0)first=min(first,i);
++        auto order=snapshots[first].order,pos=snapshots[first].position;
++
+         int result_count=0,invisibles=0;
++        for(int i=0;i<first;i++)if(actions[i].from!=actions[i].depth){
++            replay_from[result_count]=actions[i].from;result[result_count++]=moves[i];
++        }
+         // prefix[d] is the opacity above deck position d. Moving a sheet
+         // invalidates only prefixes strictly after the first changed position.
+         array<uint64_t,K+1> prefix;prefix[0]=0;int prefix_valid=0;
+-        for(int i=0;i<m;i++) {
++        for(int i=first;i<m;i++) {
+             if(i==omit_a || i==omit_b || i==omit_c || (i>=repair_begin && i-repair_begin<32 && (drop_tail>>(i-repair_begin)&1)))continue;
+             const auto&action=actions[i];int k=action.paper,from=pos[k];
+             while(prefix_valid<from) {
+@@ -3573,12 +3659,35 @@
+         for(int j=0;j<K;j+=8){uint64_t word;memcpy(&word,order.data()+j,8);hs=(hs^word)*0x9e3779b97f4a7c15ULL;}
+         if(repaired[hs>>56]==hs)return false;
+         repaired[hs>>56]=hs;repairs_tried++;
++        int promote=-1;
++        array<int,K> last_paid;last_paid.fill(-1);
++        for(int t=0;t<result_count;t++){
++            int k=result[t].first;last_paid[k]=t;
++            if(k==target_main && result[t].second==0)promote=t;
++        }
++        bool computed=false;
++        auto reachable=[&](int k,bool visible){
++            if(last_paid[k]>=0)return true;
++            if(result_count+1>=int(best_moves.size()))return false;
++            if(visible||start_can[k])return true;
++            if(promote<=0)return false;
++            if(!computed){
++                auto deck=compact_start;
++                for(int t=0;t<promote;t++){
++                    int f=replay_from[t],d=result[t].second,p=result[t].first;
++                    if(f<d)memmove(&deck[f],&deck[f+1],d-f);
++                    else if(d<f)memmove(&deck[d+1],&deck[d],f-d);
++                    deck[d]=p;
++                }
++                mark_visible(deck,promote_can);computed=true;
++            }
++            return bool(promote_can[k]);
++        };
+         auto finish=[&](int donor,int dest,const auto& changed,bool visible){
++            int paid=last_paid[donor];
++            if(!reachable(donor,visible))return false;
+             OnlineRouter::RouteState viable;
+             if(!rebuild_state(router,changed,product,viable,max_supports))return false;
+-            int promote=-1,paid=-1;
+-            for(int t=0;t<result_count;t++){if(result[t].first==donor)paid=t;
+-                if(result[t].first==target_main && result[t].second==0)promote=t;}
+             int starts[3]={paid,promote,0};
+             bool any=false;
+             if(visible && result_count+1<int(best_moves.size())){
+@@ -3592,7 +3701,7 @@
+                 array<int,K> stable{};for(int t=t0;t<result_count;t++)stable[result[t].first]=1;
+                 int right=dest+1;while(right<K && stable[changed[right]])right++;
+                 auto actual=compact_start;
+-                array<pair<int,int>,2*K> ops;
++
+                 auto relocate=[](auto& o,int src,int dst){
+                     int a=o[src];if(src<dst)memmove(o.data()+src,o.data()+src+1,dst-src);
+                     else if(src>dst)memmove(o.data()+dst+1,o.data()+dst,src-dst);o[dst]=a;
+@@ -3649,7 +3758,7 @@
+             int k=64*block+__builtin_ctzll(b),z=pos[k];
+             if(z<=upper)continue;
+             grow(z);bool visible=router.opaque[k]&~pref[z];
+-            if(!visible && !action_count[k] && result_count+1>=int(best_moves.size()))continue;
++            if(!reachable(k,visible))continue;
+             uint64_t wrong_ink=router.opaque[k]&(router.black[k]^target);
+             for(int d=upper;d>0 && !(wrong_ink&~pref[d]);--d){
+                 int below=order[d],a=order[d-1];
+@@ -4298,6 +4407,12 @@
+     return bias;
+ }
+ 
++template<int B> struct OrderMetric;
++template<int B> static int expected_backing_cost(uint64_t closure){
++    if constexpr(B<=6)return OrderMetric<B>::get()(closure);
++    else return lround(46.08*sqrt(double(__builtin_popcountll(closure))));
++}
++
+ // Optimize the split between prefix and suffix on the disjoint pairs that
+ // will actually share main sheets. A trial exchanges one prefix window
+ // with one window of one backing comparison. Only this edge can change.
+@@ -4349,7 +4464,6 @@
+         for(int k=0;k<B;k++)g|=(((g>>k)&column)*255)&(((g>>(8*k))&((1<<B)-1))*column);
+         return g;
+     };
+-    int costs[1+B*(B-1)/2];for(int c=0;c<=B*(B-1)/2;c++)costs[c]=round(4*16*.72*sqrt(double(c)));
+     const int ne=es.size(),words=(n+63)/64;
+     const unsigned all=(1u<<ne)-1;
+     // Bit i describes a catalogue pair. Replacing a window changes only
+@@ -4376,7 +4490,7 @@
+     // can remove an edge of that cycle.
+     vector<vector<uint64_t>> active(ne,vector<uint64_t>(words));
+     vector<unsigned> membership(n),next_membership(n);
+-    vector<int8_t> dag(n),next_dag(n);
++    vector<int16_t> dag(n),next_dag(n);
+     auto classify=[&](uint64_t g,unsigned &which){
+         // Transpose the byte-strided 7x7 graph to catch 2-cycles directly.
+         uint64_t x=g,t=(x^(x>>7))&0x00aa00aa00aa00aaULL;x^=t^(t<<7);
+@@ -4404,7 +4518,7 @@
+             which=0;for(int h=positions[v];h<k;h++)which|=path[h];
+             return -1;
+         }
+-        which=all;return __builtin_popcountll(closure(g));
++        which=all;return expected_backing_cost<B>(closure(g));
+     };
+     // 16*hd plus the route term is at most 16*64+211. Append candidates
+     // in index order so ties match sorting by (cost, pair index).
+@@ -4412,7 +4526,7 @@
+     vector<int> links(n);array<int,64*key_words> head,tail;array<uint64_t,key_words> present{};
+     auto add=[&](int i,int k,uint64_t pref){
+         if(k<0)return;
+-        int c=16*__builtin_popcountll((pq[i].z|pq[i].o)&pref)+costs[k];
++        int c=16*__builtin_popcountll((pq[i].z|pq[i].o)&pref)+k;
+         uint64_t mask=1ULL<<(c&63);auto& seen=present[c>>6];
+         if(seen&mask)links[tail[c]]=i;else{head[c]=i;seen|=mask;}
+         tail[c]=i;links[i]=-1;
+@@ -4472,7 +4586,7 @@
+         for(int i=0;i<n;i++){
+             uint64_t exact=0;for(auto&edge:es)exact|=directions(pq[i],edge);
+             if(!acyclic(exact))continue;
+-            int c=16*__builtin_popcountll((pq[i].z|pq[i].o)&pref)+costs[__builtin_popcountll(closure(exact))];
++            int c=16*__builtin_popcountll((pq[i].z|pq[i].o)&pref)+expected_backing_cost<B>(closure(exact));
+             reference.emplace_back(c,i);
+         }
+         sort(reference.begin(),reference.end());
+@@ -4551,8 +4665,25 @@
+         for(int v=0;v<B;v++)g|=(((g>>v)&one)*255)&(((g>>(8*v))&((1<<B)-1))*one);
+         return g;
+     };
+-    constexpr double route_w = 4.0;
+-    int rc[M+1];for(int i=0;i<=M;i++)rc[i]=round(route_w*16*.72*sqrt(double(i)));
++    // A two-cycle survives unless the ejected column belongs to its edge.
++    // Two such cycles on different edges cannot both disappear in one trial.
++    // Merge in pair-ID order for the greedy matching's deterministic ties.
++    vector<int> common,possible[M],scan;
++    int undirected[64]{};
++    for(int i=0;i<D;i++)undirected[__builtin_ctzll(dirbits[i])]=i/2;
++    auto classify=[&](int id){
++        uint64_t g=pairs[id].graph,x=g,t=(x^(x>>7))&0x00aa00aa00aa00aaULL;x^=t^(t<<7);
++        t=(x^(x>>14))&0x0000cccc0000ccccULL;x^=t^(t<<14);
++        t=(x^(x>>28))&0x00000000f0f0f0f0ULL;x^=t^(t<<28);
++        uint64_t mutual=g&x;
++        if(!mutual)common.push_back(id);
++        else{
++            int e=undirected[__builtin_ctzll(mutual)];
++            if(__builtin_popcountll(mutual)==2)possible[e].push_back(id);
++        }
++    };
++    for(int i=0;i<int(pairs.size());i++)classify(i);
++    scan.resize(pairs.size());
+     struct Option{int index,basecost,hd;unsigned char edgecost[D];};
+     vector<Option> opts;opts.reserve(1200);
+     vector<int> ys(W),xlist,links(pairs.size()),hc(pairs.size()),side(pairs.size());
+@@ -4568,24 +4699,23 @@
+             if(__builtin_popcountll(cols[2*olde]|cols[2*olde+1])<2)continue;
+             uint64_t clear=~(dirbits[2*olde]|dirbits[2*olde+1]);cols[oldcode]^=sy;
+             opts.clear();
+-            for(int id=0;id<int(pairs.size());id++){
+-                const auto& p=pairs[id];uint64_t g=(p.graph&clear)|render(p,cols[2*olde],cols[2*olde+1],olde,dirbits);
+-                // Fast rejection on the most common duplicate-column conflict.
+-                uint64_t x=g,t=(x^(x>>7))&0x00aa00aa00aa00aaULL;x^=t^(t<<7);
+-                t=(x^(x>>14))&0x0000cccc0000ccccULL;x^=t^(t<<14);
+-                t=(x^(x>>28))&0x00000000f0f0f0f0ULL;x^=t^(t<<28);
+-                if(x&g)continue;
++            int ns=merge(common.begin(),common.end(),possible[olde].begin(),possible[olde].end(),scan.begin())-scan.begin();
++            for(int slot=0;slot<ns;slot++){
++                int id=scan[slot];const auto& p=pairs[id];
++                uint64_t relation=render(p,cols[2*olde],cols[2*olde+1],olde,dirbits);
++                if(relation==~clear)continue;
++                uint64_t g=(p.graph&clear)|relation;
+                 uint64_t cl=closure(g);if(cl&diag)continue;
+-                int cnt=__builtin_popcountll(cl);
+-                Option opt{id,rc[cnt],__builtin_popcountll(p.d&pref),{}};
++                int base_cost=expected_backing_cost<B>(cl);
++                Option opt{id,base_cost,__builtin_popcountll(p.d&pref),{}};
+                 for(int k=0;k<D;k++){
+                     uint64_t q=dirbits[k];
+                     if(cl&dirbits[k^1]){opt.edgecost[k]=255;continue;}
+-                    if(cl&q){opt.edgecost[k]=rc[cnt];continue;}
++                    if(cl&q){opt.edgecost[k]=base_cost;continue;}
+                     int bit=__builtin_ctzll(q),u=bit/8,v=bit%8;
+                     uint64_t pred=(((cl>>u)&one)|(1ULL<<(8*u)))*255;
+                     uint64_t desc=(((cl>>(8*v))&((1<<B)-1))|(1ULL<<v))*one;
+-                    opt.edgecost[k]=rc[__builtin_popcountll(cl|(pred&desc))];
++                    opt.edgecost[k]=expected_backing_cost<B>(cl|(pred&desc));
+                 }
+                 opts.push_back(opt);
+             }
+@@ -4599,21 +4729,34 @@
+                     hc[i]=16*(o.hd+int(bool(p.d&sy))-int(bool(p.d&s)));
+                     side[i]=!(p.d&s)?-1:!(p.white&s);
+                 }
++                // One contiguous score column per comparison orientation.
++                // 1023 exceeds the Hamming and backing costs of any feasible pair.
++                const int stride=no;
++                vector<uint16_t> keys(D*stride);
++                vector<uint16_t> endpoints(no);
++                for(int i=0;i<no;i++){
++                    const auto& o=opts[i];const auto& p=pairs[o.index];endpoints[i]=p.a+256*p.b;
++                    int hi=hc[i];
++                    for(int k=0;k<D;k++){
++                        int v=side[i]<0?o.basecost:o.edgecost[k^side[i]];
++                        keys[k*stride+i]=v==255?1023:hi+v;
++                    }
++                }
++                array<int16_t,1024> head;
+                 for(int turn=0;turn<D;turn++){
+                     int k=(turn+oldcode)%D;
+-                    int head[1024];uint64_t exists[16]={};int count=0;
++                    uint64_t exists[16]={};int count=0;
++                    head.fill(-1);const auto *key=keys.data()+k*stride;
+                     for(int i=no-1;i>=0;i--){
+-                        const auto&o=opts[i];int v=side[i]<0?o.basecost:o.edgecost[k^side[i]];
+-                        if(v==255)continue;count++;
+-                        int c=hc[i]+v;uint64_t mask=1ULL<<(c&63);
+-                        links[i]=(exists[c>>6]&mask)?head[c]:-1;head[c]=i;exists[c>>6]|=mask;
++                        int c=key[i];links[i]=head[c];head[c]=i;exists[c>>6]|=1ULL<<(c&63);count+=c!=1023;
+                     }
++                    exists[15]&=~(1ull<<63);
+                     bool used[256]={};int total=0,nmatch=0;
+                     for(int block=0;block<16&&nmatch<64+B;block++)for(uint64_t q=exists[block];q&&nmatch<64+B;q&=q-1){
+                         int c=block*64+__builtin_ctzll(q);
+                         for(int i=head[c];i>=0;i=links[i]){
+-                            const auto&p=pairs[opts[i].index];if(used[p.a]||used[p.b])continue;
+-                            used[p.a]=used[p.b]=true;total+=c;if(++nmatch==64+B)break;
++                            int a=endpoints[i]&255,b=endpoints[i]>>8;if(used[a]||used[b])continue;
++                            used[a]=used[b]=true;total+=c;if(++nmatch==64+B)break;
+                         }
+                     }
+                     total+=1024*(64+B-nmatch)-int(count * 1.5)+(x<0?0:colbias[order[x]]-colbias[order[T+y]]);if(x<0&&k==oldcode)prior=total;
+@@ -4626,8 +4769,11 @@
+             if(bc!=oldcode||bx>=0){
+                 changes++;drop+=prior-best;
+                 clear&=~(dirbits[2*nu]|dirbits[2*nu+1]);
+-                for(auto&p:pairs)p.graph=(p.graph&clear)|render(p,cols[2*olde],cols[2*olde+1],olde,dirbits)
+-                    |render(p,cols[2*nu],cols[2*nu+1],nu,dirbits);
++                common.clear();for(auto& a:possible)a.clear();
++                for(int i=0;i<int(pairs.size());i++){
++                    auto& p=pairs[i];p.graph=(p.graph&clear)|render(p,cols[2*olde],cols[2*olde+1],olde,dirbits)|render(p,cols[2*nu],cols[2*nu+1],nu,dirbits);
++                    classify(i);
++                }
+             }
+             done++;
+         }
+@@ -4783,6 +4929,7 @@
+     static_assert(B<=6);
+     static constexpr int hash_bits=B==6?16:12;
+     array<uint64_t,1u<<hash_bits> memo{};
++    static OrderMetric& get(){static OrderMetric model;return model;}
+     OrderMetric(){
+         const auto& tab=ExactBackingPermutations::get(B);const int S=tab.states;
+         int m=0;for(int i=0;i<B;i++)for(int j=i+1;j<B;j++)bit[i][j]=1<<m++;
+@@ -4874,8 +5021,8 @@
+     static bool generate(const vector<uint64_t>&cat,vector<int>& order,vector<pair<int,int>>&layout,int W,int seed,clock_t deadline){
+         const auto colbias=catalogue_column_penalty(cat);
+         vector<Pair> pairs;
+-        static OrderMetric<B> uniform_metric;
+-        const int blend=clamp(search_budget::integer("METRIC_BLEND",4),0,8);
++        auto& uniform_metric=OrderMetric<B>::get();
++        const int blend=clamp(search_budget::integer("METRIC_BLEND",8),0,8);
+         array<int,M+1> route{};
+         for(int i=0;i<=M;i++)route[i]=round(46*sqrt(double(i)));
+         auto cost=[&](uint64_t g){
+@@ -4898,7 +5045,11 @@
+         struct PairMove {int a,b,c;};
+         struct Adjustment{int rm1=-1,rm2=-1,add1=-1,add2=-1,gain=0;};
+         auto polish=[&](vector<PairMove>& es,int valid){
+-            sort(es.begin(),es.end(),[](auto p,auto q){return p.c<q.c||(p.c==q.c&&pair{p.a,p.b}<pair{q.a,q.b});});
++            array<unsigned,top> codes;
++            int length=es.size();
++            for(int i=0;i<length;i++)codes[i]=(unsigned(es[i].c)<<16)|(es[i].a<<8)|es[i].b;
++            sort(codes.begin(),codes.begin()+length);
++            for(int i=0;i<length;i++){auto q=codes[i];es[i]={int((q>>8)&255),int(q&255),int(q>>16)};}
+             array<int,P> used;used.fill(-1);int sum=0,n=0;
+             for(int i=0;i<int(es.size())&&n<required;i++){
+                 auto e=es[i];if(used[e.a]>=0||used[e.b]>=0)continue;
+@@ -4972,6 +5123,25 @@
+                     row.inc=memo.increment;
+                     prices.push_back(row);
+                 }
++                // A direction is a bit in a 32-bit mask. For each ranked
++                // product pair, select its edge in all eligible greedy
++                // matchings whose two endpoints are still available.
++                static_assert(B==5 || B==6);
++                using Word=uint16_t __attribute__((vector_size(16)));
++                constexpr int groups=(D+7)/8;
++                struct PackedRow {array<Word,groups> pay[2];uint32_t allowed[2]{};};
++                static const auto lanes=[](){
++                    array<Word,256> lut{};
++                    for(int m=0;m<256;m++)for(int b=0;b<8;b++)lut[m][b]=(m>>b&1)?65535:0;
++                    return lut;
++                }();
++                vector<PackedRow> pay(no);
++                for(int h=0;h<no;h++)for(int sign=0;sign<2;sign++){
++                    for(int k=0;k<D;k++){auto &v=pay[h];auto &p=prices[h];
++                        auto extra=p.inc[k^sign];v.allowed[sign]|=uint32_t(extra<255)<<k;
++                        v.pay[sign][k/8][k%8]=uint16_t(p.c-768-16+extra);
++                    }
++                }
+                 int start=trials.size();
+                 const int words=(no+63)/64;
+                 vector<array<uint64_t,D>> blocked(words);
+@@ -4984,22 +5154,35 @@
+                     fill(zeros.begin(),zeros.end(),0);fill(ones.begin(),ones.end(),0);
+                     for(int h=0;h<no;h++)if(prices[h].d&bit)
+                         ((prices[h].z&bit)?zeros:ones)[h>>6]|=1ULL<<(h&63);
+-                    for(int k=0;k<D;k++){
+-                        // Reserve one distinct witness for each backing pair.
+-                        if(step<M&&(node.covered>>(k/2)&1))continue;
+-                        array<bool,P> used{};int money=0,valid=0,n=0;
+-                        for(int b=0;b<words;b++){
+-                            uint64_t ok=~((zeros[b]&blocked[b][k])|(ones[b]&blocked[b][k^1]));
+-                            if(b==words-1 && (no&63))ok&=(1ULL<<(no&63))-1;
+-                            valid+=__builtin_popcountll(ok);
+-                            while(ok && n<required){
+-                                const auto& row=prices[b*64+__builtin_ctzll(ok)];ok&=ok-1;
+-                                if(used[row.a]||used[row.b])continue;
+-                                used[row.a]=used[row.b]=true;++n;
+-                                bool d=bit&row.d;money+=row.c-16*d+(d?row.inc[k^int(!(row.z&bit))]:0);
+-                            }
++                    uint32_t active=(1u<<D)-1;
++                    if(step<M)for(int e=0;e<M;e++)if(node.covered>>e&1)active&=~(3u<<(2*e));
++                    uint32_t initial=active;array<uint32_t,P> used{};array<uint32_t,7> count{};
++                    array<Word,groups> sums{};
++                    for(int h=0;h<no && active;h++){
++                        const auto& p=prices[h];const auto &v=pay[h];int sign=!(p.z&bit);
++                        bool differing=p.d&bit;
++                        uint32_t mask=active&~(used[p.a]|used[p.b]);if(differing)mask&=v.allowed[sign];
++                        if(!mask)continue;
++                        used[p.a]|=mask;used[p.b]|=mask;
++                        uint32_t carry=mask;
++                        for(int j=0;carry;j++){uint32_t t=carry&count[j];count[j]^=carry;carry=t;}
++                        // Each lane stops exactly at 69 (B=5) or 70 (B=6).
++                        // Its count never rises above this threshold.
++                        active &= ~(count[6]&count[2]&count[B==6?1:0]);
++                        Word same{};same+=uint16_t(p.c-768);
++                        for(int j=0;j<groups;j++){
++                            Word amount=differing?v.pay[sign][j]:same;
++                            sums[j]+=amount&lanes[(mask>>(j*8))&255];
+                         }
+-                        trials.push_back({money+(required-n)*768-valid+colbias[col],i,col,k});
++                    }
++                    for(int k=0;k<D;k++)if(initial>>k&1){
++                        int valid=no;
++                        for(int b=0;b<words;b++)valid-=__builtin_popcountll((zeros[b]&blocked[b][k])|(ones[b]&blocked[b][k^1]));
++                        // Starting with 768 per missing pair and charging
++                        // (cost - 768) for each chosen pair fits 16 bits:
++                        // at most 70 * max(768, 30*16 + 6*64) = 60480.
++                        int money=uint16_t(sums[k/8][k%8]+required*768);
++                        trials.push_back({money-valid+colbias[col],i,col,k});
+                     }
+                 }
+                 if(step>=21){
+@@ -6138,6 +6321,10 @@
+             uint16_t closure[16];std::copy(before,before+tot_B,closure);
+             for(int k=0;k<tot_B;k++)for(int v=0;v<tot_B;v++)
+                 if(closure[v]&(1u<<k))closure[v]|=closure[k];
++            if(tot_B==5 || tot_B==6){
++                uint64_t g=0;for(int k=0;k<tot_B;k++)g|=uint64_t(closure[k])<<(8*k);
++                return (tot_B==5 ? OrderMetric<5>::get()(g) : OrderMetric<6>::get()(g))/64.;
++            }
+             uint64_t key=0,reverse=0;
+             for(int v=0;v<tot_B;v++) {
+                 key|=uint64_t(closure[v])<<(tot_B*v);
+@@ -6483,16 +6670,26 @@
+             return cost;
+         };
+         vector<vector<double>> hole(n,vector<double>(T,1e9));
+-        for(int x=0;x<n;x++)for(int w=C;w<T;w++) {
+-            if((li[x].diff>>w)&1)continue;
+-            hole[x][w]=exposure(li[x].bits,li[x].diff,li[x].weight,w);
+-        }
+-        vector<int> pc(T),sc(T),co0(T),co1(T);
+-        for(int x=0;x<n;x++){int w=at[x];(li[x].type?pc[w]:sc[w])++;(((li[x].bits>>w)&1)?co1[w]:co0[w])++;}
++        auto fill_holes=[&](){
++            for(int x=0;x<n;x++)for(int w=C;w<T;w++) {
++                if((li[x].diff>>w)&1)continue;
++                hole[x][w]=exposure(li[x].bits,li[x].diff,li[x].weight,w);
++            }
++        };
++        fill_holes();
++        vector<int> pc(T),sc(T),co0(T),co1(T),paired_ones(T);
++        for(int x=0;x<n;x++){int w=at[x];paired_ones[w]+=li[x].type*int(li[x].bits>>w&1);(li[x].type?pc[w]:sc[w])++;(((li[x].bits>>w)&1)?co1[w]:co0[w])++;}
+         double alpha=1.0,beta=.5;
+-        auto F=[&](int p,int s) {return alpha*(p*(p+1.0)+s*p+s*(s+1.0)/2);};
++        const double mono_weight=search_budget::real("MONO_WEIGHT",.9);
++        // If paired sheets cover only one handle color, the first sheet of
++        // the other color is a singleton. Keeping it in the first two slots
++        // leaves it above p-1 or p of the double-frequency paired sheets.
++        auto F=[&](int p,int s,int ones=-1) {
++            double mixed=(ones>=0 && p>0 && (ones==0 || ones==p))?mono_weight*(p-.5):0.;
++            return alpha*(p*(p+1.0)+s*p+s*(s+1.0)/2+mixed);
++        };
+         double energy=0;
+-        for(int w=C;w<T;w++)energy+=F(pc[w],sc[w]);
++        for(int w=C;w<T;w++)energy+=F(pc[w],sc[w],paired_ones[w]);
+         for(int x=0;x<n;x++)energy+=beta*hole[x][at[x]];
+         double best=energy;auto best_at=at;
+         uint64_t state=923741293^A[0];
+@@ -6503,7 +6700,35 @@
+             cooling.resize(iterations);
+             for(int i=0;i<iterations;i++)cooling[i]=4.0*pow(.005,double(i)/iterations);
+         }
++        // z and o count only products that must borrow a color at this window.
++        // Re-estimate the marginal cost of the expected flips, 2*z*o/(z+o),
++        // when moving main sheets has changed that population.
++        auto count_demand=[&](double* z,double* o,int w,uint64_t bits,uint64_t diff,bool paired){
++            for(int j=C;j<T;j++)if(j>w || (diff>>j&1)){
++                double weight=prices[w][j/8][1<<(j%8)];
++                ((bits>>j&1)?o[j]:z[j])+=weight;
++                if(paired)(((bits^diff)>>j&1)?o[j]:z[j])+=weight;
++            }
++        };
++        const bool adapt=replay || graph_seed_offset>=2;
++        auto update_demands=[&](const vector<int>& positions,double mix){
++            double z[64]{},o[64]{};
++            for(int j=C;j<T;j++){z[j]=o[j]=4.;}
++            for(int x=0;x<n;x++){
++                auto item=li[x];int w=positions[x];
++                count_demand(z,o,w,item.bits,item.diff,item.type);
++            }
++            adjust_prices(z,o,mix);
++        };
++        int retune1=iterations*2/5,retune2=iterations*3/4;
+         for(int it=0;it<iterations;it++) {
++            if(adapt && (it==retune1 || it==retune2)){
++                update_demands(at,it==retune1?.80:1.0);
++                fill_holes();energy=0;
++                for(int w=C;w<T;w++)energy+=F(pc[w],sc[w],paired_ones[w]);
++                for(int x=0;x<n;x++)energy+=beta*hole[x][at[x]];
++                best=energy;best_at=at;
++            }
+             if ((it & 1023) == 0 && design_elapsed() > layout_deadline) break;
+             double temp=cooling[it];
+             int x=rng()%n,u=at[x],v=C+rng()%(T-C),y=-1;
+@@ -6517,31 +6742,18 @@
+             if(z0u<1||z1u<1||z0v<1||z1v<1)continue;
+             int pu=pc[u]-li[x].type+(swap?li[y].type:0),su=sc[u]-(1-li[x].type)+(swap?1-li[y].type:0);
+             int pv=pc[v]+li[x].type-(swap?li[y].type:0),sv=sc[v]+(1-li[x].type)-(swap?1-li[y].type:0);
+-            double delta=F(pu,su)+F(pv,sv)-F(pc[u],sc[u])-F(pc[v],sc[v])+beta*(hole[x][v]-hole[x][u]);
++            int ou=paired_ones[u]-li[x].type*cxu+(swap?li[y].type*cyu:0);
++                int ov=paired_ones[v]+li[x].type*cxv-(swap?li[y].type*cyv:0);
++                double delta=F(pu,su,ou)+F(pv,sv,ov)-F(pc[u],sc[u],paired_ones[u])-F(pc[v],sc[v],paired_ones[v])+beta*(hole[x][v]-hole[x][u]);
+             if(swap)delta+=beta*(hole[y][u]-hole[y][v]);
+             if(delta<=0||double(rng()>>11)*0x1.0p-53<exp(-delta/temp)) {
+                 at[x]=v;if(swap)at[y]=u;
+-                pc[u]=pu;sc[u]=su;pc[v]=pv;sc[v]=sv;co0[u]=z0u;co1[u]=z1u;co0[v]=z0v;co1[v]=z1v;
++                paired_ones[u]=ou;paired_ones[v]=ov;pc[u]=pu;sc[u]=su;pc[v]=pv;sc[v]=sv;co0[u]=z0u;co1[u]=z1u;co0[v]=z0v;co1[v]=z1v;
+                 energy+=delta;
+                 if(energy<best){best=energy;best_at=at;}
+             }
+         }
+-        // Among orders which expose this window, equal successive colors
+-        // can reuse the bucket head. With zero/one demands z,o the expected
+-        // flip count is 2*z*o/(z+o). Fit its marginal costs to this design.
+-        {
+-            double z[64]{},o[64]{};
+-            for(int j=C;j<T;j++){z[j]=o[j]=4.;}
+-            for(int x=0;x<n;x++){
+-                auto item=li[x];int w=best_at[x];
+-                for(int j=C;j<T;j++)if(j>w || (item.diff>>j&1)){
+-                    double delta=prices[w][j/8][1<<(j%8)];
+-                    ((item.bits>>j&1)?o[j]:z[j])+=delta;
+-                    if(item.type)(((item.bits^item.diff)>>j&1)?o[j]:z[j])+=delta;
+-                }
+-            }
+-            if(replay || graph_seed_offset>=2)adjust_prices(z,o,1.25);
+-        }
++        if(adapt)update_demands(best_at,1.10);
+         // Jointly change pair endpoints and the anchors of main slots.
+         {
+             const int joint_iters=max(1,search_budget::integer("NOV8_PAIR_ITERS",300000));
+@@ -6570,17 +6782,21 @@
+             vector<ShelfProfile> profiles;
+             int edges=P;for(const auto& keys:adj)edges+=int(keys.size());
+             profiles.reserve(edges);
++            auto update_profile=[&](ShelfProfile& p,int a,int b){
++                uint64_t diff=A[a]^A[b];
++                for(int w=C;w<T;w++){
++                    double v=beta*exposure(A[a],diff,1+(a!=b),w);
++                    if(a!=b)v+=route_scale*pair_route_cost[a*P+b]/32.0;
++                    p.price[w]=v;
++                }
++            };
+             for(int a=0;a<P;a++){
+                 auto prepare=[&](int b){
+                     int id=int(profiles.size());profile_id[a*P+b]=id;profiles.emplace_back();
+                     auto& p=profiles.back();
+                     uint64_t diff=A[a]^A[b];
+-                    for(int w=C;w<T;w++){
+-                        if(!(diff>>w&1))p.anchors[p.count++]=w;
+-                        double v=beta*exposure(A[a],diff,1+(a!=b),w);
+-                        if(a!=b)v+=route_scale*pair_route_cost[a*P+b]/32.0;
+-                        p.price[w]=v;
+-                    }
++                    for(int w=C;w<T;w++)if(!(diff>>w&1))p.anchors[p.count++]=w;
++                    update_profile(p,a,b);
+                 };
+                 prepare(a);for(int b:adj[a])prepare(b);
+             }
+@@ -6616,7 +6832,22 @@
+                 cooling.resize(joint_iters);
+                 for(int i=0;i<joint_iters;i++)cooling[i]=initial_temp*pow(.01,double(i)/max(1,joint_iters));
+             }
++            auto refit_joint=[&](){
++                double z[64],o[64];fill(z,z+64,4.);fill(o,o+64,4.);
++                for(const auto& s:slots){
++                    uint64_t diff=s.type?A[s.a]^A[s.b]:0;
++                    count_demand(z,o,s.w,A[s.a],diff,s.type);
++                }
++                adjust_prices(z,o,1.10);
++                for(int a=0;a<P;a++){
++                    update_profile(profiles[profile_id[a*P+a]],a,a);
++                    for(int b:adj[a])update_profile(profiles[profile_id[a*P+b]],a,b);
++                }
++                energy=0;for(int w=C;w<T;w++)energy+=F(jp[w],js[w])+head_weight*front_cost(jp[w],pair_ones[w],j0[w],j1[w]);
++                for(const auto& s:slots)energy+=cost(s);best_energy=energy;best_slots=slots;
++            };
+             for(int it=0;it<joint_iters && n>0;it++) {
++                if(adapt && it==joint_iters/2)refit_joint();
+                 if((it&1023)==0 && (design_elapsed()>layout_deadline || double(clock()-joint_started)/CLOCKS_PER_SEC>cap))break;
+                 int kind=rand32()%4,x,y=-1;JSlot nx{},ny{};
+                 bool endpoint=kind<2;
+@@ -6685,8 +6916,10 @@
+                                 if(d<remaining[j]){remaining[j]=d;way[j]=j0;}
+                                 if(remaining[j]<least){least=remaining[j];next=k;}
+                             }
+-                            for(int k=0;k<used;k++){int j=visited[k];u[owner[j]]+=least;v[j]-=least;}
+-                            for(int k=0;k<live;k++)remaining[pool[k]]-=least;
++                            if(least!=0){
++                                for(int k=0;k<used;k++){int j=visited[k];u[owner[j]]+=least;v[j]-=least;}
++                                for(int k=0;k<live;k++)remaining[pool[k]]-=least;
++                            }
+                             j0=pool[next];pool[next]=pool[--live];
+                         }while(owner[j0]);
+                         do{int j=way[j0];owner[j0]=owner[j];j0=j;}while(j0);
+@@ -6858,15 +7091,19 @@
+             }
+             at=best_at;
+             fill(pc.begin(),pc.end(),0);fill(sc.begin(),sc.end(),0);
+-            fill(co0.begin(),co0.end(),0);fill(co1.begin(),co1.end(),0);
++            fill(paired_ones.begin(),paired_ones.end(),0);fill(co0.begin(),co0.end(),0);fill(co1.begin(),co1.end(),0);
++            // Paired sheets occupy the head of their shelf much more often
++            // than their twofold own-order frequency predicts.
++            auto head_weight=[&](int s){return 1+9*li[s].type;};
+             vector<int> cw0(T),cw1(T);
+             for(int x=0;x<n;x++) {
+                 int w=at[x],color=(li[x].bits>>w)&1;
++                paired_ones[w]+=li[x].type*color;
+                 (li[x].type?pc[w]:sc[w])++;(color?co1[w]:co0[w])++;
+-                (color?cw1[w]:cw0[w])+=li[x].weight;
++                (color?cw1[w]:cw0[w])+=head_weight(x);
+             }
+             double base_energy=0;
+-            for(int w=C;w<T;w++)base_energy+=F(pc[w],sc[w]);
++            for(int w=C;w<T;w++)base_energy+=F(pc[w],sc[w],paired_ones[w]);
+             for(int x=0;x<n;x++)base_energy+=beta*hole[x][at[x]];
+             vector<int> owner(P,-1);
+             vector<vector<int>> products(n);
+@@ -6897,17 +7134,23 @@
+                 fill(ss.begin()+a*T*L,ss.begin()+(a+1)*T*L,0.0);
+                 for(int s=0;s<n;s++) {
+                     int w=at[s],g=coverage(a,s,w);if(g<3)continue;
+-                    for(int l=0;l<L;l++)ss[(a*T+w)*L+l]+=li[s].weight*tail[g][l];
+-                }
+-                for(int l=0;l<L;l++) {
+-                    double pnone=1;
+-                    for(int w=C;w<T;w++) {
+-                        int denom=2*(((A[a]>>w)&1)?w1[w]:w0[w]);
+-                        pnone*=1-ss[(a*T+w)*L+l]/denom;
+-                    }
+-                    qq[a*L+l]=pnone;
++                    for(int l=0;l<L;l++)ss[(a*T+w)*L+l]+=head_weight(s)*tail[g][l];
++                }
++                double* prob=&qq[a*L];fill_n(prob,L,1.);
++                for(int w=C;w<T;w++) {
++                    const double* value=&ss[(a*T+w)*L];
++                    if(value[0]==0)continue;
++                    int denom=2*(((A[a]>>w)&1)?w1[w]:w0[w]);
++                    for(int l=0;l<L;l++)prob[l]*=1-value[l]/denom;
+                 }
+             };
++            // Incremental subtraction can leave a residual at any threshold.
++            // A denominator-only change can be skipped if all six are zero.
++            auto has_mass=[](const double* p){
++                return any_of(p,p+L,[](double x){return x!=0;});
++            };
++            vector<array<double,L>> pending_u(P),pending_v(P);
++            array<int,P> affected{},banks_changed{};
+             double gain_sum=0;
+             for(int a=0;a<P;a++){row_build(a,sums,probs,cw0,cw1);for(int l=0;l<L;l++)gain_sum+=1-probs[a*L+l];}
+             double joint_energy=base_energy-joint_gamma*gain_sum;
+@@ -6927,22 +7170,27 @@
+                 if(z0u<1||z1u<1||z0v<1||z1v<1)continue;
+                 int pu=pc[u]-li[x].type+(exchange?li[y].type:0),su=sc[u]-(1-li[x].type)+(exchange?1-li[y].type:0);
+                 int pv=pc[v]+li[x].type-(exchange?li[y].type:0),sv=sc[v]+(1-li[x].type)-(exchange?1-li[y].type:0);
+-                double delta_base=F(pu,su)+F(pv,sv)-F(pc[u],sc[u])-F(pc[v],sc[v])+beta*(hole[x][v]-hole[x][u]);
++                int ou=paired_ones[u]-li[x].type*cxu+(exchange?li[y].type*cyu:0);
++                int ov=paired_ones[v]+li[x].type*cxv-(exchange?li[y].type*cyv:0);
++                double delta_base=F(pu,su,ou)+F(pv,sv,ov)-F(pc[u],sc[u],paired_ones[u])-F(pc[v],sc[v],paired_ones[v])+beta*(hole[x][v]-hole[x][u]);
+                 if(exchange)delta_base+=beta*(hole[y][u]-hole[y][v]);
+                 vector<int> nw0=cw0,nw1=cw1;
+-                nw0[u]-=li[x].weight*(cxu==0);nw1[u]-=li[x].weight*(cxu==1);
+-                nw0[v]+=li[x].weight*(cxv==0);nw1[v]+=li[x].weight*(cxv==1);
++                nw0[u]-=head_weight(x)*(cxu==0);nw1[u]-=head_weight(x)*(cxu==1);
++                nw0[v]+=head_weight(x)*(cxv==0);nw1[v]+=head_weight(x)*(cxv==1);
+                 if(exchange) {
+-                    nw0[v]-=li[y].weight*(cyv==0);nw1[v]-=li[y].weight*(cyv==1);
+-                    nw0[u]+=li[y].weight*(cyu==0);nw1[u]+=li[y].weight*(cyu==1);
++                    nw0[v]-=head_weight(y)*(cyv==0);nw1[v]-=head_weight(y)*(cyv==1);
++                    nw0[u]+=head_weight(y)*(cyu==0);nw1[u]+=head_weight(y)*(cyu==1);
+                 }
+                 at[x]=v;if(exchange)at[y]=u;
+                 vector<int> changed_products=products[x];
+                 if(exchange)changed_products.insert(changed_products.end(),products[y].begin(),products[y].end());
+                 fill(target_changed.begin(),target_changed.end(),false);
+                 for(int a:changed_products){hm[a]=hole_mask(a);target_changed[a]=true;}
++                int affected_n=0;
++                uint64_t changed_anchors=(1ULL<<u)|(1ULL<<v);
+                 double delta_gain=0;
+                 for(int a=0;a<P;a++) {
++                    if(!target_changed[a] && !(hm[a]&changed_anchors))continue;
+                     if(target_changed[a])row_build(a,next_sums,next_probs,nw0,nw1);
+                     else {
+                         int old_x=coverage(a,x,u),new_x=coverage(a,x,v);
+@@ -6951,29 +7199,44 @@
+                         int dv=2*(((A[a]>>v)&1)?cw1[v]:cw0[v]);
+                         int ndu=2*(((A[a]>>u)&1)?nw1[u]:nw0[u]);
+                         int ndv=2*(((A[a]>>v)&1)?nw1[v]:nw0[v]);
++                        const double* before_u=&sums[(a*T+u)*L],*before_v=&sums[(a*T+v)*L];
++                        bool change_u=old_x>=3 || new_y>=3 || (du!=ndu && has_mass(before_u));
++                        bool change_v=new_x>=3 || old_y>=3 || (dv!=ndv && has_mass(before_v));
++                        if(!change_u && !change_v)continue;
++                        banks_changed[a]=int(change_u)+2*int(change_v);
++                        double wx=head_weight(x),wy=exchange?head_weight(y):0.;
+                         for(int l=0;l<L;l++) {
+-                            int iu=(a*T+u)*L+l,iv=(a*T+v)*L+l;
+-                            double su2=sums[iu]+li[x].weight*(-tail[old_x][l]);
+-                            double sv2=sums[iv]+li[x].weight*tail[new_x][l];
+-                            if(exchange){su2+=li[y].weight*tail[new_y][l];sv2-=li[y].weight*tail[old_y][l];}
+-                            next_sums[iu]=su2;next_sums[iv]=sv2;
+-                            double qu=1-sums[iu]/du,qv=1-sums[iv]/dv;
+-                            double nqu=1-su2/ndu,nqv=1-sv2/ndv;
+-                            next_probs[a*L+l]=probs[a*L+l]*(nqu/qu)*(nqv/qv);
++                            double pnone=probs[a*L+l];
++                            if(change_u) {
++                                double value=before_u[l]-wx*tail[old_x][l]+wy*tail[new_y][l];
++                                pending_u[a][l]=value;
++                                pnone*=(1-value/ndu)/(1-before_u[l]/du);
++                            }
++                            if(change_v) {
++                                double value=before_v[l]+wx*tail[new_x][l]-wy*tail[old_y][l];
++                                pending_v[a][l]=value;
++                                pnone*=(1-value/ndv)/(1-before_v[l]/dv);
++                            }
++                            next_probs[a*L+l]=pnone;
+                         }
+                     }
++                    affected[affected_n++]=a;
+                     for(int l=0;l<L;l++)delta_gain+=probs[a*L+l]-next_probs[a*L+l];
+                 }
+                 double delta=delta_base-joint_gamma*delta_gain;
+                 double temp=.25*pow(.01,double(it)/joint_iterations);
+                 if(delta<=0||double(rng()>>11)*0x1.0p-53<exp(-delta/temp)) {
+-                    pc[u]=pu;sc[u]=su;pc[v]=pv;sc[v]=sv;co0[u]=z0u;co1[u]=z1u;co0[v]=z0v;co1[v]=z1v;
++                    paired_ones[u]=ou;paired_ones[v]=ov;pc[u]=pu;sc[u]=su;pc[v]=pv;sc[v]=sv;co0[u]=z0u;co1[u]=z1u;co0[v]=z0v;co1[v]=z1v;
+                     cw0=move(nw0);cw1=move(nw1);
+                     base_energy+=delta_base;gain_sum+=delta_gain;joint_energy+=delta;
+-                    probs=next_probs;
+-                    for(int a=0;a<P;a++) {
++                    for(int i=0;i<affected_n;i++){
++                        int a=affected[i];
++                        copy_n(&next_probs[a*L],L,&probs[a*L]);
+                         if(target_changed[a])copy(next_sums.begin()+a*T*L,next_sums.begin()+(a+1)*T*L,sums.begin()+a*T*L);
+-                        else for(int l=0;l<L;l++){int iu=(a*T+u)*L+l,iv=(a*T+v)*L+l;sums[iu]=next_sums[iu];sums[iv]=next_sums[iv];}
++                        else{
++                            if(banks_changed[a]&1)copy_n(pending_u[a].data(),L,&sums[(a*T+u)*L]);
++                            if(banks_changed[a]&2)copy_n(pending_v[a].data(),L,&sums[(a*T+v)*L]);
++                        }
+                     }
+                     if(joint_energy<joint_best){joint_best=joint_energy;joint_best_at=at;}
+                 } else {
+@@ -7071,11 +7334,13 @@
+     for(int offset=0;offset<pool;offset++) {
+         if(!candidates.empty() && design_elapsed()>search_budget::real("NOV8_POOL_END",1.75))break;
+         graph_seed_offset=offset;
+-        parent_design=((offset & 1) && !candidates.empty())?&candidates.back():nullptr;
+-
+-        const int backing=(offset<2)?5:6;
++        // Keep one five-backing layout. For six backings, compare a fresh
++        // map against an inherited map of the same comparison width.
++        const int backing=offset==0?5:6;
++        parent_design=(offset==2 && !candidates.empty())?&candidates.back():nullptr;
+         if(parent_design && parent_design->tot_B!=backing)parent_design=nullptr;
+-        int w=(backing==5?36:width)+(parent_design!=nullptr);
++        const int w=offset==0 ? 37 : parent_design ? parent_design->W+1 :
++                    width+int(offset>=2);
+         auto d=build_design(backing,0,0,w);
+         if(d){snapshots.back().original=candidates.size();candidates.push_back(move(*d));}
+     }
+@@ -7245,13 +7510,18 @@
+     int trace_saved=0,trace_queries=0;
+     BankFeedback feedback(actual);
+     vector<HeadSample> live_heads;
+-    clock_t core_ticks=0;
++    clock_t core_ticks=0, primary_ticks=0, regular_ticks=0;
+     for(int q=0;q<R;q++) {
+         int a;
+         if(!(cin>>a)||a==-1)return 0;
+         auto trace_start=actual.sim.order;uint64_t previous_heads=feedback.background(actual);
+         clock_t before_route=clock();
++        actual.save_second=true;
+         auto moves=actual.query(a);
++        actual.save_second=false;
++        const double raw_score=moves.size()+actual.route_state_value();
++        const array<uint64_t,3> initial_keys={OnlineRouter::paper_hash(moves),
++           OnlineRouter::paper_hash(actual.second_moves),OnlineRouter::paper_hash(actual.third_moves)};
+         clock_t now=clock();
+         core_ticks+=now-before_route;
+         // Reserve time for the remaining orders' primary routing. Use the
+@@ -7267,16 +7537,151 @@
+             moves=nov5_relaxed_trace::optimize(actual,a,trace_start,move(moves),deadline);
+         }while(int(moves.size())<previous_length && !routing_budget::expired(deadline));
+ 
++        // Spend secondary-search time only after reserving CPU for the
++        // primary route AND primary trace reduction on the remaining orders.
++        primary_ticks += clock()-before_route;
++        clock_t secondary_deadline=deadline, tail_deadline=actual.route_deadline;
++        if(q>=15 && q+1<R){
++            const double remaining=double(R-1-q)/(q+1);
++            clock_t essential=clock_t(primary_ticks*remaining);
++            secondary_deadline=min(secondary_deadline,max(clock_t(1),actual.route_deadline-essential));
++            tail_deadline=min(tail_deadline,max(clock_t(1),actual.route_deadline-clock_t(1.28*essential)));
++        }
++        auto compare_route=[&](const OnlineRouter::RouteState& challenger,vector<pair<int,int>>& trace,clock_t limit){
++            const auto first_state=actual.save_route_state();
++            const double first_score=moves.size()+actual.route_state_value();
++            actual.restore_route_state(challenger);
++            auto alt=nov5_relaxed_trace::optimize(actual,a,trace_start,move(trace),limit);
++            const auto other=actual.save_route_state();
++            const double alt_value=actual.route_state_value();
++            bool choose=alt.size()+alt_value<first_score-1e-9;
++            const int lengths=int(alt.size())-int(moves.size());
++            if(abs(lengths)<=1 && abs(alt.size()+alt_value-first_score)<1.15 && other.order!=first_state.order){
++                // Compare the two legal end states using coefficients fitted offline
++                // to paired eight-order continuations.
++                auto proxy=[&](const OnlineRouter::RouteState& st){
++                    array<int,K> depth{};array<int,64> counts{};
++                    uint64_t heads=0,credit[2]{};array<bool,K> loan{};
++                    for(int k:st.supports)loan[k]=true;
++                    for(int k:st.order)if(k>=actual.tot_B){
++                        int w=actual.paper_bucket[k];uint64_t bit=1ULL<<w;
++                        if(k==st.main || loan[k]){credit[(actual.black[k]>>w)&1]|=bit;continue;}
++                        depth[k]=counts[w]++;
++                        if(depth[k]==0)heads|=actual.black[k]&bit;
++                    }
++                    array<int,P> score{};
++                    for(int i=0;i<P;i++){int k=actual.prod_to_paper[i];auto aim=actual.A[i];
++                        auto holes=actual.index_main_mask&~actual.opaque[k];
++                        auto gift=(credit[1]&aim)|(credit[0]&~aim);
++                        score[i]=depth[k]+__builtin_popcountll((heads^aim)&holes&~gift);
++                    }
++                    return score;
++                };
++                auto proxy1=proxy(first_state),proxy2=proxy(other);
++                auto features=[&](const OnlineRouter::RouteState& st,const auto& proxy,double routeval){
++                    array<double,18> v{};
++                    v[0]=routeval;
++                    v[1]=st.supports.size();
++                    int last=0;array<uint8_t,9> core{};int ncore=0;
++                    for(int k:st.order)if(k<actual.tot_B){core[ncore++]=k;last=st.position[k];}
++                    if(actual.graph && !actual.graph->future_value.empty()){
++                        int row=actual.graph->table.rank(core);v[2]=actual.graph->future_value[row];
++                    }
++                    array<uint8_t,K> loan{};uint64_t heads=0,claimed=0;
++                    for(int k:st.supports){int w=actual.paper_bucket[k],cut=st.cuts[k];loan[k]=1;
++                        v[3]+=st.position[k]<last;
++                        v[4]+=w/24.;v[5]+=(w-cut)/24.;
++                        v[6]+=actual.paper_is_paired[k];
++                        v[7]+=__builtin_popcountll(actual.opaque[k]&actual.index_main_mask&(~0ULL<<(cut+1)))/20.;
++                    }
++                    array<int,64> idx{};array<int,64> fz,fo;fz.fill(-1);fo.fill(-1);
++                    for(int k:st.order)if(k!=st.main && k>=actual.tot_B && !loan[k]){
++                        int w=actual.paper_bucket[k],d=idx[w]++;
++                        (actual.black[k]>>w&1?(fo[w]<0?fo[w]=d:fo[w]):(fz[w]<0?fz[w]=d:fz[w]));
++                        if(d==0)heads|=actual.black[k]&(1ULL<<w);
++                        v[8]+=(1+int(actual.paper_is_paired[k]))*d/double(P);
++                        v[9]-=actual.support_utility[k][min(31,d)]/P;
++                    }
++                    for(int w=actual.C;w<actual.T;w++){
++                        int d0=fz[w]<0?idx[w]:fz[w],d1=fo[w]<0?idx[w]:fo[w];
++                        v[10]+=(actual.hole_request_count[w][0]*d0+actual.hole_request_count[w][1]*d1)/double(P);
++                        v[11]+=(actual.hole_request_count[w][0]*(d0>0)+actual.hole_request_count[w][1]*(d1>0))/double(P);
++                    }
++                    for(int x=0;x<P;x++)if(x!=a){
++                        v[12+int(actual.prod_to_pair_idx[x]>=0)]+=double(proxy[x])/(P-1);
++                        const uint64_t h=actual.index_main_mask&~actual.opaque[actual.prod_to_paper[x]];
++                        v[14]+=__builtin_popcountll((heads^actual.A[x])&h)/double(P-1);
++                    }
++                    uint64_t seen=0;int exposed=0,covered=0;for(int k:st.order){
++                        if(loan[k]){
++                            exposed+=__builtin_popcountll(actual.opaque[k]&~seen);
++                            covered+=__builtin_popcountll(actual.opaque[k]&~seen&actual.index_main_mask);
++                        }
++                        seen|=actual.opaque[k];
++                    }
++                    v[15]=exposed;v[16]=covered;
++                    for(int k:st.supports){int w=actual.paper_bucket[k];
++                        v[17]+=(1+int(actual.paper_is_paired[k]))*(idx[w]+1)/10.;
++                    }
++                    return v;
++                };
++                auto fa=features(first_state,proxy1,first_score-moves.size()),fb=features(other,proxy2,alt_value);
++                static constexpr array<double,18> weight={0.7074732953,0.2206926173,2.123296404,0.1205360474,0.1966473467,-0.003839332454,-0.03799749686,0.2478845857,0.5201813283,-0.8211577986,-0.005086526272,0.7537432423,1.174147517,1.352149126,-0.8314049437,0.02066116177,-0.01661045614,0.04533768486};
++                double avg=0;for(int i=0;i<int(fa.size());i++)avg+=weight[i]*(fb[i]-fa[i]);
++                const double prior=alt_value-(first_score-moves.size());
++                const double forecast=lengths+.75*avg+.25*prior;
++                if(forecast<-.05)choose=true;
++                if(forecast>.05)choose=false;
++            }
++            if(choose){moves=move(alt);actual.restore_route_state(other);}
++            else actual.restore_route_state(first_state);
++        };
++        if(!actual.second_moves.empty() && actual.second_score<=raw_score+1.55 && !routing_budget::expired(secondary_deadline))
++            compare_route(actual.second_state,actual.second_moves,secondary_deadline);
++        clock_t extra_ticks=0;
++        if(!actual.third_moves.empty() && q>=12 &&
++           actual.third_score<=raw_score+1.05 && int(actual.third_moves.size())<=int(moves.size())+2){
++            clock_t now=clock();
++            // Keep the measured cost of the entire ordinary two-route search
++            // for the remaining orders, including repairs after route choice.
++            clock_t reserve=clock_t(1.035*regular_ticks*(R-q)/q);
++            clock_t extra_deadline=min(tail_deadline,max(clock_t(1),actual.route_deadline-reserve));
++            if(now<extra_deadline){
++                compare_route(actual.third_state,actual.third_moves,extra_deadline);
++                extra_ticks=clock()-now;
++            }
++        }
++        static const int extra_count=search_budget::integer("PORT25",2);
++        if(q>=12 && extra_count>0 && !actual.reservoir.empty()){
++            clock_t began=clock();
++            clock_t reserve=clock_t(1.035*regular_ticks*(R-q)/q);
++            clock_t end=min(tail_deadline,max(clock_t(1),actual.route_deadline-reserve));
++            if(began<end){
++                array<int,8> ids{};int n=0;
++                for(int i=0;i<int(actual.reservoir.size());i++){
++                    const auto& c=actual.reservoir[i];
++                    if(c.score>raw_score+1.8 || int(c.moves.size())>int(moves.size())+3 ||
++                       find(initial_keys.begin(),initial_keys.end(),c.key)!=initial_keys.end())continue;
++                    ids[n++]=i;
++                }
++                sort(ids.begin(),ids.begin()+n,[&](int x,int y){return actual.reservoir[x].rank<actual.reservoir[y].rank;});
++                for(int i=0;i<min(n,extra_count) && clock()<end;i++){
++                    auto& c=actual.reservoir[ids[i]];
++                    compare_route(c.state,c.moves,end);
++                }
++            }
++            extra_ticks+=clock()-began;
++        }
+         int trace_before=moves.size();
+-        moves=trace_shortener::optimize(trace_start,std::move(moves),actual.opaque,absolute_deadline(search_budget::real("NOV8_SHORT_END",2.96)));
++        moves=trace_shortener::optimize(trace_start,std::move(moves),actual.opaque,min(tail_deadline,absolute_deadline(search_budget::real("NOV8_SHORT_END",2.96))));
+         trace_saved+=trace_before-int(moves.size());
+         trace_queries+=trace_before>int(moves.size());
+         if(!routing_budget::expired(actual.route_deadline))settle_loans(actual,a,trace_start,moves);
+-        if(!routing_budget::expired(actual.route_deadline)){
++        if(!routing_budget::expired(tail_deadline)){
+             int before=moves.size();fixed_deck::optimize(actual,trace_start,moves);
+             end_deck_saved+=before-int(moves.size());
+         }
+-        if(!routing_budget::expired(actual.route_deadline))loan_tail::improve(actual,a,trace_start,moves,actual.route_deadline);
++        if(!routing_budget::expired(tail_deadline))loan_tail::improve(actual,a,trace_start,moves,tail_deadline);
+         feedback.observe(actual,a,previous_heads,q);
+         if(q>=15 && q<780 && (q&3)==3){
+             live_heads.emplace_back();capture_heads(actual,live_heads.back());
+@@ -7288,6 +7693,7 @@
+                 live_heads.clear();
+             }
+         }
++        regular_ticks+=clock()-before_route-extra_ticks;
+         cout<<moves.size()<<'\n';
+         for(auto [k,d]:moves)cout<<output_id[k]<<' '<<d<<'\n';
+         cout.flush();

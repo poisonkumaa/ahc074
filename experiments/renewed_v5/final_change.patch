@@ -1,0 +1,10 @@
+--- main_before.cpp
++++ main.cpp
+@@ -1,3 +1,7 @@
++// Apply the target before standard headers, including bitset::count.
++#if defined(__GNUC__) && (defined(__x86_64__) || defined(__i386__))
++#pragma GCC target("popcnt")
++#endif
+ #include <bitset>
+ // AHC074 Layered Barcode Display. Build with g++ -std=c++17 -O2.
+ // v12 blends the relation-count price with the legal mean distance over all

@@ -1,0 +1,76 @@
+{
+  "executables": {
+    "g++": "/usr/bin/g++",
+    "gcc": "/usr/bin/gcc",
+    "clang++": null,
+    "pahcer": "/home/dokukuma/.cargo/bin/pahcer",
+    "cargo": "/home/dokukuma/.cargo/bin/cargo",
+    "rustc": "/home/dokukuma/.cargo/bin/rustc",
+    "python3": "/usr/bin/python3",
+    "docker": null,
+    "podman": null
+  },
+  "gcc_version": {
+    "command": [
+      "g++",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "stderr": ""
+  },
+  "glibc": {
+    "command": [
+      "getconf",
+      "GNU_LIBC_VERSION"
+    ],
+    "returncode": 0,
+    "stdout": "glibc 2.35\n",
+    "stderr": ""
+  },
+  "pahcer_version": {
+    "command": [
+      "pahcer",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "pahcer 0.3.1\n",
+    "stderr": ""
+  },
+  "cargo_version": {
+    "command": [
+      "cargo",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "cargo 1.91.0 (ea2d97820 2025-10-10)\n",
+    "stderr": ""
+  },
+  "rustc_version": {
+    "command": [
+      "rustc",
+      "-vV"
+    ],
+    "returncode": 0,
+    "stdout": "rustc 1.91.0 (f8297e351 2025-10-28)\nbinary: rustc\ncommit-hash: f8297e351a40c1439a467bbbb6879088047f50b3\ncommit-date: 2025-10-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.91.0\nLLVM version: 21.1.2\n",
+    "stderr": ""
+  },
+  "os_release": "PRETTY_NAME=\"Ubuntu 22.04.2 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.2 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy\n",
+  "uname": {
+    "command": [
+      "uname",
+      "-srmv"
+    ],
+    "returncode": 0,
+    "stdout": "Linux 6.18.54.1-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Tue Oct  6 19:13:07 UTC 2026 x86_64\n",
+    "stderr": ""
+  },
+  "solver_environment": {},
+  "runtime_environment": {},
+  "cgroup_cpu": "max 100000\n",
+  "cgroup_memory": "max\n",
+  "cpu_governor": {
+    "error": "[Errno 2] No such file or directory: '/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'"
+  },
+  "input_files": 500
+}

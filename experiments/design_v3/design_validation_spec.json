@@ -1,0 +1,51 @@
+[
+  {
+    "name": "weight4",
+    "exe": "experiments/design_v3/metric_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "PAIR_CORE_WEIGHT": 4
+    }
+  },
+  {
+    "name": "weight2",
+    "exe": "experiments/design_v3/metric_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "PAIR_CORE_WEIGHT": 2
+    }
+  },
+  {
+    "name": "legal_sample",
+    "exe": "experiments/design_v3/legal_metric_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "PAIR_LEGAL_METRIC": 1,
+      "PAIR_LEGAL_CAP": 1
+    }
+  },
+  {
+    "name": "snapshot2",
+    "exe": "experiments/design_v3/pair_snapshot_candidate_linux",
+    "env": {
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "PAIR_SNAPSHOT": 1
+    }
+  }
+]

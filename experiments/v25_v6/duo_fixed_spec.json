@@ -1,0 +1,58 @@
+[
+  {
+    "name": "control",
+    "exe": "experiments/v25_v6/route_duo_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "NOV5_DUO": 0,
+      "NOV5_DUO_CPU": 0.03,
+      "NOV5_DUO_VERIFY": 0
+    }
+  },
+  {
+    "name": "duo",
+    "exe": "experiments/v25_v6/route_duo_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "NOV5_DUO": 1,
+      "NOV5_DUO_CPU": 0.03,
+      "NOV5_DUO_VERIFY": 0
+    }
+  },
+  {
+    "name": "wide",
+    "exe": "experiments/v25_v6/route_duo_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "NOV5_DUO": 1,
+      "NOV5_DUO_CPU": 0.3,
+      "NOV5_DUO_VERIFY": 0
+    }
+  },
+  {
+    "name": "verify",
+    "exe": "experiments/v25_v6/route_duo_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "NOV5_DUO": 1,
+      "NOV5_DUO_CPU": 0.03,
+      "NOV5_DUO_VERIFY": 1
+    }
+  }
+]

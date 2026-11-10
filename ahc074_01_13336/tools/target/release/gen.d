@@ -1,1 +1,0 @@
-/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/tools/target/release/gen: /mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/tools/src/bin/gen.rs /mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/tools/src/lib.rs /mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/tools/src/vis.rs

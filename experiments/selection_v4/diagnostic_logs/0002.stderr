@@ -1,0 +1,48 @@
+NOV8_BUDGET scale=0.6 optional_end=1.8
+SPLIT before=22452 after=22452 it=1024 cpu=0.009303
+EDGE_SWEEP done=72 changes=6 gain=662 cpu=0.017204
+EXACT_COST W=36 complete=1 count=196 total=196 cheap_pairs=69 cheap_cpu=0.002554 metric_cpu=0.001076 metric_cache_hits=71 metric_unique=125
+MATCH W=36 cost=1282.06 feasible_edges=196
+PREFIX_COLUMN_ORDER min=20 max=36
+SPLIT before=24470 after=23816 it=1024 cpu=0.008314
+EDGE_SWEEP done=74 changes=5 gain=1777 cpu=0.016989
+EXACT_COST W=37 complete=1 count=168 total=168 cheap_pairs=69 cheap_cpu=0.002767 metric_cpu=0.001171 metric_cache_hits=64 metric_unique=104
+MATCH W=37 cost=1309 feasible_edges=168
+PREFIX_COLUMN_ORDER min=22 max=34
+SPLIT before=22702 after=22254 it=512 cpu=0.007849
+EDGE_SWEEP done=36 changes=4 gain=385 cpu=0.017521
+SPLIT before=21889 after=21889 it=512 cpu=0.007581
+EDGE_SWEEP done=37 changes=1 gain=31 cpu=0.015344
+EXACT_COST W=38 complete=1 count=254 total=254 cheap_pairs=70 cheap_cpu=0.002573 metric_cpu=0.002739 metric_cache_hits=10 metric_unique=244
+MATCH W=38 cost=1312.88 feasible_edges=254
+PREFIX_COLUMN_ORDER min=16 max=33
+SPLIT before=22657 after=22078 it=512 cpu=0.006759
+EDGE_SWEEP done=38 changes=2 gain=72 cpu=0.014311
+SPLIT before=22006 after=22006 it=512 cpu=0.006614
+EDGE_SWEEP done=38 changes=3 gain=178 cpu=0.014653
+EXACT_COST W=39 complete=1 count=228 total=228 cheap_pairs=70 cheap_cpu=0.002696 metric_cpu=0.002501 metric_cache_hits=13 metric_unique=215
+MATCH W=39 cost=1314.62 feasible_edges=228
+PREFIX_COLUMN_ORDER min=17 max=30
+PREFIX_COLUMN_ORDER min=22 max=29
+PREFIX_COLUMN_ORDER min=25 max=29
+PREFIX_COLUMN_ORDER min=18 max=23
+PAIR_SNAPSHOT B=5 W=36 weight=2 pairs=69 changed=3 edges=196 before=1015.59 after=1016.38 iterations=200000 timeout=0 cpu=0.001621
+PREFIX_COLUMN_ORDER min=18 max=26
+PAIR_APPEND enabled=1 original_candidates=7 added=1 total=8
+SELECTION_DIAG index=0 W=36 B=5 live=1 score=22394.1 selected=1 queries=2048
+SELECTION_DIAG index=1 W=37 B=5 live=0 score=2868.05 selected=0 queries=2048
+SELECTION_DIAG index=2 W=38 B=6 live=1 score=22423.6 selected=0 queries=2048
+SELECTION_DIAG index=3 W=39 B=6 live=0 score=15484.7 selected=0 queries=2048
+SELECTION_DIAG index=4 W=36 B=5 live=0 score=4236.62 selected=0 queries=2048
+SELECTION_DIAG index=5 W=37 B=5 live=0 score=4244.84 selected=0 queries=2048
+SELECTION_DIAG index=6 W=38 B=6 live=1 score=22501.5 selected=0 queries=2048
+SELECTION_DIAG index=7 W=36 B=5 live=0 score=4232.83 selected=0 queries=2048
+HEAD_ERASE samples=42 cuts=12 proxy=11.1905
+HEAD_ERASE samples=42 cuts=10 proxy=5.66667
+HEAD_ERASE samples=42 cuts=2 proxy=0.738095
+HEAD_ERASE samples=42 cuts=6 proxy=2.64286
+HEAD_ERASE samples=42 cuts=12 proxy=7.80952
+HEAD_ERASE samples=42 cuts=9 proxy=6.5
+HEAD_ERASE samples=42 cuts=8 proxy=3.92857
+HEAD_ERASE samples=42 cuts=8 proxy=5.04762
+DIAGNOSTIC_COMPLETE selected=0 candidates=8

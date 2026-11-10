@@ -1,0 +1,21 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/v25_v6/design_wide_linux",
+    "env": {}
+  },
+  {
+    "name": "replace",
+    "exe": "experiments/v25_v6/design_wide_linux",
+    "env": {
+      "CHILDMAP_WIDE": 1
+    }
+  },
+  {
+    "name": "append",
+    "exe": "experiments/v25_v6/design_wide_linux",
+    "env": {
+      "CHILDMAP_WIDE": 2
+    }
+  }
+]

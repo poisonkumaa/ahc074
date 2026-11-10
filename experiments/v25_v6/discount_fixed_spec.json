@@ -1,0 +1,73 @@
+[
+  {
+    "name": "control",
+    "exe": "experiments/v25_v6/route_discount_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10
+    }
+  },
+  {
+    "name": "short",
+    "exe": "experiments/v25_v6/route_discount_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "FUTURE_HORIZON": 0.5
+    }
+  },
+  {
+    "name": "long",
+    "exe": "experiments/v25_v6/route_discount_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "FUTURE_HORIZON": 1.5
+    }
+  },
+  {
+    "name": "equal",
+    "exe": "experiments/v25_v6/route_discount_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "FUTURE_EQUAL_ONLY": 1
+    }
+  },
+  {
+    "name": "blendhalf",
+    "exe": "experiments/v25_v6/route_discount_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "FUTURE_BLEND": 0.5
+    }
+  },
+  {
+    "name": "learned",
+    "exe": "experiments/v25_v6/route_discount_fixture_linux",
+    "env": {
+      "BEAM_FIXTURE_DIR": "/mnt/c/Users/dokuk/Documents/Competitive_programing/Atcoder/AHC/ahc074/experiments/beam_v1/fixtures",
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "FUTURE_BLEND": 1
+    }
+  }
+]

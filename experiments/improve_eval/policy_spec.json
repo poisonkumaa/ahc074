@@ -1,0 +1,7 @@
+[
+ {"name":"baseline","exe":"experiments/improve_eval/baseline.exe"},
+ {"name":"policies","exe":"experiments/improve_eval/baseline.exe","env":{"POLICY_MASK":65535}},
+ {"name":"post8","exe":"experiments/improve_eval/baseline.exe","env":{"POST_SUPPORT_CHOICES":8}},
+ {"name":"metric8","exe":"experiments/improve_eval/baseline.exe","env":{"METRIC_BLEND":8}},
+ {"name":"metric0","exe":"experiments/improve_eval/baseline.exe","env":{"METRIC_BLEND":0}}
+]

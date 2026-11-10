@@ -1,0 +1,23 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/renewed_v5/design_popcnt_linux",
+    "env": {
+      "NOV8_QUERIES": 8192
+    }
+  },
+  {
+    "name": "race512",
+    "exe": "experiments/renewed_v5/design_popcnt_linux",
+    "env": {
+      "NOV8_QUERIES": 512
+    }
+  },
+  {
+    "name": "race1024",
+    "exe": "experiments/renewed_v5/design_popcnt_linux",
+    "env": {
+      "NOV8_QUERIES": 1024
+    }
+  }
+]

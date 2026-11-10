@@ -1,0 +1,21 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/v25_v6/native_baseline_linux",
+    "env": {}
+  },
+  {
+    "name": "w39",
+    "exe": "experiments/v25_v6/native_baseline_linux",
+    "env": {
+      "PACK_W": 39
+    }
+  },
+  {
+    "name": "w40",
+    "exe": "experiments/v25_v6/native_baseline_linux",
+    "env": {
+      "PACK_W": 40
+    }
+  }
+]

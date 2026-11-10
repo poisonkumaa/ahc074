@@ -1,0 +1,30 @@
+[
+  {
+    "name": "unlimited",
+    "exe": "experiments/renewed_v5/tail_budget_linux",
+    "env": {
+      "TAIL_CPU_BUDGET": -1
+    }
+  },
+  {
+    "name": "tail_off",
+    "exe": "experiments/renewed_v5/tail_budget_linux",
+    "env": {
+      "TAIL_CPU_BUDGET": 0
+    }
+  },
+  {
+    "name": "tail15",
+    "exe": "experiments/renewed_v5/tail_budget_linux",
+    "env": {
+      "TAIL_CPU_BUDGET": 0.15
+    }
+  },
+  {
+    "name": "tail35",
+    "exe": "experiments/renewed_v5/tail_budget_linux",
+    "env": {
+      "TAIL_CPU_BUDGET": 0.35
+    }
+  }
+]

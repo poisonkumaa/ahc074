@@ -1,0 +1,86 @@
+[
+  {
+    "name": "baseline",
+    "exe": "experiments/selection_v4/core4_candidate_linux",
+    "env": {
+      "NOV8_PACK_END": 30,
+      "NOV8_MATCH_END": 30,
+      "NOV8_LAYOUT_END": 30,
+      "NOV8_POOL_END": 30,
+      "NOV8_SELECT_END": 30,
+      "NOV8_SELECT_HARD": 30,
+      "NOV8_HOLES_END": 30,
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "CORE4_MODE": 0,
+      "CORE4_W": 30
+    }
+  },
+  {
+    "name": "core4_w30",
+    "exe": "experiments/selection_v4/core4_candidate_linux",
+    "env": {
+      "NOV8_PACK_END": 30,
+      "NOV8_MATCH_END": 30,
+      "NOV8_LAYOUT_END": 30,
+      "NOV8_POOL_END": 30,
+      "NOV8_SELECT_END": 30,
+      "NOV8_SELECT_HARD": 30,
+      "NOV8_HOLES_END": 30,
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "CORE4_MODE": 2,
+      "CORE4_W": 30
+    }
+  },
+  {
+    "name": "core4_w32",
+    "exe": "experiments/selection_v4/core4_candidate_linux",
+    "env": {
+      "NOV8_PACK_END": 30,
+      "NOV8_MATCH_END": 30,
+      "NOV8_LAYOUT_END": 30,
+      "NOV8_POOL_END": 30,
+      "NOV8_SELECT_END": 30,
+      "NOV8_SELECT_HARD": 30,
+      "NOV8_HOLES_END": 30,
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "CORE4_MODE": 2,
+      "CORE4_W": 32
+    }
+  },
+  {
+    "name": "mixed_w32",
+    "exe": "experiments/selection_v4/core4_candidate_linux",
+    "env": {
+      "NOV8_PACK_END": 30,
+      "NOV8_MATCH_END": 30,
+      "NOV8_LAYOUT_END": 30,
+      "NOV8_POOL_END": 30,
+      "NOV8_SELECT_END": 30,
+      "NOV8_SELECT_HARD": 30,
+      "NOV8_HOLES_END": 30,
+      "NOV8_INIT_END": 30,
+      "NOV8_MDP_END": 30,
+      "NOV8_ROUTE_END": 30,
+      "NOV8_RELAX_END": 30,
+      "NOV8_SHORT_END": 30,
+      "NOV5_RELAX_BUDGET": 10,
+      "CORE4_MODE": 1,
+      "CORE4_W": 32
+    }
+  }
+]
